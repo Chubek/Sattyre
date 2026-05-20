@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="indexpage" kind="page">
+    <compoundname>index</compoundname>
+    <title>Sattyre Manual Front Page</title>
+    <innerpage refid="chapter1">Build, Layout, and Feature Flags</innerpage>
+    <innerpage refid="chapter2">SAT Core and DIMACS Parsing</innerpage>
+    <innerpage refid="chapter3">SMT Front-End and SMT-LIB Loading</innerpage>
+    <innerpage refid="chapter4">Solver C ABI Contract</innerpage>
+    <innerpage refid="chapter5">C++ Solver Adapter and Built-in Solvers</innerpage>
+    <innerpage refid="chapter6">Plugin ABI, Library ABI, and Dynamic Loading</innerpage>
+    <innerpage refid="chapter7">Package Manifests and Normalization</innerpage>
+    <innerpage refid="chapter8">Bundle Create/Extract and Path Safety</innerpage>
+    <innerpage refid="chapter9">Installer API, Status Codes, and Local Package Layout</innerpage>
+    <innerpage refid="chapter10">Registry Server and Client Flow</innerpage>
+    <innerpage refid="chapter11">Lua Runtime and Binding Surface</innerpage>
+    <innerpage refid="chapter12">CLI Workflows, Testing Matrix, and Release Readiness</innerpage>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>This manual is organized into twelve implementation-focused chapters. Each chapter targets one or two subsystems and includes command and code examples.</para>
+<para><itemizedlist>
+<listitem><para><ref refid="chapter1" kindref="compound">Build, Layout, and Feature Flags</ref></para>
+</listitem><listitem><para><ref refid="chapter2" kindref="compound">SAT Core and DIMACS Parsing</ref></para>
+</listitem><listitem><para><ref refid="chapter3" kindref="compound">SMT Front-End and SMT-LIB Loading</ref></para>
+</listitem><listitem><para><ref refid="chapter4" kindref="compound">Solver C ABI Contract</ref></para>
+</listitem><listitem><para><ref refid="chapter5" kindref="compound">C++ Solver Adapter and Built-in Solvers</ref></para>
+</listitem><listitem><para><ref refid="chapter6" kindref="compound">Plugin ABI, Library ABI, and Dynamic Loading</ref></para>
+</listitem><listitem><para><ref refid="chapter7" kindref="compound">Package Manifests and Normalization</ref></para>
+</listitem><listitem><para><ref refid="chapter8" kindref="compound">Bundle Create/Extract and Path Safety</ref></para>
+</listitem><listitem><para><ref refid="chapter9" kindref="compound">Installer API, Status Codes, and Local Package Layout</ref></para>
+</listitem><listitem><para><ref refid="chapter10" kindref="compound">Registry Server and Client Flow</ref></para>
+</listitem><listitem><para><ref refid="chapter11" kindref="compound">Lua Runtime and Binding Surface</ref></para>
+</listitem><listitem><para><ref refid="chapter12" kindref="compound">CLI Workflows, Testing Matrix, and Release Readiness</ref> </para>
+</listitem></itemizedlist>
+</para>
+    </detaileddescription>
+    <location file="/home/chubakpdp11/sattyre/docs/FrontPage.rst"/>
+  </compounddef>
+</doxygen>

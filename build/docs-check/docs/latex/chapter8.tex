@@ -1,0 +1,149 @@
+\doxysection{Bundle Create/\+\+Extract and Path Safety }
+\label{chapter8}\index{Bundle Create/Extract and Path Safety@{Bundle Create/Extract and Path Safety}}
+Stage 5 archive implementation details.\hypertarget{chapter8_autotoc_md177}{}\doxysubsubsection{\texorpdfstring{Scope}{Scope}}\label{chapter8_autotoc_md177}
+This chapter explains {\ttfamily create\+\_\+bundle} and {\ttfamily extract\+\_\+bundle} behavior. Archives should round-\/trip package contents safely. Path traversal defenses are mandatory.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{bool\ create\_bundle(const\ std::string\&\ source\_dir,\ const\ std::string\&\ out\_file);}
+\DoxyCodeLine{bool\ extract\_bundle(const\ std::string\&\ bundle\_file,\ const\ std::string\&\ out\_dir);}
+
+\end{DoxyCode}
+\hypertarget{chapter8_autotoc_md178}{}\doxysubsubsubsection{\texorpdfstring{Quick recap}{Quick recap}}\label{chapter8_autotoc_md178}
+
+\begin{DoxyItemize}
+\item Keep this section aligned with Stage 5 archive implementation details.
+\item Prefer explicit statuses and deterministic behavior.
+\item Promote examples into tests when behavior stabilizes.
+\end{DoxyItemize}\hypertarget{chapter8_autotoc_md179}{}\doxysubsubsection{\texorpdfstring{Round-\/trip expectation}{Round-\/trip expectation}}\label{chapter8_autotoc_md179}
+Create archive from package root containing manifest and payload files. Extract into destination root with normalized internal paths. Reject entries escaping {\ttfamily out\+\_\+dir} via {\ttfamily ../\+} or absolute paths.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{sattyre-\/packman\ pack\ ./package-\/root\ ./demo.satpkg}
+\DoxyCodeLine{sattyre-\/packman\ unpack\ ./demo.satpkg\ ./extracted}
+
+\end{DoxyCode}
+\hypertarget{chapter8_autotoc_md180}{}\doxysubsubsubsection{\texorpdfstring{Quick recap}{Quick recap}}\label{chapter8_autotoc_md180}
+
+\begin{DoxyItemize}
+\item Keep this section aligned with Stage 5 archive implementation details.
+\item Prefer explicit statuses and deterministic behavior.
+\item Promote examples into tests when behavior stabilizes.
+\end{DoxyItemize}\hypertarget{chapter8_autotoc_md181}{}\doxysubsubsection{\texorpdfstring{Path safety checks}{Path safety checks}}\label{chapter8_autotoc_md181}
+Reject archive entries with {\ttfamily ..} segments after lexical normalization. Reject absolute path entries. Create parent directories before writing extracted files.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{if\ (!sattyre::extract\_bundle(bundle,\ out))\ \{}
+\DoxyCodeLine{\ \ std::cerr\ <<\ "{}Extract\ failed;\ inspect\ archive\ for\ invalid\ entries\(\backslash\)n"{};}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{chapter8_autotoc_md182}{}\doxysubsubsubsection{\texorpdfstring{Quick recap}{Quick recap}}\label{chapter8_autotoc_md182}
+
+\begin{DoxyItemize}
+\item Keep this section aligned with Stage 5 archive implementation details.
+\item Prefer explicit statuses and deterministic behavior.
+\item Promote examples into tests when behavior stabilizes.
+\end{DoxyItemize}\hypertarget{chapter8_autotoc_md183}{}\doxysubsubsection{\texorpdfstring{Archive reproducibility}{Archive reproducibility}}\label{chapter8_autotoc_md183}
+Prefer deterministic file ordering for reproducible bundles. Preserve permissions where meaningful, but never at the cost of safety. Keep archive naming and payload layout stable across builds.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Reproducible\ archives\ make\ package\ flow\ debugging\ much\ easier.}
+\DoxyCodeLine{//\ Stable\ ordering\ also\ helps\ tests\ remain\ deterministic.}
+
+\end{DoxyCode}
+\hypertarget{chapter8_autotoc_md184}{}\doxysubsubsubsection{\texorpdfstring{Quick recap}{Quick recap}}\label{chapter8_autotoc_md184}
+
+\begin{DoxyItemize}
+\item Keep this section aligned with Stage 5 archive implementation details.
+\item Prefer explicit statuses and deterministic behavior.
+\item Promote examples into tests when behavior stabilizes.
+\end{DoxyItemize}\hypertarget{chapter8_autotoc_md185}{}\doxysubsubsection{\texorpdfstring{Troubleshooting}{Troubleshooting}}\label{chapter8_autotoc_md185}
+If libarchive is unavailable, ensure fallback behavior remains explicit. Verify executable bits and text files are preserved where expected. Confirm extraction never writes outside the target tree.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cmake\ -\/S\ .\ -\/B\ build/bundle\ -\/DSATTYRE\_ENABLE\_LIBARCHIVE=ON}
+\DoxyCodeLine{cmake\ -\/-\/build\ build/bundle\ -\/j}
+
+\end{DoxyCode}
+\hypertarget{chapter8_autotoc_md186}{}\doxysubsubsubsection{\texorpdfstring{Quick recap}{Quick recap}}\label{chapter8_autotoc_md186}
+
+\begin{DoxyItemize}
+\item Keep this section aligned with Stage 5 archive implementation details.
+\item Prefer explicit statuses and deterministic behavior.
+\item Promote examples into tests when behavior stabilizes.
+\end{DoxyItemize}\hypertarget{chapter8_autotoc_md187}{}\doxysubsubsection{\texorpdfstring{Chapter summary}{Chapter summary}}\label{chapter8_autotoc_md187}
+Bundle logic must be correct and safe before registry publishing is trusted. Archive path handling is a security boundary. Round-\/trip tests should run as part of package flow checks.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Treat\ archive\ paths\ as\ untrusted\ input,\ even\ for\ local\ packages.}
+
+\end{DoxyCode}
+\hypertarget{chapter8_autotoc_md188}{}\doxysubsubsubsection{\texorpdfstring{Quick recap}{Quick recap}}\label{chapter8_autotoc_md188}
+
+\begin{DoxyItemize}
+\item Keep this section aligned with Stage 5 archive implementation details.
+\item Prefer explicit statuses and deterministic behavior.
+\item Promote examples into tests when behavior stabilizes.
+\end{DoxyItemize}\hypertarget{chapter8_autotoc_md189}{}\doxysubsubsubsection{\texorpdfstring{Supplemental example}{Supplemental example}}\label{chapter8_autotoc_md189}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Minimal\ reference\ snippet\ for\ this\ chapter}
+\DoxyCodeLine{//\ Replace\ with\ project-\/specific\ values\ in\ your\ local\ environment.}
+\DoxyCodeLine{std::cout\ <<\ "{}sattyre\ manual\ example"{}\ <<\ std::endl;}
+
+\end{DoxyCode}
+\hypertarget{chapter8_autotoc_md190}{}\doxysubsubsubsection{\texorpdfstring{Supplemental example}{Supplemental example}}\label{chapter8_autotoc_md190}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Minimal\ reference\ snippet\ for\ this\ chapter}
+\DoxyCodeLine{//\ Replace\ with\ project-\/specific\ values\ in\ your\ local\ environment.}
+\DoxyCodeLine{std::cout\ <<\ "{}sattyre\ manual\ example"{}\ <<\ std::endl;}
+
+\end{DoxyCode}
+\hypertarget{chapter8_autotoc_md191}{}\doxysubsubsubsection{\texorpdfstring{Supplemental example}{Supplemental example}}\label{chapter8_autotoc_md191}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Minimal\ reference\ snippet\ for\ this\ chapter}
+\DoxyCodeLine{//\ Replace\ with\ project-\/specific\ values\ in\ your\ local\ environment.}
+\DoxyCodeLine{std::cout\ <<\ "{}sattyre\ manual\ example"{}\ <<\ std::endl;}
+
+\end{DoxyCode}
+\hypertarget{chapter8_autotoc_md192}{}\doxysubsubsubsection{\texorpdfstring{Supplemental example}{Supplemental example}}\label{chapter8_autotoc_md192}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Minimal\ reference\ snippet\ for\ this\ chapter}
+\DoxyCodeLine{//\ Replace\ with\ project-\/specific\ values\ in\ your\ local\ environment.}
+\DoxyCodeLine{std::cout\ <<\ "{}sattyre\ manual\ example"{}\ <<\ std::endl;}
+
+\end{DoxyCode}
+\hypertarget{chapter8_autotoc_md193}{}\doxysubsubsubsection{\texorpdfstring{Supplemental example}{Supplemental example}}\label{chapter8_autotoc_md193}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Minimal\ reference\ snippet\ for\ this\ chapter}
+\DoxyCodeLine{//\ Replace\ with\ project-\/specific\ values\ in\ your\ local\ environment.}
+\DoxyCodeLine{std::cout\ <<\ "{}sattyre\ manual\ example"{}\ <<\ std::endl;}
+
+\end{DoxyCode}
+\hypertarget{chapter8_autotoc_md194}{}\doxysubsubsubsection{\texorpdfstring{Supplemental example}{Supplemental example}}\label{chapter8_autotoc_md194}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Minimal\ reference\ snippet\ for\ this\ chapter}
+\DoxyCodeLine{//\ Replace\ with\ project-\/specific\ values\ in\ your\ local\ environment.}
+\DoxyCodeLine{std::cout\ <<\ "{}sattyre\ manual\ example"{}\ <<\ std::endl;}
+
+\end{DoxyCode}
+\hypertarget{chapter8_autotoc_md195}{}\doxysubsubsubsection{\texorpdfstring{Supplemental example}{Supplemental example}}\label{chapter8_autotoc_md195}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Minimal\ reference\ snippet\ for\ this\ chapter}
+\DoxyCodeLine{//\ Replace\ with\ project-\/specific\ values\ in\ your\ local\ environment.}
+\DoxyCodeLine{std::cout\ <<\ "{}sattyre\ manual\ example"{}\ <<\ std::endl;}
+
+\end{DoxyCode}
+ 

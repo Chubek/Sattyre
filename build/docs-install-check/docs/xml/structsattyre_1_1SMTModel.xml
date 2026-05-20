@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="structsattyre_1_1SMTModel" kind="struct" language="C++" prot="public">
+    <compoundname>sattyre::SMTModel</compoundname>
+    <includes refid="SattyreSMT_8hpp" local="no">SattyreSMT.hpp</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structsattyre_1_1SMTModel_1a56fa87c64b6355def3f9904dcfb4c861" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt;std::string&gt; sattyre::SMTModel::bindings</definition>
+        <argsstring></argsstring>
+        <name>bindings</name>
+        <qualifiedname>sattyre::SMTModel::bindings</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/chubakpdp11/sattyre/include/sattyre/SattyreSMT.hpp" line="19" column="15" bodyfile="/home/chubakpdp11/sattyre/include/sattyre/SattyreSMT.hpp" bodystart="19" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/chubakpdp11/sattyre/include/sattyre/SattyreSMT.hpp" line="18" column="1" bodyfile="/home/chubakpdp11/sattyre/include/sattyre/SattyreSMT.hpp" bodystart="18" bodyend="20"/>
+    <listofallmembers>
+      <member refid="structsattyre_1_1SMTModel_1a56fa87c64b6355def3f9904dcfb4c861" prot="public" virt="non-virtual"><scope>sattyre::SMTModel</scope><name>bindings</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

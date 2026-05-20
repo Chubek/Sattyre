@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_4479b432742397ff6eb5884458f72a89" xml:lang="en-US">
+<title>/home/chubakpdp11/sattyre/include/sattyre Directory Reference</title>
+<indexterm><primary>/home/chubakpdp11/sattyre/include/sattyre Directory Reference</primary></indexterm>
+<simplesect>
+    <title>Files    </title>
+        <itemizedlist>
+            <listitem><para>file <link linkend="_Bundle_8hpp">Bundle.hpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_Dylib_8hpp">Dylib.hpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_Installer_8hpp">Installer.hpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_Log_8hpp">Log.hpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_LuaBindings_8hpp">LuaBindings.hpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_LuaRuntime_8hpp">LuaRuntime.hpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_Manifest_8hpp">Manifest.hpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_Paths_8hpp">Paths.hpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_Registry_8hpp">Registry.hpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_Sattyre-Library_8h">Sattyre-Library.h</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_Sattyre-Library_8hpp">Sattyre-Library.hpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_Sattyre-Plugin_8h">Sattyre-Plugin.h</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_Sattyre-Plugin_8hpp">Sattyre-Plugin.hpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_Sattyre-Solver_8h">Sattyre-Solver.h</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_Sattyre-Solver_8hpp">Sattyre-Solver.hpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_SattyreSAT_8hpp">SattyreSAT.hpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_SattyreSMT_8hpp">SattyreSMT.hpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_Version_8hpp">Version.hpp</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/sattyre-manifest-test.dir/link.d "CMakeFiles/sattyre-manifest-test.dir/tests/SattyreManifestTest.cpp.o" -o sattyre-manifest-test  libsattyre.a /usr/lib/libarchive.so -ldl libsattyre-cabi.a

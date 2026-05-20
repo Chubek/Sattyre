@@ -1,0 +1,38 @@
+\doxysection{Sattyre\+SMT.\+hpp}
+\label{SattyreSMT_8hpp_source}\index{/home/chubakpdp11/sattyre/include/sattyre/SattyreSMT.hpp@{/home/chubakpdp11/sattyre/include/sattyre/SattyreSMT.hpp}}
+\doxymbox{\hyperlink{SattyreSMT_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{namespace\ }sattyre\ \{}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{struct\ }SMTProblem\ \{}
+\DoxyCodeLine{00009\ \ \ std::string\ smtlib;}
+\DoxyCodeLine{00010\ \};}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{enum\ class}\ SMTSolveResult\ \{}
+\DoxyCodeLine{00013\ \ \ Sat,}
+\DoxyCodeLine{00014\ \ \ Unsat,}
+\DoxyCodeLine{00015\ \ \ Unknown}
+\DoxyCodeLine{00016\ \};}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{struct\ }SMTModel\ \{}
+\DoxyCodeLine{00019\ \ \ std::vector<std::string>\ bindings;}
+\DoxyCodeLine{00020\ \};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }SMTSolver\ \{}
+\DoxyCodeLine{00023\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ \ \ \textcolor{keyword}{virtual}\ \string~SMTSolver()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00025\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ load(\textcolor{keyword}{const}\ SMTProblem\&\ problem)\ =\ 0;}
+\DoxyCodeLine{00026\ \ \ \textcolor{keyword}{virtual}\ SMTSolveResult\ solve()\ =\ 0;}
+\DoxyCodeLine{00027\ \ \ \textcolor{keyword}{virtual}\ SMTModel\ model()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00028\ \};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ SMTProblem\ parse\_smtlib\_file(\textcolor{keyword}{const}\ std::string\&\ path);}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \}\ \textcolor{comment}{//\ namespace\ sattyre}}
+
+\end{DoxyCode}

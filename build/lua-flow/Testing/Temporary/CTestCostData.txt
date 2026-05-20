@@ -1,0 +1,9 @@
+sattyre-sat-parser-test 1 0.00200793
+sattyre-solver-abi-test 1 0.00179963
+sattyre-module-abi-test 1 0.00171495
+sattyre-module-cpp-abi-test 1 0.00175079
+sattyre-manifest-test 1 0.00483956
+sattyre-package-flow-test 1 0.00385786
+sattyre-registry-flow-test 1 0.00185567
+sattyre-lua-smoke-test 1 0.00182711
+---

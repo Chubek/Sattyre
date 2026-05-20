@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_Registry_8hpp_source" xml:lang="en-US">
+<title>Registry.hpp</title>
+<indexterm><primary>/home/chubakpdp11/sattyre/include/sattyre/Registry.hpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#pragma&#32;once</emphasis>
+2 
+3 <emphasis role="preprocessor">#include&#32;&lt;vector&gt;</emphasis>
+4 <emphasis role="preprocessor">#include&#32;&lt;string&gt;</emphasis>
+5 
+6 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_namespacesattyre">sattyre</link>&#32;{
+7 
+8 <emphasis role="keyword">enum&#32;class</emphasis>&#32;<link linkend="_namespacesattyre_1aadc00e3812f882c93d55389540d6bd0e">RegistryStatus</link>&#32;{
+9 &#32;&#32;<link linkend="_namespacesattyre_1aa6c82de970cc3d48f5cc62694d95ac09aa60852f204ed8028c1c58808b746d115">Ok</link>&#32;=&#32;0,
+10 &#32;&#32;<link linkend="_namespacesattyre_1aadc00e3812f882c93d55389540d6bd0eac25cd95f2d50ba16866afc8fc9a3e0d0">RegistryNotFound</link>,
+11 &#32;&#32;<link linkend="_namespacesattyre_1aadc00e3812f882c93d55389540d6bd0ea0b0f89502707eccb0902f6bf77a9d10e">PackageNotFound</link>,
+12 &#32;&#32;<link linkend="_namespacesattyre_1aadc00e3812f882c93d55389540d6bd0eaf05cfcbf5123775f7c73e520a8d861e1">IoError</link>,
+13 &#32;&#32;<link linkend="_namespacesattyre_1aadc00e3812f882c93d55389540d6bd0ea253ca7dd096ee0956cccee4d376cab8b">InvalidArgument</link>
+14 };
+15 
+16 <emphasis role="keyword">class&#32;</emphasis><link linkend="_classsattyre_1_1RegistryServer">RegistryServer</link>&#32;{
+17 <emphasis role="keyword">public</emphasis>:
+18 &#32;&#32;<link linkend="_namespacesattyre_1aadc00e3812f882c93d55389540d6bd0e">RegistryStatus</link>&#32;<link linkend="_classsattyre_1_1RegistryServer_1a64a73f76c0a4b095846d84009c0fbfbc">serve</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;host,&#32;<emphasis role="keywordtype">int</emphasis>&#32;port);
+19 &#32;&#32;<link linkend="_namespacesattyre_1aadc00e3812f882c93d55389540d6bd0e">RegistryStatus</link>&#32;<link linkend="_classsattyre_1_1RegistryServer_1a339a0566606bf6277aea731449b78e5c">list_packages</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;registry_root,&#32;std::vector&lt;std::string&gt;&amp;&#32;packages)&#32;<emphasis role="keyword">const</emphasis>;
+20 &#32;&#32;<link linkend="_namespacesattyre_1aadc00e3812f882c93d55389540d6bd0e">RegistryStatus</link>&#32;<link linkend="_classsattyre_1_1RegistryServer_1a176a0f5ab38bb73ae5c8333347a9bb46">serve_http</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;host,&#32;<emphasis role="keywordtype">int</emphasis>&#32;port,&#32;<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;registry_root);
+21 };
+22 
+23 <emphasis role="keyword">class&#32;</emphasis><link linkend="_classsattyre_1_1RegistryClient">RegistryClient</link>&#32;{
+24 <emphasis role="keyword">public</emphasis>:
+25 &#32;&#32;<link linkend="_namespacesattyre_1aadc00e3812f882c93d55389540d6bd0e">RegistryStatus</link>&#32;<link linkend="_classsattyre_1_1RegistryClient_1ab000f894c9983260e08fc01fac554f32">deploy</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;bundle_path,&#32;<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;registry_url);
+26 &#32;&#32;<link linkend="_namespacesattyre_1aadc00e3812f882c93d55389540d6bd0e">RegistryStatus</link>&#32;<link linkend="_classsattyre_1_1RegistryClient_1ae3fbe4fab8dd3f8c0b319853579a0d49">download</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;package_name,&#32;<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;registry_url);
+27 &#32;&#32;<link linkend="_namespacesattyre_1aadc00e3812f882c93d55389540d6bd0e">RegistryStatus</link>&#32;<link linkend="_classsattyre_1_1RegistryClient_1a0bf5191ba64221ba11db3c46cddeac66">list_http</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;base_url,&#32;std::vector&lt;std::string&gt;&amp;&#32;packages);
+28 &#32;&#32;<link linkend="_namespacesattyre_1aadc00e3812f882c93d55389540d6bd0e">RegistryStatus</link>&#32;<link linkend="_classsattyre_1_1RegistryClient_1a0e95ca38dfffe3805270721dec5199bb">deploy_http</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;bundle_path,&#32;<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;base_url);
+29 &#32;&#32;<link linkend="_namespacesattyre_1aadc00e3812f882c93d55389540d6bd0e">RegistryStatus</link>&#32;<link linkend="_classsattyre_1_1RegistryClient_1a49436fc77cb214aaf8ec946a4deae395">download_http</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;package_name,&#32;<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;base_url);
+30 };
+31 
+32 }&#32;<emphasis role="comment">//&#32;namespace&#32;sattyre</emphasis>
+</programlisting></section>

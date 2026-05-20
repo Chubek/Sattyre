@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="FrontPage_8rst" kind="file" language="Markdown">
+    <compoundname>FrontPage.rst</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">\mainpage<sp/>Sattyre<sp/>Manual<sp/>Front<sp/>Page</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>manual<sp/>is<sp/>organized<sp/>into<sp/>twelve<sp/>implementation-focused<sp/>chapters.</highlight></codeline>
+<codeline><highlight class="normal">Each<sp/>chapter<sp/>targets<sp/>one<sp/>or<sp/>two<sp/>subsystems<sp/>and<sp/>includes<sp/>command<sp/>and<sp/>code<sp/>examples.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>\subpage<sp/>chapter1</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>\subpage<sp/>chapter2</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>\subpage<sp/>chapter3</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>\subpage<sp/>chapter4</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>\subpage<sp/>chapter5</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>\subpage<sp/>chapter6</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>\subpage<sp/>chapter7</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>\subpage<sp/>chapter8</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>\subpage<sp/>chapter9</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>\subpage<sp/>chapter10</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>\subpage<sp/>chapter11</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>\subpage<sp/>chapter12</highlight></codeline>
+    </programlisting>
+    <location file="/home/chubakpdp11/sattyre/docs/FrontPage.rst"/>
+  </compounddef>
+</doxygen>

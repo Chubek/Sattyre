@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="classsattyre_1_1SMTSolver" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>sattyre::SMTSolver</compoundname>
+    <includes refid="SattyreSMT_8hpp" local="no">SattyreSMT.hpp</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classsattyre_1_1SMTSolver_1a90f77bd7c15fadf702d42b9795ccd696" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual sattyre::SMTSolver::~SMTSolver</definition>
+        <argsstring>()=default</argsstring>
+        <name>~SMTSolver</name>
+        <qualifiedname>sattyre::SMTSolver::~SMTSolver</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/chubakpdp11/sattyre/include/sattyre/SattyreSMT.hpp" line="24" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classsattyre_1_1SMTSolver_1a73ade4f2dd9d26f6a37c54b7d4c66343" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void sattyre::SMTSolver::load</definition>
+        <argsstring>(const SMTProblem &amp;problem)=0</argsstring>
+        <name>load</name>
+        <qualifiedname>sattyre::SMTSolver::load</qualifiedname>
+        <param>
+          <type>const <ref refid="structsattyre_1_1SMTProblem" kindref="compound">SMTProblem</ref> &amp;</type>
+          <declname>problem</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/chubakpdp11/sattyre/include/sattyre/SattyreSMT.hpp" line="25" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classsattyre_1_1SMTSolver_1ab1871b9f5e836c0346cea2579cca1ff5" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="namespacesattyre_1a8bfb7e77d44f0a20b004a55ca3fd48aa" kindref="member">SMTSolveResult</ref></type>
+        <definition>virtual SMTSolveResult sattyre::SMTSolver::solve</definition>
+        <argsstring>()=0</argsstring>
+        <name>solve</name>
+        <qualifiedname>sattyre::SMTSolver::solve</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/chubakpdp11/sattyre/include/sattyre/SattyreSMT.hpp" line="26" column="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classsattyre_1_1SMTSolver_1a2490911965b2a8e13f266ff8b90ba820" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="structsattyre_1_1SMTModel" kindref="compound">SMTModel</ref></type>
+        <definition>virtual SMTModel sattyre::SMTSolver::model</definition>
+        <argsstring>() const =0</argsstring>
+        <name>model</name>
+        <qualifiedname>sattyre::SMTSolver::model</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/chubakpdp11/sattyre/include/sattyre/SattyreSMT.hpp" line="27" column="20"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/chubakpdp11/sattyre/include/sattyre/SattyreSMT.hpp" line="22" column="1" bodyfile="/home/chubakpdp11/sattyre/include/sattyre/SattyreSMT.hpp" bodystart="22" bodyend="28"/>
+    <listofallmembers>
+      <member refid="classsattyre_1_1SMTSolver_1a73ade4f2dd9d26f6a37c54b7d4c66343" prot="public" virt="pure-virtual"><scope>sattyre::SMTSolver</scope><name>load</name></member>
+      <member refid="classsattyre_1_1SMTSolver_1a2490911965b2a8e13f266ff8b90ba820" prot="public" virt="pure-virtual"><scope>sattyre::SMTSolver</scope><name>model</name></member>
+      <member refid="classsattyre_1_1SMTSolver_1ab1871b9f5e836c0346cea2579cca1ff5" prot="public" virt="pure-virtual"><scope>sattyre::SMTSolver</scope><name>solve</name></member>
+      <member refid="classsattyre_1_1SMTSolver_1a90f77bd7c15fadf702d42b9795ccd696" prot="public" virt="virtual"><scope>sattyre::SMTSolver</scope><name>~SMTSolver</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

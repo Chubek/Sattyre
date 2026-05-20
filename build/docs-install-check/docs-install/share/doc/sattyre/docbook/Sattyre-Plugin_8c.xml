@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_Sattyre-Plugin_8c" xml:lang="en-US">
+<title>/home/chubakpdp11/sattyre/src/plugin/Sattyre-Plugin.c File Reference</title>
+<indexterm><primary>/home/chubakpdp11/sattyre/src/plugin/Sattyre-Plugin.c</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;sattyre/Sattyre-Plugin.h&quot;<?linebreak?></programlisting><simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>int <link linkend="_Sattyre-Plugin_8c_1a075e41808a5829e6aac16f6124cb1516">sattyre_plugin_init</link> (void)</para>
+</listitem>
+            <listitem><para>void <link linkend="_Sattyre-Plugin_8c_1a7a9c388961479bf7de5140b8ee5e229f">sattyre_plugin_shutdown</link> (void)</para>
+</listitem>
+            <listitem><para><link linkend="_structSattyrePluginInfo">SattyrePluginInfo</link> <link linkend="_Sattyre-Plugin_8c_1a728c97988f8e520ac68871bba0016b39">sattyre_plugin_info</link> (void)</para>
+</listitem>
+            <listitem><para>int <link linkend="_Sattyre-Plugin_8c_1a698e7e049dcd92d477f721b52a19439f">sattyre_plugin_abi_compatible</link> (unsigned int abi_version)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_Sattyre-Plugin_8c_1a698e7e049dcd92d477f721b52a19439f"/><section>
+    <title>sattyre_plugin_abi_compatible()</title>
+<indexterm><primary>sattyre_plugin_abi_compatible</primary><secondary>Sattyre-Plugin.c</secondary></indexterm>
+<indexterm><primary>Sattyre-Plugin.c</primary><secondary>sattyre_plugin_abi_compatible</secondary></indexterm>
+<para><computeroutput>int sattyre_plugin_abi_compatible (unsigned int abi_version)</computeroutput></para></section>
+<anchor xml:id="_Sattyre-Plugin_8c_1a728c97988f8e520ac68871bba0016b39"/><section>
+    <title>sattyre_plugin_info()</title>
+<indexterm><primary>sattyre_plugin_info</primary><secondary>Sattyre-Plugin.c</secondary></indexterm>
+<indexterm><primary>Sattyre-Plugin.c</primary><secondary>sattyre_plugin_info</secondary></indexterm>
+<para><computeroutput><link linkend="_structSattyrePluginInfo">SattyrePluginInfo</link> sattyre_plugin_info (void )</computeroutput></para></section>
+<anchor xml:id="_Sattyre-Plugin_8c_1a075e41808a5829e6aac16f6124cb1516"/><section>
+    <title>sattyre_plugin_init()</title>
+<indexterm><primary>sattyre_plugin_init</primary><secondary>Sattyre-Plugin.c</secondary></indexterm>
+<indexterm><primary>Sattyre-Plugin.c</primary><secondary>sattyre_plugin_init</secondary></indexterm>
+<para><computeroutput>int sattyre_plugin_init (void )</computeroutput></para></section>
+<anchor xml:id="_Sattyre-Plugin_8c_1a7a9c388961479bf7de5140b8ee5e229f"/><section>
+    <title>sattyre_plugin_shutdown()</title>
+<indexterm><primary>sattyre_plugin_shutdown</primary><secondary>Sattyre-Plugin.c</secondary></indexterm>
+<indexterm><primary>Sattyre-Plugin.c</primary><secondary>sattyre_plugin_shutdown</secondary></indexterm>
+<para><computeroutput>void sattyre_plugin_shutdown (void )</computeroutput></para></section>
+</section>
+</section>

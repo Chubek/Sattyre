@@ -1,0 +1,147 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="namespacesattyre_1_1paths" kind="namespace" language="C++">
+    <compoundname>sattyre::paths</compoundname>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="namespacesattyre_1_1paths_1ab27166907ed0acf84493e60bb42a5f59" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::filesystem::path</type>
+        <definition>std::filesystem::path sattyre::paths::home</definition>
+        <argsstring>()</argsstring>
+        <name>home</name>
+        <qualifiedname>sattyre::paths::home</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/chubakpdp11/sattyre/src/util/Paths.cpp" line="12" column="23" bodyfile="/home/chubakpdp11/sattyre/src/util/Paths.cpp" bodystart="12" bodyend="12" declfile="/home/chubakpdp11/sattyre/include/sattyre/Paths.hpp" declline="8" declcolumn="23"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacesattyre_1_1paths_1a31e3848bd20ab8a4d141baba3485489b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::filesystem::path</type>
+        <definition>std::filesystem::path sattyre::paths::include_dir</definition>
+        <argsstring>()</argsstring>
+        <name>include_dir</name>
+        <qualifiedname>sattyre::paths::include_dir</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/chubakpdp11/sattyre/src/util/Paths.cpp" line="13" column="23" bodyfile="/home/chubakpdp11/sattyre/src/util/Paths.cpp" bodystart="13" bodyend="13" declfile="/home/chubakpdp11/sattyre/include/sattyre/Paths.hpp" declline="9" declcolumn="23"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacesattyre_1_1paths_1ad5ab12a05151adaea26577db51bb49d6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::filesystem::path</type>
+        <definition>std::filesystem::path sattyre::paths::lib_dir</definition>
+        <argsstring>()</argsstring>
+        <name>lib_dir</name>
+        <qualifiedname>sattyre::paths::lib_dir</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/chubakpdp11/sattyre/src/util/Paths.cpp" line="14" column="23" bodyfile="/home/chubakpdp11/sattyre/src/util/Paths.cpp" bodystart="14" bodyend="14" declfile="/home/chubakpdp11/sattyre/include/sattyre/Paths.hpp" declline="10" declcolumn="23"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacesattyre_1_1paths_1a546bb0716882db602086747bc2bfac3a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::filesystem::path</type>
+        <definition>std::filesystem::path sattyre::paths::solver_dir</definition>
+        <argsstring>()</argsstring>
+        <name>solver_dir</name>
+        <qualifiedname>sattyre::paths::solver_dir</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/chubakpdp11/sattyre/src/util/Paths.cpp" line="15" column="23" bodyfile="/home/chubakpdp11/sattyre/src/util/Paths.cpp" bodystart="15" bodyend="15" declfile="/home/chubakpdp11/sattyre/include/sattyre/Paths.hpp" declline="11" declcolumn="23"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacesattyre_1_1paths_1a18ffbd7d0348018bc8d213eaf6ac5554" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::filesystem::path</type>
+        <definition>std::filesystem::path sattyre::paths::plugin_dir</definition>
+        <argsstring>()</argsstring>
+        <name>plugin_dir</name>
+        <qualifiedname>sattyre::paths::plugin_dir</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/chubakpdp11/sattyre/src/util/Paths.cpp" line="16" column="23" bodyfile="/home/chubakpdp11/sattyre/src/util/Paths.cpp" bodystart="16" bodyend="16" declfile="/home/chubakpdp11/sattyre/include/sattyre/Paths.hpp" declline="12" declcolumn="23"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacesattyre_1_1paths_1a52d2fa045248fe403a0527fe5bed44a9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::filesystem::path</type>
+        <definition>std::filesystem::path sattyre::paths::lua_dir</definition>
+        <argsstring>()</argsstring>
+        <name>lua_dir</name>
+        <qualifiedname>sattyre::paths::lua_dir</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/chubakpdp11/sattyre/src/util/Paths.cpp" line="17" column="23" bodyfile="/home/chubakpdp11/sattyre/src/util/Paths.cpp" bodystart="17" bodyend="17" declfile="/home/chubakpdp11/sattyre/include/sattyre/Paths.hpp" declline="13" declcolumn="23"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacesattyre_1_1paths_1ab77584e7e724d94526e70b944f8dd789" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::filesystem::path</type>
+        <definition>std::filesystem::path sattyre::paths::package_dir</definition>
+        <argsstring>()</argsstring>
+        <name>package_dir</name>
+        <qualifiedname>sattyre::paths::package_dir</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/chubakpdp11/sattyre/src/util/Paths.cpp" line="18" column="23" bodyfile="/home/chubakpdp11/sattyre/src/util/Paths.cpp" bodystart="18" bodyend="18" declfile="/home/chubakpdp11/sattyre/include/sattyre/Paths.hpp" declline="14" declcolumn="23"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacesattyre_1_1paths_1ac5175e3a6fe838e6bdcd63b60eaac244" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::filesystem::path</type>
+        <definition>std::filesystem::path sattyre::paths::doc_dir</definition>
+        <argsstring>()</argsstring>
+        <name>doc_dir</name>
+        <qualifiedname>sattyre::paths::doc_dir</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/chubakpdp11/sattyre/src/util/Paths.cpp" line="19" column="23" bodyfile="/home/chubakpdp11/sattyre/src/util/Paths.cpp" bodystart="19" bodyend="19" declfile="/home/chubakpdp11/sattyre/include/sattyre/Paths.hpp" declline="15" declcolumn="23"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacesattyre_1_1paths_1a2d968a3f0c25b9d9c605d6e9a64e394f" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::filesystem::path</type>
+        <definition>static std::filesystem::path sattyre::paths::env_or_default</definition>
+        <argsstring>(const char *key, const char *fallback)</argsstring>
+        <name>env_or_default</name>
+        <qualifiedname>sattyre::paths::env_or_default</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>fallback</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/chubakpdp11/sattyre/src/util/Paths.cpp" line="7" column="30" bodyfile="/home/chubakpdp11/sattyre/src/util/Paths.cpp" bodystart="7" bodyend="10"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/chubakpdp11/sattyre/include/sattyre/Paths.hpp" line="6" column="1"/>
+  </compounddef>
+</doxygen>

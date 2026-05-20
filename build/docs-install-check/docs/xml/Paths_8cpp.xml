@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="Paths_8cpp" kind="file" language="C++">
+    <compoundname>Paths.cpp</compoundname>
+    <includes refid="Paths_8hpp" local="yes">sattyre/Paths.hpp</includes>
+    <includes local="no">cstdlib</includes>
+    <incdepgraph>
+      <node id="2">
+        <label>sattyre/Paths.hpp</label>
+        <link refid="Paths_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/home/chubakpdp11/sattyre/src/util/Paths.cpp</label>
+        <link refid="Paths_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>cstdlib</label>
+      </node>
+      <node id="3">
+        <label>filesystem</label>
+      </node>
+      <node id="4">
+        <label>string</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespacesattyre">sattyre</innernamespace>
+    <innernamespace refid="namespacesattyre_1_1paths">sattyre::paths</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Paths_8hpp" kindref="compound">sattyre/Paths.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdlib&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacesattyre_1_1paths" kindref="compound">sattyre::paths</ref><sp/>{</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::filesystem::path<sp/>env_or_default(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>key,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>fallback)<sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>val<sp/>=<sp/>std::getenv(key);</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>val<sp/>?<sp/>std::filesystem::path(val)<sp/>:<sp/>std::filesystem::path(fallback);</highlight></codeline>
+<codeline lineno="10"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal">std::filesystem::path<sp/><ref refid="namespacesattyre_1_1paths_1ab27166907ed0acf84493e60bb42a5f59" kindref="member">home</ref>()<sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>env_or_default(</highlight><highlight class="stringliteral">&quot;SATTYRE_HOME&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;/usr/local/sattyre&quot;</highlight><highlight class="normal">);<sp/>}</highlight></codeline>
+<codeline lineno="13"><highlight class="normal">std::filesystem::path<sp/><ref refid="namespacesattyre_1_1paths_1a31e3848bd20ab8a4d141baba3485489b" kindref="member">include_dir</ref>(){<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacesattyre_1_1paths_1ab27166907ed0acf84493e60bb42a5f59" kindref="member">home</ref>()<sp/>/<sp/></highlight><highlight class="stringliteral">&quot;include&quot;</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
+<codeline lineno="14"><highlight class="normal">std::filesystem::path<sp/><ref refid="namespacesattyre_1_1paths_1ad5ab12a05151adaea26577db51bb49d6" kindref="member">lib_dir</ref>()<sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacesattyre_1_1paths_1ab27166907ed0acf84493e60bb42a5f59" kindref="member">home</ref>()<sp/>/<sp/></highlight><highlight class="stringliteral">&quot;lib&quot;</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
+<codeline lineno="15"><highlight class="normal">std::filesystem::path<sp/><ref refid="namespacesattyre_1_1paths_1a546bb0716882db602086747bc2bfac3a" kindref="member">solver_dir</ref>()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacesattyre_1_1paths_1ad5ab12a05151adaea26577db51bb49d6" kindref="member">lib_dir</ref>()<sp/>/<sp/></highlight><highlight class="stringliteral">&quot;solvers&quot;</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
+<codeline lineno="16"><highlight class="normal">std::filesystem::path<sp/><ref refid="namespacesattyre_1_1paths_1a18ffbd7d0348018bc8d213eaf6ac5554" kindref="member">plugin_dir</ref>()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacesattyre_1_1paths_1ad5ab12a05151adaea26577db51bb49d6" kindref="member">lib_dir</ref>()<sp/>/<sp/></highlight><highlight class="stringliteral">&quot;plugins&quot;</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
+<codeline lineno="17"><highlight class="normal">std::filesystem::path<sp/><ref refid="namespacesattyre_1_1paths_1a52d2fa045248fe403a0527fe5bed44a9" kindref="member">lua_dir</ref>()<sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacesattyre_1_1paths_1ad5ab12a05151adaea26577db51bb49d6" kindref="member">lib_dir</ref>()<sp/>/<sp/></highlight><highlight class="stringliteral">&quot;lua&quot;</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
+<codeline lineno="18"><highlight class="normal">std::filesystem::path<sp/><ref refid="namespacesattyre_1_1paths_1ab77584e7e724d94526e70b944f8dd789" kindref="member">package_dir</ref>(){<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacesattyre_1_1paths_1ab27166907ed0acf84493e60bb42a5f59" kindref="member">home</ref>()<sp/>/<sp/></highlight><highlight class="stringliteral">&quot;share&quot;</highlight><highlight class="normal"><sp/>/<sp/></highlight><highlight class="stringliteral">&quot;packages&quot;</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
+<codeline lineno="19"><highlight class="normal">std::filesystem::path<sp/><ref refid="namespacesattyre_1_1paths_1ac5175e3a6fe838e6bdcd63b60eaac244" kindref="member">doc_dir</ref>()<sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacesattyre_1_1paths_1ab27166907ed0acf84493e60bb42a5f59" kindref="member">home</ref>()<sp/>/<sp/></highlight><highlight class="stringliteral">&quot;doc&quot;</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>sattyre::paths</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/chubakpdp11/sattyre/src/util/Paths.cpp"/>
+  </compounddef>
+</doxygen>

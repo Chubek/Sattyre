@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_Log_8hpp_source" xml:lang="en-US">
+<title>Log.hpp</title>
+<indexterm><primary>/home/chubakpdp11/sattyre/include/sattyre/Log.hpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#pragma&#32;once</emphasis>
+2 
+3 <emphasis role="preprocessor">#include&#32;&lt;string&gt;</emphasis>
+4 
+5 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_namespacesattyre_1_1log">sattyre::log</link>&#32;{
+6 
+7 <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespacesattyre_1_1log_1a9c29d17381e2feb1501e8f47c21d2d61">init</link>();
+8 <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespacesattyre_1_1log_1a40742a025a6bcfa79293f2f796103107">info</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;msg);
+9 <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespacesattyre_1_1log_1ab5934d0db5009d96139be75f787b32c0">warn</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;msg);
+10 <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespacesattyre_1_1log_1a7778fbdbf5f5ae25a488fd22492a8b56">error</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;msg);
+11 
+12 }&#32;<emphasis role="comment">//&#32;namespace&#32;sattyre::log</emphasis>
+</programlisting></section>

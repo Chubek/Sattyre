@@ -1,0 +1,91 @@
+\doxysection{sattyre::\+Native\+Solver\+Adapter Class Reference}
+\label{classsattyre_1_1NativeSolverAdapter}\index{sattyre::NativeSolverAdapter@{sattyre::NativeSolverAdapter}}
+
+
+{\ttfamily \+\#include $<$Sattyre-\/\+Solver.\+hpp$>$}
+
+Inheritance diagram for sattyre::\+Native\+Solver\+Adapter:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classsattyre_1_1NativeSolverAdapter}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{structsattyre_1_1NativeSolverAdapter_1_1Impl}{Impl}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{classsattyre_1_1NativeSolverAdapter_ae5455747da2f92ea60adf160bd2837b8}{Native\+Solver\+Adapter}} ()
+\item 
+\doxymbox{\hyperlink{classsattyre_1_1NativeSolverAdapter_a6c7c2483d7e58c1ccf8301ae14fc8751}{\texorpdfstring{$\sim$}{\string~}\+Native\+Solver\+Adapter}} () override
+\item 
+void \doxymbox{\hyperlink{classsattyre_1_1NativeSolverAdapter_a3b7f3604ae9867f30d51cfcb19334211}{load}} (const \doxymbox{\hyperlink{structsattyre_1_1SATProblem}{SATProblem}} \&problem) override
+\item 
+\doxymbox{\hyperlink{namespacesattyre_ade8a7fe1106cbadebc9b9695bf57c096}{Solve\+Result}} \doxymbox{\hyperlink{classsattyre_1_1NativeSolverAdapter_ac8c5b1065a7f60d723e05cbc5b9546f4}{solve}} () override
+\item 
+\doxymbox{\hyperlink{structsattyre_1_1SATModel}{SATModel}} \doxymbox{\hyperlink{classsattyre_1_1NativeSolverAdapter_a82f7f0791d43f2c625c21f34eee6dc64}{model}} () const override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{classsattyre_1_1SATSolver}{sattyre::\+\+SATSolver}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \doxymbox{\hyperlink{classsattyre_1_1SATSolver_adbd38b86c6e3d3de25b1cab7e403ed36}{\texorpdfstring{$\sim$}{\string~}\+SATSolver}} ()=default
+\end{DoxyCompactItemize}
+
+
+\label{doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\index{sattyre::NativeSolverAdapter@{sattyre::NativeSolverAdapter}!NativeSolverAdapter@{NativeSolverAdapter}}
+\index{NativeSolverAdapter@{NativeSolverAdapter}!sattyre::NativeSolverAdapter@{sattyre::NativeSolverAdapter}}
+\doxysubsubsection{\texorpdfstring{NativeSolverAdapter()}{NativeSolverAdapter()}}
+{\footnotesize\ttfamily \label{classsattyre_1_1NativeSolverAdapter_ae5455747da2f92ea60adf160bd2837b8} 
+sattyre::\+\+Native\+Solver\+Adapter::\+\+Native\+Solver\+Adapter (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\index{sattyre::NativeSolverAdapter@{sattyre::NativeSolverAdapter}!````~NativeSolverAdapter@{\texorpdfstring{$\sim$}{\string~}NativeSolverAdapter}}
+\index{````~NativeSolverAdapter@{\texorpdfstring{$\sim$}{\string~}NativeSolverAdapter}!sattyre::NativeSolverAdapter@{sattyre::NativeSolverAdapter}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}NativeSolverAdapter()}{\string~NativeSolverAdapter()}}
+{\footnotesize\ttfamily \label{classsattyre_1_1NativeSolverAdapter_a6c7c2483d7e58c1ccf8301ae14fc8751} 
+sattyre::\+\+Native\+Solver\+Adapter::\+\texorpdfstring{$\sim$}{\string~}\+Native\+Solver\+Adapter (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+\label{doc-func-members}
+\doxysubsection{Member Function Documentation}
+\index{sattyre::NativeSolverAdapter@{sattyre::NativeSolverAdapter}!load@{load}}
+\index{load@{load}!sattyre::NativeSolverAdapter@{sattyre::NativeSolverAdapter}}
+\doxysubsubsection{\texorpdfstring{load()}{load()}}
+{\footnotesize\ttfamily \label{classsattyre_1_1NativeSolverAdapter_a3b7f3604ae9867f30d51cfcb19334211} 
+void sattyre::\+\+Native\+Solver\+Adapter::\+load (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structsattyre_1_1SATProblem}{SATProblem}} \&}]{problem}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \doxymbox{\hyperlink{classsattyre_1_1SATSolver_a4c732e01b49ee54639c02e5a69a19a37}{sattyre::\+\+SATSolver}}.
+
+\index{sattyre::NativeSolverAdapter@{sattyre::NativeSolverAdapter}!model@{model}}
+\index{model@{model}!sattyre::NativeSolverAdapter@{sattyre::NativeSolverAdapter}}
+\doxysubsubsection{\texorpdfstring{model()}{model()}}
+{\footnotesize\ttfamily \label{classsattyre_1_1NativeSolverAdapter_a82f7f0791d43f2c625c21f34eee6dc64} 
+\doxymbox{\hyperlink{structsattyre_1_1SATModel}{SATModel}} sattyre::\+\+Native\+Solver\+Adapter::\+model (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \doxymbox{\hyperlink{classsattyre_1_1SATSolver_ab11ec646be0da1bf9880fe13cbba37cc}{sattyre::\+\+SATSolver}}.
+
+\index{sattyre::NativeSolverAdapter@{sattyre::NativeSolverAdapter}!solve@{solve}}
+\index{solve@{solve}!sattyre::NativeSolverAdapter@{sattyre::NativeSolverAdapter}}
+\doxysubsubsection{\texorpdfstring{solve()}{solve()}}
+{\footnotesize\ttfamily \label{classsattyre_1_1NativeSolverAdapter_ac8c5b1065a7f60d723e05cbc5b9546f4} 
+\doxymbox{\hyperlink{namespacesattyre_ade8a7fe1106cbadebc9b9695bf57c096}{Solve\+Result}} sattyre::\+\+Native\+Solver\+Adapter::\+solve (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \doxymbox{\hyperlink{classsattyre_1_1SATSolver_ab3305cbfa1a0497eae77f93bf96cc927}{sattyre::\+\+SATSolver}}.
+
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+/\+home/\+chubakpdp11/\+sattyre/\+include/\+sattyre/\+\doxymbox{\hyperlink{Sattyre-Solver_8hpp}{Sattyre-\/\+Solver.\+hpp}}\item 
+/\+home/\+chubakpdp11/\+sattyre/\+src/\+solver/\+\doxymbox{\hyperlink{Sattyre-Solver_8cpp}{Sattyre-\/\+Solver.\+cpp}}\end{DoxyCompactItemize}

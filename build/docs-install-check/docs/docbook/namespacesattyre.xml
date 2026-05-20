@@ -1,0 +1,338 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_namespacesattyre" xml:lang="en-US">
+<title>sattyre Namespace Reference</title>
+<indexterm><primary>sattyre</primary></indexterm>
+<simplesect>
+    <title>Namespaces    </title>
+        <itemizedlist>
+            <listitem><para>namespace <link linkend="_namespacesattyre_1_1log">log</link></para>
+</listitem>
+            <listitem><para>namespace <link linkend="_namespacesattyre_1_1paths">paths</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Data Structures    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_classsattyre_1_1DynamicLibrary">DynamicLibrary</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classsattyre_1_1LuaRuntime">LuaRuntime</link></para>
+</listitem>
+            <listitem><para>struct <link linkend="_structsattyre_1_1PackageManifest">PackageManifest</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classsattyre_1_1RegistryServer">RegistryServer</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classsattyre_1_1RegistryClient">RegistryClient</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classsattyre_1_1Library">Library</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classsattyre_1_1Plugin">Plugin</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classsattyre_1_1NativeSolverAdapter">NativeSolverAdapter</link></para>
+</listitem>
+            <listitem><para>struct <link linkend="_structsattyre_1_1SATProblem">SATProblem</link></para>
+</listitem>
+            <listitem><para>struct <link linkend="_structsattyre_1_1SATModel">SATModel</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classsattyre_1_1SATSolver">SATSolver</link></para>
+</listitem>
+            <listitem><para>struct <link linkend="_structsattyre_1_1SMTProblem">SMTProblem</link></para>
+</listitem>
+            <listitem><para>struct <link linkend="_structsattyre_1_1SMTModel">SMTModel</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classsattyre_1_1SMTSolver">SMTSolver</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Typedefs    </title>
+        <itemizedlist>
+            <listitem><para>using <link linkend="_namespacesattyre_1ab221caacec0c6b5304cb4f1d04734eaf">Literal</link> = std::int32_t</para>
+</listitem>
+            <listitem><para>using <link linkend="_namespacesattyre_1a0f2aff6a78e7161b3311f85fee23c52d">Clause</link> = std::vector&lt;<link linkend="_namespacesattyre_1ab221caacec0c6b5304cb4f1d04734eaf">Literal</link>&gt;</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Enumerations    </title>
+        <itemizedlist>
+            <listitem><para>enum class <link linkend="_namespacesattyre_1aa6c82de970cc3d48f5cc62694d95ac09">InstallerStatus</link> { <?linebreak?><link linkend="_namespacesattyre_1aa6c82de970cc3d48f5cc62694d95ac09aa60852f204ed8028c1c58808b746d115">Ok</link> = 0
+, <link linkend="_namespacesattyre_1aa6c82de970cc3d48f5cc62694d95ac09af40108dd5dacaa82380c157c8c37025a">BundleNotFound</link>
+, <link linkend="_namespacesattyre_1aa6c82de970cc3d48f5cc62694d95ac09a9219f35a80b95a5d598fb6cfb2957e64">RootPathError</link>
+, <link linkend="_namespacesattyre_1aa6c82de970cc3d48f5cc62694d95ac09ac7fcf306dc276c2afcc933084f72a265">ExtractFailed</link>
+, <?linebreak?><link linkend="_namespacesattyre_1aa6c82de970cc3d48f5cc62694d95ac09a61c983f4503a51d6f40bca249f65be0f">ManifestMissing</link>
+, <link linkend="_namespacesattyre_1aa6c82de970cc3d48f5cc62694d95ac09a0f9afefeee69573c568e9780b4c48c28">ManifestParseFailed</link>
+, <link linkend="_namespacesattyre_1aa6c82de970cc3d48f5cc62694d95ac09a89b69484680b18e9179e826c6e023805">AlreadyExists</link>
+, <link linkend="_namespacesattyre_1aa6c82de970cc3d48f5cc62694d95ac09a3e8000a57580dca3792024c36024bd13">RemoveExistingFailed</link>
+, <?linebreak?><link linkend="_namespacesattyre_1aa6c82de970cc3d48f5cc62694d95ac09a760bb140a1eedda5219dcef6b682237b">CreateDestinationFailed</link>
+, <link linkend="_namespacesattyre_1aa6c82de970cc3d48f5cc62694d95ac09afb733f3f570b7abffab8a1e9779441c6">MoveFailed</link>
+, <link linkend="_namespacesattyre_1aa6c82de970cc3d48f5cc62694d95ac09ade990e876e0f7f122e326fa10daeab52">RemoveFailed</link>
+, <link linkend="_namespacesattyre_1aa6c82de970cc3d48f5cc62694d95ac09a38c300f4fc9ce8a77aad4a30de05cad8">NotFound</link>
+ }</para>
+</listitem>
+            <listitem><para>enum class <link linkend="_namespacesattyre_1aadc00e3812f882c93d55389540d6bd0e">RegistryStatus</link> { <?linebreak?><link linkend="_namespacesattyre_1aadc00e3812f882c93d55389540d6bd0eaa60852f204ed8028c1c58808b746d115">Ok</link> = 0
+, <link linkend="_namespacesattyre_1aadc00e3812f882c93d55389540d6bd0eac25cd95f2d50ba16866afc8fc9a3e0d0">RegistryNotFound</link>
+, <link linkend="_namespacesattyre_1aadc00e3812f882c93d55389540d6bd0ea0b0f89502707eccb0902f6bf77a9d10e">PackageNotFound</link>
+, <link linkend="_namespacesattyre_1aadc00e3812f882c93d55389540d6bd0eaf05cfcbf5123775f7c73e520a8d861e1">IoError</link>
+, <?linebreak?><link linkend="_namespacesattyre_1aadc00e3812f882c93d55389540d6bd0ea253ca7dd096ee0956cccee4d376cab8b">InvalidArgument</link>
+ }</para>
+</listitem>
+            <listitem><para>enum class <link linkend="_namespacesattyre_1ade8a7fe1106cbadebc9b9695bf57c096">SolveResult</link> { <link linkend="_namespacesattyre_1ade8a7fe1106cbadebc9b9695bf57c096a13c7d2d737f81f7bf89aed9fbcd0ad55">Sat</link>
+, <link linkend="_namespacesattyre_1ade8a7fe1106cbadebc9b9695bf57c096a922e937d9ddf77b0f7a6ccc3d168bbd6">Unsat</link>
+, <link linkend="_namespacesattyre_1ade8a7fe1106cbadebc9b9695bf57c096a88183b946cc5f0e8c96b2e66e1c74a7e">Unknown</link>
+ }</para>
+</listitem>
+            <listitem><para>enum class <link linkend="_namespacesattyre_1a8bfb7e77d44f0a20b004a55ca3fd48aa">SMTSolveResult</link> { <link linkend="_namespacesattyre_1a8bfb7e77d44f0a20b004a55ca3fd48aaa13c7d2d737f81f7bf89aed9fbcd0ad55">Sat</link>
+, <link linkend="_namespacesattyre_1a8bfb7e77d44f0a20b004a55ca3fd48aaa922e937d9ddf77b0f7a6ccc3d168bbd6">Unsat</link>
+, <link linkend="_namespacesattyre_1a8bfb7e77d44f0a20b004a55ca3fd48aaa88183b946cc5f0e8c96b2e66e1c74a7e">Unknown</link>
+ }</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>bool <link linkend="_namespacesattyre_1a1d11f10a2476d83113c92cb3833ee8a9">create_bundle</link> (const std::string &amp;source_dir, const std::string &amp;out_file)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_namespacesattyre_1aeeef3e8d5755df95b38afeefbdf31c6b">extract_bundle</link> (const std::string &amp;bundle_file, const std::string &amp;out_dir)</para>
+</listitem>
+            <listitem><para><link linkend="_namespacesattyre_1aa6c82de970cc3d48f5cc62694d95ac09">InstallerStatus</link> <link linkend="_namespacesattyre_1ac2d0d1d43ee4bab9defeffd7a193ed38">install_package</link> (const std::string &amp;bundle_file, const std::string &amp;root)</para>
+</listitem>
+            <listitem><para><link linkend="_namespacesattyre_1aa6c82de970cc3d48f5cc62694d95ac09">InstallerStatus</link> <link linkend="_namespacesattyre_1a06c9391db7a95a3c3248953feb2f8d17">install_package</link> (const std::string &amp;bundle_file, const std::string &amp;root, bool overwrite)</para>
+</listitem>
+            <listitem><para><link linkend="_namespacesattyre_1aa6c82de970cc3d48f5cc62694d95ac09">InstallerStatus</link> <link linkend="_namespacesattyre_1ae4c3d1e552bf85a0924a8a402f760c39">remove_package</link> (const std::string &amp;package_name, const std::string &amp;root)</para>
+</listitem>
+            <listitem><para>void <link linkend="_namespacesattyre_1a2b3501c8f326a73698bf88fd8acd8f19">bind_lsat</link> (<link linkend="_classsattyre_1_1LuaRuntime">LuaRuntime</link> &amp;runtime)</para>
+</listitem>
+            <listitem><para>void <link linkend="_namespacesattyre_1aa846fe4d8b7ca3a75bf1fa427e6f3e66">bind_lsmt</link> (<link linkend="_classsattyre_1_1LuaRuntime">LuaRuntime</link> &amp;runtime)</para>
+</listitem>
+            <listitem><para>void <link linkend="_namespacesattyre_1ad47b024d683f174d34b691ce384f7a60">bind_lsattyre</link> (<link linkend="_classsattyre_1_1LuaRuntime">LuaRuntime</link> &amp;runtime)</para>
+</listitem>
+            <listitem><para><link linkend="_structsattyre_1_1PackageManifest">PackageManifest</link> <link linkend="_namespacesattyre_1aca62e59bd8bc0afbf6e137c9197bea42">parse_manifest_text</link> (const std::string &amp;text, const std::string &amp;source_name={})</para>
+</listitem>
+            <listitem><para><link linkend="_structsattyre_1_1PackageManifest">PackageManifest</link> <link linkend="_namespacesattyre_1a5b4c3dd4b6612e471cd984685fe762b3">load_manifest</link> (const std::string &amp;path)</para>
+</listitem>
+            <listitem><para>std::string <link linkend="_namespacesattyre_1aee4cd53a72b01946b5c1d02a9c7c6997">manifest_to_json</link> (const <link linkend="_structsattyre_1_1PackageManifest">PackageManifest</link> &amp;manifest)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_namespacesattyre_1a9f4ceecca0663ce37e4f9fb75f6865d8">library_abi_compatible</link> (unsigned int abi_version)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_namespacesattyre_1aa56c4d2873beda3794ce7c765255ec3b">library_abi_compatible</link> (const <link linkend="_structSattyreLibraryInfo">SattyreLibraryInfo</link> &amp;info)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_namespacesattyre_1a9cfe031e9d5f05be77649cebe377a650">plugin_abi_compatible</link> (unsigned int abi_version)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_namespacesattyre_1aefc46d8d65f23df22fa593c7116d5ecb">plugin_abi_compatible</link> (const <link linkend="_structSattyrePluginInfo">SattyrePluginInfo</link> &amp;info)</para>
+</listitem>
+            <listitem><para><link linkend="_structsattyre_1_1SATProblem">SATProblem</link> <link linkend="_namespacesattyre_1a85d93367dc458937936cf50977090ee0">parse_dimacs_file</link> (const std::string &amp;path)</para>
+</listitem>
+            <listitem><para><link linkend="_structsattyre_1_1SMTProblem">SMTProblem</link> <link linkend="_namespacesattyre_1a09442451b6a020290a4f7d2f7522aeb4">parse_smtlib_file</link> (const std::string &amp;path)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Typedef Documentation</title>
+<anchor xml:id="_namespacesattyre_1a0f2aff6a78e7161b3311f85fee23c52d"/><section>
+    <title>Clause</title>
+<indexterm><primary>Clause</primary><secondary>sattyre</secondary></indexterm>
+<indexterm><primary>sattyre</primary><secondary>Clause</secondary></indexterm>
+<para><computeroutput>using <link linkend="_namespacesattyre_1a0f2aff6a78e7161b3311f85fee23c52d">sattyre::Clause</link> = std::vector&lt;<link linkend="_namespacesattyre_1ab221caacec0c6b5304cb4f1d04734eaf">Literal</link>&gt;</computeroutput></para></section>
+<anchor xml:id="_namespacesattyre_1ab221caacec0c6b5304cb4f1d04734eaf"/><section>
+    <title>Literal</title>
+<indexterm><primary>Literal</primary><secondary>sattyre</secondary></indexterm>
+<indexterm><primary>sattyre</primary><secondary>Literal</secondary></indexterm>
+<para><computeroutput>using <link linkend="_namespacesattyre_1ab221caacec0c6b5304cb4f1d04734eaf">sattyre::Literal</link> = std::int32_t</computeroutput></para></section>
+</section>
+<section>
+<title>Enumeration Type Documentation</title>
+<anchor xml:id="_namespacesattyre_1aa6c82de970cc3d48f5cc62694d95ac09"/><section>
+    <title>InstallerStatus</title>
+<indexterm><primary>InstallerStatus</primary><secondary>sattyre</secondary></indexterm>
+<indexterm><primary>sattyre</primary><secondary>InstallerStatus</secondary></indexterm>
+<para><computeroutput>enum class <link linkend="_namespacesattyre_1aa6c82de970cc3d48f5cc62694d95ac09">sattyre::InstallerStatus</link><computeroutput>[strong]</computeroutput></computeroutput></para><informaltable frame="all">
+<title>Enumerator</title>
+    <tgroup cols="2" align="left" colsep="1" rowsep="1">
+      <colspec colname='c1'/>
+      <colspec colname='c2'/>
+<tbody>
+<row><entry><indexterm><primary>Ok</primary><secondary>sattyre</secondary></indexterm>
+<indexterm><primary>sattyre</primary><secondary>Ok</secondary></indexterm>
+<anchor xml:id="_namespacesattyre_1aa6c82de970cc3d48f5cc62694d95ac09aa60852f204ed8028c1c58808b746d115"/>Ok</entry><entry></entry></row><row><entry><indexterm><primary>BundleNotFound</primary><secondary>sattyre</secondary></indexterm>
+<indexterm><primary>sattyre</primary><secondary>BundleNotFound</secondary></indexterm>
+<anchor xml:id="_namespacesattyre_1aa6c82de970cc3d48f5cc62694d95ac09af40108dd5dacaa82380c157c8c37025a"/>BundleNotFound</entry><entry></entry></row><row><entry><indexterm><primary>RootPathError</primary><secondary>sattyre</secondary></indexterm>
+<indexterm><primary>sattyre</primary><secondary>RootPathError</secondary></indexterm>
+<anchor xml:id="_namespacesattyre_1aa6c82de970cc3d48f5cc62694d95ac09a9219f35a80b95a5d598fb6cfb2957e64"/>RootPathError</entry><entry></entry></row><row><entry><indexterm><primary>ExtractFailed</primary><secondary>sattyre</secondary></indexterm>
+<indexterm><primary>sattyre</primary><secondary>ExtractFailed</secondary></indexterm>
+<anchor xml:id="_namespacesattyre_1aa6c82de970cc3d48f5cc62694d95ac09ac7fcf306dc276c2afcc933084f72a265"/>ExtractFailed</entry><entry></entry></row><row><entry><indexterm><primary>ManifestMissing</primary><secondary>sattyre</secondary></indexterm>
+<indexterm><primary>sattyre</primary><secondary>ManifestMissing</secondary></indexterm>
+<anchor xml:id="_namespacesattyre_1aa6c82de970cc3d48f5cc62694d95ac09a61c983f4503a51d6f40bca249f65be0f"/>ManifestMissing</entry><entry></entry></row><row><entry><indexterm><primary>ManifestParseFailed</primary><secondary>sattyre</secondary></indexterm>
+<indexterm><primary>sattyre</primary><secondary>ManifestParseFailed</secondary></indexterm>
+<anchor xml:id="_namespacesattyre_1aa6c82de970cc3d48f5cc62694d95ac09a0f9afefeee69573c568e9780b4c48c28"/>ManifestParseFailed</entry><entry></entry></row><row><entry><indexterm><primary>AlreadyExists</primary><secondary>sattyre</secondary></indexterm>
+<indexterm><primary>sattyre</primary><secondary>AlreadyExists</secondary></indexterm>
+<anchor xml:id="_namespacesattyre_1aa6c82de970cc3d48f5cc62694d95ac09a89b69484680b18e9179e826c6e023805"/>AlreadyExists</entry><entry></entry></row><row><entry><indexterm><primary>RemoveExistingFailed</primary><secondary>sattyre</secondary></indexterm>
+<indexterm><primary>sattyre</primary><secondary>RemoveExistingFailed</secondary></indexterm>
+<anchor xml:id="_namespacesattyre_1aa6c82de970cc3d48f5cc62694d95ac09a3e8000a57580dca3792024c36024bd13"/>RemoveExistingFailed</entry><entry></entry></row><row><entry><indexterm><primary>CreateDestinationFailed</primary><secondary>sattyre</secondary></indexterm>
+<indexterm><primary>sattyre</primary><secondary>CreateDestinationFailed</secondary></indexterm>
+<anchor xml:id="_namespacesattyre_1aa6c82de970cc3d48f5cc62694d95ac09a760bb140a1eedda5219dcef6b682237b"/>CreateDestinationFailed</entry><entry></entry></row><row><entry><indexterm><primary>MoveFailed</primary><secondary>sattyre</secondary></indexterm>
+<indexterm><primary>sattyre</primary><secondary>MoveFailed</secondary></indexterm>
+<anchor xml:id="_namespacesattyre_1aa6c82de970cc3d48f5cc62694d95ac09afb733f3f570b7abffab8a1e9779441c6"/>MoveFailed</entry><entry></entry></row><row><entry><indexterm><primary>RemoveFailed</primary><secondary>sattyre</secondary></indexterm>
+<indexterm><primary>sattyre</primary><secondary>RemoveFailed</secondary></indexterm>
+<anchor xml:id="_namespacesattyre_1aa6c82de970cc3d48f5cc62694d95ac09ade990e876e0f7f122e326fa10daeab52"/>RemoveFailed</entry><entry></entry></row><row><entry><indexterm><primary>NotFound</primary><secondary>sattyre</secondary></indexterm>
+<indexterm><primary>sattyre</primary><secondary>NotFound</secondary></indexterm>
+<anchor xml:id="_namespacesattyre_1aa6c82de970cc3d48f5cc62694d95ac09a38c300f4fc9ce8a77aad4a30de05cad8"/>NotFound</entry><entry></entry></row>    </tbody>
+    </tgroup>
+</informaltable>
+</section>
+<anchor xml:id="_namespacesattyre_1aadc00e3812f882c93d55389540d6bd0e"/><section>
+    <title>RegistryStatus</title>
+<indexterm><primary>RegistryStatus</primary><secondary>sattyre</secondary></indexterm>
+<indexterm><primary>sattyre</primary><secondary>RegistryStatus</secondary></indexterm>
+<para><computeroutput>enum class <link linkend="_namespacesattyre_1aadc00e3812f882c93d55389540d6bd0e">sattyre::RegistryStatus</link><computeroutput>[strong]</computeroutput></computeroutput></para><informaltable frame="all">
+<title>Enumerator</title>
+    <tgroup cols="2" align="left" colsep="1" rowsep="1">
+      <colspec colname='c1'/>
+      <colspec colname='c2'/>
+<tbody>
+<row><entry><indexterm><primary>Ok</primary><secondary>sattyre</secondary></indexterm>
+<indexterm><primary>sattyre</primary><secondary>Ok</secondary></indexterm>
+<anchor xml:id="_namespacesattyre_1aadc00e3812f882c93d55389540d6bd0eaa60852f204ed8028c1c58808b746d115"/>Ok</entry><entry></entry></row><row><entry><indexterm><primary>RegistryNotFound</primary><secondary>sattyre</secondary></indexterm>
+<indexterm><primary>sattyre</primary><secondary>RegistryNotFound</secondary></indexterm>
+<anchor xml:id="_namespacesattyre_1aadc00e3812f882c93d55389540d6bd0eac25cd95f2d50ba16866afc8fc9a3e0d0"/>RegistryNotFound</entry><entry></entry></row><row><entry><indexterm><primary>PackageNotFound</primary><secondary>sattyre</secondary></indexterm>
+<indexterm><primary>sattyre</primary><secondary>PackageNotFound</secondary></indexterm>
+<anchor xml:id="_namespacesattyre_1aadc00e3812f882c93d55389540d6bd0ea0b0f89502707eccb0902f6bf77a9d10e"/>PackageNotFound</entry><entry></entry></row><row><entry><indexterm><primary>IoError</primary><secondary>sattyre</secondary></indexterm>
+<indexterm><primary>sattyre</primary><secondary>IoError</secondary></indexterm>
+<anchor xml:id="_namespacesattyre_1aadc00e3812f882c93d55389540d6bd0eaf05cfcbf5123775f7c73e520a8d861e1"/>IoError</entry><entry></entry></row><row><entry><indexterm><primary>InvalidArgument</primary><secondary>sattyre</secondary></indexterm>
+<indexterm><primary>sattyre</primary><secondary>InvalidArgument</secondary></indexterm>
+<anchor xml:id="_namespacesattyre_1aadc00e3812f882c93d55389540d6bd0ea253ca7dd096ee0956cccee4d376cab8b"/>InvalidArgument</entry><entry></entry></row>    </tbody>
+    </tgroup>
+</informaltable>
+</section>
+<anchor xml:id="_namespacesattyre_1a8bfb7e77d44f0a20b004a55ca3fd48aa"/><section>
+    <title>SMTSolveResult</title>
+<indexterm><primary>SMTSolveResult</primary><secondary>sattyre</secondary></indexterm>
+<indexterm><primary>sattyre</primary><secondary>SMTSolveResult</secondary></indexterm>
+<para><computeroutput>enum class <link linkend="_namespacesattyre_1a8bfb7e77d44f0a20b004a55ca3fd48aa">sattyre::SMTSolveResult</link><computeroutput>[strong]</computeroutput></computeroutput></para><informaltable frame="all">
+<title>Enumerator</title>
+    <tgroup cols="2" align="left" colsep="1" rowsep="1">
+      <colspec colname='c1'/>
+      <colspec colname='c2'/>
+<tbody>
+<row><entry><indexterm><primary>Sat</primary><secondary>sattyre</secondary></indexterm>
+<indexterm><primary>sattyre</primary><secondary>Sat</secondary></indexterm>
+<anchor xml:id="_namespacesattyre_1a8bfb7e77d44f0a20b004a55ca3fd48aaa13c7d2d737f81f7bf89aed9fbcd0ad55"/>Sat</entry><entry></entry></row><row><entry><indexterm><primary>Unsat</primary><secondary>sattyre</secondary></indexterm>
+<indexterm><primary>sattyre</primary><secondary>Unsat</secondary></indexterm>
+<anchor xml:id="_namespacesattyre_1a8bfb7e77d44f0a20b004a55ca3fd48aaa922e937d9ddf77b0f7a6ccc3d168bbd6"/>Unsat</entry><entry></entry></row><row><entry><indexterm><primary>Unknown</primary><secondary>sattyre</secondary></indexterm>
+<indexterm><primary>sattyre</primary><secondary>Unknown</secondary></indexterm>
+<anchor xml:id="_namespacesattyre_1a8bfb7e77d44f0a20b004a55ca3fd48aaa88183b946cc5f0e8c96b2e66e1c74a7e"/>Unknown</entry><entry></entry></row>    </tbody>
+    </tgroup>
+</informaltable>
+</section>
+<anchor xml:id="_namespacesattyre_1ade8a7fe1106cbadebc9b9695bf57c096"/><section>
+    <title>SolveResult</title>
+<indexterm><primary>SolveResult</primary><secondary>sattyre</secondary></indexterm>
+<indexterm><primary>sattyre</primary><secondary>SolveResult</secondary></indexterm>
+<para><computeroutput>enum class <link linkend="_namespacesattyre_1ade8a7fe1106cbadebc9b9695bf57c096">sattyre::SolveResult</link><computeroutput>[strong]</computeroutput></computeroutput></para><informaltable frame="all">
+<title>Enumerator</title>
+    <tgroup cols="2" align="left" colsep="1" rowsep="1">
+      <colspec colname='c1'/>
+      <colspec colname='c2'/>
+<tbody>
+<row><entry><indexterm><primary>Sat</primary><secondary>sattyre</secondary></indexterm>
+<indexterm><primary>sattyre</primary><secondary>Sat</secondary></indexterm>
+<anchor xml:id="_namespacesattyre_1ade8a7fe1106cbadebc9b9695bf57c096a13c7d2d737f81f7bf89aed9fbcd0ad55"/>Sat</entry><entry></entry></row><row><entry><indexterm><primary>Unsat</primary><secondary>sattyre</secondary></indexterm>
+<indexterm><primary>sattyre</primary><secondary>Unsat</secondary></indexterm>
+<anchor xml:id="_namespacesattyre_1ade8a7fe1106cbadebc9b9695bf57c096a922e937d9ddf77b0f7a6ccc3d168bbd6"/>Unsat</entry><entry></entry></row><row><entry><indexterm><primary>Unknown</primary><secondary>sattyre</secondary></indexterm>
+<indexterm><primary>sattyre</primary><secondary>Unknown</secondary></indexterm>
+<anchor xml:id="_namespacesattyre_1ade8a7fe1106cbadebc9b9695bf57c096a88183b946cc5f0e8c96b2e66e1c74a7e"/>Unknown</entry><entry></entry></row>    </tbody>
+    </tgroup>
+</informaltable>
+</section>
+</section>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_namespacesattyre_1a2b3501c8f326a73698bf88fd8acd8f19"/><section>
+    <title>bind_lsat()</title>
+<indexterm><primary>bind_lsat</primary><secondary>sattyre</secondary></indexterm>
+<indexterm><primary>sattyre</primary><secondary>bind_lsat</secondary></indexterm>
+<para><computeroutput>void sattyre::bind_lsat (<link linkend="_classsattyre_1_1LuaRuntime">LuaRuntime</link> &amp; runtime)</computeroutput></para></section>
+<anchor xml:id="_namespacesattyre_1ad47b024d683f174d34b691ce384f7a60"/><section>
+    <title>bind_lsattyre()</title>
+<indexterm><primary>bind_lsattyre</primary><secondary>sattyre</secondary></indexterm>
+<indexterm><primary>sattyre</primary><secondary>bind_lsattyre</secondary></indexterm>
+<para><computeroutput>void sattyre::bind_lsattyre (<link linkend="_classsattyre_1_1LuaRuntime">LuaRuntime</link> &amp; runtime)</computeroutput></para></section>
+<anchor xml:id="_namespacesattyre_1aa846fe4d8b7ca3a75bf1fa427e6f3e66"/><section>
+    <title>bind_lsmt()</title>
+<indexterm><primary>bind_lsmt</primary><secondary>sattyre</secondary></indexterm>
+<indexterm><primary>sattyre</primary><secondary>bind_lsmt</secondary></indexterm>
+<para><computeroutput>void sattyre::bind_lsmt (<link linkend="_classsattyre_1_1LuaRuntime">LuaRuntime</link> &amp; runtime)</computeroutput></para></section>
+<anchor xml:id="_namespacesattyre_1a1d11f10a2476d83113c92cb3833ee8a9"/><section>
+    <title>create_bundle()</title>
+<indexterm><primary>create_bundle</primary><secondary>sattyre</secondary></indexterm>
+<indexterm><primary>sattyre</primary><secondary>create_bundle</secondary></indexterm>
+<para><computeroutput>bool sattyre::create_bundle (const std::string &amp; source_dir, const std::string &amp; out_file)</computeroutput></para></section>
+<anchor xml:id="_namespacesattyre_1aeeef3e8d5755df95b38afeefbdf31c6b"/><section>
+    <title>extract_bundle()</title>
+<indexterm><primary>extract_bundle</primary><secondary>sattyre</secondary></indexterm>
+<indexterm><primary>sattyre</primary><secondary>extract_bundle</secondary></indexterm>
+<para><computeroutput>bool sattyre::extract_bundle (const std::string &amp; bundle_file, const std::string &amp; out_dir)</computeroutput></para></section>
+<anchor xml:id="_namespacesattyre_1ac2d0d1d43ee4bab9defeffd7a193ed38"/><section>
+    <title>install_package()<computeroutput>[1/2]</computeroutput></title>
+<indexterm><primary>install_package</primary><secondary>sattyre</secondary></indexterm>
+<indexterm><primary>sattyre</primary><secondary>install_package</secondary></indexterm>
+<para><computeroutput><link linkend="_namespacesattyre_1aa6c82de970cc3d48f5cc62694d95ac09">InstallerStatus</link> sattyre::install_package (const std::string &amp; bundle_file, const std::string &amp; root)</computeroutput></para></section>
+<anchor xml:id="_namespacesattyre_1a06c9391db7a95a3c3248953feb2f8d17"/><section>
+    <title>install_package()<computeroutput>[2/2]</computeroutput></title>
+<indexterm><primary>install_package</primary><secondary>sattyre</secondary></indexterm>
+<indexterm><primary>sattyre</primary><secondary>install_package</secondary></indexterm>
+<para><computeroutput><link linkend="_namespacesattyre_1aa6c82de970cc3d48f5cc62694d95ac09">InstallerStatus</link> sattyre::install_package (const std::string &amp; bundle_file, const std::string &amp; root, bool overwrite)</computeroutput></para></section>
+<anchor xml:id="_namespacesattyre_1aa56c4d2873beda3794ce7c765255ec3b"/><section>
+    <title>library_abi_compatible()<computeroutput>[1/2]</computeroutput></title>
+<indexterm><primary>library_abi_compatible</primary><secondary>sattyre</secondary></indexterm>
+<indexterm><primary>sattyre</primary><secondary>library_abi_compatible</secondary></indexterm>
+<para><computeroutput>bool sattyre::library_abi_compatible (const <link linkend="_structSattyreLibraryInfo">SattyreLibraryInfo</link> &amp; info)</computeroutput></para></section>
+<anchor xml:id="_namespacesattyre_1a9f4ceecca0663ce37e4f9fb75f6865d8"/><section>
+    <title>library_abi_compatible()<computeroutput>[2/2]</computeroutput></title>
+<indexterm><primary>library_abi_compatible</primary><secondary>sattyre</secondary></indexterm>
+<indexterm><primary>sattyre</primary><secondary>library_abi_compatible</secondary></indexterm>
+<para><computeroutput>bool sattyre::library_abi_compatible (unsigned int abi_version)</computeroutput></para></section>
+<anchor xml:id="_namespacesattyre_1a5b4c3dd4b6612e471cd984685fe762b3"/><section>
+    <title>load_manifest()</title>
+<indexterm><primary>load_manifest</primary><secondary>sattyre</secondary></indexterm>
+<indexterm><primary>sattyre</primary><secondary>load_manifest</secondary></indexterm>
+<para><computeroutput><link linkend="_structsattyre_1_1PackageManifest">PackageManifest</link> sattyre::load_manifest (const std::string &amp; path)</computeroutput></para></section>
+<anchor xml:id="_namespacesattyre_1aee4cd53a72b01946b5c1d02a9c7c6997"/><section>
+    <title>manifest_to_json()</title>
+<indexterm><primary>manifest_to_json</primary><secondary>sattyre</secondary></indexterm>
+<indexterm><primary>sattyre</primary><secondary>manifest_to_json</secondary></indexterm>
+<para><computeroutput>std::string sattyre::manifest_to_json (const <link linkend="_structsattyre_1_1PackageManifest">PackageManifest</link> &amp; manifest)</computeroutput></para></section>
+<anchor xml:id="_namespacesattyre_1a85d93367dc458937936cf50977090ee0"/><section>
+    <title>parse_dimacs_file()</title>
+<indexterm><primary>parse_dimacs_file</primary><secondary>sattyre</secondary></indexterm>
+<indexterm><primary>sattyre</primary><secondary>parse_dimacs_file</secondary></indexterm>
+<para><computeroutput><link linkend="_structsattyre_1_1SATProblem">SATProblem</link> sattyre::parse_dimacs_file (const std::string &amp; path)</computeroutput></para></section>
+<anchor xml:id="_namespacesattyre_1aca62e59bd8bc0afbf6e137c9197bea42"/><section>
+    <title>parse_manifest_text()</title>
+<indexterm><primary>parse_manifest_text</primary><secondary>sattyre</secondary></indexterm>
+<indexterm><primary>sattyre</primary><secondary>parse_manifest_text</secondary></indexterm>
+<para><computeroutput><link linkend="_structsattyre_1_1PackageManifest">PackageManifest</link> sattyre::parse_manifest_text (const std::string &amp; text, const std::string &amp; source_name = <computeroutput>{}</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_namespacesattyre_1a09442451b6a020290a4f7d2f7522aeb4"/><section>
+    <title>parse_smtlib_file()</title>
+<indexterm><primary>parse_smtlib_file</primary><secondary>sattyre</secondary></indexterm>
+<indexterm><primary>sattyre</primary><secondary>parse_smtlib_file</secondary></indexterm>
+<para><computeroutput><link linkend="_structsattyre_1_1SMTProblem">SMTProblem</link> sattyre::parse_smtlib_file (const std::string &amp; path)</computeroutput></para></section>
+<anchor xml:id="_namespacesattyre_1aefc46d8d65f23df22fa593c7116d5ecb"/><section>
+    <title>plugin_abi_compatible()<computeroutput>[1/2]</computeroutput></title>
+<indexterm><primary>plugin_abi_compatible</primary><secondary>sattyre</secondary></indexterm>
+<indexterm><primary>sattyre</primary><secondary>plugin_abi_compatible</secondary></indexterm>
+<para><computeroutput>bool sattyre::plugin_abi_compatible (const <link linkend="_structSattyrePluginInfo">SattyrePluginInfo</link> &amp; info)</computeroutput></para></section>
+<anchor xml:id="_namespacesattyre_1a9cfe031e9d5f05be77649cebe377a650"/><section>
+    <title>plugin_abi_compatible()<computeroutput>[2/2]</computeroutput></title>
+<indexterm><primary>plugin_abi_compatible</primary><secondary>sattyre</secondary></indexterm>
+<indexterm><primary>sattyre</primary><secondary>plugin_abi_compatible</secondary></indexterm>
+<para><computeroutput>bool sattyre::plugin_abi_compatible (unsigned int abi_version)</computeroutput></para></section>
+<anchor xml:id="_namespacesattyre_1ae4c3d1e552bf85a0924a8a402f760c39"/><section>
+    <title>remove_package()</title>
+<indexterm><primary>remove_package</primary><secondary>sattyre</secondary></indexterm>
+<indexterm><primary>sattyre</primary><secondary>remove_package</secondary></indexterm>
+<para><computeroutput><link linkend="_namespacesattyre_1aa6c82de970cc3d48f5cc62694d95ac09">InstallerStatus</link> sattyre::remove_package (const std::string &amp; package_name, const std::string &amp; root)</computeroutput></para></section>
+</section>
+</section>

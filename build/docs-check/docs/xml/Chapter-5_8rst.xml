@@ -1,0 +1,173 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="Chapter-5_8rst" kind="file" language="Markdown">
+    <compoundname>Chapter-5.rst</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">\page<sp/>chapter5<sp/>C++<sp/>Solver<sp/>Adapter<sp/>and<sp/>Built-in<sp/>Solvers</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">\brief<sp/>Stage<sp/>3<sp/>C++<sp/>consumption<sp/>of<sp/>C<sp/>ABI<sp/>and<sp/>baseline<sp/>solving</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Scope</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>chapter<sp/>explains<sp/>`NativeSolverAdapter`<sp/>and<sp/>baseline<sp/>built-in<sp/>solver<sp/>behavior.</highlight></codeline>
+<codeline><highlight class="normal">Focus<sp/>first<sp/>on<sp/>correctness,<sp/>then<sp/>sophistication.</highlight></codeline>
+<codeline><highlight class="normal">Brute-force<sp/>and<sp/>DPLL<sp/>are<sp/>useful<sp/>reference<sp/>points<sp/>before<sp/>CDCL<sp/>optimization.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">class<sp/>NativeSolverAdapter<sp/>:<sp/>public<sp/>sattyre::SATSolver<sp/>{</highlight></codeline>
+<codeline><highlight class="normal">public:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>void<sp/>load(const<sp/>sattyre::SATProblem&amp;<sp/>problem)<sp/>override;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>sattyre::SolveResult<sp/>solve()<sp/>override;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>sattyre::SATModel<sp/>model()<sp/>const<sp/>override;</highlight></codeline>
+<codeline><highlight class="normal">};</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Quick<sp/>recap</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Keep<sp/>this<sp/>section<sp/>aligned<sp/>with<sp/>Stage<sp/>3<sp/>C++<sp/>consumption<sp/>of<sp/>C<sp/>ABI<sp/>and<sp/>baseline<sp/>solving.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Prefer<sp/>explicit<sp/>statuses<sp/>and<sp/>deterministic<sp/>behavior.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Promote<sp/>examples<sp/>into<sp/>tests<sp/>when<sp/>behavior<sp/>stabilizes.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Compatibility-first<sp/>flow</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">On<sp/>construction,<sp/>adapter<sp/>queries<sp/>`sattyre_solver_info`<sp/>and<sp/>verifies<sp/>ABI<sp/>compatibility.</highlight></codeline>
+<codeline><highlight class="normal">If<sp/>incompatible,<sp/>fail<sp/>early<sp/>with<sp/>a<sp/>clear<sp/>exception.</highlight></codeline>
+<codeline><highlight class="normal">Solver<sp/>creation<sp/>and<sp/>destruction<sp/>should<sp/>follow<sp/>RAII<sp/>semantics.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">sattyre::NativeSolverAdapter<sp/>solver;</highlight></codeline>
+<codeline><highlight class="normal">sattyre::SATProblem<sp/>p<sp/>=<sp/>sattyre::parse_dimacs_file(&quot;examples/example.cnf&quot;);</highlight></codeline>
+<codeline><highlight class="normal">solver.load(p);</highlight></codeline>
+<codeline><highlight class="normal">sattyre::SolveResult<sp/>r<sp/>=<sp/>solver.solve();</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Quick<sp/>recap</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Keep<sp/>this<sp/>section<sp/>aligned<sp/>with<sp/>Stage<sp/>3<sp/>C++<sp/>consumption<sp/>of<sp/>C<sp/>ABI<sp/>and<sp/>baseline<sp/>solving.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Prefer<sp/>explicit<sp/>statuses<sp/>and<sp/>deterministic<sp/>behavior.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Promote<sp/>examples<sp/>into<sp/>tests<sp/>when<sp/>behavior<sp/>stabilizes.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Built-in<sp/>solver<sp/>sequencing</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Brute-force<sp/>solver:<sp/>correctness<sp/>oracle<sp/>for<sp/>tiny<sp/>formulas.</highlight></codeline>
+<codeline><highlight class="normal">DPLL<sp/>solver:<sp/>practical<sp/>baseline<sp/>and<sp/>readable<sp/>branching<sp/>logic.</highlight></codeline>
+<codeline><highlight class="normal">CDCL<sp/>solver:<sp/>staged<sp/>optimization<sp/>once<sp/>baseline<sp/>semantics<sp/>are<sp/>trusted.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">sattyre::SATProblem<sp/>p;</highlight></codeline>
+<codeline><highlight class="normal">p.variable_count<sp/>=<sp/>2;</highlight></codeline>
+<codeline><highlight class="normal">p.clauses<sp/>=<sp/>{{1},<sp/>{-1,<sp/>2}};</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Quick<sp/>recap</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Keep<sp/>this<sp/>section<sp/>aligned<sp/>with<sp/>Stage<sp/>3<sp/>C++<sp/>consumption<sp/>of<sp/>C<sp/>ABI<sp/>and<sp/>baseline<sp/>solving.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Prefer<sp/>explicit<sp/>statuses<sp/>and<sp/>deterministic<sp/>behavior.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Promote<sp/>examples<sp/>into<sp/>tests<sp/>when<sp/>behavior<sp/>stabilizes.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Model<sp/>extraction</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Model<sp/>assignments<sp/>should<sp/>correspond<sp/>to<sp/>`variable_count`.</highlight></codeline>
+<codeline><highlight class="normal">Unknown<sp/>result<sp/>may<sp/>return<sp/>empty<sp/>model<sp/>by<sp/>design.</highlight></codeline>
+<codeline><highlight class="normal">Do<sp/>not<sp/>expose<sp/>inconsistent<sp/>assignment<sp/>vector<sp/>lengths.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>The<sp/>model<sp/>must<sp/>not<sp/>exceed<sp/>the<sp/>declared<sp/>number<sp/>of<sp/>variables.</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Preserve<sp/>a<sp/>direct<sp/>mapping<sp/>from<sp/>variable<sp/>index<sp/>to<sp/>assignment.</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Quick<sp/>recap</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Keep<sp/>this<sp/>section<sp/>aligned<sp/>with<sp/>Stage<sp/>3<sp/>C++<sp/>consumption<sp/>of<sp/>C<sp/>ABI<sp/>and<sp/>baseline<sp/>solving.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Prefer<sp/>explicit<sp/>statuses<sp/>and<sp/>deterministic<sp/>behavior.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Promote<sp/>examples<sp/>into<sp/>tests<sp/>when<sp/>behavior<sp/>stabilizes.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Testing<sp/>adapters</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Use<sp/>small<sp/>satisfiable<sp/>and<sp/>unsatisfiable<sp/>instances.</highlight></codeline>
+<codeline><highlight class="normal">Verify<sp/>result<sp/>mapping<sp/>and<sp/>exception<sp/>behavior.</highlight></codeline>
+<codeline><highlight class="normal">Confirm<sp/>adapter<sp/>refuses<sp/>incompatible<sp/>ABI<sp/>metadata.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>-S<sp/>.<sp/>-B<sp/>build/solver<sp/>-DSATTYRE_ENABLE_TESTS=ON</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>--build<sp/>build/solver<sp/>-j</highlight></codeline>
+<codeline><highlight class="normal">ctest<sp/>--test-dir<sp/>build/solver<sp/>-R<sp/>sattyre-cli-smoke-test<sp/>--output-on-failure</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Quick<sp/>recap</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Keep<sp/>this<sp/>section<sp/>aligned<sp/>with<sp/>Stage<sp/>3<sp/>C++<sp/>consumption<sp/>of<sp/>C<sp/>ABI<sp/>and<sp/>baseline<sp/>solving.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Prefer<sp/>explicit<sp/>statuses<sp/>and<sp/>deterministic<sp/>behavior.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Promote<sp/>examples<sp/>into<sp/>tests<sp/>when<sp/>behavior<sp/>stabilizes.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Chapter<sp/>summary</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">C++<sp/>adapter<sp/>reliability<sp/>depends<sp/>on<sp/>strict<sp/>C<sp/>ABI<sp/>checks.</highlight></codeline>
+<codeline><highlight class="normal">Built-in<sp/>solvers<sp/>should<sp/>be<sp/>layered<sp/>by<sp/>correctness<sp/>maturity.</highlight></codeline>
+<codeline><highlight class="normal">This<sp/>chapter’s<sp/>examples<sp/>form<sp/>the<sp/>minimum<sp/>solve<sp/>smoke<sp/>workflow.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Keep<sp/>the<sp/>adapter<sp/>thin<sp/>and<sp/>let<sp/>the<sp/>solver<sp/>implementation<sp/>carry<sp/>the<sp/>logic.</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Quick<sp/>recap</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Keep<sp/>this<sp/>section<sp/>aligned<sp/>with<sp/>Stage<sp/>3<sp/>C++<sp/>consumption<sp/>of<sp/>C<sp/>ABI<sp/>and<sp/>baseline<sp/>solving.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Prefer<sp/>explicit<sp/>statuses<sp/>and<sp/>deterministic<sp/>behavior.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Promote<sp/>examples<sp/>into<sp/>tests<sp/>when<sp/>behavior<sp/>stabilizes.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Supplemental<sp/>example</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Supplemental<sp/>example</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Supplemental<sp/>example</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Supplemental<sp/>example</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Supplemental<sp/>example</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Supplemental<sp/>example</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+    </programlisting>
+    <location file="/home/chubakpdp11/sattyre/docs/manual/Chapter-5.rst"/>
+  </compounddef>
+</doxygen>

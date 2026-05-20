@@ -1,0 +1,175 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_chapter2" xml:lang="en-US">
+<title>
+<para>SAT Core and DIMACS Parsing </para>
+</title>
+<indexterm><primary>SAT Core and DIMACS Parsing</primary></indexterm>
+
+<para>Stage 2 SAT front-end correctness.</para>
+<section xml:id="_chapter2_1autotoc_md74">
+<title>Scope</title>
+<para>This chapter covers SAT structures, DIMACS ingestion, and deterministic parser failures. The parser must reject malformed inputs early and preserve clear semantics for callers. Examples here map directly to <computeroutput><link linkend="_structsattyre_1_1SATProblem">sattyre::SATProblem</link></computeroutput> and <computeroutput>parse_dimacs_file</computeroutput> behavior.</para>
+
+<para><literallayout><computeroutput>#include&#32;&lt;sattyre/SattyreSAT.hpp&gt;
+
+sattyre::SATProblem&#32;p&#32;=&#32;sattyre::parse_dimacs_file(&quot;examples/example.cnf&quot;);
+std::size_t&#32;vars&#32;=&#32;p.variable_count;
+std::size_t&#32;clauses&#32;=&#32;p.clauses.size();
+</computeroutput></literallayout></para>
+<section xml:id="_chapter2_1autotoc_md75">
+<title>Quick recap</title>
+<para><itemizedlist>
+<listitem>
+<para>Keep this section aligned with Stage 2 SAT front-end correctness.</para>
+</listitem><listitem>
+<para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem>
+<para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+</section>
+<section xml:id="_chapter2_1autotoc_md76">
+<title>DIMACS fundamentals</title>
+<para>Comment lines begin with <computeroutput>c</computeroutput> and can appear before the problem line. The problem line defines variable and clause declarations and should be validated. Each clause must terminate with literal <computeroutput>0</computeroutput>.</para>
+
+<para><literallayout><computeroutput>c&#32;tiny&#32;satisfiable&#32;sample
+p&#32;cnf&#32;3&#32;2
+1&#32;-2&#32;0
+2&#32;3&#32;0
+</computeroutput></literallayout></para>
+<section xml:id="_chapter2_1autotoc_md77">
+<title>Quick recap</title>
+<para><itemizedlist>
+<listitem>
+<para>Keep this section aligned with Stage 2 SAT front-end correctness.</para>
+</listitem><listitem>
+<para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem>
+<para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+</section>
+<section xml:id="_chapter2_1autotoc_md78">
+<title>Validation expectations</title>
+<para>Out-of-range literal ids must fail when absolute literal exceeds declared variable count. Clause lines without terminating zero must fail. Mismatch between declared and parsed clause counts should fail clearly.</para>
+
+<para><literallayout><computeroutput>try&#32;{
+&#32;&#32;auto&#32;p&#32;=&#32;sattyre::parse_dimacs_file(&quot;broken.cnf&quot;);
+&#32;&#32;(void)p;
+}&#32;catch&#32;(const&#32;std::exception&amp;&#32;ex)&#32;{
+&#32;&#32;std::cerr&#32;&lt;&lt;&#32;&quot;DIMACS&#32;parse&#32;error:&#32;&quot;&#32;&lt;&lt;&#32;ex.what()&#32;&lt;&lt;&#32;&quot;\n&quot;;
+}
+</computeroutput></literallayout></para>
+<section xml:id="_chapter2_1autotoc_md79">
+<title>Quick recap</title>
+<para><itemizedlist>
+<listitem>
+<para>Keep this section aligned with Stage 2 SAT front-end correctness.</para>
+</listitem><listitem>
+<para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem>
+<para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+</section>
+<section xml:id="_chapter2_1autotoc_md80">
+<title>Edge semantics</title>
+<para>An empty formula with zero clauses is SAT by convention but still parsed as a valid problem. An empty clause denotes UNSAT structure and should be preserved as an empty clause entry. Literal sign encodes polarity; absolute value encodes variable index.</para>
+
+<para><literallayout><computeroutput>sattyre::SATProblem&#32;p;
+p.variable_count&#32;=&#32;2;
+p.clauses&#32;=&#32;{&#32;{1},&#32;{-1,&#32;2}&#32;};
+</computeroutput></literallayout></para>
+<section xml:id="_chapter2_1autotoc_md81">
+<title>Quick recap</title>
+<para><itemizedlist>
+<listitem>
+<para>Keep this section aligned with Stage 2 SAT front-end correctness.</para>
+</listitem><listitem>
+<para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem>
+<para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+</section>
+<section xml:id="_chapter2_1autotoc_md82">
+<title>Test design</title>
+<para>Write tests for normal, malformed, and boundary cases. Use small CNF files so failures are obvious and reproducible. Check exact exceptions or statuses to prevent silent behavior drift.</para>
+
+<para><literallayout><computeroutput>cmake&#32;-S&#32;.&#32;-B&#32;build/sat-tests&#32;-DSATTYRE_ENABLE_TESTS=ON
+cmake&#32;--build&#32;build/sat-tests&#32;-j
+ctest&#32;--test-dir&#32;build/sat-tests&#32;-R&#32;sattyre-sat-parser-test&#32;--output-on-failure
+</computeroutput></literallayout></para>
+<section xml:id="_chapter2_1autotoc_md83">
+<title>Quick recap</title>
+<para><itemizedlist>
+<listitem>
+<para>Keep this section aligned with Stage 2 SAT front-end correctness.</para>
+</listitem><listitem>
+<para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem>
+<para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+</section>
+<section xml:id="_chapter2_1autotoc_md84">
+<title>Chapter summary</title>
+<para>SAT correctness begins with a strict parser, not with advanced solver heuristics. If parser behavior is unstable, downstream solver and CLI behavior cannot be trusted. Treat parse errors as first-class API outcomes.</para>
+
+<para><literallayout><computeroutput>//&#32;Good&#32;parser&#32;output&#32;should&#32;be&#32;deterministic&#32;for&#32;a&#32;given&#32;input.
+//&#32;Keep&#32;regression&#32;coverage&#32;close&#32;to&#32;edge-case&#32;inputs.
+</computeroutput></literallayout></para>
+<section xml:id="_chapter2_1autotoc_md85">
+<title>Quick recap</title>
+<para><itemizedlist>
+<listitem>
+<para>Keep this section aligned with Stage 2 SAT front-end correctness.</para>
+</listitem><listitem>
+<para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem>
+<para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+<section xml:id="_chapter2_1autotoc_md86">
+<title>Supplemental example</title>
+<para><literallayout><computeroutput>//&#32;Minimal&#32;reference&#32;snippet&#32;for&#32;this&#32;chapter
+//&#32;Replace&#32;with&#32;project-specific&#32;values&#32;in&#32;your&#32;local&#32;environment.
+std::cout&#32;&lt;&lt;&#32;&quot;sattyre&#32;manual&#32;example&quot;&#32;&lt;&lt;&#32;std::endl;
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_chapter2_1autotoc_md87">
+<title>Supplemental example</title>
+<para><literallayout><computeroutput>//&#32;Minimal&#32;reference&#32;snippet&#32;for&#32;this&#32;chapter
+//&#32;Replace&#32;with&#32;project-specific&#32;values&#32;in&#32;your&#32;local&#32;environment.
+std::cout&#32;&lt;&lt;&#32;&quot;sattyre&#32;manual&#32;example&quot;&#32;&lt;&lt;&#32;std::endl;
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_chapter2_1autotoc_md88">
+<title>Supplemental example</title>
+<para><literallayout><computeroutput>//&#32;Minimal&#32;reference&#32;snippet&#32;for&#32;this&#32;chapter
+//&#32;Replace&#32;with&#32;project-specific&#32;values&#32;in&#32;your&#32;local&#32;environment.
+std::cout&#32;&lt;&lt;&#32;&quot;sattyre&#32;manual&#32;example&quot;&#32;&lt;&lt;&#32;std::endl;
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_chapter2_1autotoc_md89">
+<title>Supplemental example</title>
+<para><literallayout><computeroutput>//&#32;Minimal&#32;reference&#32;snippet&#32;for&#32;this&#32;chapter
+//&#32;Replace&#32;with&#32;project-specific&#32;values&#32;in&#32;your&#32;local&#32;environment.
+std::cout&#32;&lt;&lt;&#32;&quot;sattyre&#32;manual&#32;example&quot;&#32;&lt;&lt;&#32;std::endl;
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_chapter2_1autotoc_md90">
+<title>Supplemental example</title>
+<para><literallayout><computeroutput>//&#32;Minimal&#32;reference&#32;snippet&#32;for&#32;this&#32;chapter
+//&#32;Replace&#32;with&#32;project-specific&#32;values&#32;in&#32;your&#32;local&#32;environment.
+std::cout&#32;&lt;&lt;&#32;&quot;sattyre&#32;manual&#32;example&quot;&#32;&lt;&lt;&#32;std::endl;
+</computeroutput></literallayout> </para>
+</section>
+</section>
+</section>

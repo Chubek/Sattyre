@@ -1,0 +1,148 @@
+\doxysection{C++ Solver Adapter and Built-\/in Solvers }
+\label{chapter5}\index{C++ Solver Adapter and Built-\/in Solvers@{C++ Solver Adapter and Built-\/in Solvers}}
+Stage 3 C++ consumption of C ABI and baseline solving.\hypertarget{chapter5_autotoc_md125}{}\doxysubsubsection{\texorpdfstring{Scope}{Scope}}\label{chapter5_autotoc_md125}
+This chapter explains {\ttfamily Native\+Solver\+Adapter} and baseline built-\/in solver behavior. Focus first on correctness, then sophistication. Brute-\/force and DPLL are useful reference points before CDCL optimization.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{class\ NativeSolverAdapter\ :\ public\ sattyre::SATSolver\ \{}
+\DoxyCodeLine{public:}
+\DoxyCodeLine{\ \ void\ load(const\ sattyre::SATProblem\&\ problem)\ override;}
+\DoxyCodeLine{\ \ sattyre::SolveResult\ solve()\ override;}
+\DoxyCodeLine{\ \ sattyre::SATModel\ model()\ const\ override;}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{chapter5_autotoc_md126}{}\doxysubsubsubsection{\texorpdfstring{Quick recap}{Quick recap}}\label{chapter5_autotoc_md126}
+
+\begin{DoxyItemize}
+\item Keep this section aligned with Stage 3 C++ consumption of C ABI and baseline solving.
+\item Prefer explicit statuses and deterministic behavior.
+\item Promote examples into tests when behavior stabilizes.
+\end{DoxyItemize}\hypertarget{chapter5_autotoc_md127}{}\doxysubsubsection{\texorpdfstring{Compatibility-\/first flow}{Compatibility-\/first flow}}\label{chapter5_autotoc_md127}
+On construction, adapter queries {\ttfamily \doxylink{Sattyre-Solver_8h_aeff6222bf8eea217cfb5aaed90c9a199}{sattyre\+\_\+solver\+\_\+info}} and verifies ABI compatibility. If incompatible, fail early with a clear exception. Solver creation and destruction should follow RAII semantics.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{sattyre::NativeSolverAdapter\ solver;}
+\DoxyCodeLine{sattyre::SATProblem\ p\ =\ sattyre::parse\_dimacs\_file("{}examples/example.cnf"{});}
+\DoxyCodeLine{solver.load(p);}
+\DoxyCodeLine{sattyre::SolveResult\ r\ =\ solver.solve();}
+
+\end{DoxyCode}
+\hypertarget{chapter5_autotoc_md128}{}\doxysubsubsubsection{\texorpdfstring{Quick recap}{Quick recap}}\label{chapter5_autotoc_md128}
+
+\begin{DoxyItemize}
+\item Keep this section aligned with Stage 3 C++ consumption of C ABI and baseline solving.
+\item Prefer explicit statuses and deterministic behavior.
+\item Promote examples into tests when behavior stabilizes.
+\end{DoxyItemize}\hypertarget{chapter5_autotoc_md129}{}\doxysubsubsection{\texorpdfstring{Built-\/in solver sequencing}{Built-\/in solver sequencing}}\label{chapter5_autotoc_md129}
+Brute-\/force solver:\+ correctness oracle for tiny formulas. DPLL solver:\+ practical baseline and readable branching logic. CDCL solver:\+ staged optimization once baseline semantics are trusted.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{sattyre::SATProblem\ p;}
+\DoxyCodeLine{p.variable\_count\ =\ 2;}
+\DoxyCodeLine{p.clauses\ =\ \{\{1\},\ \{-\/1,\ 2\}\};}
+
+\end{DoxyCode}
+\hypertarget{chapter5_autotoc_md130}{}\doxysubsubsubsection{\texorpdfstring{Quick recap}{Quick recap}}\label{chapter5_autotoc_md130}
+
+\begin{DoxyItemize}
+\item Keep this section aligned with Stage 3 C++ consumption of C ABI and baseline solving.
+\item Prefer explicit statuses and deterministic behavior.
+\item Promote examples into tests when behavior stabilizes.
+\end{DoxyItemize}\hypertarget{chapter5_autotoc_md131}{}\doxysubsubsection{\texorpdfstring{Model extraction}{Model extraction}}\label{chapter5_autotoc_md131}
+Model assignments should correspond to {\ttfamily variable\+\_\+count}. Unknown result may return empty model by design. Do not expose inconsistent assignment vector lengths.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ The\ model\ must\ not\ exceed\ the\ declared\ number\ of\ variables.}
+\DoxyCodeLine{//\ Preserve\ a\ direct\ mapping\ from\ variable\ index\ to\ assignment.}
+
+\end{DoxyCode}
+\hypertarget{chapter5_autotoc_md132}{}\doxysubsubsubsection{\texorpdfstring{Quick recap}{Quick recap}}\label{chapter5_autotoc_md132}
+
+\begin{DoxyItemize}
+\item Keep this section aligned with Stage 3 C++ consumption of C ABI and baseline solving.
+\item Prefer explicit statuses and deterministic behavior.
+\item Promote examples into tests when behavior stabilizes.
+\end{DoxyItemize}\hypertarget{chapter5_autotoc_md133}{}\doxysubsubsection{\texorpdfstring{Testing adapters}{Testing adapters}}\label{chapter5_autotoc_md133}
+Use small satisfiable and unsatisfiable instances. Verify result mapping and exception behavior. Confirm adapter refuses incompatible ABI metadata.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cmake\ -\/S\ .\ -\/B\ build/solver\ -\/DSATTYRE\_ENABLE\_TESTS=ON}
+\DoxyCodeLine{cmake\ -\/-\/build\ build/solver\ -\/j}
+\DoxyCodeLine{ctest\ -\/-\/test-\/dir\ build/solver\ -\/R\ sattyre-\/cli-\/smoke-\/test\ -\/-\/output-\/on-\/failure}
+
+\end{DoxyCode}
+\hypertarget{chapter5_autotoc_md134}{}\doxysubsubsubsection{\texorpdfstring{Quick recap}{Quick recap}}\label{chapter5_autotoc_md134}
+
+\begin{DoxyItemize}
+\item Keep this section aligned with Stage 3 C++ consumption of C ABI and baseline solving.
+\item Prefer explicit statuses and deterministic behavior.
+\item Promote examples into tests when behavior stabilizes.
+\end{DoxyItemize}\hypertarget{chapter5_autotoc_md135}{}\doxysubsubsection{\texorpdfstring{Chapter summary}{Chapter summary}}\label{chapter5_autotoc_md135}
+C++ adapter reliability depends on strict C ABI checks. Built-\/in solvers should be layered by correctness maturity. This chapter’s examples form the minimum solve smoke workflow.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Keep\ the\ adapter\ thin\ and\ let\ the\ solver\ implementation\ carry\ the\ logic.}
+
+\end{DoxyCode}
+\hypertarget{chapter5_autotoc_md136}{}\doxysubsubsubsection{\texorpdfstring{Quick recap}{Quick recap}}\label{chapter5_autotoc_md136}
+
+\begin{DoxyItemize}
+\item Keep this section aligned with Stage 3 C++ consumption of C ABI and baseline solving.
+\item Prefer explicit statuses and deterministic behavior.
+\item Promote examples into tests when behavior stabilizes.
+\end{DoxyItemize}\hypertarget{chapter5_autotoc_md137}{}\doxysubsubsubsection{\texorpdfstring{Supplemental example}{Supplemental example}}\label{chapter5_autotoc_md137}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Minimal\ reference\ snippet\ for\ this\ chapter}
+\DoxyCodeLine{//\ Replace\ with\ project-\/specific\ values\ in\ your\ local\ environment.}
+\DoxyCodeLine{std::cout\ <<\ "{}sattyre\ manual\ example"{}\ <<\ std::endl;}
+
+\end{DoxyCode}
+\hypertarget{chapter5_autotoc_md138}{}\doxysubsubsubsection{\texorpdfstring{Supplemental example}{Supplemental example}}\label{chapter5_autotoc_md138}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Minimal\ reference\ snippet\ for\ this\ chapter}
+\DoxyCodeLine{//\ Replace\ with\ project-\/specific\ values\ in\ your\ local\ environment.}
+\DoxyCodeLine{std::cout\ <<\ "{}sattyre\ manual\ example"{}\ <<\ std::endl;}
+
+\end{DoxyCode}
+\hypertarget{chapter5_autotoc_md139}{}\doxysubsubsubsection{\texorpdfstring{Supplemental example}{Supplemental example}}\label{chapter5_autotoc_md139}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Minimal\ reference\ snippet\ for\ this\ chapter}
+\DoxyCodeLine{//\ Replace\ with\ project-\/specific\ values\ in\ your\ local\ environment.}
+\DoxyCodeLine{std::cout\ <<\ "{}sattyre\ manual\ example"{}\ <<\ std::endl;}
+
+\end{DoxyCode}
+\hypertarget{chapter5_autotoc_md140}{}\doxysubsubsubsection{\texorpdfstring{Supplemental example}{Supplemental example}}\label{chapter5_autotoc_md140}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Minimal\ reference\ snippet\ for\ this\ chapter}
+\DoxyCodeLine{//\ Replace\ with\ project-\/specific\ values\ in\ your\ local\ environment.}
+\DoxyCodeLine{std::cout\ <<\ "{}sattyre\ manual\ example"{}\ <<\ std::endl;}
+
+\end{DoxyCode}
+\hypertarget{chapter5_autotoc_md141}{}\doxysubsubsubsection{\texorpdfstring{Supplemental example}{Supplemental example}}\label{chapter5_autotoc_md141}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Minimal\ reference\ snippet\ for\ this\ chapter}
+\DoxyCodeLine{//\ Replace\ with\ project-\/specific\ values\ in\ your\ local\ environment.}
+\DoxyCodeLine{std::cout\ <<\ "{}sattyre\ manual\ example"{}\ <<\ std::endl;}
+
+\end{DoxyCode}
+\hypertarget{chapter5_autotoc_md142}{}\doxysubsubsubsection{\texorpdfstring{Supplemental example}{Supplemental example}}\label{chapter5_autotoc_md142}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Minimal\ reference\ snippet\ for\ this\ chapter}
+\DoxyCodeLine{//\ Replace\ with\ project-\/specific\ values\ in\ your\ local\ environment.}
+\DoxyCodeLine{std::cout\ <<\ "{}sattyre\ manual\ example"{}\ <<\ std::endl;}
+
+\end{DoxyCode}
+ 

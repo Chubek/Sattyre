@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classsattyre_1_1SATSolver" xml:lang="en-US">
+<title>sattyre::SATSolver Class Reference</title>
+<indexterm><primary>sattyre::SATSolver</primary></indexterm>
+<para>
+<computeroutput>#include &lt;SattyreSAT.hpp&gt;</computeroutput>
+</para>
+<para>Inheritance diagram for sattyre::SATSolver:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="classsattyre_1_1SATSolver.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>virtual <link linkend="_classsattyre_1_1SATSolver_1adbd38b86c6e3d3de25b1cab7e403ed36">~SATSolver</link> ()=default</para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_classsattyre_1_1SATSolver_1a4c732e01b49ee54639c02e5a69a19a37">load</link> (const <link linkend="_structsattyre_1_1SATProblem">SATProblem</link> &amp;problem)=0</para>
+</listitem>
+            <listitem><para>virtual <link linkend="_namespacesattyre_1ade8a7fe1106cbadebc9b9695bf57c096">SolveResult</link> <link linkend="_classsattyre_1_1SATSolver_1ab3305cbfa1a0497eae77f93bf96cc927">solve</link> ()=0</para>
+</listitem>
+            <listitem><para>virtual <link linkend="_structsattyre_1_1SATModel">SATModel</link> <link linkend="_classsattyre_1_1SATSolver_1ab11ec646be0da1bf9880fe13cbba37cc">model</link> () const =0</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classsattyre_1_1SATSolver_1adbd38b86c6e3d3de25b1cab7e403ed36"/><section>
+    <title>~SATSolver()</title>
+<indexterm><primary>~SATSolver</primary><secondary>sattyre::SATSolver</secondary></indexterm>
+<indexterm><primary>sattyre::SATSolver</primary><secondary>~SATSolver</secondary></indexterm>
+<para><computeroutput>virtual sattyre::SATSolver::~SATSolver ( )<computeroutput>[virtual]</computeroutput>, <computeroutput>[default]</computeroutput></computeroutput></para></section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classsattyre_1_1SATSolver_1a4c732e01b49ee54639c02e5a69a19a37"/><section>
+    <title>load()</title>
+<indexterm><primary>load</primary><secondary>sattyre::SATSolver</secondary></indexterm>
+<indexterm><primary>sattyre::SATSolver</primary><secondary>load</secondary></indexterm>
+<para><computeroutput>virtual void sattyre::SATSolver::load (const <link linkend="_structsattyre_1_1SATProblem">SATProblem</link> &amp; problem)<computeroutput>[pure virtual]</computeroutput></computeroutput></para><para>
+Implemented in <link linkend="_classsattyre_1_1NativeSolverAdapter_1a3b7f3604ae9867f30d51cfcb19334211">sattyre::NativeSolverAdapter</link>.</para>
+</section>
+<anchor xml:id="_classsattyre_1_1SATSolver_1ab11ec646be0da1bf9880fe13cbba37cc"/><section>
+    <title>model()</title>
+<indexterm><primary>model</primary><secondary>sattyre::SATSolver</secondary></indexterm>
+<indexterm><primary>sattyre::SATSolver</primary><secondary>model</secondary></indexterm>
+<para><computeroutput>virtual <link linkend="_structsattyre_1_1SATModel">SATModel</link> sattyre::SATSolver::model ( ) const<computeroutput>[pure virtual]</computeroutput></computeroutput></para><para>
+Implemented in <link linkend="_classsattyre_1_1NativeSolverAdapter_1a82f7f0791d43f2c625c21f34eee6dc64">sattyre::NativeSolverAdapter</link>.</para>
+</section>
+<anchor xml:id="_classsattyre_1_1SATSolver_1ab3305cbfa1a0497eae77f93bf96cc927"/><section>
+    <title>solve()</title>
+<indexterm><primary>solve</primary><secondary>sattyre::SATSolver</secondary></indexterm>
+<indexterm><primary>sattyre::SATSolver</primary><secondary>solve</secondary></indexterm>
+<para><computeroutput>virtual <link linkend="_namespacesattyre_1ade8a7fe1106cbadebc9b9695bf57c096">SolveResult</link> sattyre::SATSolver::solve ( )<computeroutput>[pure virtual]</computeroutput></computeroutput></para><para>
+Implemented in <link linkend="_classsattyre_1_1NativeSolverAdapter_1ac8c5b1065a7f60d723e05cbc5b9546f4">sattyre::NativeSolverAdapter</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following file:</para>
+/home/chubakpdp11/sattyre/include/sattyre/<link linkend="_SattyreSAT_8hpp">SattyreSAT.hpp</link></section>
+</section>

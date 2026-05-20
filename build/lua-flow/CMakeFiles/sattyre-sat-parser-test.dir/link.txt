@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/sattyre-sat-parser-test.dir/link.d "CMakeFiles/sattyre-sat-parser-test.dir/tests/SattyreSATParserTest.cpp.o" -o sattyre-sat-parser-test  libsattyre.a /usr/lib/libarchive.so /usr/lib/liblua5.4.so -lm -ldl

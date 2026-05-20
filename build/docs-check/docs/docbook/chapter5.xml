@@ -1,0 +1,178 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_chapter5" xml:lang="en-US">
+<title>
+<para>C++ Solver Adapter and Built-in Solvers </para>
+</title>
+<indexterm><primary>C++ Solver Adapter and Built-in Solvers</primary></indexterm>
+
+<para>Stage 3 C++ consumption of C ABI and baseline solving.</para>
+<section xml:id="_chapter5_1autotoc_md125">
+<title>Scope</title>
+<para>This chapter explains <computeroutput>NativeSolverAdapter</computeroutput> and baseline built-in solver behavior. Focus first on correctness, then sophistication. Brute-force and DPLL are useful reference points before CDCL optimization.</para>
+
+<para><literallayout><computeroutput>class&#32;NativeSolverAdapter&#32;:&#32;public&#32;sattyre::SATSolver&#32;{
+public:
+&#32;&#32;void&#32;load(const&#32;sattyre::SATProblem&amp;&#32;problem)&#32;override;
+&#32;&#32;sattyre::SolveResult&#32;solve()&#32;override;
+&#32;&#32;sattyre::SATModel&#32;model()&#32;const&#32;override;
+};
+</computeroutput></literallayout></para>
+<section xml:id="_chapter5_1autotoc_md126">
+<title>Quick recap</title>
+<para><itemizedlist>
+<listitem>
+<para>Keep this section aligned with Stage 3 C++ consumption of C ABI and baseline solving.</para>
+</listitem><listitem>
+<para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem>
+<para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+</section>
+<section xml:id="_chapter5_1autotoc_md127">
+<title>Compatibility-first flow</title>
+<para>On construction, adapter queries <computeroutput><link linkend="_Sattyre-Solver_8h_1aeff6222bf8eea217cfb5aaed90c9a199">sattyre_solver_info</link></computeroutput> and verifies ABI compatibility. If incompatible, fail early with a clear exception. Solver creation and destruction should follow RAII semantics.</para>
+
+<para><literallayout><computeroutput>sattyre::NativeSolverAdapter&#32;solver;
+sattyre::SATProblem&#32;p&#32;=&#32;sattyre::parse_dimacs_file(&quot;examples/example.cnf&quot;);
+solver.load(p);
+sattyre::SolveResult&#32;r&#32;=&#32;solver.solve();
+</computeroutput></literallayout></para>
+<section xml:id="_chapter5_1autotoc_md128">
+<title>Quick recap</title>
+<para><itemizedlist>
+<listitem>
+<para>Keep this section aligned with Stage 3 C++ consumption of C ABI and baseline solving.</para>
+</listitem><listitem>
+<para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem>
+<para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+</section>
+<section xml:id="_chapter5_1autotoc_md129">
+<title>Built-in solver sequencing</title>
+<para>Brute-force solver: correctness oracle for tiny formulas. DPLL solver: practical baseline and readable branching logic. CDCL solver: staged optimization once baseline semantics are trusted.</para>
+
+<para><literallayout><computeroutput>sattyre::SATProblem&#32;p;
+p.variable_count&#32;=&#32;2;
+p.clauses&#32;=&#32;{{1},&#32;{-1,&#32;2}};
+</computeroutput></literallayout></para>
+<section xml:id="_chapter5_1autotoc_md130">
+<title>Quick recap</title>
+<para><itemizedlist>
+<listitem>
+<para>Keep this section aligned with Stage 3 C++ consumption of C ABI and baseline solving.</para>
+</listitem><listitem>
+<para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem>
+<para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+</section>
+<section xml:id="_chapter5_1autotoc_md131">
+<title>Model extraction</title>
+<para>Model assignments should correspond to <computeroutput>variable_count</computeroutput>. Unknown result may return empty model by design. Do not expose inconsistent assignment vector lengths.</para>
+
+<para><literallayout><computeroutput>//&#32;The&#32;model&#32;must&#32;not&#32;exceed&#32;the&#32;declared&#32;number&#32;of&#32;variables.
+//&#32;Preserve&#32;a&#32;direct&#32;mapping&#32;from&#32;variable&#32;index&#32;to&#32;assignment.
+</computeroutput></literallayout></para>
+<section xml:id="_chapter5_1autotoc_md132">
+<title>Quick recap</title>
+<para><itemizedlist>
+<listitem>
+<para>Keep this section aligned with Stage 3 C++ consumption of C ABI and baseline solving.</para>
+</listitem><listitem>
+<para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem>
+<para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+</section>
+<section xml:id="_chapter5_1autotoc_md133">
+<title>Testing adapters</title>
+<para>Use small satisfiable and unsatisfiable instances. Verify result mapping and exception behavior. Confirm adapter refuses incompatible ABI metadata.</para>
+
+<para><literallayout><computeroutput>cmake&#32;-S&#32;.&#32;-B&#32;build/solver&#32;-DSATTYRE_ENABLE_TESTS=ON
+cmake&#32;--build&#32;build/solver&#32;-j
+ctest&#32;--test-dir&#32;build/solver&#32;-R&#32;sattyre-cli-smoke-test&#32;--output-on-failure
+</computeroutput></literallayout></para>
+<section xml:id="_chapter5_1autotoc_md134">
+<title>Quick recap</title>
+<para><itemizedlist>
+<listitem>
+<para>Keep this section aligned with Stage 3 C++ consumption of C ABI and baseline solving.</para>
+</listitem><listitem>
+<para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem>
+<para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+</section>
+<section xml:id="_chapter5_1autotoc_md135">
+<title>Chapter summary</title>
+<para>C++ adapter reliability depends on strict C ABI checks. Built-in solvers should be layered by correctness maturity. This chapter’s examples form the minimum solve smoke workflow.</para>
+
+<para><literallayout><computeroutput>//&#32;Keep&#32;the&#32;adapter&#32;thin&#32;and&#32;let&#32;the&#32;solver&#32;implementation&#32;carry&#32;the&#32;logic.
+</computeroutput></literallayout></para>
+<section xml:id="_chapter5_1autotoc_md136">
+<title>Quick recap</title>
+<para><itemizedlist>
+<listitem>
+<para>Keep this section aligned with Stage 3 C++ consumption of C ABI and baseline solving.</para>
+</listitem><listitem>
+<para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem>
+<para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+<section xml:id="_chapter5_1autotoc_md137">
+<title>Supplemental example</title>
+<para><literallayout><computeroutput>//&#32;Minimal&#32;reference&#32;snippet&#32;for&#32;this&#32;chapter
+//&#32;Replace&#32;with&#32;project-specific&#32;values&#32;in&#32;your&#32;local&#32;environment.
+std::cout&#32;&lt;&lt;&#32;&quot;sattyre&#32;manual&#32;example&quot;&#32;&lt;&lt;&#32;std::endl;
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_chapter5_1autotoc_md138">
+<title>Supplemental example</title>
+<para><literallayout><computeroutput>//&#32;Minimal&#32;reference&#32;snippet&#32;for&#32;this&#32;chapter
+//&#32;Replace&#32;with&#32;project-specific&#32;values&#32;in&#32;your&#32;local&#32;environment.
+std::cout&#32;&lt;&lt;&#32;&quot;sattyre&#32;manual&#32;example&quot;&#32;&lt;&lt;&#32;std::endl;
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_chapter5_1autotoc_md139">
+<title>Supplemental example</title>
+<para><literallayout><computeroutput>//&#32;Minimal&#32;reference&#32;snippet&#32;for&#32;this&#32;chapter
+//&#32;Replace&#32;with&#32;project-specific&#32;values&#32;in&#32;your&#32;local&#32;environment.
+std::cout&#32;&lt;&lt;&#32;&quot;sattyre&#32;manual&#32;example&quot;&#32;&lt;&lt;&#32;std::endl;
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_chapter5_1autotoc_md140">
+<title>Supplemental example</title>
+<para><literallayout><computeroutput>//&#32;Minimal&#32;reference&#32;snippet&#32;for&#32;this&#32;chapter
+//&#32;Replace&#32;with&#32;project-specific&#32;values&#32;in&#32;your&#32;local&#32;environment.
+std::cout&#32;&lt;&lt;&#32;&quot;sattyre&#32;manual&#32;example&quot;&#32;&lt;&lt;&#32;std::endl;
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_chapter5_1autotoc_md141">
+<title>Supplemental example</title>
+<para><literallayout><computeroutput>//&#32;Minimal&#32;reference&#32;snippet&#32;for&#32;this&#32;chapter
+//&#32;Replace&#32;with&#32;project-specific&#32;values&#32;in&#32;your&#32;local&#32;environment.
+std::cout&#32;&lt;&lt;&#32;&quot;sattyre&#32;manual&#32;example&quot;&#32;&lt;&lt;&#32;std::endl;
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_chapter5_1autotoc_md142">
+<title>Supplemental example</title>
+<para><literallayout><computeroutput>//&#32;Minimal&#32;reference&#32;snippet&#32;for&#32;this&#32;chapter
+//&#32;Replace&#32;with&#32;project-specific&#32;values&#32;in&#32;your&#32;local&#32;environment.
+std::cout&#32;&lt;&lt;&#32;&quot;sattyre&#32;manual&#32;example&quot;&#32;&lt;&lt;&#32;std::endl;
+</computeroutput></literallayout> </para>
+</section>
+</section>
+</section>

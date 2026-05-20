@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structsattyre_1_1SMTModel" xml:lang="en-US">
+<title>sattyre::SMTModel Struct Reference</title>
+<indexterm><primary>sattyre::SMTModel</primary></indexterm>
+<para>
+<computeroutput>#include &lt;SattyreSMT.hpp&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Data Fields    </title>
+        <itemizedlist>
+            <listitem><para>std::vector&lt; std::string &gt; <link linkend="_structsattyre_1_1SMTModel_1a56fa87c64b6355def3f9904dcfb4c861">bindings</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Field Documentation</title>
+<anchor xml:id="_structsattyre_1_1SMTModel_1a56fa87c64b6355def3f9904dcfb4c861"/><section>
+    <title>bindings</title>
+<indexterm><primary>bindings</primary><secondary>sattyre::SMTModel</secondary></indexterm>
+<indexterm><primary>sattyre::SMTModel</primary><secondary>bindings</secondary></indexterm>
+<para><computeroutput>std::vector&lt;std::string&gt; sattyre::SMTModel::bindings</computeroutput></para></section>
+<para>
+The documentation for this struct was generated from the following file:</para>
+/home/chubakpdp11/sattyre/include/sattyre/<link linkend="_SattyreSMT_8hpp">SattyreSMT.hpp</link></section>
+</section>

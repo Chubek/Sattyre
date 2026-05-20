@@ -1,0 +1,144 @@
+\doxysection{SAT Core and DIMACS Parsing }
+\label{chapter2}\index{SAT Core and DIMACS Parsing@{SAT Core and DIMACS Parsing}}
+Stage 2 SAT front-\/end correctness.\hypertarget{chapter2_autotoc_md74}{}\doxysubsubsection{\texorpdfstring{Scope}{Scope}}\label{chapter2_autotoc_md74}
+This chapter covers SAT structures, DIMACS ingestion, and deterministic parser failures. The parser must reject malformed inputs early and preserve clear semantics for callers. Examples here map directly to {\ttfamily \doxylink{structsattyre_1_1SATProblem}{sattyre::\+\+SATProblem}} and {\ttfamily parse\+\_\+dimacs\+\_\+file} behavior.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#include\ <sattyre/SattyreSAT.hpp>}
+\DoxyCodeLine{}
+\DoxyCodeLine{sattyre::SATProblem\ p\ =\ sattyre::parse\_dimacs\_file("{}examples/example.cnf"{});}
+\DoxyCodeLine{std::size\_t\ vars\ =\ p.variable\_count;}
+\DoxyCodeLine{std::size\_t\ clauses\ =\ p.clauses.size();}
+
+\end{DoxyCode}
+\hypertarget{chapter2_autotoc_md75}{}\doxysubsubsubsection{\texorpdfstring{Quick recap}{Quick recap}}\label{chapter2_autotoc_md75}
+
+\begin{DoxyItemize}
+\item Keep this section aligned with Stage 2 SAT front-\/end correctness.
+\item Prefer explicit statuses and deterministic behavior.
+\item Promote examples into tests when behavior stabilizes.
+\end{DoxyItemize}\hypertarget{chapter2_autotoc_md76}{}\doxysubsubsection{\texorpdfstring{DIMACS fundamentals}{DIMACS fundamentals}}\label{chapter2_autotoc_md76}
+Comment lines begin with {\ttfamily c} and can appear before the problem line. The problem line defines variable and clause declarations and should be validated. Each clause must terminate with literal {\ttfamily 0}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{c\ tiny\ satisfiable\ sample}
+\DoxyCodeLine{p\ cnf\ 3\ 2}
+\DoxyCodeLine{1\ -\/2\ 0}
+\DoxyCodeLine{2\ 3\ 0}
+
+\end{DoxyCode}
+\hypertarget{chapter2_autotoc_md77}{}\doxysubsubsubsection{\texorpdfstring{Quick recap}{Quick recap}}\label{chapter2_autotoc_md77}
+
+\begin{DoxyItemize}
+\item Keep this section aligned with Stage 2 SAT front-\/end correctness.
+\item Prefer explicit statuses and deterministic behavior.
+\item Promote examples into tests when behavior stabilizes.
+\end{DoxyItemize}\hypertarget{chapter2_autotoc_md78}{}\doxysubsubsection{\texorpdfstring{Validation expectations}{Validation expectations}}\label{chapter2_autotoc_md78}
+Out-\/of-\/range literal ids must fail when absolute literal exceeds declared variable count. Clause lines without terminating zero must fail. Mismatch between declared and parsed clause counts should fail clearly.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{try\ \{}
+\DoxyCodeLine{\ \ auto\ p\ =\ sattyre::parse\_dimacs\_file("{}broken.cnf"{});}
+\DoxyCodeLine{\ \ (void)p;}
+\DoxyCodeLine{\}\ catch\ (const\ std::exception\&\ ex)\ \{}
+\DoxyCodeLine{\ \ std::cerr\ <<\ "{}DIMACS\ parse\ error:\ "{}\ <<\ ex.what()\ <<\ "{}\(\backslash\)n"{};}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{chapter2_autotoc_md79}{}\doxysubsubsubsection{\texorpdfstring{Quick recap}{Quick recap}}\label{chapter2_autotoc_md79}
+
+\begin{DoxyItemize}
+\item Keep this section aligned with Stage 2 SAT front-\/end correctness.
+\item Prefer explicit statuses and deterministic behavior.
+\item Promote examples into tests when behavior stabilizes.
+\end{DoxyItemize}\hypertarget{chapter2_autotoc_md80}{}\doxysubsubsection{\texorpdfstring{Edge semantics}{Edge semantics}}\label{chapter2_autotoc_md80}
+An empty formula with zero clauses is SAT by convention but still parsed as a valid problem. An empty clause denotes UNSAT structure and should be preserved as an empty clause entry. Literal sign encodes polarity; absolute value encodes variable index.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{sattyre::SATProblem\ p;}
+\DoxyCodeLine{p.variable\_count\ =\ 2;}
+\DoxyCodeLine{p.clauses\ =\ \{\ \{1\},\ \{-\/1,\ 2\}\ \};}
+
+\end{DoxyCode}
+\hypertarget{chapter2_autotoc_md81}{}\doxysubsubsubsection{\texorpdfstring{Quick recap}{Quick recap}}\label{chapter2_autotoc_md81}
+
+\begin{DoxyItemize}
+\item Keep this section aligned with Stage 2 SAT front-\/end correctness.
+\item Prefer explicit statuses and deterministic behavior.
+\item Promote examples into tests when behavior stabilizes.
+\end{DoxyItemize}\hypertarget{chapter2_autotoc_md82}{}\doxysubsubsection{\texorpdfstring{Test design}{Test design}}\label{chapter2_autotoc_md82}
+Write tests for normal, malformed, and boundary cases. Use small CNF files so failures are obvious and reproducible. Check exact exceptions or statuses to prevent silent behavior drift.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cmake\ -\/S\ .\ -\/B\ build/sat-\/tests\ -\/DSATTYRE\_ENABLE\_TESTS=ON}
+\DoxyCodeLine{cmake\ -\/-\/build\ build/sat-\/tests\ -\/j}
+\DoxyCodeLine{ctest\ -\/-\/test-\/dir\ build/sat-\/tests\ -\/R\ sattyre-\/sat-\/parser-\/test\ -\/-\/output-\/on-\/failure}
+
+\end{DoxyCode}
+\hypertarget{chapter2_autotoc_md83}{}\doxysubsubsubsection{\texorpdfstring{Quick recap}{Quick recap}}\label{chapter2_autotoc_md83}
+
+\begin{DoxyItemize}
+\item Keep this section aligned with Stage 2 SAT front-\/end correctness.
+\item Prefer explicit statuses and deterministic behavior.
+\item Promote examples into tests when behavior stabilizes.
+\end{DoxyItemize}\hypertarget{chapter2_autotoc_md84}{}\doxysubsubsection{\texorpdfstring{Chapter summary}{Chapter summary}}\label{chapter2_autotoc_md84}
+SAT correctness begins with a strict parser, not with advanced solver heuristics. If parser behavior is unstable, downstream solver and CLI behavior cannot be trusted. Treat parse errors as first-\/class API outcomes.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Good\ parser\ output\ should\ be\ deterministic\ for\ a\ given\ input.}
+\DoxyCodeLine{//\ Keep\ regression\ coverage\ close\ to\ edge-\/case\ inputs.}
+
+\end{DoxyCode}
+\hypertarget{chapter2_autotoc_md85}{}\doxysubsubsubsection{\texorpdfstring{Quick recap}{Quick recap}}\label{chapter2_autotoc_md85}
+
+\begin{DoxyItemize}
+\item Keep this section aligned with Stage 2 SAT front-\/end correctness.
+\item Prefer explicit statuses and deterministic behavior.
+\item Promote examples into tests when behavior stabilizes.
+\end{DoxyItemize}\hypertarget{chapter2_autotoc_md86}{}\doxysubsubsubsection{\texorpdfstring{Supplemental example}{Supplemental example}}\label{chapter2_autotoc_md86}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Minimal\ reference\ snippet\ for\ this\ chapter}
+\DoxyCodeLine{//\ Replace\ with\ project-\/specific\ values\ in\ your\ local\ environment.}
+\DoxyCodeLine{std::cout\ <<\ "{}sattyre\ manual\ example"{}\ <<\ std::endl;}
+
+\end{DoxyCode}
+\hypertarget{chapter2_autotoc_md87}{}\doxysubsubsubsection{\texorpdfstring{Supplemental example}{Supplemental example}}\label{chapter2_autotoc_md87}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Minimal\ reference\ snippet\ for\ this\ chapter}
+\DoxyCodeLine{//\ Replace\ with\ project-\/specific\ values\ in\ your\ local\ environment.}
+\DoxyCodeLine{std::cout\ <<\ "{}sattyre\ manual\ example"{}\ <<\ std::endl;}
+
+\end{DoxyCode}
+\hypertarget{chapter2_autotoc_md88}{}\doxysubsubsubsection{\texorpdfstring{Supplemental example}{Supplemental example}}\label{chapter2_autotoc_md88}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Minimal\ reference\ snippet\ for\ this\ chapter}
+\DoxyCodeLine{//\ Replace\ with\ project-\/specific\ values\ in\ your\ local\ environment.}
+\DoxyCodeLine{std::cout\ <<\ "{}sattyre\ manual\ example"{}\ <<\ std::endl;}
+
+\end{DoxyCode}
+\hypertarget{chapter2_autotoc_md89}{}\doxysubsubsubsection{\texorpdfstring{Supplemental example}{Supplemental example}}\label{chapter2_autotoc_md89}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Minimal\ reference\ snippet\ for\ this\ chapter}
+\DoxyCodeLine{//\ Replace\ with\ project-\/specific\ values\ in\ your\ local\ environment.}
+\DoxyCodeLine{std::cout\ <<\ "{}sattyre\ manual\ example"{}\ <<\ std::endl;}
+
+\end{DoxyCode}
+\hypertarget{chapter2_autotoc_md90}{}\doxysubsubsubsection{\texorpdfstring{Supplemental example}{Supplemental example}}\label{chapter2_autotoc_md90}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Minimal\ reference\ snippet\ for\ this\ chapter}
+\DoxyCodeLine{//\ Replace\ with\ project-\/specific\ values\ in\ your\ local\ environment.}
+\DoxyCodeLine{std::cout\ <<\ "{}sattyre\ manual\ example"{}\ <<\ std::endl;}
+
+\end{DoxyCode}
+ 

@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classsattyre_1_1RegistryClient" xml:lang="en-US">
+<title>sattyre::RegistryClient Class Reference</title>
+<indexterm><primary>sattyre::RegistryClient</primary></indexterm>
+<para>
+<computeroutput>#include &lt;Registry.hpp&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_namespacesattyre_1aadc00e3812f882c93d55389540d6bd0e">RegistryStatus</link> <link linkend="_classsattyre_1_1RegistryClient_1ab000f894c9983260e08fc01fac554f32">deploy</link> (const std::string &amp;bundle_path, const std::string &amp;registry_url)</para>
+</listitem>
+            <listitem><para><link linkend="_namespacesattyre_1aadc00e3812f882c93d55389540d6bd0e">RegistryStatus</link> <link linkend="_classsattyre_1_1RegistryClient_1ae3fbe4fab8dd3f8c0b319853579a0d49">download</link> (const std::string &amp;package_name, const std::string &amp;registry_url)</para>
+</listitem>
+            <listitem><para><link linkend="_namespacesattyre_1aadc00e3812f882c93d55389540d6bd0e">RegistryStatus</link> <link linkend="_classsattyre_1_1RegistryClient_1a0bf5191ba64221ba11db3c46cddeac66">list_http</link> (const std::string &amp;base_url, std::vector&lt; std::string &gt; &amp;packages)</para>
+</listitem>
+            <listitem><para><link linkend="_namespacesattyre_1aadc00e3812f882c93d55389540d6bd0e">RegistryStatus</link> <link linkend="_classsattyre_1_1RegistryClient_1a0e95ca38dfffe3805270721dec5199bb">deploy_http</link> (const std::string &amp;bundle_path, const std::string &amp;base_url)</para>
+</listitem>
+            <listitem><para><link linkend="_namespacesattyre_1aadc00e3812f882c93d55389540d6bd0e">RegistryStatus</link> <link linkend="_classsattyre_1_1RegistryClient_1a49436fc77cb214aaf8ec946a4deae395">download_http</link> (const std::string &amp;package_name, const std::string &amp;base_url)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classsattyre_1_1RegistryClient_1ab000f894c9983260e08fc01fac554f32"/><section>
+    <title>deploy()</title>
+<indexterm><primary>deploy</primary><secondary>sattyre::RegistryClient</secondary></indexterm>
+<indexterm><primary>sattyre::RegistryClient</primary><secondary>deploy</secondary></indexterm>
+<para><computeroutput><link linkend="_namespacesattyre_1aadc00e3812f882c93d55389540d6bd0e">RegistryStatus</link> sattyre::RegistryClient::deploy (const std::string &amp; bundle_path, const std::string &amp; registry_url)</computeroutput></para></section>
+<anchor xml:id="_classsattyre_1_1RegistryClient_1a0e95ca38dfffe3805270721dec5199bb"/><section>
+    <title>deploy_http()</title>
+<indexterm><primary>deploy_http</primary><secondary>sattyre::RegistryClient</secondary></indexterm>
+<indexterm><primary>sattyre::RegistryClient</primary><secondary>deploy_http</secondary></indexterm>
+<para><computeroutput><link linkend="_namespacesattyre_1aadc00e3812f882c93d55389540d6bd0e">RegistryStatus</link> sattyre::RegistryClient::deploy_http (const std::string &amp; bundle_path, const std::string &amp; base_url)</computeroutput></para></section>
+<anchor xml:id="_classsattyre_1_1RegistryClient_1ae3fbe4fab8dd3f8c0b319853579a0d49"/><section>
+    <title>download()</title>
+<indexterm><primary>download</primary><secondary>sattyre::RegistryClient</secondary></indexterm>
+<indexterm><primary>sattyre::RegistryClient</primary><secondary>download</secondary></indexterm>
+<para><computeroutput><link linkend="_namespacesattyre_1aadc00e3812f882c93d55389540d6bd0e">RegistryStatus</link> sattyre::RegistryClient::download (const std::string &amp; package_name, const std::string &amp; registry_url)</computeroutput></para></section>
+<anchor xml:id="_classsattyre_1_1RegistryClient_1a49436fc77cb214aaf8ec946a4deae395"/><section>
+    <title>download_http()</title>
+<indexterm><primary>download_http</primary><secondary>sattyre::RegistryClient</secondary></indexterm>
+<indexterm><primary>sattyre::RegistryClient</primary><secondary>download_http</secondary></indexterm>
+<para><computeroutput><link linkend="_namespacesattyre_1aadc00e3812f882c93d55389540d6bd0e">RegistryStatus</link> sattyre::RegistryClient::download_http (const std::string &amp; package_name, const std::string &amp; base_url)</computeroutput></para></section>
+<anchor xml:id="_classsattyre_1_1RegistryClient_1a0bf5191ba64221ba11db3c46cddeac66"/><section>
+    <title>list_http()</title>
+<indexterm><primary>list_http</primary><secondary>sattyre::RegistryClient</secondary></indexterm>
+<indexterm><primary>sattyre::RegistryClient</primary><secondary>list_http</secondary></indexterm>
+<para><computeroutput><link linkend="_namespacesattyre_1aadc00e3812f882c93d55389540d6bd0e">RegistryStatus</link> sattyre::RegistryClient::list_http (const std::string &amp; base_url, std::vector&lt; std::string &gt; &amp; packages)</computeroutput></para></section>
+<para>
+The documentation for this class was generated from the following files:</para>
+/home/chubakpdp11/sattyre/include/sattyre/<link linkend="_Registry_8hpp">Registry.hpp</link>/home/chubakpdp11/sattyre/src/registry/<link linkend="_RegistryClient_8cpp">RegistryClient.cpp</link></section>
+</section>

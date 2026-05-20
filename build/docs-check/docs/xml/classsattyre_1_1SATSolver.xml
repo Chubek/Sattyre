@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="classsattyre_1_1SATSolver" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>sattyre::SATSolver</compoundname>
+    <derivedcompoundref refid="classsattyre_1_1NativeSolverAdapter" prot="public" virt="non-virtual">sattyre::NativeSolverAdapter</derivedcompoundref>
+    <includes refid="SattyreSAT_8hpp" local="no">SattyreSAT.hpp</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classsattyre_1_1SATSolver_1adbd38b86c6e3d3de25b1cab7e403ed36" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual sattyre::SATSolver::~SATSolver</definition>
+        <argsstring>()=default</argsstring>
+        <name>~SATSolver</name>
+        <qualifiedname>sattyre::SATSolver::~SATSolver</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/chubakpdp11/sattyre/include/sattyre/SattyreSAT.hpp" line="29" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classsattyre_1_1SATSolver_1a4c732e01b49ee54639c02e5a69a19a37" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void sattyre::SATSolver::load</definition>
+        <argsstring>(const SATProblem &amp;problem)=0</argsstring>
+        <name>load</name>
+        <qualifiedname>sattyre::SATSolver::load</qualifiedname>
+        <reimplementedby refid="classsattyre_1_1NativeSolverAdapter_1a3b7f3604ae9867f30d51cfcb19334211">load</reimplementedby>
+        <param>
+          <type>const <ref refid="structsattyre_1_1SATProblem" kindref="compound">SATProblem</ref> &amp;</type>
+          <declname>problem</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/chubakpdp11/sattyre/include/sattyre/SattyreSAT.hpp" line="30" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classsattyre_1_1SATSolver_1ab3305cbfa1a0497eae77f93bf96cc927" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="namespacesattyre_1ade8a7fe1106cbadebc9b9695bf57c096" kindref="member">SolveResult</ref></type>
+        <definition>virtual SolveResult sattyre::SATSolver::solve</definition>
+        <argsstring>()=0</argsstring>
+        <name>solve</name>
+        <qualifiedname>sattyre::SATSolver::solve</qualifiedname>
+        <reimplementedby refid="classsattyre_1_1NativeSolverAdapter_1ac8c5b1065a7f60d723e05cbc5b9546f4">solve</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/chubakpdp11/sattyre/include/sattyre/SattyreSAT.hpp" line="31" column="23"/>
+      </memberdef>
+      <memberdef kind="function" id="classsattyre_1_1SATSolver_1ab11ec646be0da1bf9880fe13cbba37cc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="structsattyre_1_1SATModel" kindref="compound">SATModel</ref></type>
+        <definition>virtual SATModel sattyre::SATSolver::model</definition>
+        <argsstring>() const =0</argsstring>
+        <name>model</name>
+        <qualifiedname>sattyre::SATSolver::model</qualifiedname>
+        <reimplementedby refid="classsattyre_1_1NativeSolverAdapter_1a82f7f0791d43f2c625c21f34eee6dc64">model</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/chubakpdp11/sattyre/include/sattyre/SattyreSAT.hpp" line="32" column="20"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>sattyre::NativeSolverAdapter</label>
+        <link refid="classsattyre_1_1NativeSolverAdapter"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>sattyre::SATSolver</label>
+        <link refid="classsattyre_1_1SATSolver"/>
+      </node>
+    </inheritancegraph>
+    <location file="/home/chubakpdp11/sattyre/include/sattyre/SattyreSAT.hpp" line="27" column="1" bodyfile="/home/chubakpdp11/sattyre/include/sattyre/SattyreSAT.hpp" bodystart="27" bodyend="33"/>
+    <listofallmembers>
+      <member refid="classsattyre_1_1SATSolver_1a4c732e01b49ee54639c02e5a69a19a37" prot="public" virt="pure-virtual"><scope>sattyre::SATSolver</scope><name>load</name></member>
+      <member refid="classsattyre_1_1SATSolver_1ab11ec646be0da1bf9880fe13cbba37cc" prot="public" virt="pure-virtual"><scope>sattyre::SATSolver</scope><name>model</name></member>
+      <member refid="classsattyre_1_1SATSolver_1ab3305cbfa1a0497eae77f93bf96cc927" prot="public" virt="pure-virtual"><scope>sattyre::SATSolver</scope><name>solve</name></member>
+      <member refid="classsattyre_1_1SATSolver_1adbd38b86c6e3d3de25b1cab7e403ed36" prot="public" virt="virtual"><scope>sattyre::SATSolver</scope><name>~SATSolver</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

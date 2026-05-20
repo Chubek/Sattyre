@@ -1,0 +1,170 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_chapter12" xml:lang="en-US">
+<title>
+<para>CLI Workflows, Testing Matrix, and Release Readiness </para>
+</title>
+<indexterm><primary>CLI Workflows, Testing Matrix, and Release Readiness</primary></indexterm>
+
+<para>Stage 8 user tooling and project polish.</para>
+<section xml:id="_chapter12_1autotoc_md57">
+<title>Scope</title>
+<para>This chapter covers <computeroutput>sattyre-cli</computeroutput>, <computeroutput>sattyre-packman</computeroutput>, <computeroutput>sattyre-registry</computeroutput>, and release checks. The CLI should reflect real library behavior, not stubs. Testing and docs must align with implementation state.</para>
+
+<para><literallayout><computeroutput>sattyre-cli&#32;examples/example.cnf
+sattyre-cli&#32;--solver&#32;native&#32;examples/example.cnf
+sattyre-cli&#32;examples/example.smt2
+</computeroutput></literallayout></para>
+<section xml:id="_chapter12_1autotoc_md58">
+<title>Quick recap</title>
+<para><itemizedlist>
+<listitem>
+<para>Keep this section aligned with Stage 8 user tooling and project polish.</para>
+</listitem><listitem>
+<para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem>
+<para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+</section>
+<section xml:id="_chapter12_1autotoc_md59">
+<title>sattyre-packman subcommands</title>
+<para>validate checks manifest structure. pack creates an archive. unpack extracts a bundle. install stages and places package files. remove deletes a package by name.</para>
+
+<para><literallayout><computeroutput>sattyre-packman&#32;validate&#32;./manifest.json
+sattyre-packman&#32;pack&#32;./pkg-root&#32;./pkg.satpkg
+sattyre-packman&#32;unpack&#32;./pkg.satpkg&#32;./out
+sattyre-packman&#32;install&#32;./pkg.satpkg&#32;./local-root
+sattyre-packman&#32;remove&#32;demo-solver&#32;./local-root
+</computeroutput></literallayout></para>
+<section xml:id="_chapter12_1autotoc_md60">
+<title>Quick recap</title>
+<para><itemizedlist>
+<listitem>
+<para>Keep this section aligned with Stage 8 user tooling and project polish.</para>
+</listitem><listitem>
+<para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem>
+<para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+</section>
+<section xml:id="_chapter12_1autotoc_md61">
+<title>sattyre-registry examples</title>
+<para>Serve packages locally. Publish archives to the registry. Fetch packages by name. List available packages.</para>
+
+<para><literallayout><computeroutput>sattyre-registry&#32;serve&#32;--host&#32;127.0.0.1&#32;--port&#32;8080&#32;--root&#32;./registry-root
+sattyre-registry&#32;publish&#32;./pkg.satpkg&#32;--url&#32;http://127.0.0.1:8080
+sattyre-registry&#32;fetch&#32;demo-solver&#32;--url&#32;http://127.0.0.1:8080
+sattyre-registry&#32;list&#32;--url&#32;http://127.0.0.1:8080
+</computeroutput></literallayout></para>
+<section xml:id="_chapter12_1autotoc_md62">
+<title>Quick recap</title>
+<para><itemizedlist>
+<listitem>
+<para>Keep this section aligned with Stage 8 user tooling and project polish.</para>
+</listitem><listitem>
+<para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem>
+<para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+</section>
+<section xml:id="_chapter12_1autotoc_md63">
+<title>Testing matrix</title>
+<para>Parser tests: DIMACS and manifest parsing behavior. ABI tests: solver/plugin/library compatibility and metadata. Package flow tests: bundle, install, remove. Registry smoke tests: local and optional HTTP checks. CLI smoke tests for each tool.</para>
+
+<para><literallayout><computeroutput>ctest&#32;--test-dir&#32;build/release&#32;--output-on-failure
+ctest&#32;--test-dir&#32;build/release&#32;-R&#32;sattyre-packman-cli-test&#32;--output-on-failure
+</computeroutput></literallayout></para>
+<section xml:id="_chapter12_1autotoc_md64">
+<title>Quick recap</title>
+<para><itemizedlist>
+<listitem>
+<para>Keep this section aligned with Stage 8 user tooling and project polish.</para>
+</listitem><listitem>
+<para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem>
+<para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+</section>
+<section xml:id="_chapter12_1autotoc_md65">
+<title>Release checklist</title>
+<para>Public headers install cleanly under <computeroutput>include/sattyre</computeroutput>. <computeroutput>sattyre.pc</computeroutput> is generated and installable. Docs build produces HTML, LaTeX, DocBook, and XML outputs. Version and compatibility policy are documented.</para>
+
+<para><literallayout><computeroutput>cmake&#32;-S&#32;.&#32;-B&#32;build/release&#32;-DSATTYRE_ENABLE_TESTS=ON&#32;-DSATTYRE_ENABLE_DOCS=ON
+cmake&#32;--build&#32;build/release&#32;-j
+cmake&#32;--build&#32;build/release&#32;--target&#32;sattyre-docs
+</computeroutput></literallayout></para>
+<section xml:id="_chapter12_1autotoc_md66">
+<title>Quick recap</title>
+<para><itemizedlist>
+<listitem>
+<para>Keep this section aligned with Stage 8 user tooling and project polish.</para>
+</listitem><listitem>
+<para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem>
+<para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+</section>
+<section xml:id="_chapter12_1autotoc_md67">
+<title>Chapter summary</title>
+<para>Stage 8 completes when tooling, tests, and docs are coherent. Use this chapter as the pre-release gate. Keep examples executable and synchronized with real behavior.</para>
+
+<para><literallayout><computeroutput>//&#32;Release&#32;readiness&#32;means&#32;the&#32;docs&#32;say&#32;the&#32;same&#32;thing&#32;the&#32;code&#32;does.
+</computeroutput></literallayout></para>
+<section xml:id="_chapter12_1autotoc_md68">
+<title>Quick recap</title>
+<para><itemizedlist>
+<listitem>
+<para>Keep this section aligned with Stage 8 user tooling and project polish.</para>
+</listitem><listitem>
+<para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem>
+<para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+<section xml:id="_chapter12_1autotoc_md69">
+<title>Supplemental example</title>
+<para><literallayout><computeroutput>//&#32;Minimal&#32;reference&#32;snippet&#32;for&#32;this&#32;chapter
+//&#32;Replace&#32;with&#32;project-specific&#32;values&#32;in&#32;your&#32;local&#32;environment.
+std::cout&#32;&lt;&lt;&#32;&quot;sattyre&#32;manual&#32;example&quot;&#32;&lt;&lt;&#32;std::endl;
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_chapter12_1autotoc_md70">
+<title>Supplemental example</title>
+<para><literallayout><computeroutput>//&#32;Minimal&#32;reference&#32;snippet&#32;for&#32;this&#32;chapter
+//&#32;Replace&#32;with&#32;project-specific&#32;values&#32;in&#32;your&#32;local&#32;environment.
+std::cout&#32;&lt;&lt;&#32;&quot;sattyre&#32;manual&#32;example&quot;&#32;&lt;&lt;&#32;std::endl;
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_chapter12_1autotoc_md71">
+<title>Supplemental example</title>
+<para><literallayout><computeroutput>//&#32;Minimal&#32;reference&#32;snippet&#32;for&#32;this&#32;chapter
+//&#32;Replace&#32;with&#32;project-specific&#32;values&#32;in&#32;your&#32;local&#32;environment.
+std::cout&#32;&lt;&lt;&#32;&quot;sattyre&#32;manual&#32;example&quot;&#32;&lt;&lt;&#32;std::endl;
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_chapter12_1autotoc_md72">
+<title>Supplemental example</title>
+<para><literallayout><computeroutput>//&#32;Minimal&#32;reference&#32;snippet&#32;for&#32;this&#32;chapter
+//&#32;Replace&#32;with&#32;project-specific&#32;values&#32;in&#32;your&#32;local&#32;environment.
+std::cout&#32;&lt;&lt;&#32;&quot;sattyre&#32;manual&#32;example&quot;&#32;&lt;&lt;&#32;std::endl;
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_chapter12_1autotoc_md73">
+<title>Supplemental example</title>
+<para><literallayout><computeroutput>//&#32;Minimal&#32;reference&#32;snippet&#32;for&#32;this&#32;chapter
+//&#32;Replace&#32;with&#32;project-specific&#32;values&#32;in&#32;your&#32;local&#32;environment.
+std::cout&#32;&lt;&lt;&#32;&quot;sattyre&#32;manual&#32;example&quot;&#32;&lt;&lt;&#32;std::endl;
+</computeroutput></literallayout> </para>
+</section>
+</section>
+</section>

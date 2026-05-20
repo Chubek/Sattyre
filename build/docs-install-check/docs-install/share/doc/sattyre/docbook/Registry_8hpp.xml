@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_Registry_8hpp" xml:lang="en-US">
+<title>/home/chubakpdp11/sattyre/include/sattyre/Registry.hpp File Reference</title>
+<indexterm><primary>/home/chubakpdp11/sattyre/include/sattyre/Registry.hpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &lt;vector&gt;<?linebreak?>#include &lt;string&gt;<?linebreak?></programlisting><simplesect>
+    <title>Data Structures    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_classsattyre_1_1RegistryServer">sattyre::RegistryServer</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classsattyre_1_1RegistryClient">sattyre::RegistryClient</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Namespaces    </title>
+        <itemizedlist>
+            <listitem><para>namespace <link linkend="_namespacesattyre">sattyre</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Enumerations    </title>
+        <itemizedlist>
+            <listitem><para>enum class <link linkend="_namespacesattyre_1aadc00e3812f882c93d55389540d6bd0e">sattyre::RegistryStatus</link> { <?linebreak?><link linkend="_namespacesattyre_1aadc00e3812f882c93d55389540d6bd0eaa60852f204ed8028c1c58808b746d115">sattyre::Ok</link> = 0
+, <link linkend="_namespacesattyre_1aadc00e3812f882c93d55389540d6bd0eac25cd95f2d50ba16866afc8fc9a3e0d0">sattyre::RegistryNotFound</link>
+, <link linkend="_namespacesattyre_1aadc00e3812f882c93d55389540d6bd0ea0b0f89502707eccb0902f6bf77a9d10e">sattyre::PackageNotFound</link>
+, <link linkend="_namespacesattyre_1aadc00e3812f882c93d55389540d6bd0eaf05cfcbf5123775f7c73e520a8d861e1">sattyre::IoError</link>
+, <?linebreak?><link linkend="_namespacesattyre_1aadc00e3812f882c93d55389540d6bd0ea253ca7dd096ee0956cccee4d376cab8b">sattyre::InvalidArgument</link>
+ }</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

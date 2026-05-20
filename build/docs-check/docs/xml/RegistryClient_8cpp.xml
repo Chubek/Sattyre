@@ -1,0 +1,231 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="RegistryClient_8cpp" kind="file" language="C++">
+    <compoundname>RegistryClient.cpp</compoundname>
+    <includes refid="Registry_8hpp" local="yes">sattyre/Registry.hpp</includes>
+    <includes refid="Log_8hpp" local="yes">sattyre/Log.hpp</includes>
+    <includes local="no">filesystem</includes>
+    <includes local="no">fstream</includes>
+    <includes local="no">sstream</includes>
+    <includes local="yes">httplib.h</includes>
+    <incdepgraph>
+      <node id="5">
+        <label>sattyre/Log.hpp</label>
+        <link refid="Log_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>sattyre/Registry.hpp</label>
+        <link refid="Registry_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/home/chubakpdp11/sattyre/src/registry/RegistryClient.cpp</label>
+        <link refid="RegistryClient_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>filesystem</label>
+      </node>
+      <node id="7">
+        <label>fstream</label>
+      </node>
+      <node id="9">
+        <label>httplib.h</label>
+      </node>
+      <node id="8">
+        <label>sstream</label>
+      </node>
+      <node id="4">
+        <label>string</label>
+      </node>
+      <node id="3">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespacesattyre">sattyre</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Registry_8hpp" kindref="compound">sattyre/Registry.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Log_8hpp" kindref="compound">sattyre/Log.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;filesystem&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fstream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sstream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;httplib.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacesattyre" kindref="compound">sattyre</ref><sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>parse_http_base(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>base_url,<sp/>std::string&amp;<sp/>host,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&amp;<sp/>port)<sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>prefix<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;http://&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(base_url.rfind(prefix,<sp/>0)<sp/>!=<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>host_port<sp/>=<sp/>base_url.substr(prefix.size());</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>colon<sp/>=<sp/>host_port.find(</highlight><highlight class="charliteral">&apos;:&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(colon<sp/>==<sp/>std::string::npos)<sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>host<sp/>=<sp/>host_port;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>port<sp/>=<sp/>80;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>!host.empty();</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/>host<sp/>=<sp/>host_port.substr(0,<sp/>colon);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>port<sp/>=<sp/>std::stoi(host_port.substr(colon<sp/>+<sp/>1));</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(...)<sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>!host.empty()<sp/>&amp;&amp;<sp/>port<sp/>&gt;<sp/>0;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><ref refid="namespacesattyre_1aadc00e3812f882c93d55389540d6bd0e" kindref="member">RegistryStatus</ref><sp/><ref refid="classsattyre_1_1RegistryClient_1ab000f894c9983260e08fc01fac554f32" kindref="member">RegistryClient::deploy</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>bundle_path,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>registry_url)<sp/>{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><ref refid="namespacesattyre_1_1log_1a40742a025a6bcfa79293f2f796103107" kindref="member">log::info</ref>(</highlight><highlight class="stringliteral">&quot;Deploying<sp/>bundle<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>bundle_path<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;<sp/>to<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>registry_url);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">fs<sp/>=<sp/>std::filesystem;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(bundle_path.empty()<sp/>||<sp/>registry_url.empty())<sp/>{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacesattyre_1aadc00e3812f882c93d55389540d6bd0ea253ca7dd096ee0956cccee4d376cab8b" kindref="member">RegistryStatus::InvalidArgument</ref>;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>fs::path<sp/>source(bundle_path);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>fs::path<sp/>target_dir(registry_url);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!fs::exists(source))<sp/>{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacesattyre_1aadc00e3812f882c93d55389540d6bd0ea0b0f89502707eccb0902f6bf77a9d10e" kindref="member">RegistryStatus::PackageNotFound</ref>;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/>std::error_code<sp/><ref refid="namespacesattyre_1_1log_1a7778fbdbf5f5ae25a488fd22492a8b56" kindref="member">error</ref>;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/>fs::create_directories(target_dir,<sp/>error);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(error)<sp/>{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacesattyre_1aadc00e3812f882c93d55389540d6bd0eaf05cfcbf5123775f7c73e520a8d861e1" kindref="member">RegistryStatus::IoError</ref>;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>fs::path<sp/>target<sp/>=<sp/>target_dir<sp/>/<sp/>source.filename();</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/>fs::copy_file(source,<sp/>target,<sp/>fs::copy_options::overwrite_existing,<sp/>error);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacesattyre_1_1log_1a7778fbdbf5f5ae25a488fd22492a8b56" kindref="member">error</ref><sp/>?<sp/><ref refid="namespacesattyre_1aadc00e3812f882c93d55389540d6bd0eaf05cfcbf5123775f7c73e520a8d861e1" kindref="member">RegistryStatus::IoError</ref><sp/>:<sp/><ref refid="namespacesattyre_1aadc00e3812f882c93d55389540d6bd0eaa60852f204ed8028c1c58808b746d115" kindref="member">RegistryStatus::Ok</ref>;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><ref refid="namespacesattyre_1aadc00e3812f882c93d55389540d6bd0e" kindref="member">RegistryStatus</ref><sp/><ref refid="classsattyre_1_1RegistryClient_1ae3fbe4fab8dd3f8c0b319853579a0d49" kindref="member">RegistryClient::download</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>package_name,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>registry_url)<sp/>{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><ref refid="namespacesattyre_1_1log_1a40742a025a6bcfa79293f2f796103107" kindref="member">log::info</ref>(</highlight><highlight class="stringliteral">&quot;Downloading<sp/>package<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>package_name<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;<sp/>from<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>registry_url);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">fs<sp/>=<sp/>std::filesystem;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(package_name.empty()<sp/>||<sp/>registry_url.empty())<sp/>{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacesattyre_1aadc00e3812f882c93d55389540d6bd0ea253ca7dd096ee0956cccee4d376cab8b" kindref="member">RegistryStatus::InvalidArgument</ref>;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>fs::path<sp/>source<sp/>=<sp/>fs::path(registry_url)<sp/>/<sp/>package_name;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!fs::exists(source))<sp/>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacesattyre_1aadc00e3812f882c93d55389540d6bd0ea0b0f89502707eccb0902f6bf77a9d10e" kindref="member">RegistryStatus::PackageNotFound</ref>;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/>std::error_code<sp/><ref refid="namespacesattyre_1_1log_1a7778fbdbf5f5ae25a488fd22492a8b56" kindref="member">error</ref>;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/>fs::copy_file(source,<sp/>fs::path(package_name),<sp/>fs::copy_options::overwrite_existing,<sp/>error);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacesattyre_1_1log_1a7778fbdbf5f5ae25a488fd22492a8b56" kindref="member">error</ref><sp/>?<sp/><ref refid="namespacesattyre_1aadc00e3812f882c93d55389540d6bd0eaf05cfcbf5123775f7c73e520a8d861e1" kindref="member">RegistryStatus::IoError</ref><sp/>:<sp/><ref refid="namespacesattyre_1aadc00e3812f882c93d55389540d6bd0eaa60852f204ed8028c1c58808b746d115" kindref="member">RegistryStatus::Ok</ref>;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><ref refid="namespacesattyre_1aadc00e3812f882c93d55389540d6bd0e" kindref="member">RegistryStatus</ref><sp/><ref refid="classsattyre_1_1RegistryClient_1a0bf5191ba64221ba11db3c46cddeac66" kindref="member">RegistryClient::list_http</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>base_url,<sp/>std::vector&lt;std::string&gt;&amp;<sp/>packages)<sp/>{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/>packages.clear();</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/>std::string<sp/>host;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>port<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!parse_http_base(base_url,<sp/>host,<sp/>port))<sp/>{</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacesattyre_1aadc00e3812f882c93d55389540d6bd0ea253ca7dd096ee0956cccee4d376cab8b" kindref="member">RegistryStatus::InvalidArgument</ref>;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/>httplib::Client<sp/>client(host,<sp/>port);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>response<sp/>=<sp/>client.Get(</highlight><highlight class="stringliteral">&quot;/packages&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!response)<sp/>{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacesattyre_1aadc00e3812f882c93d55389540d6bd0eaf05cfcbf5123775f7c73e520a8d861e1" kindref="member">RegistryStatus::IoError</ref>;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(response-&gt;status<sp/>!=<sp/>200)<sp/>{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacesattyre_1aadc00e3812f882c93d55389540d6bd0eaf05cfcbf5123775f7c73e520a8d861e1" kindref="member">RegistryStatus::IoError</ref>;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/>std::istringstream<sp/>in(response-&gt;body);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/>std::string<sp/>line;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(std::getline(in,<sp/>line))<sp/>{</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!line.empty())<sp/>{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>packages.push_back(line);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacesattyre_1aadc00e3812f882c93d55389540d6bd0eaa60852f204ed8028c1c58808b746d115" kindref="member">RegistryStatus::Ok</ref>;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><ref refid="namespacesattyre_1aadc00e3812f882c93d55389540d6bd0e" kindref="member">RegistryStatus</ref><sp/><ref refid="classsattyre_1_1RegistryClient_1a0e95ca38dfffe3805270721dec5199bb" kindref="member">RegistryClient::deploy_http</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>bundle_path,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>base_url)<sp/>{</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">fs<sp/>=<sp/>std::filesystem;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>fs::path<sp/>source(bundle_path);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!fs::exists(source)<sp/>||<sp/>source.filename().empty())<sp/>{</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacesattyre_1aadc00e3812f882c93d55389540d6bd0ea0b0f89502707eccb0902f6bf77a9d10e" kindref="member">RegistryStatus::PackageNotFound</ref>;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/>std::string<sp/>host;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>port<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!parse_http_base(base_url,<sp/>host,<sp/>port))<sp/>{</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacesattyre_1aadc00e3812f882c93d55389540d6bd0ea253ca7dd096ee0956cccee4d376cab8b" kindref="member">RegistryStatus::InvalidArgument</ref>;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/>std::ifstream<sp/>in(source,<sp/>std::ios::binary);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!in)<sp/>{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacesattyre_1aadc00e3812f882c93d55389540d6bd0eaf05cfcbf5123775f7c73e520a8d861e1" kindref="member">RegistryStatus::IoError</ref>;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/>std::string<sp/>body((std::istreambuf_iterator&lt;char&gt;(in)),<sp/>std::istreambuf_iterator&lt;char&gt;());</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/>httplib::Client<sp/>client(host,<sp/>port);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>path<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;/packages/&quot;</highlight><highlight class="normal"><sp/>+<sp/>source.filename().string();</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>response<sp/>=<sp/>client.Put(path.c_str(),<sp/>body,<sp/></highlight><highlight class="stringliteral">&quot;application/octet-stream&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!response)<sp/>{</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacesattyre_1aadc00e3812f882c93d55389540d6bd0eaf05cfcbf5123775f7c73e520a8d861e1" kindref="member">RegistryStatus::IoError</ref>;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(response-&gt;status<sp/>==<sp/>201<sp/>||<sp/>response-&gt;status<sp/>==<sp/>200)<sp/>?<sp/><ref refid="namespacesattyre_1aadc00e3812f882c93d55389540d6bd0eaa60852f204ed8028c1c58808b746d115" kindref="member">RegistryStatus::Ok</ref><sp/>:<sp/><ref refid="namespacesattyre_1aadc00e3812f882c93d55389540d6bd0eaf05cfcbf5123775f7c73e520a8d861e1" kindref="member">RegistryStatus::IoError</ref>;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><ref refid="namespacesattyre_1aadc00e3812f882c93d55389540d6bd0e" kindref="member">RegistryStatus</ref><sp/><ref refid="classsattyre_1_1RegistryClient_1a49436fc77cb214aaf8ec946a4deae395" kindref="member">RegistryClient::download_http</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>package_name,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>base_url)<sp/>{</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(package_name.empty())<sp/>{</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacesattyre_1aadc00e3812f882c93d55389540d6bd0ea253ca7dd096ee0956cccee4d376cab8b" kindref="member">RegistryStatus::InvalidArgument</ref>;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/>std::string<sp/>host;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>port<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!parse_http_base(base_url,<sp/>host,<sp/>port))<sp/>{</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacesattyre_1aadc00e3812f882c93d55389540d6bd0ea253ca7dd096ee0956cccee4d376cab8b" kindref="member">RegistryStatus::InvalidArgument</ref>;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/>httplib::Client<sp/>client(host,<sp/>port);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>response<sp/>=<sp/>client.Get((</highlight><highlight class="stringliteral">&quot;/packages/&quot;</highlight><highlight class="normal"><sp/>+<sp/>package_name).c_str());</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!response)<sp/>{</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacesattyre_1aadc00e3812f882c93d55389540d6bd0eaf05cfcbf5123775f7c73e520a8d861e1" kindref="member">RegistryStatus::IoError</ref>;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(response-&gt;status<sp/>==<sp/>404)<sp/>{</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacesattyre_1aadc00e3812f882c93d55389540d6bd0ea0b0f89502707eccb0902f6bf77a9d10e" kindref="member">RegistryStatus::PackageNotFound</ref>;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(response-&gt;status<sp/>!=<sp/>200)<sp/>{</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacesattyre_1aadc00e3812f882c93d55389540d6bd0eaf05cfcbf5123775f7c73e520a8d861e1" kindref="member">RegistryStatus::IoError</ref>;</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/>std::ofstream<sp/>out(package_name,<sp/>std::ios::binary<sp/>|<sp/>std::ios::trunc);</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!out)<sp/>{</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacesattyre_1aadc00e3812f882c93d55389540d6bd0eaf05cfcbf5123775f7c73e520a8d861e1" kindref="member">RegistryStatus::IoError</ref>;</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/>out.write(response-&gt;body.data(),<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">std::streamsize</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(response-&gt;body.size()));</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>out.good()<sp/>?<sp/><ref refid="namespacesattyre_1aadc00e3812f882c93d55389540d6bd0eaa60852f204ed8028c1c58808b746d115" kindref="member">RegistryStatus::Ok</ref><sp/>:<sp/><ref refid="namespacesattyre_1aadc00e3812f882c93d55389540d6bd0eaf05cfcbf5123775f7c73e520a8d861e1" kindref="member">RegistryStatus::IoError</ref>;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>sattyre</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/chubakpdp11/sattyre/src/registry/RegistryClient.cpp"/>
+  </compounddef>
+</doxygen>

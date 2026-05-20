@@ -1,0 +1,138 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="chapter2" kind="page">
+    <compoundname>chapter2</compoundname>
+    <title>SAT Core and DIMACS Parsing</title>
+    <briefdescription>
+<para>Stage 2 SAT front-end correctness. </para>
+    </briefdescription>
+    <detaileddescription>
+<sect1 id="chapter2_1autotoc_md74_1s1"><sect2 id="chapter2_1autotoc_md74">
+<title>Scope</title><para>This chapter covers SAT structures, DIMACS ingestion, and deterministic parser failures. The parser must reject malformed inputs early and preserve clear semantics for callers. Examples here map directly to <computeroutput><ref refid="structsattyre_1_1SATProblem" kindref="compound">sattyre::SATProblem</ref></computeroutput> and <computeroutput>parse_dimacs_file</computeroutput> behavior.</para>
+<para><programlisting filename=".text"><codeline><highlight class="normal">#include<sp/>&lt;sattyre/SattyreSAT.hpp&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">sattyre::SATProblem<sp/>p<sp/>=<sp/>sattyre::parse_dimacs_file(&quot;examples/example.cnf&quot;);</highlight></codeline>
+<codeline><highlight class="normal">std::size_t<sp/>vars<sp/>=<sp/>p.variable_count;</highlight></codeline>
+<codeline><highlight class="normal">std::size_t<sp/>clauses<sp/>=<sp/>p.clauses.size();</highlight></codeline>
+</programlisting></para>
+<sect3 id="chapter2_1autotoc_md75">
+<title>Quick recap</title><para><itemizedlist>
+<listitem><para>Keep this section aligned with Stage 2 SAT front-end correctness.</para>
+</listitem><listitem><para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem><para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</sect3>
+</sect2></sect1>
+<sect1 id="chapter2_1autotoc_md76_1s1"><sect2 id="chapter2_1autotoc_md76">
+<title>DIMACS fundamentals</title><para>Comment lines begin with <computeroutput>c</computeroutput> and can appear before the problem line. The problem line defines variable and clause declarations and should be validated. Each clause must terminate with literal <computeroutput>0</computeroutput>.</para>
+<para><programlisting filename=".text"><codeline><highlight class="normal">c<sp/>tiny<sp/>satisfiable<sp/>sample</highlight></codeline>
+<codeline><highlight class="normal">p<sp/>cnf<sp/>3<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">1<sp/>-2<sp/>0</highlight></codeline>
+<codeline><highlight class="normal">2<sp/>3<sp/>0</highlight></codeline>
+</programlisting></para>
+<sect3 id="chapter2_1autotoc_md77">
+<title>Quick recap</title><para><itemizedlist>
+<listitem><para>Keep this section aligned with Stage 2 SAT front-end correctness.</para>
+</listitem><listitem><para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem><para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</sect3>
+</sect2></sect1>
+<sect1 id="chapter2_1autotoc_md78_1s1"><sect2 id="chapter2_1autotoc_md78">
+<title>Validation expectations</title><para>Out-of-range literal ids must fail when absolute literal exceeds declared variable count. Clause lines without terminating zero must fail. Mismatch between declared and parsed clause counts should fail clearly.</para>
+<para><programlisting filename=".text"><codeline><highlight class="normal">try<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>auto<sp/>p<sp/>=<sp/>sattyre::parse_dimacs_file(&quot;broken.cnf&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>(void)p;</highlight></codeline>
+<codeline><highlight class="normal">}<sp/>catch<sp/>(const<sp/>std::exception&amp;<sp/>ex)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/>&quot;DIMACS<sp/>parse<sp/>error:<sp/>&quot;<sp/>&lt;&lt;<sp/>ex.what()<sp/>&lt;&lt;<sp/>&quot;\n&quot;;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+<sect3 id="chapter2_1autotoc_md79">
+<title>Quick recap</title><para><itemizedlist>
+<listitem><para>Keep this section aligned with Stage 2 SAT front-end correctness.</para>
+</listitem><listitem><para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem><para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</sect3>
+</sect2></sect1>
+<sect1 id="chapter2_1autotoc_md80_1s1"><sect2 id="chapter2_1autotoc_md80">
+<title>Edge semantics</title><para>An empty formula with zero clauses is SAT by convention but still parsed as a valid problem. An empty clause denotes UNSAT structure and should be preserved as an empty clause entry. Literal sign encodes polarity; absolute value encodes variable index.</para>
+<para><programlisting filename=".text"><codeline><highlight class="normal">sattyre::SATProblem<sp/>p;</highlight></codeline>
+<codeline><highlight class="normal">p.variable_count<sp/>=<sp/>2;</highlight></codeline>
+<codeline><highlight class="normal">p.clauses<sp/>=<sp/>{<sp/>{1},<sp/>{-1,<sp/>2}<sp/>};</highlight></codeline>
+</programlisting></para>
+<sect3 id="chapter2_1autotoc_md81">
+<title>Quick recap</title><para><itemizedlist>
+<listitem><para>Keep this section aligned with Stage 2 SAT front-end correctness.</para>
+</listitem><listitem><para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem><para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</sect3>
+</sect2></sect1>
+<sect1 id="chapter2_1autotoc_md82_1s1"><sect2 id="chapter2_1autotoc_md82">
+<title>Test design</title><para>Write tests for normal, malformed, and boundary cases. Use small CNF files so failures are obvious and reproducible. Check exact exceptions or statuses to prevent silent behavior drift.</para>
+<para><programlisting filename=".text"><codeline><highlight class="normal">cmake<sp/>-S<sp/>.<sp/>-B<sp/>build/sat-tests<sp/>-DSATTYRE_ENABLE_TESTS=ON</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>--build<sp/>build/sat-tests<sp/>-j</highlight></codeline>
+<codeline><highlight class="normal">ctest<sp/>--test-dir<sp/>build/sat-tests<sp/>-R<sp/>sattyre-sat-parser-test<sp/>--output-on-failure</highlight></codeline>
+</programlisting></para>
+<sect3 id="chapter2_1autotoc_md83">
+<title>Quick recap</title><para><itemizedlist>
+<listitem><para>Keep this section aligned with Stage 2 SAT front-end correctness.</para>
+</listitem><listitem><para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem><para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</sect3>
+</sect2></sect1>
+<sect1 id="chapter2_1autotoc_md84_1s1"><sect2 id="chapter2_1autotoc_md84">
+<title>Chapter summary</title><para>SAT correctness begins with a strict parser, not with advanced solver heuristics. If parser behavior is unstable, downstream solver and CLI behavior cannot be trusted. Treat parse errors as first-class API outcomes.</para>
+<para><programlisting filename=".text"><codeline><highlight class="normal">//<sp/>Good<sp/>parser<sp/>output<sp/>should<sp/>be<sp/>deterministic<sp/>for<sp/>a<sp/>given<sp/>input.</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Keep<sp/>regression<sp/>coverage<sp/>close<sp/>to<sp/>edge-case<sp/>inputs.</highlight></codeline>
+</programlisting></para>
+<sect3 id="chapter2_1autotoc_md85">
+<title>Quick recap</title><para><itemizedlist>
+<listitem><para>Keep this section aligned with Stage 2 SAT front-end correctness.</para>
+</listitem><listitem><para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem><para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</sect3>
+<sect3 id="chapter2_1autotoc_md86">
+<title>Supplemental example</title><para><programlisting filename=".text"><codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+</programlisting></para>
+</sect3>
+<sect3 id="chapter2_1autotoc_md87">
+<title>Supplemental example</title><para><programlisting filename=".text"><codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+</programlisting></para>
+</sect3>
+<sect3 id="chapter2_1autotoc_md88">
+<title>Supplemental example</title><para><programlisting filename=".text"><codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+</programlisting></para>
+</sect3>
+<sect3 id="chapter2_1autotoc_md89">
+<title>Supplemental example</title><para><programlisting filename=".text"><codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+</programlisting></para>
+</sect3>
+<sect3 id="chapter2_1autotoc_md90">
+<title>Supplemental example</title><para><programlisting filename=".text"><codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+</programlisting> </para>
+</sect3>
+</sect2></sect1>
+    </detaileddescription>
+    <location file="/home/chubakpdp11/sattyre/docs/manual/Chapter-2.rst"/>
+  </compounddef>
+</doxygen>

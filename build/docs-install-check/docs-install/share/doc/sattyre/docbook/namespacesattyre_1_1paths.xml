@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_namespacesattyre_1_1paths" xml:lang="en-US">
+<title>sattyre::paths Namespace Reference</title>
+<indexterm><primary>sattyre::paths</primary></indexterm>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>std::filesystem::path <link linkend="_namespacesattyre_1_1paths_1ab27166907ed0acf84493e60bb42a5f59">home</link> ()</para>
+</listitem>
+            <listitem><para>std::filesystem::path <link linkend="_namespacesattyre_1_1paths_1a31e3848bd20ab8a4d141baba3485489b">include_dir</link> ()</para>
+</listitem>
+            <listitem><para>std::filesystem::path <link linkend="_namespacesattyre_1_1paths_1ad5ab12a05151adaea26577db51bb49d6">lib_dir</link> ()</para>
+</listitem>
+            <listitem><para>std::filesystem::path <link linkend="_namespacesattyre_1_1paths_1a546bb0716882db602086747bc2bfac3a">solver_dir</link> ()</para>
+</listitem>
+            <listitem><para>std::filesystem::path <link linkend="_namespacesattyre_1_1paths_1a18ffbd7d0348018bc8d213eaf6ac5554">plugin_dir</link> ()</para>
+</listitem>
+            <listitem><para>std::filesystem::path <link linkend="_namespacesattyre_1_1paths_1a52d2fa045248fe403a0527fe5bed44a9">lua_dir</link> ()</para>
+</listitem>
+            <listitem><para>std::filesystem::path <link linkend="_namespacesattyre_1_1paths_1ab77584e7e724d94526e70b944f8dd789">package_dir</link> ()</para>
+</listitem>
+            <listitem><para>std::filesystem::path <link linkend="_namespacesattyre_1_1paths_1ac5175e3a6fe838e6bdcd63b60eaac244">doc_dir</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_namespacesattyre_1_1paths_1ac5175e3a6fe838e6bdcd63b60eaac244"/><section>
+    <title>doc_dir()</title>
+<indexterm><primary>doc_dir</primary><secondary>sattyre::paths</secondary></indexterm>
+<indexterm><primary>sattyre::paths</primary><secondary>doc_dir</secondary></indexterm>
+<para><computeroutput>std::filesystem::path sattyre::paths::doc_dir ( )</computeroutput></para></section>
+<anchor xml:id="_namespacesattyre_1_1paths_1ab27166907ed0acf84493e60bb42a5f59"/><section>
+    <title>home()</title>
+<indexterm><primary>home</primary><secondary>sattyre::paths</secondary></indexterm>
+<indexterm><primary>sattyre::paths</primary><secondary>home</secondary></indexterm>
+<para><computeroutput>std::filesystem::path sattyre::paths::home ( )</computeroutput></para></section>
+<anchor xml:id="_namespacesattyre_1_1paths_1a31e3848bd20ab8a4d141baba3485489b"/><section>
+    <title>include_dir()</title>
+<indexterm><primary>include_dir</primary><secondary>sattyre::paths</secondary></indexterm>
+<indexterm><primary>sattyre::paths</primary><secondary>include_dir</secondary></indexterm>
+<para><computeroutput>std::filesystem::path sattyre::paths::include_dir ( )</computeroutput></para></section>
+<anchor xml:id="_namespacesattyre_1_1paths_1ad5ab12a05151adaea26577db51bb49d6"/><section>
+    <title>lib_dir()</title>
+<indexterm><primary>lib_dir</primary><secondary>sattyre::paths</secondary></indexterm>
+<indexterm><primary>sattyre::paths</primary><secondary>lib_dir</secondary></indexterm>
+<para><computeroutput>std::filesystem::path sattyre::paths::lib_dir ( )</computeroutput></para></section>
+<anchor xml:id="_namespacesattyre_1_1paths_1a52d2fa045248fe403a0527fe5bed44a9"/><section>
+    <title>lua_dir()</title>
+<indexterm><primary>lua_dir</primary><secondary>sattyre::paths</secondary></indexterm>
+<indexterm><primary>sattyre::paths</primary><secondary>lua_dir</secondary></indexterm>
+<para><computeroutput>std::filesystem::path sattyre::paths::lua_dir ( )</computeroutput></para></section>
+<anchor xml:id="_namespacesattyre_1_1paths_1ab77584e7e724d94526e70b944f8dd789"/><section>
+    <title>package_dir()</title>
+<indexterm><primary>package_dir</primary><secondary>sattyre::paths</secondary></indexterm>
+<indexterm><primary>sattyre::paths</primary><secondary>package_dir</secondary></indexterm>
+<para><computeroutput>std::filesystem::path sattyre::paths::package_dir ( )</computeroutput></para></section>
+<anchor xml:id="_namespacesattyre_1_1paths_1a18ffbd7d0348018bc8d213eaf6ac5554"/><section>
+    <title>plugin_dir()</title>
+<indexterm><primary>plugin_dir</primary><secondary>sattyre::paths</secondary></indexterm>
+<indexterm><primary>sattyre::paths</primary><secondary>plugin_dir</secondary></indexterm>
+<para><computeroutput>std::filesystem::path sattyre::paths::plugin_dir ( )</computeroutput></para></section>
+<anchor xml:id="_namespacesattyre_1_1paths_1a546bb0716882db602086747bc2bfac3a"/><section>
+    <title>solver_dir()</title>
+<indexterm><primary>solver_dir</primary><secondary>sattyre::paths</secondary></indexterm>
+<indexterm><primary>sattyre::paths</primary><secondary>solver_dir</secondary></indexterm>
+<para><computeroutput>std::filesystem::path sattyre::paths::solver_dir ( )</computeroutput></para></section>
+</section>
+</section>

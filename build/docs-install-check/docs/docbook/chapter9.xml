@@ -1,0 +1,171 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_chapter9" xml:lang="en-US">
+<title>
+<para>Installer API, Status Codes, and Local Package Layout </para>
+</title>
+<indexterm><primary>Installer API, Status Codes, and Local Package Layout</primary></indexterm>
+
+<para>Stage 5 install/remove determinism.</para>
+<section xml:id="_chapter9_1autotoc_md196">
+<title>Scope</title>
+<para>This chapter covers <computeroutput>InstallerStatus</computeroutput> and install/remove package operations. Boolean success is insufficient for CLI and API callers. Status enums let callers distinguish already-exists, parse, extract, and I/O failures.</para>
+
+<para><literallayout><computeroutput>enum&#32;class&#32;InstallerStatus&#32;{
+&#32;&#32;Ok&#32;=&#32;0,&#32;BundleNotFound,&#32;RootPathError,&#32;ExtractFailed,&#32;ManifestMissing,
+&#32;&#32;ManifestParseFailed,&#32;AlreadyExists,&#32;RemoveExistingFailed,
+&#32;&#32;CreateDestinationFailed,&#32;MoveFailed,&#32;RemoveFailed,&#32;NotFound
+};
+</computeroutput></literallayout></para>
+<section xml:id="_chapter9_1autotoc_md197">
+<title>Quick recap</title>
+<para><itemizedlist>
+<listitem>
+<para>Keep this section aligned with Stage 5 install/remove determinism.</para>
+</listitem><listitem>
+<para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem>
+<para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+</section>
+<section xml:id="_chapter9_1autotoc_md198">
+<title>Installation flow</title>
+<para>Validate bundle path and install root. Extract into staging path. Load and validate manifest. Move staged package into destination by package name. Handle overwrite policy explicitly.</para>
+
+<para><literallayout><computeroutput>auto&#32;st&#32;=&#32;sattyre::install_package(bundle,&#32;root,&#32;false);
+if&#32;(st&#32;==&#32;sattyre::InstallerStatus::AlreadyExists)&#32;{
+&#32;&#32;std::cout&#32;&lt;&lt;&#32;&quot;Package&#32;already&#32;installed;&#32;use&#32;overwrite&#32;if&#32;desired\n&quot;;
+}
+</computeroutput></literallayout></para>
+<section xml:id="_chapter9_1autotoc_md199">
+<title>Quick recap</title>
+<para><itemizedlist>
+<listitem>
+<para>Keep this section aligned with Stage 5 install/remove determinism.</para>
+</listitem><listitem>
+<para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem>
+<para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+</section>
+<section xml:id="_chapter9_1autotoc_md200">
+<title>Removal flow</title>
+<para>Map missing package to <computeroutput>InstallerStatus::NotFound</computeroutput>. Return <computeroutput>RemoveFailed</computeroutput> for filesystem errors. Do not silently ignore remove failures.</para>
+
+<para><literallayout><computeroutput>auto&#32;st&#32;=&#32;sattyre::remove_package(&quot;demo-solver&quot;,&#32;root);
+if&#32;(st&#32;!=&#32;sattyre::InstallerStatus::Ok)&#32;{
+&#32;&#32;std::cerr&#32;&lt;&lt;&#32;&quot;remove&#32;failed&#32;with&#32;status&#32;code&quot;&#32;&lt;&lt;&#32;static_cast&lt;int&gt;(st)&#32;&lt;&lt;&#32;&quot;\n&quot;;
+}
+</computeroutput></literallayout></para>
+<section xml:id="_chapter9_1autotoc_md201">
+<title>Quick recap</title>
+<para><itemizedlist>
+<listitem>
+<para>Keep this section aligned with Stage 5 install/remove determinism.</para>
+</listitem><listitem>
+<para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem>
+<para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+</section>
+<section xml:id="_chapter9_1autotoc_md202">
+<title>Layout expectations</title>
+<para>Packages should live in a destination tree that separates solver, plugin, library, and Lua addon installs. Keep manifest and payload paths predictable. Provide a removal path that can undo a successful install.</para>
+
+<para><literallayout><computeroutput>//&#32;Package&#32;layout&#32;should&#32;be&#32;easy&#32;to&#32;inspect&#32;with&#32;`find`&#32;or&#32;a&#32;file&#32;browser.
+//&#32;Stable&#32;destinations&#32;reduce&#32;surprises&#32;in&#32;packman&#32;and&#32;registry&#32;flows.
+</computeroutput></literallayout></para>
+<section xml:id="_chapter9_1autotoc_md203">
+<title>Quick recap</title>
+<para><itemizedlist>
+<listitem>
+<para>Keep this section aligned with Stage 5 install/remove determinism.</para>
+</listitem><listitem>
+<para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem>
+<para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+</section>
+<section xml:id="_chapter9_1autotoc_md204">
+<title>CLI mapping</title>
+<para><computeroutput>sattyre-packman</computeroutput> install/remove should print user-facing text by status. Exit codes should be nonzero for non-<computeroutput>Ok</computeroutput> statuses. Keep status-to-message mapping centralized.</para>
+
+<para><literallayout><computeroutput>cmake&#32;-S&#32;.&#32;-B&#32;build/install&#32;-DSATTYRE_ENABLE_TESTS=ON
+cmake&#32;--build&#32;build/install&#32;-j
+ctest&#32;--test-dir&#32;build/install&#32;-R&#32;sattyre-package-flow-test&#32;--output-on-failure
+</computeroutput></literallayout></para>
+<section xml:id="_chapter9_1autotoc_md205">
+<title>Quick recap</title>
+<para><itemizedlist>
+<listitem>
+<para>Keep this section aligned with Stage 5 install/remove determinism.</para>
+</listitem><listitem>
+<para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem>
+<para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+</section>
+<section xml:id="_chapter9_1autotoc_md206">
+<title>Chapter summary</title>
+<para>Installer status enums make failures diagnosable. The local package flow becomes deterministic and script-friendly. This is critical before building remote registry pipelines.</para>
+
+<para><literallayout><computeroutput>//&#32;Distinguish&#32;already-exists&#32;from&#32;actual&#32;extraction&#32;failures.
+</computeroutput></literallayout></para>
+<section xml:id="_chapter9_1autotoc_md207">
+<title>Quick recap</title>
+<para><itemizedlist>
+<listitem>
+<para>Keep this section aligned with Stage 5 install/remove determinism.</para>
+</listitem><listitem>
+<para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem>
+<para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+<section xml:id="_chapter9_1autotoc_md208">
+<title>Supplemental example</title>
+<para><literallayout><computeroutput>//&#32;Minimal&#32;reference&#32;snippet&#32;for&#32;this&#32;chapter
+//&#32;Replace&#32;with&#32;project-specific&#32;values&#32;in&#32;your&#32;local&#32;environment.
+std::cout&#32;&lt;&lt;&#32;&quot;sattyre&#32;manual&#32;example&quot;&#32;&lt;&lt;&#32;std::endl;
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_chapter9_1autotoc_md209">
+<title>Supplemental example</title>
+<para><literallayout><computeroutput>//&#32;Minimal&#32;reference&#32;snippet&#32;for&#32;this&#32;chapter
+//&#32;Replace&#32;with&#32;project-specific&#32;values&#32;in&#32;your&#32;local&#32;environment.
+std::cout&#32;&lt;&lt;&#32;&quot;sattyre&#32;manual&#32;example&quot;&#32;&lt;&lt;&#32;std::endl;
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_chapter9_1autotoc_md210">
+<title>Supplemental example</title>
+<para><literallayout><computeroutput>//&#32;Minimal&#32;reference&#32;snippet&#32;for&#32;this&#32;chapter
+//&#32;Replace&#32;with&#32;project-specific&#32;values&#32;in&#32;your&#32;local&#32;environment.
+std::cout&#32;&lt;&lt;&#32;&quot;sattyre&#32;manual&#32;example&quot;&#32;&lt;&lt;&#32;std::endl;
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_chapter9_1autotoc_md211">
+<title>Supplemental example</title>
+<para><literallayout><computeroutput>//&#32;Minimal&#32;reference&#32;snippet&#32;for&#32;this&#32;chapter
+//&#32;Replace&#32;with&#32;project-specific&#32;values&#32;in&#32;your&#32;local&#32;environment.
+std::cout&#32;&lt;&lt;&#32;&quot;sattyre&#32;manual&#32;example&quot;&#32;&lt;&lt;&#32;std::endl;
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_chapter9_1autotoc_md212">
+<title>Supplemental example</title>
+<para><literallayout><computeroutput>//&#32;Minimal&#32;reference&#32;snippet&#32;for&#32;this&#32;chapter
+//&#32;Replace&#32;with&#32;project-specific&#32;values&#32;in&#32;your&#32;local&#32;environment.
+std::cout&#32;&lt;&lt;&#32;&quot;sattyre&#32;manual&#32;example&quot;&#32;&lt;&lt;&#32;std::endl;
+</computeroutput></literallayout> </para>
+</section>
+</section>
+</section>

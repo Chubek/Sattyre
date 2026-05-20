@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_SattyreSAT_8cpp" xml:lang="en-US">
+<title>/home/chubakpdp11/sattyre/src/core/SattyreSAT.cpp File Reference</title>
+<indexterm><primary>/home/chubakpdp11/sattyre/src/core/SattyreSAT.cpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;sattyre/SattyreSAT.hpp&quot;<?linebreak?>#include &quot;sattyre/Log.hpp&quot;<?linebreak?>#include &lt;fstream&gt;<?linebreak?>#include &lt;limits&gt;<?linebreak?>#include &lt;sstream&gt;<?linebreak?>#include &lt;stdexcept&gt;<?linebreak?>#include &lt;string&gt;<?linebreak?></programlisting><simplesect>
+    <title>Namespaces    </title>
+        <itemizedlist>
+            <listitem><para>namespace <link linkend="_namespacesattyre">sattyre</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_structsattyre_1_1SATProblem">SATProblem</link> <link linkend="_namespacesattyre_1a85d93367dc458937936cf50977090ee0">sattyre::parse_dimacs_file</link> (const std::string &amp;path)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

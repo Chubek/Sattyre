@@ -1,0 +1,139 @@
+\doxysection{CLI Workflows, Testing Matrix, and Release Readiness }
+\label{chapter12}\index{CLI Workflows, Testing Matrix, and Release Readiness@{CLI Workflows, Testing Matrix, and Release Readiness}}
+Stage 8 user tooling and project polish.\hypertarget{chapter12_autotoc_md57}{}\doxysubsubsection{\texorpdfstring{Scope}{Scope}}\label{chapter12_autotoc_md57}
+This chapter covers {\ttfamily sattyre-\/cli}, {\ttfamily sattyre-\/packman}, {\ttfamily sattyre-\/registry}, and release checks. The CLI should reflect real library behavior, not stubs. Testing and docs must align with implementation state.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{sattyre-\/cli\ examples/example.cnf}
+\DoxyCodeLine{sattyre-\/cli\ -\/-\/solver\ native\ examples/example.cnf}
+\DoxyCodeLine{sattyre-\/cli\ examples/example.smt2}
+
+\end{DoxyCode}
+\hypertarget{chapter12_autotoc_md58}{}\doxysubsubsubsection{\texorpdfstring{Quick recap}{Quick recap}}\label{chapter12_autotoc_md58}
+
+\begin{DoxyItemize}
+\item Keep this section aligned with Stage 8 user tooling and project polish.
+\item Prefer explicit statuses and deterministic behavior.
+\item Promote examples into tests when behavior stabilizes.
+\end{DoxyItemize}\hypertarget{chapter12_autotoc_md59}{}\doxysubsubsection{\texorpdfstring{sattyre-\/packman subcommands}{sattyre-\/packman subcommands}}\label{chapter12_autotoc_md59}
+validate checks manifest structure. pack creates an archive. unpack extracts a bundle. install stages and places package files. remove deletes a package by name.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{sattyre-\/packman\ validate\ ./manifest.json}
+\DoxyCodeLine{sattyre-\/packman\ pack\ ./pkg-\/root\ ./pkg.satpkg}
+\DoxyCodeLine{sattyre-\/packman\ unpack\ ./pkg.satpkg\ ./out}
+\DoxyCodeLine{sattyre-\/packman\ install\ ./pkg.satpkg\ ./local-\/root}
+\DoxyCodeLine{sattyre-\/packman\ remove\ demo-\/solver\ ./local-\/root}
+
+\end{DoxyCode}
+\hypertarget{chapter12_autotoc_md60}{}\doxysubsubsubsection{\texorpdfstring{Quick recap}{Quick recap}}\label{chapter12_autotoc_md60}
+
+\begin{DoxyItemize}
+\item Keep this section aligned with Stage 8 user tooling and project polish.
+\item Prefer explicit statuses and deterministic behavior.
+\item Promote examples into tests when behavior stabilizes.
+\end{DoxyItemize}\hypertarget{chapter12_autotoc_md61}{}\doxysubsubsection{\texorpdfstring{sattyre-\/registry examples}{sattyre-\/registry examples}}\label{chapter12_autotoc_md61}
+Serve packages locally. Publish archives to the registry. Fetch packages by name. List available packages.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{sattyre-\/registry\ serve\ -\/-\/host\ 127.0.0.1\ -\/-\/port\ 8080\ -\/-\/root\ ./registry-\/root}
+\DoxyCodeLine{sattyre-\/registry\ publish\ ./pkg.satpkg\ -\/-\/url\ http://127.0.0.1:8080}
+\DoxyCodeLine{sattyre-\/registry\ fetch\ demo-\/solver\ -\/-\/url\ http://127.0.0.1:8080}
+\DoxyCodeLine{sattyre-\/registry\ list\ -\/-\/url\ http://127.0.0.1:8080}
+
+\end{DoxyCode}
+\hypertarget{chapter12_autotoc_md62}{}\doxysubsubsubsection{\texorpdfstring{Quick recap}{Quick recap}}\label{chapter12_autotoc_md62}
+
+\begin{DoxyItemize}
+\item Keep this section aligned with Stage 8 user tooling and project polish.
+\item Prefer explicit statuses and deterministic behavior.
+\item Promote examples into tests when behavior stabilizes.
+\end{DoxyItemize}\hypertarget{chapter12_autotoc_md63}{}\doxysubsubsection{\texorpdfstring{Testing matrix}{Testing matrix}}\label{chapter12_autotoc_md63}
+Parser tests:\+ DIMACS and manifest parsing behavior. ABI tests:\+ solver/\+plugin/\+library compatibility and metadata. Package flow tests:\+ bundle, install, remove. Registry smoke tests:\+ local and optional HTTP checks. CLI smoke tests for each tool.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ctest\ -\/-\/test-\/dir\ build/release\ -\/-\/output-\/on-\/failure}
+\DoxyCodeLine{ctest\ -\/-\/test-\/dir\ build/release\ -\/R\ sattyre-\/packman-\/cli-\/test\ -\/-\/output-\/on-\/failure}
+
+\end{DoxyCode}
+\hypertarget{chapter12_autotoc_md64}{}\doxysubsubsubsection{\texorpdfstring{Quick recap}{Quick recap}}\label{chapter12_autotoc_md64}
+
+\begin{DoxyItemize}
+\item Keep this section aligned with Stage 8 user tooling and project polish.
+\item Prefer explicit statuses and deterministic behavior.
+\item Promote examples into tests when behavior stabilizes.
+\end{DoxyItemize}\hypertarget{chapter12_autotoc_md65}{}\doxysubsubsection{\texorpdfstring{Release checklist}{Release checklist}}\label{chapter12_autotoc_md65}
+Public headers install cleanly under {\ttfamily include/\+sattyre}. {\ttfamily sattyre.\+pc} is generated and installable. Docs build produces HTML, La\+TeX, Doc\+Book, and XML outputs. Version and compatibility policy are documented.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cmake\ -\/S\ .\ -\/B\ build/release\ -\/DSATTYRE\_ENABLE\_TESTS=ON\ -\/DSATTYRE\_ENABLE\_DOCS=ON}
+\DoxyCodeLine{cmake\ -\/-\/build\ build/release\ -\/j}
+\DoxyCodeLine{cmake\ -\/-\/build\ build/release\ -\/-\/target\ sattyre-\/docs}
+
+\end{DoxyCode}
+\hypertarget{chapter12_autotoc_md66}{}\doxysubsubsubsection{\texorpdfstring{Quick recap}{Quick recap}}\label{chapter12_autotoc_md66}
+
+\begin{DoxyItemize}
+\item Keep this section aligned with Stage 8 user tooling and project polish.
+\item Prefer explicit statuses and deterministic behavior.
+\item Promote examples into tests when behavior stabilizes.
+\end{DoxyItemize}\hypertarget{chapter12_autotoc_md67}{}\doxysubsubsection{\texorpdfstring{Chapter summary}{Chapter summary}}\label{chapter12_autotoc_md67}
+Stage 8 completes when tooling, tests, and docs are coherent. Use this chapter as the pre-\/release gate. Keep examples executable and synchronized with real behavior.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Release\ readiness\ means\ the\ docs\ say\ the\ same\ thing\ the\ code\ does.}
+
+\end{DoxyCode}
+\hypertarget{chapter12_autotoc_md68}{}\doxysubsubsubsection{\texorpdfstring{Quick recap}{Quick recap}}\label{chapter12_autotoc_md68}
+
+\begin{DoxyItemize}
+\item Keep this section aligned with Stage 8 user tooling and project polish.
+\item Prefer explicit statuses and deterministic behavior.
+\item Promote examples into tests when behavior stabilizes.
+\end{DoxyItemize}\hypertarget{chapter12_autotoc_md69}{}\doxysubsubsubsection{\texorpdfstring{Supplemental example}{Supplemental example}}\label{chapter12_autotoc_md69}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Minimal\ reference\ snippet\ for\ this\ chapter}
+\DoxyCodeLine{//\ Replace\ with\ project-\/specific\ values\ in\ your\ local\ environment.}
+\DoxyCodeLine{std::cout\ <<\ "{}sattyre\ manual\ example"{}\ <<\ std::endl;}
+
+\end{DoxyCode}
+\hypertarget{chapter12_autotoc_md70}{}\doxysubsubsubsection{\texorpdfstring{Supplemental example}{Supplemental example}}\label{chapter12_autotoc_md70}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Minimal\ reference\ snippet\ for\ this\ chapter}
+\DoxyCodeLine{//\ Replace\ with\ project-\/specific\ values\ in\ your\ local\ environment.}
+\DoxyCodeLine{std::cout\ <<\ "{}sattyre\ manual\ example"{}\ <<\ std::endl;}
+
+\end{DoxyCode}
+\hypertarget{chapter12_autotoc_md71}{}\doxysubsubsubsection{\texorpdfstring{Supplemental example}{Supplemental example}}\label{chapter12_autotoc_md71}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Minimal\ reference\ snippet\ for\ this\ chapter}
+\DoxyCodeLine{//\ Replace\ with\ project-\/specific\ values\ in\ your\ local\ environment.}
+\DoxyCodeLine{std::cout\ <<\ "{}sattyre\ manual\ example"{}\ <<\ std::endl;}
+
+\end{DoxyCode}
+\hypertarget{chapter12_autotoc_md72}{}\doxysubsubsubsection{\texorpdfstring{Supplemental example}{Supplemental example}}\label{chapter12_autotoc_md72}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Minimal\ reference\ snippet\ for\ this\ chapter}
+\DoxyCodeLine{//\ Replace\ with\ project-\/specific\ values\ in\ your\ local\ environment.}
+\DoxyCodeLine{std::cout\ <<\ "{}sattyre\ manual\ example"{}\ <<\ std::endl;}
+
+\end{DoxyCode}
+\hypertarget{chapter12_autotoc_md73}{}\doxysubsubsubsection{\texorpdfstring{Supplemental example}{Supplemental example}}\label{chapter12_autotoc_md73}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Minimal\ reference\ snippet\ for\ this\ chapter}
+\DoxyCodeLine{//\ Replace\ with\ project-\/specific\ values\ in\ your\ local\ environment.}
+\DoxyCodeLine{std::cout\ <<\ "{}sattyre\ manual\ example"{}\ <<\ std::endl;}
+
+\end{DoxyCode}
+ 

@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structSattyreSolverInfo" xml:lang="en-US">
+<title>SattyreSolverInfo Struct Reference</title>
+<indexterm><primary>SattyreSolverInfo</primary></indexterm>
+<para>
+<computeroutput>#include &lt;Sattyre-Solver.h&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Data Fields    </title>
+        <itemizedlist>
+            <listitem><para>unsigned int <link linkend="_structSattyreSolverInfo_1a443854ad45fe99b8c23a3b6cd10e7f35">abi_version</link></para>
+</listitem>
+            <listitem><para>const char * <link linkend="_structSattyreSolverInfo_1a7de2df67c0051741a8f5e27c29e13b98">name</link></para>
+</listitem>
+            <listitem><para>const char * <link linkend="_structSattyreSolverInfo_1af34f2510971fc536ec463c36e75c0841">version</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Field Documentation</title>
+<anchor xml:id="_structSattyreSolverInfo_1a443854ad45fe99b8c23a3b6cd10e7f35"/><section>
+    <title>abi_version</title>
+<indexterm><primary>abi_version</primary><secondary>SattyreSolverInfo</secondary></indexterm>
+<indexterm><primary>SattyreSolverInfo</primary><secondary>abi_version</secondary></indexterm>
+<para><computeroutput>unsigned int SattyreSolverInfo::abi_version</computeroutput></para></section>
+<anchor xml:id="_structSattyreSolverInfo_1a7de2df67c0051741a8f5e27c29e13b98"/><section>
+    <title>name</title>
+<indexterm><primary>name</primary><secondary>SattyreSolverInfo</secondary></indexterm>
+<indexterm><primary>SattyreSolverInfo</primary><secondary>name</secondary></indexterm>
+<para><computeroutput>const char* SattyreSolverInfo::name</computeroutput></para></section>
+<anchor xml:id="_structSattyreSolverInfo_1af34f2510971fc536ec463c36e75c0841"/><section>
+    <title>version</title>
+<indexterm><primary>version</primary><secondary>SattyreSolverInfo</secondary></indexterm>
+<indexterm><primary>SattyreSolverInfo</primary><secondary>version</secondary></indexterm>
+<para><computeroutput>const char* SattyreSolverInfo::version</computeroutput></para></section>
+<para>
+The documentation for this struct was generated from the following file:</para>
+/home/chubakpdp11/sattyre/include/sattyre/<link linkend="_Sattyre-Solver_8h">Sattyre-Solver.h</link></section>
+</section>

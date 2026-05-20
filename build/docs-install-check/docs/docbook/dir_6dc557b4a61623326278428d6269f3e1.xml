@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_6dc557b4a61623326278428d6269f3e1" xml:lang="en-US">
+<title>/home/chubakpdp11/sattyre/src/cli Directory Reference</title>
+<indexterm><primary>/home/chubakpdp11/sattyre/src/cli Directory Reference</primary></indexterm>
+<simplesect>
+    <title>Files    </title>
+        <itemizedlist>
+            <listitem><para>file <link linkend="_sattyre-cli_8cpp">sattyre-cli.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_sattyre-packman_8cpp">sattyre-packman.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_sattyre-registry_8cpp">sattyre-registry.cpp</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

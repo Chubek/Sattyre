@@ -1,0 +1,155 @@
+Start testing: May 20 12:54 +0330
+----------------------------------------------------------
+1/8 Testing: sattyre-sat-parser-test
+1/8 Test: sattyre-sat-parser-test
+Command: "/home/chubakpdp11/sattyre/build/registry-http/sattyre-sat-parser-test"
+Directory: /home/chubakpdp11/sattyre/build/registry-http
+"sattyre-sat-parser-test" start time: May 20 12:54 +0330
+Output:
+----------------------------------------------------------
+[info] Parsing DIMACS file: /tmp/sattyre-ok.cnf
+[info] Parsing DIMACS file: /tmp/sattyre-comments-blank.cnf
+[info] Parsing DIMACS file: /tmp/sattyre-missing-zero.cnf
+[info] Parsing DIMACS file: /tmp/sattyre-out-of-range.cnf
+[info] Parsing DIMACS file: /tmp/sattyre-bad-count.cnf
+[info] Parsing DIMACS file: /tmp/sattyre-clause-before-header.cnf
+SAT parser tests passed
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"sattyre-sat-parser-test" end time: May 20 12:54 +0330
+"sattyre-sat-parser-test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/8 Testing: sattyre-solver-abi-test
+2/8 Test: sattyre-solver-abi-test
+Command: "/home/chubakpdp11/sattyre/build/registry-http/sattyre-solver-abi-test"
+Directory: /home/chubakpdp11/sattyre/build/registry-http
+"sattyre-solver-abi-test" start time: May 20 12:54 +0330
+Output:
+----------------------------------------------------------
+Solver ABI compatibility tests passed
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"sattyre-solver-abi-test" end time: May 20 12:54 +0330
+"sattyre-solver-abi-test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/8 Testing: sattyre-module-abi-test
+3/8 Test: sattyre-module-abi-test
+Command: "/home/chubakpdp11/sattyre/build/registry-http/sattyre-module-abi-test"
+Directory: /home/chubakpdp11/sattyre/build/registry-http
+"sattyre-module-abi-test" start time: May 20 12:54 +0330
+Output:
+----------------------------------------------------------
+Module ABI compatibility tests passed
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"sattyre-module-abi-test" end time: May 20 12:54 +0330
+"sattyre-module-abi-test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/8 Testing: sattyre-module-cpp-abi-test
+4/8 Test: sattyre-module-cpp-abi-test
+Command: "/home/chubakpdp11/sattyre/build/registry-http/sattyre-module-cpp-abi-test"
+Directory: /home/chubakpdp11/sattyre/build/registry-http
+"sattyre-module-cpp-abi-test" start time: May 20 12:54 +0330
+Output:
+----------------------------------------------------------
+C++ module ABI compatibility tests passed
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"sattyre-module-cpp-abi-test" end time: May 20 12:54 +0330
+"sattyre-module-cpp-abi-test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+5/8 Testing: sattyre-manifest-test
+5/8 Test: sattyre-manifest-test
+Command: "/home/chubakpdp11/sattyre/build/registry-http/sattyre-manifest-test"
+Directory: /home/chubakpdp11/sattyre/build/registry-http
+"sattyre-manifest-test" start time: May 20 12:54 +0330
+Output:
+----------------------------------------------------------
+[info] Loading package manifest: /tmp/sattyre-manifest-yaml.yaml
+[info] Loading package manifest: /tmp/sattyre-manifest-missing-name.yaml
+[warn] serdetk manifest parse failed for /tmp/sattyre-manifest-missing-name.yaml: Manifest missing required field 'name': /tmp/sattyre-manifest-missing-name.yaml
+[info] Loading package manifest: /tmp/sattyre-manifest-bad-type.yaml
+[warn] serdetk manifest parse failed for /tmp/sattyre-manifest-bad-type.yaml: Manifest has invalid type 'invalid': /tmp/sattyre-manifest-bad-type.yaml
+Manifest tests passed
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"sattyre-manifest-test" end time: May 20 12:54 +0330
+"sattyre-manifest-test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+6/8 Testing: sattyre-package-flow-test
+6/8 Test: sattyre-package-flow-test
+Command: "/home/chubakpdp11/sattyre/build/registry-http/sattyre-package-flow-test"
+Directory: /home/chubakpdp11/sattyre/build/registry-http
+"sattyre-package-flow-test" start time: May 20 12:54 +0330
+Output:
+----------------------------------------------------------
+[info] Bundling package from /tmp/sattyre-package-flow/src -> /tmp/sattyre-package-flow/bundle.tar.gz
+[info] Installing package /tmp/sattyre-package-flow/bundle.tar.gz into /tmp/sattyre-package-flow/install-root
+[info] Extracting bundle /tmp/sattyre-package-flow/bundle.tar.gz -> /tmp/sattyre-package-flow/install-root/.sattyre-install-staging
+[info] Loading package manifest: /tmp/sattyre-package-flow/install-root/.sattyre-install-staging/manifest.json
+[info] Bundling package from /tmp/sattyre-package-flow/src -> /tmp/sattyre-package-flow/bundle.tar.gz
+[info] Installing package /tmp/sattyre-package-flow/bundle.tar.gz into /tmp/sattyre-package-flow/install-root
+[info] Extracting bundle /tmp/sattyre-package-flow/bundle.tar.gz -> /tmp/sattyre-package-flow/install-root/.sattyre-install-staging
+[info] Loading package manifest: /tmp/sattyre-package-flow/install-root/.sattyre-install-staging/manifest.json
+[info] Installing package /tmp/sattyre-package-flow/bundle.tar.gz into /tmp/sattyre-package-flow/install-root
+[info] Extracting bundle /tmp/sattyre-package-flow/bundle.tar.gz -> /tmp/sattyre-package-flow/install-root/.sattyre-install-staging
+[info] Loading package manifest: /tmp/sattyre-package-flow/install-root/.sattyre-install-staging/manifest.json
+[warn] Removing package mini-solver from /tmp/sattyre-package-flow/install-root
+Package flow tests passed
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"sattyre-package-flow-test" end time: May 20 12:54 +0330
+"sattyre-package-flow-test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+7/8 Testing: sattyre-registry-flow-test
+7/8 Test: sattyre-registry-flow-test
+Command: "/home/chubakpdp11/sattyre/build/registry-http/sattyre-registry-flow-test"
+Directory: /home/chubakpdp11/sattyre/build/registry-http
+"sattyre-registry-flow-test" start time: May 20 12:54 +0330
+Output:
+----------------------------------------------------------
+[info] Deploying bundle /tmp/sattyre-registry-flow/mini-solver.tar.gz to /tmp/sattyre-registry-flow/registry
+[info] Downloading package mini-solver.tar.gz from /tmp/sattyre-registry-flow/registry
+[info] Downloading package missing.tar.gz from /tmp/sattyre-registry-flow/registry
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"sattyre-registry-flow-test" end time: May 20 12:54 +0330
+"sattyre-registry-flow-test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+8/8 Testing: sattyre-registry-cli-test
+8/8 Test: sattyre-registry-cli-test
+Command: "/home/chubakpdp11/sattyre/build/registry-http/sattyre-registry-cli-test"
+Directory: /home/chubakpdp11/sattyre/build/registry-http
+"sattyre-registry-cli-test" start time: May 20 12:54 +0330
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"sattyre-registry-cli-test" end time: May 20 12:54 +0330
+"sattyre-registry-cli-test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: May 20 12:54 +0330

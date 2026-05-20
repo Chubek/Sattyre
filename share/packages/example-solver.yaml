@@ -1,0 +1,5 @@
+name: example-solver
+version: 0.1.0
+type: solver
+description: Example Sattyre solver package
+dependencies: []

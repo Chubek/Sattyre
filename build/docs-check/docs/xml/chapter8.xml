@@ -1,0 +1,139 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="chapter8" kind="page">
+    <compoundname>chapter8</compoundname>
+    <title>Bundle Create/Extract and Path Safety</title>
+    <briefdescription>
+<para>Stage 5 archive implementation details. </para>
+    </briefdescription>
+    <detaileddescription>
+<sect1 id="chapter8_1autotoc_md177_1s1"><sect2 id="chapter8_1autotoc_md177">
+<title>Scope</title><para>This chapter explains <computeroutput>create_bundle</computeroutput> and <computeroutput>extract_bundle</computeroutput> behavior. Archives should round-trip package contents safely. Path traversal defenses are mandatory.</para>
+<para><programlisting filename=".text"><codeline><highlight class="normal">bool<sp/>create_bundle(const<sp/>std::string&amp;<sp/>source_dir,<sp/>const<sp/>std::string&amp;<sp/>out_file);</highlight></codeline>
+<codeline><highlight class="normal">bool<sp/>extract_bundle(const<sp/>std::string&amp;<sp/>bundle_file,<sp/>const<sp/>std::string&amp;<sp/>out_dir);</highlight></codeline>
+</programlisting></para>
+<sect3 id="chapter8_1autotoc_md178">
+<title>Quick recap</title><para><itemizedlist>
+<listitem><para>Keep this section aligned with Stage 5 archive implementation details.</para>
+</listitem><listitem><para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem><para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</sect3>
+</sect2></sect1>
+<sect1 id="chapter8_1autotoc_md179_1s1"><sect2 id="chapter8_1autotoc_md179">
+<title>Round-trip expectation</title><para>Create archive from package root containing manifest and payload files. Extract into destination root with normalized internal paths. Reject entries escaping <computeroutput>out_dir</computeroutput> via <computeroutput>../</computeroutput> or absolute paths.</para>
+<para><programlisting filename=".text"><codeline><highlight class="normal">sattyre-packman<sp/>pack<sp/>./package-root<sp/>./demo.satpkg</highlight></codeline>
+<codeline><highlight class="normal">sattyre-packman<sp/>unpack<sp/>./demo.satpkg<sp/>./extracted</highlight></codeline>
+</programlisting></para>
+<sect3 id="chapter8_1autotoc_md180">
+<title>Quick recap</title><para><itemizedlist>
+<listitem><para>Keep this section aligned with Stage 5 archive implementation details.</para>
+</listitem><listitem><para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem><para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</sect3>
+</sect2></sect1>
+<sect1 id="chapter8_1autotoc_md181_1s1"><sect2 id="chapter8_1autotoc_md181">
+<title>Path safety checks</title><para>Reject archive entries with <computeroutput>..</computeroutput> segments after lexical normalization. Reject absolute path entries. Create parent directories before writing extracted files.</para>
+<para><programlisting filename=".text"><codeline><highlight class="normal">if<sp/>(!sattyre::extract_bundle(bundle,<sp/>out))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/>&quot;Extract<sp/>failed;<sp/>inspect<sp/>archive<sp/>for<sp/>invalid<sp/>entries\n&quot;;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+<sect3 id="chapter8_1autotoc_md182">
+<title>Quick recap</title><para><itemizedlist>
+<listitem><para>Keep this section aligned with Stage 5 archive implementation details.</para>
+</listitem><listitem><para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem><para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</sect3>
+</sect2></sect1>
+<sect1 id="chapter8_1autotoc_md183_1s1"><sect2 id="chapter8_1autotoc_md183">
+<title>Archive reproducibility</title><para>Prefer deterministic file ordering for reproducible bundles. Preserve permissions where meaningful, but never at the cost of safety. Keep archive naming and payload layout stable across builds.</para>
+<para><programlisting filename=".text"><codeline><highlight class="normal">//<sp/>Reproducible<sp/>archives<sp/>make<sp/>package<sp/>flow<sp/>debugging<sp/>much<sp/>easier.</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Stable<sp/>ordering<sp/>also<sp/>helps<sp/>tests<sp/>remain<sp/>deterministic.</highlight></codeline>
+</programlisting></para>
+<sect3 id="chapter8_1autotoc_md184">
+<title>Quick recap</title><para><itemizedlist>
+<listitem><para>Keep this section aligned with Stage 5 archive implementation details.</para>
+</listitem><listitem><para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem><para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</sect3>
+</sect2></sect1>
+<sect1 id="chapter8_1autotoc_md185_1s1"><sect2 id="chapter8_1autotoc_md185">
+<title>Troubleshooting</title><para>If libarchive is unavailable, ensure fallback behavior remains explicit. Verify executable bits and text files are preserved where expected. Confirm extraction never writes outside the target tree.</para>
+<para><programlisting filename=".text"><codeline><highlight class="normal">cmake<sp/>-S<sp/>.<sp/>-B<sp/>build/bundle<sp/>-DSATTYRE_ENABLE_LIBARCHIVE=ON</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>--build<sp/>build/bundle<sp/>-j</highlight></codeline>
+</programlisting></para>
+<sect3 id="chapter8_1autotoc_md186">
+<title>Quick recap</title><para><itemizedlist>
+<listitem><para>Keep this section aligned with Stage 5 archive implementation details.</para>
+</listitem><listitem><para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem><para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</sect3>
+</sect2></sect1>
+<sect1 id="chapter8_1autotoc_md187_1s1"><sect2 id="chapter8_1autotoc_md187">
+<title>Chapter summary</title><para>Bundle logic must be correct and safe before registry publishing is trusted. Archive path handling is a security boundary. Round-trip tests should run as part of package flow checks.</para>
+<para><programlisting filename=".text"><codeline><highlight class="normal">//<sp/>Treat<sp/>archive<sp/>paths<sp/>as<sp/>untrusted<sp/>input,<sp/>even<sp/>for<sp/>local<sp/>packages.</highlight></codeline>
+</programlisting></para>
+<sect3 id="chapter8_1autotoc_md188">
+<title>Quick recap</title><para><itemizedlist>
+<listitem><para>Keep this section aligned with Stage 5 archive implementation details.</para>
+</listitem><listitem><para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem><para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</sect3>
+<sect3 id="chapter8_1autotoc_md189">
+<title>Supplemental example</title><para><programlisting filename=".text"><codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+</programlisting></para>
+</sect3>
+<sect3 id="chapter8_1autotoc_md190">
+<title>Supplemental example</title><para><programlisting filename=".text"><codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+</programlisting></para>
+</sect3>
+<sect3 id="chapter8_1autotoc_md191">
+<title>Supplemental example</title><para><programlisting filename=".text"><codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+</programlisting></para>
+</sect3>
+<sect3 id="chapter8_1autotoc_md192">
+<title>Supplemental example</title><para><programlisting filename=".text"><codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+</programlisting></para>
+</sect3>
+<sect3 id="chapter8_1autotoc_md193">
+<title>Supplemental example</title><para><programlisting filename=".text"><codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+</programlisting></para>
+</sect3>
+<sect3 id="chapter8_1autotoc_md194">
+<title>Supplemental example</title><para><programlisting filename=".text"><codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+</programlisting></para>
+</sect3>
+<sect3 id="chapter8_1autotoc_md195">
+<title>Supplemental example</title><para><programlisting filename=".text"><codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+</programlisting> </para>
+</sect3>
+</sect2></sect1>
+    </detaileddescription>
+    <location file="/home/chubakpdp11/sattyre/docs/manual/Chapter-8.rst"/>
+  </compounddef>
+</doxygen>

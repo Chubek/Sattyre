@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_RegistryClient_8cpp" xml:lang="en-US">
+<title>/home/chubakpdp11/sattyre/src/registry/RegistryClient.cpp File Reference</title>
+<indexterm><primary>/home/chubakpdp11/sattyre/src/registry/RegistryClient.cpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;sattyre/Registry.hpp&quot;<?linebreak?>#include &quot;sattyre/Log.hpp&quot;<?linebreak?>#include &lt;filesystem&gt;<?linebreak?>#include &lt;fstream&gt;<?linebreak?>#include &lt;sstream&gt;<?linebreak?>#include &quot;httplib.h&quot;<?linebreak?></programlisting><simplesect>
+    <title>Namespaces    </title>
+        <itemizedlist>
+            <listitem><para>namespace <link linkend="_namespacesattyre">sattyre</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

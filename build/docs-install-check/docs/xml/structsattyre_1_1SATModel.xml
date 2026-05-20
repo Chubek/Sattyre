@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="structsattyre_1_1SATModel" kind="struct" language="C++" prot="public">
+    <compoundname>sattyre::SATModel</compoundname>
+    <includes refid="SattyreSAT_8hpp" local="no">SattyreSAT.hpp</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structsattyre_1_1SATModel_1ae56058dbc2de36235f836ebdb87c42c1" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; int &gt;</type>
+        <definition>std::vector&lt;int&gt; sattyre::SATModel::assignments</definition>
+        <argsstring></argsstring>
+        <name>assignments</name>
+        <qualifiedname>sattyre::SATModel::assignments</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/chubakpdp11/sattyre/include/sattyre/SattyreSAT.hpp" line="24" column="15" bodyfile="/home/chubakpdp11/sattyre/include/sattyre/SattyreSAT.hpp" bodystart="24" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/chubakpdp11/sattyre/include/sattyre/SattyreSAT.hpp" line="23" column="1" bodyfile="/home/chubakpdp11/sattyre/include/sattyre/SattyreSAT.hpp" bodystart="23" bodyend="25"/>
+    <listofallmembers>
+      <member refid="structsattyre_1_1SATModel_1ae56058dbc2de36235f836ebdb87c42c1" prot="public" virt="non-virtual"><scope>sattyre::SATModel</scope><name>assignments</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

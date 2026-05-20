@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_Bundle_8cpp" xml:lang="en-US">
+<title>/home/chubakpdp11/sattyre/src/package/Bundle.cpp File Reference</title>
+<indexterm><primary>/home/chubakpdp11/sattyre/src/package/Bundle.cpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;sattyre/Bundle.hpp&quot;<?linebreak?>#include &quot;sattyre/Log.hpp&quot;<?linebreak?>#include &lt;array&gt;<?linebreak?>#include &lt;filesystem&gt;<?linebreak?>#include &lt;fstream&gt;<?linebreak?>#include &lt;sstream&gt;<?linebreak?></programlisting><simplesect>
+    <title>Namespaces    </title>
+        <itemizedlist>
+            <listitem><para>namespace <link linkend="_namespacesattyre">sattyre</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>bool <link linkend="_namespacesattyre_1a1d11f10a2476d83113c92cb3833ee8a9">sattyre::create_bundle</link> (const std::string &amp;source_dir, const std::string &amp;out_file)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_namespacesattyre_1aeeef3e8d5755df95b38afeefbdf31c6b">sattyre::extract_bundle</link> (const std::string &amp;bundle_file, const std::string &amp;out_dir)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

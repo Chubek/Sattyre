@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_Version_8hpp" xml:lang="en-US">
+<title>/home/chubakpdp11/sattyre/include/sattyre/Version.hpp File Reference</title>
+<indexterm><primary>/home/chubakpdp11/sattyre/include/sattyre/Version.hpp</primary></indexterm>
+<simplesect>
+    <title>Macros    </title>
+        <itemizedlist>
+            <listitem><para>#define <link linkend="_Version_8hpp_1a1403b7f9c39080afb73fdbd59af0ed0b">SATTYRE_VERSION_MAJOR</link>&#160;&#160;&#160;0</para>
+</listitem>
+            <listitem><para>#define <link linkend="_Version_8hpp_1a836624a9d5070d97531207083210995d">SATTYRE_VERSION_MINOR</link>&#160;&#160;&#160;1</para>
+</listitem>
+            <listitem><para>#define <link linkend="_Version_8hpp_1aec2d3dfe9935ede9dc0e67a613d02760">SATTYRE_VERSION_PATCH</link>&#160;&#160;&#160;0</para>
+</listitem>
+            <listitem><para>#define <link linkend="_Version_8hpp_1a2a90795d829c3e22e6223d3e1f60e2ed">SATTYRE_VERSION_STRING</link>&#160;&#160;&#160;&quot;0.1.0&quot;</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Macro Definition Documentation</title>
+<anchor xml:id="_Version_8hpp_1a1403b7f9c39080afb73fdbd59af0ed0b"/><section>
+    <title>SATTYRE_VERSION_MAJOR</title>
+<indexterm><primary>SATTYRE_VERSION_MAJOR</primary><secondary>Version.hpp</secondary></indexterm>
+<indexterm><primary>Version.hpp</primary><secondary>SATTYRE_VERSION_MAJOR</secondary></indexterm>
+<para><computeroutput>#define SATTYRE_VERSION_MAJOR&#160;&#160;&#160;0</computeroutput></para></section>
+<anchor xml:id="_Version_8hpp_1a836624a9d5070d97531207083210995d"/><section>
+    <title>SATTYRE_VERSION_MINOR</title>
+<indexterm><primary>SATTYRE_VERSION_MINOR</primary><secondary>Version.hpp</secondary></indexterm>
+<indexterm><primary>Version.hpp</primary><secondary>SATTYRE_VERSION_MINOR</secondary></indexterm>
+<para><computeroutput>#define SATTYRE_VERSION_MINOR&#160;&#160;&#160;1</computeroutput></para></section>
+<anchor xml:id="_Version_8hpp_1aec2d3dfe9935ede9dc0e67a613d02760"/><section>
+    <title>SATTYRE_VERSION_PATCH</title>
+<indexterm><primary>SATTYRE_VERSION_PATCH</primary><secondary>Version.hpp</secondary></indexterm>
+<indexterm><primary>Version.hpp</primary><secondary>SATTYRE_VERSION_PATCH</secondary></indexterm>
+<para><computeroutput>#define SATTYRE_VERSION_PATCH&#160;&#160;&#160;0</computeroutput></para></section>
+<anchor xml:id="_Version_8hpp_1a2a90795d829c3e22e6223d3e1f60e2ed"/><section>
+    <title>SATTYRE_VERSION_STRING</title>
+<indexterm><primary>SATTYRE_VERSION_STRING</primary><secondary>Version.hpp</secondary></indexterm>
+<indexterm><primary>Version.hpp</primary><secondary>SATTYRE_VERSION_STRING</secondary></indexterm>
+<para><computeroutput>#define SATTYRE_VERSION_STRING&#160;&#160;&#160;&quot;0.1.0&quot;</computeroutput></para></section>
+</section>
+</section>

@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="Sattyre-Library_8h" kind="file" language="C++">
+    <compoundname>Sattyre-Library.h</compoundname>
+    <includedby refid="Sattyre-Library_8hpp" local="yes">/home/chubakpdp11/sattyre/include/sattyre/Sattyre-Library.hpp</includedby>
+    <includedby refid="Sattyre-Library_8c" local="yes">/home/chubakpdp11/sattyre/src/library/Sattyre-Library.c</includedby>
+    <invincdepgraph>
+      <node id="1">
+        <label>/home/chubakpdp11/sattyre/include/sattyre/Sattyre-Library.h</label>
+        <link refid="Sattyre-Library_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>/home/chubakpdp11/sattyre/include/sattyre/Sattyre-Library.hpp</label>
+        <link refid="Sattyre-Library_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>/home/chubakpdp11/sattyre/src/library/Sattyre-Library.c</label>
+        <link refid="Sattyre-Library_8c"/>
+      </node>
+      <node id="3">
+        <label>/home/chubakpdp11/sattyre/src/library/Sattyre-Library.cpp</label>
+        <link refid="Sattyre-Library_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structSattyreLibraryInfo" prot="public">SattyreLibraryInfo</innerclass>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="Sattyre-Library_8h_1a01d1a45b9ff02b38f8e5fa3766bbd185" prot="public" static="no">
+        <name>SATTYRE_LIBRARY_ABI_VERSION</name>
+        <initializer>1u</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/chubakpdp11/sattyre/include/sattyre/Sattyre-Library.h" line="8" column="9" bodyfile="/home/chubakpdp11/sattyre/include/sattyre/Sattyre-Library.h" bodystart="8" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="Sattyre-Library_8h_1a8477266c93156c08c8faa5bb785938dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structSattyreLibraryInfo" kindref="compound">SattyreLibraryInfo</ref></type>
+        <definition>SattyreLibraryInfo sattyre_library_info</definition>
+        <argsstring>(void)</argsstring>
+        <name>sattyre_library_info</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/chubakpdp11/sattyre/include/sattyre/Sattyre-Library.h" line="16" column="20" bodyfile="/home/chubakpdp11/sattyre/src/library/Sattyre-Library.c" bodystart="3" bodyend="9" declfile="/home/chubakpdp11/sattyre/include/sattyre/Sattyre-Library.h" declline="16" declcolumn="20"/>
+      </memberdef>
+      <memberdef kind="function" id="Sattyre-Library_8h_1a6a3307a1a0b63d49d2784dd4e7db780d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int sattyre_library_abi_compatible</definition>
+        <argsstring>(unsigned int abi_version)</argsstring>
+        <name>sattyre_library_abi_compatible</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>abi_version</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/chubakpdp11/sattyre/include/sattyre/Sattyre-Library.h" line="17" column="5" bodyfile="/home/chubakpdp11/sattyre/src/library/Sattyre-Library.c" bodystart="11" bodyend="13" declfile="/home/chubakpdp11/sattyre/include/sattyre/Sattyre-Library.h" declline="17" declcolumn="5"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>SATTYRE_LIBRARY_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SATTYRE_LIBRARY_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8" refid="Sattyre-Library_8h_1a01d1a45b9ff02b38f8e5fa3766bbd185" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SATTYRE_LIBRARY_ABI_VERSION<sp/>1u</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10" refid="structSattyreLibraryInfo" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="11" refid="structSattyreLibraryInfo_1a8726f6b8c4e1c861002e7a79516c4396" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structSattyreLibraryInfo_1a8726f6b8c4e1c861002e7a79516c4396" kindref="member">abi_version</ref>;</highlight></codeline>
+<codeline lineno="12" refid="structSattyreLibraryInfo_1af2228972da5b0a1ad63aa5fcfc243676" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="structSattyreLibraryInfo_1af2228972da5b0a1ad63aa5fcfc243676" kindref="member">name</ref>;</highlight></codeline>
+<codeline lineno="13" refid="structSattyreLibraryInfo_1a684f855cf4df61dd59f87fa054480325" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="structSattyreLibraryInfo_1a684f855cf4df61dd59f87fa054480325" kindref="member">version</ref>;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal">}<sp/><ref refid="structSattyreLibraryInfo" kindref="compound">SattyreLibraryInfo</ref>;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><ref refid="structSattyreLibraryInfo" kindref="compound">SattyreLibraryInfo</ref><sp/><ref refid="Sattyre-Library_8h_1a8477266c93156c08c8faa5bb785938dc" kindref="member">sattyre_library_info</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="Sattyre-Library_8h_1a6a3307a1a0b63d49d2784dd4e7db780d" kindref="member">sattyre_library_abi_compatible</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>abi_version);</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/home/chubakpdp11/sattyre/include/sattyre/Sattyre-Library.h"/>
+  </compounddef>
+</doxygen>

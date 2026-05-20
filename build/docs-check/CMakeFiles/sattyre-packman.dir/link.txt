@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/sattyre-packman.dir/link.d "CMakeFiles/sattyre-packman.dir/src/cli/sattyre-packman.cpp.o" -o sattyre-packman  libsattyre.a /usr/lib/libarchive.so -ldl libsattyre-cabi.a

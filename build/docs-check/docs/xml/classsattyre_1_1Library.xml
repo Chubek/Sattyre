@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="classsattyre_1_1Library" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>sattyre::Library</compoundname>
+    <includes refid="Sattyre-Library_8hpp" local="no">Sattyre-Library.hpp</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classsattyre_1_1Library_1a92021fdc267f9366b6b225b4dd16df98" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual sattyre::Library::~Library</definition>
+        <argsstring>()=default</argsstring>
+        <name>~Library</name>
+        <qualifiedname>sattyre::Library::~Library</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/chubakpdp11/sattyre/include/sattyre/Sattyre-Library.hpp" line="10" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classsattyre_1_1Library_1a65f634951e9ad312c18e576d661d4454" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::string</type>
+        <definition>virtual std::string sattyre::Library::name</definition>
+        <argsstring>() const =0</argsstring>
+        <name>name</name>
+        <qualifiedname>sattyre::Library::name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/chubakpdp11/sattyre/include/sattyre/Sattyre-Library.hpp" line="11" column="23"/>
+      </memberdef>
+      <memberdef kind="function" id="classsattyre_1_1Library_1a7d1d9e7eb55575136ab870226d3c58ce" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::string</type>
+        <definition>virtual std::string sattyre::Library::version</definition>
+        <argsstring>() const =0</argsstring>
+        <name>version</name>
+        <qualifiedname>sattyre::Library::version</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/chubakpdp11/sattyre/include/sattyre/Sattyre-Library.hpp" line="12" column="23"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/chubakpdp11/sattyre/include/sattyre/Sattyre-Library.hpp" line="8" column="1" bodyfile="/home/chubakpdp11/sattyre/include/sattyre/Sattyre-Library.hpp" bodystart="8" bodyend="13"/>
+    <listofallmembers>
+      <member refid="classsattyre_1_1Library_1a65f634951e9ad312c18e576d661d4454" prot="public" virt="pure-virtual"><scope>sattyre::Library</scope><name>name</name></member>
+      <member refid="classsattyre_1_1Library_1a7d1d9e7eb55575136ab870226d3c58ce" prot="public" virt="pure-virtual"><scope>sattyre::Library</scope><name>version</name></member>
+      <member refid="classsattyre_1_1Library_1a92021fdc267f9366b6b225b4dd16df98" prot="public" virt="virtual"><scope>sattyre::Library</scope><name>~Library</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

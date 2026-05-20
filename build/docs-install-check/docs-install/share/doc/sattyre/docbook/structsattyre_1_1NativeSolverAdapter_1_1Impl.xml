@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structsattyre_1_1NativeSolverAdapter_1_1Impl" xml:lang="en-US">
+<title>sattyre::NativeSolverAdapter::Impl Struct Reference</title>
+<indexterm><primary>sattyre::NativeSolverAdapter::Impl</primary></indexterm>
+<simplesect>
+    <title>Data Fields    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_structsattyre_1_1SATProblem">SATProblem</link> <link linkend="_structsattyre_1_1NativeSolverAdapter_1_1Impl_1ad67608c45c9925d6141908ef93bc38a2">problem</link></para>
+</listitem>
+            <listitem><para><link linkend="_structsattyre_1_1SATModel">SATModel</link> <link linkend="_structsattyre_1_1NativeSolverAdapter_1_1Impl_1af93cd016360ee48cc35f2853bfe76082">last_model</link></para>
+</listitem>
+            <listitem><para><link linkend="_namespacesattyre_1ade8a7fe1106cbadebc9b9695bf57c096">SolveResult</link> <link linkend="_structsattyre_1_1NativeSolverAdapter_1_1Impl_1a9b3a1fc6cbc2ae7e78f7b855abe61d83">last_result</link> = <link linkend="_namespacesattyre_1ade8a7fe1106cbadebc9b9695bf57c096a88183b946cc5f0e8c96b2e66e1c74a7e">SolveResult::Unknown</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Field Documentation</title>
+<anchor xml:id="_structsattyre_1_1NativeSolverAdapter_1_1Impl_1af93cd016360ee48cc35f2853bfe76082"/><section>
+    <title>last_model</title>
+<indexterm><primary>last_model</primary><secondary>sattyre::NativeSolverAdapter::Impl</secondary></indexterm>
+<indexterm><primary>sattyre::NativeSolverAdapter::Impl</primary><secondary>last_model</secondary></indexterm>
+<para><computeroutput><link linkend="_structsattyre_1_1SATModel">SATModel</link> sattyre::NativeSolverAdapter::Impl::last_model</computeroutput></para></section>
+<anchor xml:id="_structsattyre_1_1NativeSolverAdapter_1_1Impl_1a9b3a1fc6cbc2ae7e78f7b855abe61d83"/><section>
+    <title>last_result</title>
+<indexterm><primary>last_result</primary><secondary>sattyre::NativeSolverAdapter::Impl</secondary></indexterm>
+<indexterm><primary>sattyre::NativeSolverAdapter::Impl</primary><secondary>last_result</secondary></indexterm>
+<para><computeroutput><link linkend="_namespacesattyre_1ade8a7fe1106cbadebc9b9695bf57c096">SolveResult</link> sattyre::NativeSolverAdapter::Impl::last_result = <link linkend="_namespacesattyre_1ade8a7fe1106cbadebc9b9695bf57c096a88183b946cc5f0e8c96b2e66e1c74a7e">SolveResult::Unknown</link></computeroutput></para></section>
+<anchor xml:id="_structsattyre_1_1NativeSolverAdapter_1_1Impl_1ad67608c45c9925d6141908ef93bc38a2"/><section>
+    <title>problem</title>
+<indexterm><primary>problem</primary><secondary>sattyre::NativeSolverAdapter::Impl</secondary></indexterm>
+<indexterm><primary>sattyre::NativeSolverAdapter::Impl</primary><secondary>problem</secondary></indexterm>
+<para><computeroutput><link linkend="_structsattyre_1_1SATProblem">SATProblem</link> sattyre::NativeSolverAdapter::Impl::problem</computeroutput></para></section>
+<para>
+The documentation for this struct was generated from the following file:</para>
+/home/chubakpdp11/sattyre/src/solver/<link linkend="_Sattyre-Solver_8cpp">Sattyre-Solver.cpp</link></section>
+</section>

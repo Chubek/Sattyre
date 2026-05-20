@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/sattyre-registry-http-test.dir/link.d "CMakeFiles/sattyre-registry-http-test.dir/tests/SattyreRegistryHttpTest.cpp.o" -o sattyre-registry-http-test  libsattyre.a /usr/lib/libarchive.so -ldl

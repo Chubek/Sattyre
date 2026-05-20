@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_Sattyre-Plugin_8hpp_source" xml:lang="en-US">
+<title>Sattyre-Plugin.hpp</title>
+<indexterm><primary>/home/chubakpdp11/sattyre/include/sattyre/Sattyre-Plugin.hpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#pragma&#32;once</emphasis>
+2 
+3 <emphasis role="preprocessor">#include&#32;&lt;string&gt;</emphasis>
+4 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_Sattyre-Plugin_8h">sattyre/Sattyre-Plugin.h</link>&quot;</emphasis>
+5 
+6 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_namespacesattyre">sattyre</link>&#32;{
+7 
+8 <emphasis role="keyword">class&#32;</emphasis><link linkend="_classsattyre_1_1Plugin">Plugin</link>&#32;{
+9 <emphasis role="keyword">public</emphasis>:
+10 &#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<link linkend="_classsattyre_1_1Plugin_1ad399f8dcdac59785501693144973b2e2">~Plugin</link>()&#32;=&#32;<emphasis role="keywordflow">default</emphasis>;
+11 &#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;std::string&#32;<link linkend="_classsattyre_1_1Plugin_1a9dd998c40c22c7a3a9bfb8be05cccd6d">name</link>()&#32;<emphasis role="keyword">const</emphasis>&#32;=&#32;0;
+12 &#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;std::string&#32;<link linkend="_classsattyre_1_1Plugin_1a5944d521d02aee5f436046824bdec5f1">version</link>()&#32;<emphasis role="keyword">const</emphasis>&#32;=&#32;0;
+13 &#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_classsattyre_1_1Plugin_1a621665154cbb2f07b6ec4ade645a961b">init</link>()&#32;=&#32;0;
+14 &#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classsattyre_1_1Plugin_1aee7e28508578a78021e60bcc915048be">shutdown</link>()&#32;=&#32;0;
+15 };
+16 
+17 <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_namespacesattyre_1a9cfe031e9d5f05be77649cebe377a650">plugin_abi_compatible</link>(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;abi_version);
+18 <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_namespacesattyre_1a9cfe031e9d5f05be77649cebe377a650">plugin_abi_compatible</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_structSattyrePluginInfo">SattyrePluginInfo</link>&amp;&#32;info);
+19 
+20 }&#32;<emphasis role="comment">//&#32;namespace&#32;sattyre</emphasis>
+</programlisting></section>

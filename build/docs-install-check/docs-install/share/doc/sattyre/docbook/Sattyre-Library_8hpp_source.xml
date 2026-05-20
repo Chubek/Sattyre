@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_Sattyre-Library_8hpp_source" xml:lang="en-US">
+<title>Sattyre-Library.hpp</title>
+<indexterm><primary>/home/chubakpdp11/sattyre/include/sattyre/Sattyre-Library.hpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#pragma&#32;once</emphasis>
+2 
+3 <emphasis role="preprocessor">#include&#32;&lt;string&gt;</emphasis>
+4 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_Sattyre-Library_8h">sattyre/Sattyre-Library.h</link>&quot;</emphasis>
+5 
+6 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_namespacesattyre">sattyre</link>&#32;{
+7 
+8 <emphasis role="keyword">class&#32;</emphasis><link linkend="_classsattyre_1_1Library">Library</link>&#32;{
+9 <emphasis role="keyword">public</emphasis>:
+10 &#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<link linkend="_classsattyre_1_1Library_1a92021fdc267f9366b6b225b4dd16df98">~Library</link>()&#32;=&#32;<emphasis role="keywordflow">default</emphasis>;
+11 &#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;std::string&#32;<link linkend="_classsattyre_1_1Library_1a65f634951e9ad312c18e576d661d4454">name</link>()&#32;<emphasis role="keyword">const</emphasis>&#32;=&#32;0;
+12 &#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;std::string&#32;<link linkend="_classsattyre_1_1Library_1a7d1d9e7eb55575136ab870226d3c58ce">version</link>()&#32;<emphasis role="keyword">const</emphasis>&#32;=&#32;0;
+13 };
+14 
+15 <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_namespacesattyre_1a9f4ceecca0663ce37e4f9fb75f6865d8">library_abi_compatible</link>(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;abi_version);
+16 <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_namespacesattyre_1a9f4ceecca0663ce37e4f9fb75f6865d8">library_abi_compatible</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_structSattyreLibraryInfo">SattyreLibraryInfo</link>&amp;&#32;info);
+17 
+18 }&#32;<emphasis role="comment">//&#32;namespace&#32;sattyre</emphasis>
+</programlisting></section>

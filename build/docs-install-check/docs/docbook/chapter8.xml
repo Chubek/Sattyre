@@ -1,0 +1,178 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_chapter8" xml:lang="en-US">
+<title>
+<para>Bundle Create/Extract and Path Safety </para>
+</title>
+<indexterm><primary>Bundle Create/Extract and Path Safety</primary></indexterm>
+
+<para>Stage 5 archive implementation details.</para>
+<section xml:id="_chapter8_1autotoc_md177">
+<title>Scope</title>
+<para>This chapter explains <computeroutput>create_bundle</computeroutput> and <computeroutput>extract_bundle</computeroutput> behavior. Archives should round-trip package contents safely. Path traversal defenses are mandatory.</para>
+
+<para><literallayout><computeroutput>bool&#32;create_bundle(const&#32;std::string&amp;&#32;source_dir,&#32;const&#32;std::string&amp;&#32;out_file);
+bool&#32;extract_bundle(const&#32;std::string&amp;&#32;bundle_file,&#32;const&#32;std::string&amp;&#32;out_dir);
+</computeroutput></literallayout></para>
+<section xml:id="_chapter8_1autotoc_md178">
+<title>Quick recap</title>
+<para><itemizedlist>
+<listitem>
+<para>Keep this section aligned with Stage 5 archive implementation details.</para>
+</listitem><listitem>
+<para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem>
+<para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+</section>
+<section xml:id="_chapter8_1autotoc_md179">
+<title>Round-trip expectation</title>
+<para>Create archive from package root containing manifest and payload files. Extract into destination root with normalized internal paths. Reject entries escaping <computeroutput>out_dir</computeroutput> via <computeroutput>../</computeroutput> or absolute paths.</para>
+
+<para><literallayout><computeroutput>sattyre-packman&#32;pack&#32;./package-root&#32;./demo.satpkg
+sattyre-packman&#32;unpack&#32;./demo.satpkg&#32;./extracted
+</computeroutput></literallayout></para>
+<section xml:id="_chapter8_1autotoc_md180">
+<title>Quick recap</title>
+<para><itemizedlist>
+<listitem>
+<para>Keep this section aligned with Stage 5 archive implementation details.</para>
+</listitem><listitem>
+<para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem>
+<para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+</section>
+<section xml:id="_chapter8_1autotoc_md181">
+<title>Path safety checks</title>
+<para>Reject archive entries with <computeroutput>..</computeroutput> segments after lexical normalization. Reject absolute path entries. Create parent directories before writing extracted files.</para>
+
+<para><literallayout><computeroutput>if&#32;(!sattyre::extract_bundle(bundle,&#32;out))&#32;{
+&#32;&#32;std::cerr&#32;&lt;&lt;&#32;&quot;Extract&#32;failed;&#32;inspect&#32;archive&#32;for&#32;invalid&#32;entries\n&quot;;
+}
+</computeroutput></literallayout></para>
+<section xml:id="_chapter8_1autotoc_md182">
+<title>Quick recap</title>
+<para><itemizedlist>
+<listitem>
+<para>Keep this section aligned with Stage 5 archive implementation details.</para>
+</listitem><listitem>
+<para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem>
+<para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+</section>
+<section xml:id="_chapter8_1autotoc_md183">
+<title>Archive reproducibility</title>
+<para>Prefer deterministic file ordering for reproducible bundles. Preserve permissions where meaningful, but never at the cost of safety. Keep archive naming and payload layout stable across builds.</para>
+
+<para><literallayout><computeroutput>//&#32;Reproducible&#32;archives&#32;make&#32;package&#32;flow&#32;debugging&#32;much&#32;easier.
+//&#32;Stable&#32;ordering&#32;also&#32;helps&#32;tests&#32;remain&#32;deterministic.
+</computeroutput></literallayout></para>
+<section xml:id="_chapter8_1autotoc_md184">
+<title>Quick recap</title>
+<para><itemizedlist>
+<listitem>
+<para>Keep this section aligned with Stage 5 archive implementation details.</para>
+</listitem><listitem>
+<para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem>
+<para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+</section>
+<section xml:id="_chapter8_1autotoc_md185">
+<title>Troubleshooting</title>
+<para>If libarchive is unavailable, ensure fallback behavior remains explicit. Verify executable bits and text files are preserved where expected. Confirm extraction never writes outside the target tree.</para>
+
+<para><literallayout><computeroutput>cmake&#32;-S&#32;.&#32;-B&#32;build/bundle&#32;-DSATTYRE_ENABLE_LIBARCHIVE=ON
+cmake&#32;--build&#32;build/bundle&#32;-j
+</computeroutput></literallayout></para>
+<section xml:id="_chapter8_1autotoc_md186">
+<title>Quick recap</title>
+<para><itemizedlist>
+<listitem>
+<para>Keep this section aligned with Stage 5 archive implementation details.</para>
+</listitem><listitem>
+<para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem>
+<para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+</section>
+<section xml:id="_chapter8_1autotoc_md187">
+<title>Chapter summary</title>
+<para>Bundle logic must be correct and safe before registry publishing is trusted. Archive path handling is a security boundary. Round-trip tests should run as part of package flow checks.</para>
+
+<para><literallayout><computeroutput>//&#32;Treat&#32;archive&#32;paths&#32;as&#32;untrusted&#32;input,&#32;even&#32;for&#32;local&#32;packages.
+</computeroutput></literallayout></para>
+<section xml:id="_chapter8_1autotoc_md188">
+<title>Quick recap</title>
+<para><itemizedlist>
+<listitem>
+<para>Keep this section aligned with Stage 5 archive implementation details.</para>
+</listitem><listitem>
+<para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem>
+<para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+<section xml:id="_chapter8_1autotoc_md189">
+<title>Supplemental example</title>
+<para><literallayout><computeroutput>//&#32;Minimal&#32;reference&#32;snippet&#32;for&#32;this&#32;chapter
+//&#32;Replace&#32;with&#32;project-specific&#32;values&#32;in&#32;your&#32;local&#32;environment.
+std::cout&#32;&lt;&lt;&#32;&quot;sattyre&#32;manual&#32;example&quot;&#32;&lt;&lt;&#32;std::endl;
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_chapter8_1autotoc_md190">
+<title>Supplemental example</title>
+<para><literallayout><computeroutput>//&#32;Minimal&#32;reference&#32;snippet&#32;for&#32;this&#32;chapter
+//&#32;Replace&#32;with&#32;project-specific&#32;values&#32;in&#32;your&#32;local&#32;environment.
+std::cout&#32;&lt;&lt;&#32;&quot;sattyre&#32;manual&#32;example&quot;&#32;&lt;&lt;&#32;std::endl;
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_chapter8_1autotoc_md191">
+<title>Supplemental example</title>
+<para><literallayout><computeroutput>//&#32;Minimal&#32;reference&#32;snippet&#32;for&#32;this&#32;chapter
+//&#32;Replace&#32;with&#32;project-specific&#32;values&#32;in&#32;your&#32;local&#32;environment.
+std::cout&#32;&lt;&lt;&#32;&quot;sattyre&#32;manual&#32;example&quot;&#32;&lt;&lt;&#32;std::endl;
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_chapter8_1autotoc_md192">
+<title>Supplemental example</title>
+<para><literallayout><computeroutput>//&#32;Minimal&#32;reference&#32;snippet&#32;for&#32;this&#32;chapter
+//&#32;Replace&#32;with&#32;project-specific&#32;values&#32;in&#32;your&#32;local&#32;environment.
+std::cout&#32;&lt;&lt;&#32;&quot;sattyre&#32;manual&#32;example&quot;&#32;&lt;&lt;&#32;std::endl;
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_chapter8_1autotoc_md193">
+<title>Supplemental example</title>
+<para><literallayout><computeroutput>//&#32;Minimal&#32;reference&#32;snippet&#32;for&#32;this&#32;chapter
+//&#32;Replace&#32;with&#32;project-specific&#32;values&#32;in&#32;your&#32;local&#32;environment.
+std::cout&#32;&lt;&lt;&#32;&quot;sattyre&#32;manual&#32;example&quot;&#32;&lt;&lt;&#32;std::endl;
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_chapter8_1autotoc_md194">
+<title>Supplemental example</title>
+<para><literallayout><computeroutput>//&#32;Minimal&#32;reference&#32;snippet&#32;for&#32;this&#32;chapter
+//&#32;Replace&#32;with&#32;project-specific&#32;values&#32;in&#32;your&#32;local&#32;environment.
+std::cout&#32;&lt;&lt;&#32;&quot;sattyre&#32;manual&#32;example&quot;&#32;&lt;&lt;&#32;std::endl;
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_chapter8_1autotoc_md195">
+<title>Supplemental example</title>
+<para><literallayout><computeroutput>//&#32;Minimal&#32;reference&#32;snippet&#32;for&#32;this&#32;chapter
+//&#32;Replace&#32;with&#32;project-specific&#32;values&#32;in&#32;your&#32;local&#32;environment.
+std::cout&#32;&lt;&lt;&#32;&quot;sattyre&#32;manual&#32;example&quot;&#32;&lt;&lt;&#32;std::endl;
+</computeroutput></literallayout> </para>
+</section>
+</section>
+</section>

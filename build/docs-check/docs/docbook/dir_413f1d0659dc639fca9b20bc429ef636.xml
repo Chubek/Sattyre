@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_413f1d0659dc639fca9b20bc429ef636" xml:lang="en-US">
+<title>/home/chubakpdp11/sattyre/src/plugin Directory Reference</title>
+<indexterm><primary>/home/chubakpdp11/sattyre/src/plugin Directory Reference</primary></indexterm>
+<simplesect>
+    <title>Files    </title>
+        <itemizedlist>
+            <listitem><para>file <link linkend="_Sattyre-Plugin_8c">Sattyre-Plugin.c</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_Sattyre-Plugin_8cpp">Sattyre-Plugin.cpp</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

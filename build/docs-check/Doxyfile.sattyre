@@ -1,0 +1,40 @@
+PROJECT_NAME             = "Sattyre"
+PROJECT_NUMBER           = "0.1.0"
+PROJECT_BRIEF            = "Modular SAT/SMT framework"
+OUTPUT_DIRECTORY         = /home/chubakpdp11/sattyre/build/docs-check/docs
+CREATE_SUBDIRS           = NO
+OUTPUT_LANGUAGE          = English
+
+INPUT                    = /home/chubakpdp11/sattyre/include \
+                           /home/chubakpdp11/sattyre/src \
+                           /home/chubakpdp11/sattyre/docs
+FILE_PATTERNS            = *.h *.hpp *.c *.cpp *.rst *.md
+RECURSIVE                = YES
+EXCLUDE_PATTERNS         = */third_party/*
+
+OPTIMIZE_OUTPUT_FOR_C    = YES
+EXTRACT_ALL              = YES
+QUIET                    = YES
+WARN_IF_DOC_ERROR        = YES
+WARN_IF_UNDOCUMENTED     = NO
+
+MARKDOWN_SUPPORT         = YES
+AUTOLINK_SUPPORT         = YES
+EXTENSION_MAPPING        = rst=md
+USE_MDFILE_AS_MAINPAGE   = /home/chubakpdp11/sattyre/docs/FrontPage.rst
+
+GENERATE_HTML            = YES
+HTML_OUTPUT              = html
+
+GENERATE_LATEX           = YES
+LATEX_OUTPUT             = latex
+USE_PDFLATEX             = NO
+LATEX_CMD_NAME           = xelatex
+LATEX_BATCHMODE          = YES
+
+GENERATE_DOCBOOK         = YES
+DOCBOOK_OUTPUT           = docbook
+
+GENERATE_XML             = YES
+XML_OUTPUT               = xml
+XML_PROGRAMLISTING       = YES

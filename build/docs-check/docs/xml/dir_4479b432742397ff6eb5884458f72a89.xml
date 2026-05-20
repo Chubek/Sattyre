@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="dir_4479b432742397ff6eb5884458f72a89" kind="dir">
+    <compoundname>/home/chubakpdp11/sattyre/include/sattyre</compoundname>
+    <innerfile refid="Bundle_8hpp">Bundle.hpp</innerfile>
+    <innerfile refid="Dylib_8hpp">Dylib.hpp</innerfile>
+    <innerfile refid="Installer_8hpp">Installer.hpp</innerfile>
+    <innerfile refid="Log_8hpp">Log.hpp</innerfile>
+    <innerfile refid="LuaBindings_8hpp">LuaBindings.hpp</innerfile>
+    <innerfile refid="LuaRuntime_8hpp">LuaRuntime.hpp</innerfile>
+    <innerfile refid="Manifest_8hpp">Manifest.hpp</innerfile>
+    <innerfile refid="Paths_8hpp">Paths.hpp</innerfile>
+    <innerfile refid="Registry_8hpp">Registry.hpp</innerfile>
+    <innerfile refid="Sattyre-Library_8h">Sattyre-Library.h</innerfile>
+    <innerfile refid="Sattyre-Library_8hpp">Sattyre-Library.hpp</innerfile>
+    <innerfile refid="Sattyre-Plugin_8h">Sattyre-Plugin.h</innerfile>
+    <innerfile refid="Sattyre-Plugin_8hpp">Sattyre-Plugin.hpp</innerfile>
+    <innerfile refid="Sattyre-Solver_8h">Sattyre-Solver.h</innerfile>
+    <innerfile refid="Sattyre-Solver_8hpp">Sattyre-Solver.hpp</innerfile>
+    <innerfile refid="SattyreSAT_8hpp">SattyreSAT.hpp</innerfile>
+    <innerfile refid="SattyreSMT_8hpp">SattyreSMT.hpp</innerfile>
+    <innerfile refid="Version_8hpp">Version.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/chubakpdp11/sattyre/include/sattyre/"/>
+  </compounddef>
+</doxygen>

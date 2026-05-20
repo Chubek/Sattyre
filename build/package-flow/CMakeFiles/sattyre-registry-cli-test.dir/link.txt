@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/sattyre-registry-cli-test.dir/link.d "CMakeFiles/sattyre-registry-cli-test.dir/tests/SattyreRegistryCliTest.cpp.o" -o sattyre-registry-cli-test

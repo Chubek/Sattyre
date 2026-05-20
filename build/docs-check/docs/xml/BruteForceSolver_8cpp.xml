@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="BruteForceSolver_8cpp" kind="file" language="C++">
+    <compoundname>BruteForceSolver.cpp</compoundname>
+    <includes refid="SattyreSAT_8hpp" local="yes">sattyre/SattyreSAT.hpp</includes>
+    <includes refid="Log_8hpp" local="yes">sattyre/Log.hpp</includes>
+    <incdepgraph>
+      <node id="6">
+        <label>sattyre/Log.hpp</label>
+        <link refid="Log_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>sattyre/SattyreSAT.hpp</label>
+        <link refid="SattyreSAT_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/home/chubakpdp11/sattyre/src/solver/BruteForceSolver.cpp</label>
+        <link refid="BruteForceSolver_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>cstdint</label>
+      </node>
+      <node id="4">
+        <label>string</label>
+      </node>
+      <node id="5">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespacesattyre">sattyre</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="SattyreSAT_8hpp" kindref="compound">sattyre/SattyreSAT.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Log_8hpp" kindref="compound">sattyre/Log.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacesattyre" kindref="compound">sattyre</ref><sp/>{</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Placeholder<sp/>for<sp/>brute<sp/>force<sp/>solver<sp/>implementation.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>file<sp/>exists<sp/>to<sp/>anchor<sp/>future<sp/>development.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/chubakpdp11/sattyre/src/solver/BruteForceSolver.cpp"/>
+  </compounddef>
+</doxygen>

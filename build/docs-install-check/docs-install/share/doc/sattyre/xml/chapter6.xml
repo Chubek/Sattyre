@@ -1,0 +1,136 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="chapter6" kind="page">
+    <compoundname>chapter6</compoundname>
+    <title>Plugin ABI, Library ABI, and Dynamic Loading</title>
+    <briefdescription>
+<para>Stage 4 modular extension contracts. </para>
+    </briefdescription>
+    <detaileddescription>
+<sect1 id="chapter6_1autotoc_md143_1s1"><sect2 id="chapter6_1autotoc_md143">
+<title>Scope</title><para>This chapter covers plugin/library metadata, compatibility helpers, and <computeroutput>DynamicLibrary</computeroutput> usage. Solvers, plugins, and libraries are distinct extension classes and must remain separate. Loader behavior should fail early on missing symbols or ABI mismatches.</para>
+<para><programlisting filename=".text"><codeline><highlight class="normal">#define<sp/>SATTYRE_PLUGIN_ABI_VERSION<sp/>1u</highlight></codeline>
+<codeline><highlight class="normal">int<sp/>sattyre_plugin_init(void);</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>sattyre_plugin_shutdown(void);</highlight></codeline>
+<codeline><highlight class="normal">SattyrePluginInfo<sp/>sattyre_plugin_info(void);</highlight></codeline>
+<codeline><highlight class="normal">int<sp/>sattyre_plugin_abi_compatible(unsigned<sp/>int<sp/>abi_version);</highlight></codeline>
+</programlisting></para>
+<sect3 id="chapter6_1autotoc_md144">
+<title>Quick recap</title><para><itemizedlist>
+<listitem><para>Keep this section aligned with Stage 4 modular extension contracts.</para>
+</listitem><listitem><para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem><para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</sect3>
+</sect2></sect1>
+<sect1 id="chapter6_1autotoc_md145_1s1"><sect2 id="chapter6_1autotoc_md145">
+<title>Library ABI</title><para><computeroutput><ref refid="Sattyre-Library_8h_1a01d1a45b9ff02b38f8e5fa3766bbd185" kindref="member">SATTYRE_LIBRARY_ABI_VERSION</ref></computeroutput> provides the matching version contract for reusable libraries. Compatibility checks should be performed before initialization or symbol use. Library metadata should include name and version like plugin metadata.</para>
+<para><programlisting filename=".text"><codeline><highlight class="normal">SattyreLibraryInfo<sp/>info<sp/>=<sp/>sattyre_library_info();</highlight></codeline>
+<codeline><highlight class="normal">if<sp/>(!sattyre_library_abi_compatible(info.abi_version))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw<sp/>std::runtime_error(&quot;library<sp/>ABI<sp/>mismatch&quot;);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+<sect3 id="chapter6_1autotoc_md146">
+<title>Quick recap</title><para><itemizedlist>
+<listitem><para>Keep this section aligned with Stage 4 modular extension contracts.</para>
+</listitem><listitem><para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem><para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</sect3>
+</sect2></sect1>
+<sect1 id="chapter6_1autotoc_md147_1s1"><sect2 id="chapter6_1autotoc_md147">
+<title>Dynamic loader usage</title><para>Use <computeroutput><ref refid="classsattyre_1_1DynamicLibrary" kindref="compound">sattyre::DynamicLibrary</ref></computeroutput> to load modules by path. Fetch symbols lazily and check each required export before calling it. Keep platform-specific logic behind the loader abstraction.</para>
+<para><programlisting filename=".text"><codeline><highlight class="normal">sattyre::DynamicLibrary<sp/>lib;</highlight></codeline>
+<codeline><highlight class="normal">if<sp/>(!lib.open(path))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw<sp/>std::runtime_error(&quot;failed<sp/>to<sp/>open<sp/>module&quot;);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">auto<sp/>info<sp/>=<sp/>reinterpret_cast&lt;SattyrePluginInfo(*)()&gt;(lib.symbol(&quot;sattyre_plugin_info&quot;));</highlight></codeline>
+</programlisting></para>
+<sect3 id="chapter6_1autotoc_md148">
+<title>Quick recap</title><para><itemizedlist>
+<listitem><para>Keep this section aligned with Stage 4 modular extension contracts.</para>
+</listitem><listitem><para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem><para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</sect3>
+</sect2></sect1>
+<sect1 id="chapter6_1autotoc_md149_1s1"><sect2 id="chapter6_1autotoc_md149">
+<title>Search path conventions</title><para>Use <computeroutput><ref refid="namespacesattyre_1_1paths_1a18ffbd7d0348018bc8d213eaf6ac5554" kindref="member">sattyre::paths::plugin_dir</ref></computeroutput> and <computeroutput><ref refid="namespacesattyre_1_1paths_1ad5ab12a05151adaea26577db51bb49d6" kindref="member">sattyre::paths::lib_dir</ref></computeroutput> for stable layouts. Document where modules are loaded from during CLI/runtime flows. Avoid hard-coded absolute paths in source code.</para>
+<para><programlisting filename=".text"><codeline><highlight class="normal">//<sp/>Search<sp/>paths<sp/>should<sp/>come<sp/>from<sp/>paths<sp/>helpers,<sp/>not<sp/>literals.</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>This<sp/>keeps<sp/>loaders<sp/>portable<sp/>across<sp/>install<sp/>layouts.</highlight></codeline>
+</programlisting></para>
+<sect3 id="chapter6_1autotoc_md150">
+<title>Quick recap</title><para><itemizedlist>
+<listitem><para>Keep this section aligned with Stage 4 modular extension contracts.</para>
+</listitem><listitem><para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem><para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</sect3>
+</sect2></sect1>
+<sect1 id="chapter6_1autotoc_md151_1s1"><sect2 id="chapter6_1autotoc_md151">
+<title>Compatibility gate</title><para>Compatibility helpers reduce repeated checks and make loaders easier to audit. Fail immediately on version mismatch instead of continuing with undefined behavior. The ABI boundary is the right place for this validation.</para>
+<para><programlisting filename=".text"><codeline><highlight class="normal">SattyrePluginInfo<sp/>info<sp/>=<sp/>sattyre_plugin_info();</highlight></codeline>
+<codeline><highlight class="normal">if<sp/>(!sattyre::plugin_abi_compatible(info))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw<sp/>std::runtime_error(&quot;plugin<sp/>ABI<sp/>mismatch&quot;);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+<sect3 id="chapter6_1autotoc_md152">
+<title>Quick recap</title><para><itemizedlist>
+<listitem><para>Keep this section aligned with Stage 4 modular extension contracts.</para>
+</listitem><listitem><para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem><para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</sect3>
+</sect2></sect1>
+<sect1 id="chapter6_1autotoc_md153_1s1"><sect2 id="chapter6_1autotoc_md153">
+<title>Chapter summary</title><para>Stage 4 is successful when loader behavior is predictable and compatibility-driven. A minimal but strict ABI yields safer extension loading. Do not collapse plugin and library APIs into a single vague module type.</para>
+<para><programlisting filename=".text"><codeline><highlight class="normal">//<sp/>Keep<sp/>the<sp/>loader<sp/>small,<sp/>explicit,<sp/>and<sp/>easy<sp/>to<sp/>test.</highlight></codeline>
+</programlisting></para>
+<sect3 id="chapter6_1autotoc_md154">
+<title>Quick recap</title><para><itemizedlist>
+<listitem><para>Keep this section aligned with Stage 4 modular extension contracts.</para>
+</listitem><listitem><para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem><para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</sect3>
+<sect3 id="chapter6_1autotoc_md155">
+<title>Supplemental example</title><para><programlisting filename=".text"><codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+</programlisting></para>
+</sect3>
+<sect3 id="chapter6_1autotoc_md156">
+<title>Supplemental example</title><para><programlisting filename=".text"><codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+</programlisting></para>
+</sect3>
+<sect3 id="chapter6_1autotoc_md157">
+<title>Supplemental example</title><para><programlisting filename=".text"><codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+</programlisting></para>
+</sect3>
+<sect3 id="chapter6_1autotoc_md158">
+<title>Supplemental example</title><para><programlisting filename=".text"><codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+</programlisting></para>
+</sect3>
+<sect3 id="chapter6_1autotoc_md159">
+<title>Supplemental example</title><para><programlisting filename=".text"><codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+</programlisting> </para>
+</sect3>
+</sect2></sect1>
+    </detaileddescription>
+    <location file="/home/chubakpdp11/sattyre/docs/manual/Chapter-6.rst"/>
+  </compounddef>
+</doxygen>

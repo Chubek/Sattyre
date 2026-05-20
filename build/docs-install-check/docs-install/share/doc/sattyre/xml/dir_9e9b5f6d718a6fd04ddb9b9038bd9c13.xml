@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="dir_9e9b5f6d718a6fd04ddb9b9038bd9c13" kind="dir">
+    <compoundname>/home/chubakpdp11/sattyre</compoundname>
+    <innerdir refid="dir_02d6c84a9a3902f6fd95855bfa29b628">/home/chubakpdp11/sattyre/docs</innerdir>
+    <innerdir refid="dir_cb48d5f54e8426e41286088f9a87c256">/home/chubakpdp11/sattyre/include</innerdir>
+    <innerdir refid="dir_2aaee3d6b6b25bdfa3a7d8f4d224adcf">/home/chubakpdp11/sattyre/src</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/chubakpdp11/sattyre/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_Dylib_8cpp" xml:lang="en-US">
+<title>/home/chubakpdp11/sattyre/src/util/Dylib.cpp File Reference</title>
+<indexterm><primary>/home/chubakpdp11/sattyre/src/util/Dylib.cpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;sattyre/Dylib.hpp&quot;<?linebreak?>#include &lt;dlfcn.h&gt;<?linebreak?>#include &lt;stdexcept&gt;<?linebreak?></programlisting><simplesect>
+    <title>Data Structures    </title>
+        <itemizedlist>
+            <listitem><para>struct <link linkend="_structsattyre_1_1DynamicLibrary_1_1Impl">sattyre::DynamicLibrary::Impl</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Namespaces    </title>
+        <itemizedlist>
+            <listitem><para>namespace <link linkend="_namespacesattyre">sattyre</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Macros    </title>
+        <itemizedlist>
+            <listitem><para>#define <link linkend="_Dylib_8cpp_1aeb1104c37f6805e9b385ab1820ac402c">SATTYRE_HAS_DYNALO</link>&#160;&#160;&#160;0</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Macro Definition Documentation</title>
+<anchor xml:id="_Dylib_8cpp_1aeb1104c37f6805e9b385ab1820ac402c"/><section>
+    <title>SATTYRE_HAS_DYNALO</title>
+<indexterm><primary>SATTYRE_HAS_DYNALO</primary><secondary>Dylib.cpp</secondary></indexterm>
+<indexterm><primary>Dylib.cpp</primary><secondary>SATTYRE_HAS_DYNALO</secondary></indexterm>
+<para><computeroutput>#define SATTYRE_HAS_DYNALO&#160;&#160;&#160;0</computeroutput></para></section>
+</section>
+</section>

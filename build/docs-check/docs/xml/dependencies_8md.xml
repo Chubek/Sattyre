@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="dependencies_8md" kind="file" language="Markdown">
+    <compoundname>dependencies.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#<sp/>Dependencies</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Expected<sp/>external<sp/>libraries:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>cpp-httplib</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>fmt</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>klyspec</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>libarchive</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>libssh2</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>log4cplus</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>lua</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>serdetk</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>sol2</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Some<sp/>features<sp/>still<sp/>expect<sp/>these<sp/>libraries<sp/>for<sp/>fuller<sp/>implementations,<sp/>but<sp/>the<sp/>core<sp/>repo<sp/>now<sp/>has<sp/>working<sp/>fallback<sp/>paths<sp/>for<sp/>the<sp/>current<sp/>build.</highlight></codeline>
+    </programlisting>
+    <location file="/home/chubakpdp11/sattyre/docs/dependencies.md"/>
+  </compounddef>
+</doxygen>

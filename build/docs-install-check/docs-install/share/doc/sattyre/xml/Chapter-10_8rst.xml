@@ -1,0 +1,168 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="Chapter-10_8rst" kind="file" language="Markdown">
+    <compoundname>Chapter-10.rst</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">\page<sp/>chapter10<sp/>Registry<sp/>Server<sp/>and<sp/>Client<sp/>Flow</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">\brief<sp/>Stage<sp/>6<sp/>local-first<sp/>registry<sp/>and<sp/>HTTP<sp/>endpoints</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Scope</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>chapter<sp/>covers<sp/>`RegistryServer`<sp/>and<sp/>`RegistryClient`<sp/>APIs<sp/>and<sp/>staged<sp/>HTTP<sp/>features.</highlight></codeline>
+<codeline><highlight class="normal">Start<sp/>with<sp/>local,<sp/>scriptable<sp/>behavior<sp/>before<sp/>distributed<sp/>deployment<sp/>polish.</highlight></codeline>
+<codeline><highlight class="normal">`RegistryStatus`<sp/>values<sp/>should<sp/>describe<sp/>not-found<sp/>and<sp/>I/O<sp/>failures<sp/>clearly.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">sattyre::RegistryServer<sp/>server;</highlight></codeline>
+<codeline><highlight class="normal">sattyre::RegistryClient<sp/>client;</highlight></codeline>
+<codeline><highlight class="normal">std::vector&lt;std::string&gt;<sp/>packages;</highlight></codeline>
+<codeline><highlight class="normal">auto<sp/>st<sp/>=<sp/>server.list_packages(registry_root,<sp/>packages);</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Quick<sp/>recap</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Keep<sp/>this<sp/>section<sp/>aligned<sp/>with<sp/>Stage<sp/>6<sp/>local-first<sp/>registry<sp/>and<sp/>HTTP<sp/>endpoints.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Prefer<sp/>explicit<sp/>statuses<sp/>and<sp/>deterministic<sp/>behavior.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Promote<sp/>examples<sp/>into<sp/>tests<sp/>when<sp/>behavior<sp/>stabilizes.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Recommended<sp/>endpoints</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">GET<sp/>/health</highlight></codeline>
+<codeline><highlight class="normal">GET<sp/>/packages</highlight></codeline>
+<codeline><highlight class="normal">GET<sp/>/packages/{name}/manifest</highlight></codeline>
+<codeline><highlight class="normal">GET<sp/>/packages/{name}/bundle</highlight></codeline>
+<codeline><highlight class="normal">POST<sp/>/packages</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">sattyre-registry<sp/>serve<sp/>--host<sp/>127.0.0.1<sp/>--port<sp/>8080<sp/>--root<sp/>./registry-root</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Quick<sp/>recap</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Keep<sp/>this<sp/>section<sp/>aligned<sp/>with<sp/>Stage<sp/>6<sp/>local-first<sp/>registry<sp/>and<sp/>HTTP<sp/>endpoints.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Prefer<sp/>explicit<sp/>statuses<sp/>and<sp/>deterministic<sp/>behavior.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Promote<sp/>examples<sp/>into<sp/>tests<sp/>when<sp/>behavior<sp/>stabilizes.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Client<sp/>operations</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">`deploy_http`<sp/>uploads<sp/>a<sp/>bundle<sp/>to<sp/>registry.</highlight></codeline>
+<codeline><highlight class="normal">`download_http`<sp/>pulls<sp/>package<sp/>bundle<sp/>by<sp/>name.</highlight></codeline>
+<codeline><highlight class="normal">`list_http`<sp/>fetches<sp/>package<sp/>list<sp/>for<sp/>inspection<sp/>and<sp/>automation.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">sattyre-registry<sp/>publish<sp/>./demo.satpkg<sp/>--url<sp/>http://127.0.0.1:8080</highlight></codeline>
+<codeline><highlight class="normal">sattyre-registry<sp/>fetch<sp/>demo-solver<sp/>--url<sp/>http://127.0.0.1:8080</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Quick<sp/>recap</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Keep<sp/>this<sp/>section<sp/>aligned<sp/>with<sp/>Stage<sp/>6<sp/>local-first<sp/>registry<sp/>and<sp/>HTTP<sp/>endpoints.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Prefer<sp/>explicit<sp/>statuses<sp/>and<sp/>deterministic<sp/>behavior.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Promote<sp/>examples<sp/>into<sp/>tests<sp/>when<sp/>behavior<sp/>stabilizes.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Validation<sp/>concerns</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Treat<sp/>malformed<sp/>manifests<sp/>or<sp/>missing<sp/>bundle<sp/>files<sp/>as<sp/>explicit<sp/>status<sp/>failures.</highlight></codeline>
+<codeline><highlight class="normal">Log<sp/>uploads/downloads<sp/>with<sp/>package<sp/>name<sp/>and<sp/>version.</highlight></codeline>
+<codeline><highlight class="normal">Keep<sp/>endpoint<sp/>payloads<sp/>stable<sp/>and<sp/>versioned.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Use<sp/>a<sp/>simple,<sp/>scriptable<sp/>registry<sp/>format<sp/>first.</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Add<sp/>auth<sp/>and<sp/>deployment<sp/>polish<sp/>after<sp/>the<sp/>basic<sp/>flow<sp/>works.</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Quick<sp/>recap</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Keep<sp/>this<sp/>section<sp/>aligned<sp/>with<sp/>Stage<sp/>6<sp/>local-first<sp/>registry<sp/>and<sp/>HTTP<sp/>endpoints.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Prefer<sp/>explicit<sp/>statuses<sp/>and<sp/>deterministic<sp/>behavior.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Promote<sp/>examples<sp/>into<sp/>tests<sp/>when<sp/>behavior<sp/>stabilizes.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Health<sp/>and<sp/>listing</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Provide<sp/>a<sp/>health<sp/>endpoint<sp/>to<sp/>verify<sp/>the<sp/>registry<sp/>is<sp/>alive.</highlight></codeline>
+<codeline><highlight class="normal">Ensure<sp/>package<sp/>listings<sp/>are<sp/>deterministic<sp/>so<sp/>scripting<sp/>is<sp/>easy.</highlight></codeline>
+<codeline><highlight class="normal">Use<sp/>small<sp/>JSON<sp/>payloads<sp/>that<sp/>are<sp/>easy<sp/>to<sp/>inspect<sp/>and<sp/>test.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">curl<sp/>http://127.0.0.1:8080/health</highlight></codeline>
+<codeline><highlight class="normal">curl<sp/>http://127.0.0.1:8080/packages</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Quick<sp/>recap</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Keep<sp/>this<sp/>section<sp/>aligned<sp/>with<sp/>Stage<sp/>6<sp/>local-first<sp/>registry<sp/>and<sp/>HTTP<sp/>endpoints.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Prefer<sp/>explicit<sp/>statuses<sp/>and<sp/>deterministic<sp/>behavior.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Promote<sp/>examples<sp/>into<sp/>tests<sp/>when<sp/>behavior<sp/>stabilizes.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Chapter<sp/>summary</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">A<sp/>usable<sp/>local<sp/>registry<sp/>closes<sp/>the<sp/>package<sp/>distribution<sp/>loop.</highlight></codeline>
+<codeline><highlight class="normal">Status-driven<sp/>errors<sp/>keep<sp/>CLI<sp/>and<sp/>CI<sp/>behavior<sp/>predictable.</highlight></codeline>
+<codeline><highlight class="normal">Security<sp/>hardening<sp/>can<sp/>build<sp/>on<sp/>this<sp/>stable<sp/>baseline.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Registry<sp/>logic<sp/>should<sp/>stay<sp/>transparent<sp/>and<sp/>script-friendly.</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Quick<sp/>recap</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Keep<sp/>this<sp/>section<sp/>aligned<sp/>with<sp/>Stage<sp/>6<sp/>local-first<sp/>registry<sp/>and<sp/>HTTP<sp/>endpoints.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Prefer<sp/>explicit<sp/>statuses<sp/>and<sp/>deterministic<sp/>behavior.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Promote<sp/>examples<sp/>into<sp/>tests<sp/>when<sp/>behavior<sp/>stabilizes.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Supplemental<sp/>example</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Supplemental<sp/>example</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Supplemental<sp/>example</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Supplemental<sp/>example</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Supplemental<sp/>example</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Supplemental<sp/>example</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+    </programlisting>
+    <location file="/home/chubakpdp11/sattyre/docs/manual/Chapter-10.rst"/>
+  </compounddef>
+</doxygen>

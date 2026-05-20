@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_Sattyre-Solver_8cpp" xml:lang="en-US">
+<title>/home/chubakpdp11/sattyre/src/solver/Sattyre-Solver.cpp File Reference</title>
+<indexterm><primary>/home/chubakpdp11/sattyre/src/solver/Sattyre-Solver.cpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;sattyre/Sattyre-Solver.hpp&quot;<?linebreak?>#include &quot;sattyre/Sattyre-Solver.h&quot;<?linebreak?>#include &quot;sattyre/Log.hpp&quot;<?linebreak?>#include &lt;cstdlib&gt;<?linebreak?>#include &lt;cstdint&gt;<?linebreak?>#include &lt;stdexcept&gt;<?linebreak?></programlisting><simplesect>
+    <title>Data Structures    </title>
+        <itemizedlist>
+            <listitem><para>struct <link linkend="_structsattyre_1_1NativeSolverAdapter_1_1Impl">sattyre::NativeSolverAdapter::Impl</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Namespaces    </title>
+        <itemizedlist>
+            <listitem><para>namespace <link linkend="_namespacesattyre">sattyre</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

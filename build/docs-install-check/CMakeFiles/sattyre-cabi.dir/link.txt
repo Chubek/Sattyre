@@ -1,0 +1,2 @@
+/usr/bin/ar qc libsattyre-cabi.a "CMakeFiles/sattyre-cabi.dir/src/solver/Sattyre-Solver.c.o" "CMakeFiles/sattyre-cabi.dir/src/plugin/Sattyre-Plugin.c.o" "CMakeFiles/sattyre-cabi.dir/src/library/Sattyre-Library.c.o"
+/usr/bin/ranlib libsattyre-cabi.a

@@ -1,0 +1,89 @@
+﻿UNICODE
+=======
+
+Log4cplus uses the term "UNICODE" in at least two not entirely equal meanings:
+
+1. The [Unicode][unicode] standard as defined by the Unicode Consortium.
+
+2. The compiler's and/or C++ standard library's support for strings of
+    `wchar_t`s and their manipulation.
+
+[unicode]: http://unicode.org/
+
+
+`wchar_t` Support
+-----------------
+
+Log4cplus aims to be portable and to have as few third-party
+dependencies as possible. To fulfill this goal, it must use
+facilities offered by the operating systems and standard libraries it
+runs on. To offer the best possible level of support for national
+characters, it must support the use of `wchar_t` and utilize
+`wchar_t` support (especially on Windows) provided by the operating system
+and standard C and C++ libraries.
+
+This approach to portability has some limitations. One of the
+limitations is the lack of support for C++ locales in various operating
+systems and standard C++ libraries. Some standard C++ libraries do not
+support locales other than "C" and "POSIX". This usually means
+that `wchar_t`↔`char` conversion using the `std::codecvt<>` facet is
+impossible. On such deficient platforms, log4cplus can use either
+standard C locale support or `iconv()` (through libiconv or
+built-in).
+
+
+Unicode and File Appenders
+--------------------------
+
+Another limitation related to Unicode support is the inability to
+write `wchar_t` messages that contain national characters, which do not
+map to any code point in a single-byte code page, to log files using
+`FileAppender`. This is mainly a problem on Windows. Linux and other
+Unix-like systems can avoid it because they do not need to use
+`wchar_t` interfaces to have Unicode-aware applications. They usually
+(as of 2012) use UTF-8 based locales. With proper C++ locale
+setup in client applications, national characters can be written to
+log files unharmed. However, if they choose to use `wchar_t` strings,
+they face the same problem.
+
+
+Unix-like Platforms
+-------------------
+
+To support output of non-ASCII characters in `wchar_t` messages on
+Unix-like platforms, it is necessary to use a UTF-8 based locale (e.g.,
+`en_US.UTF-8`) and to set up the global locale with the `std::codecvt<>` facet
+or imbue individual `FileAppender`s with that facet. The following
+code can be used to get such a `std::locale` instance and set it as
+the global locale:
+
+~~~~{.cpp}
+std::locale::global (     // set global locale
+    std::locale (         // using std::locale constructed from
+        std::locale (),   // global locale
+                          // and codecvt facet from user locale
+        new std::codecvt_byname<wchar_t, char, std::mbstate_t>("")));
+~~~~
+
+
+Windows
+-------
+
+Windows does not support UTF-8 based locales. The above approach will
+yield a `std::locale` instance converting `wchar_t`s to the current
+process's code page. Such a locale will not be able to convert Unicode
+code points outside the process's code page. This is true at least with
+the `std::codecvt` facet implemented in Visual Studio 2010. Instead,
+with Visual Studio 2010 and later, it is possible to use the
+`std::codecvt_utf8` facet:
+
+~~~~{.cpp}
+std::locale::global (     // set global locale
+    std::locale (         // using std::locale constructed from
+        std::locale (),   // global locale
+                          // and codecvt_utf8 facet
+        new std::codecvt_utf8<tchar, 0x10FFFF,
+            static_cast<std::codecvt_mode>(std::consume_header
+                | std::little_endian)>));
+~~~~
+

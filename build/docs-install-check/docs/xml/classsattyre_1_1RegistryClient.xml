@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="classsattyre_1_1RegistryClient" kind="class" language="C++" prot="public">
+    <compoundname>sattyre::RegistryClient</compoundname>
+    <includes refid="Registry_8hpp" local="no">Registry.hpp</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classsattyre_1_1RegistryClient_1ab000f894c9983260e08fc01fac554f32" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacesattyre_1aadc00e3812f882c93d55389540d6bd0e" kindref="member">RegistryStatus</ref></type>
+        <definition>RegistryStatus sattyre::RegistryClient::deploy</definition>
+        <argsstring>(const std::string &amp;bundle_path, const std::string &amp;registry_url)</argsstring>
+        <name>deploy</name>
+        <qualifiedname>sattyre::RegistryClient::deploy</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>bundle_path</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>registry_url</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/chubakpdp11/sattyre/include/sattyre/Registry.hpp" line="25" column="18" bodyfile="/home/chubakpdp11/sattyre/src/registry/RegistryClient.cpp" bodystart="36" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="classsattyre_1_1RegistryClient_1ae3fbe4fab8dd3f8c0b319853579a0d49" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacesattyre_1aadc00e3812f882c93d55389540d6bd0e" kindref="member">RegistryStatus</ref></type>
+        <definition>RegistryStatus sattyre::RegistryClient::download</definition>
+        <argsstring>(const std::string &amp;package_name, const std::string &amp;registry_url)</argsstring>
+        <name>download</name>
+        <qualifiedname>sattyre::RegistryClient::download</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>package_name</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>registry_url</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/chubakpdp11/sattyre/include/sattyre/Registry.hpp" line="26" column="18" bodyfile="/home/chubakpdp11/sattyre/src/registry/RegistryClient.cpp" bodystart="59" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="classsattyre_1_1RegistryClient_1a0bf5191ba64221ba11db3c46cddeac66" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacesattyre_1aadc00e3812f882c93d55389540d6bd0e" kindref="member">RegistryStatus</ref></type>
+        <definition>RegistryStatus sattyre::RegistryClient::list_http</definition>
+        <argsstring>(const std::string &amp;base_url, std::vector&lt; std::string &gt; &amp;packages)</argsstring>
+        <name>list_http</name>
+        <qualifiedname>sattyre::RegistryClient::list_http</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>base_url</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; std::string &gt; &amp;</type>
+          <declname>packages</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/chubakpdp11/sattyre/include/sattyre/Registry.hpp" line="27" column="18" bodyfile="/home/chubakpdp11/sattyre/src/registry/RegistryClient.cpp" bodystart="76" bodyend="101"/>
+      </memberdef>
+      <memberdef kind="function" id="classsattyre_1_1RegistryClient_1a0e95ca38dfffe3805270721dec5199bb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacesattyre_1aadc00e3812f882c93d55389540d6bd0e" kindref="member">RegistryStatus</ref></type>
+        <definition>RegistryStatus sattyre::RegistryClient::deploy_http</definition>
+        <argsstring>(const std::string &amp;bundle_path, const std::string &amp;base_url)</argsstring>
+        <name>deploy_http</name>
+        <qualifiedname>sattyre::RegistryClient::deploy_http</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>bundle_path</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>base_url</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/chubakpdp11/sattyre/include/sattyre/Registry.hpp" line="28" column="18" bodyfile="/home/chubakpdp11/sattyre/src/registry/RegistryClient.cpp" bodystart="103" bodyend="129"/>
+      </memberdef>
+      <memberdef kind="function" id="classsattyre_1_1RegistryClient_1a49436fc77cb214aaf8ec946a4deae395" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacesattyre_1aadc00e3812f882c93d55389540d6bd0e" kindref="member">RegistryStatus</ref></type>
+        <definition>RegistryStatus sattyre::RegistryClient::download_http</definition>
+        <argsstring>(const std::string &amp;package_name, const std::string &amp;base_url)</argsstring>
+        <name>download_http</name>
+        <qualifiedname>sattyre::RegistryClient::download_http</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>package_name</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>base_url</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/chubakpdp11/sattyre/include/sattyre/Registry.hpp" line="29" column="18" bodyfile="/home/chubakpdp11/sattyre/src/registry/RegistryClient.cpp" bodystart="131" bodyend="159"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/chubakpdp11/sattyre/include/sattyre/Registry.hpp" line="23" column="1" bodyfile="/home/chubakpdp11/sattyre/include/sattyre/Registry.hpp" bodystart="23" bodyend="30"/>
+    <listofallmembers>
+      <member refid="classsattyre_1_1RegistryClient_1ab000f894c9983260e08fc01fac554f32" prot="public" virt="non-virtual"><scope>sattyre::RegistryClient</scope><name>deploy</name></member>
+      <member refid="classsattyre_1_1RegistryClient_1a0e95ca38dfffe3805270721dec5199bb" prot="public" virt="non-virtual"><scope>sattyre::RegistryClient</scope><name>deploy_http</name></member>
+      <member refid="classsattyre_1_1RegistryClient_1ae3fbe4fab8dd3f8c0b319853579a0d49" prot="public" virt="non-virtual"><scope>sattyre::RegistryClient</scope><name>download</name></member>
+      <member refid="classsattyre_1_1RegistryClient_1a49436fc77cb214aaf8ec946a4deae395" prot="public" virt="non-virtual"><scope>sattyre::RegistryClient</scope><name>download_http</name></member>
+      <member refid="classsattyre_1_1RegistryClient_1a0bf5191ba64221ba11db3c46cddeac66" prot="public" virt="non-virtual"><scope>sattyre::RegistryClient</scope><name>list_http</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

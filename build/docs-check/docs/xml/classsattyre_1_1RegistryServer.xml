@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="classsattyre_1_1RegistryServer" kind="class" language="C++" prot="public">
+    <compoundname>sattyre::RegistryServer</compoundname>
+    <includes refid="Registry_8hpp" local="no">Registry.hpp</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classsattyre_1_1RegistryServer_1a64a73f76c0a4b095846d84009c0fbfbc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacesattyre_1aadc00e3812f882c93d55389540d6bd0e" kindref="member">RegistryStatus</ref></type>
+        <definition>RegistryStatus sattyre::RegistryServer::serve</definition>
+        <argsstring>(const std::string &amp;host, int port)</argsstring>
+        <name>serve</name>
+        <qualifiedname>sattyre::RegistryServer::serve</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>host</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>port</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/chubakpdp11/sattyre/include/sattyre/Registry.hpp" line="18" column="18" bodyfile="/home/chubakpdp11/sattyre/src/registry/RegistryServer.cpp" bodystart="13" bodyend="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classsattyre_1_1RegistryServer_1a339a0566606bf6277aea731449b78e5c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacesattyre_1aadc00e3812f882c93d55389540d6bd0e" kindref="member">RegistryStatus</ref></type>
+        <definition>RegistryStatus sattyre::RegistryServer::list_packages</definition>
+        <argsstring>(const std::string &amp;registry_root, std::vector&lt; std::string &gt; &amp;packages) const</argsstring>
+        <name>list_packages</name>
+        <qualifiedname>sattyre::RegistryServer::list_packages</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>registry_root</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; std::string &gt; &amp;</type>
+          <declname>packages</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/chubakpdp11/sattyre/include/sattyre/Registry.hpp" line="19" column="18" bodyfile="/home/chubakpdp11/sattyre/src/registry/RegistryServer.cpp" bodystart="21" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="classsattyre_1_1RegistryServer_1a176a0f5ab38bb73ae5c8333347a9bb46" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacesattyre_1aadc00e3812f882c93d55389540d6bd0e" kindref="member">RegistryStatus</ref></type>
+        <definition>RegistryStatus sattyre::RegistryServer::serve_http</definition>
+        <argsstring>(const std::string &amp;host, int port, const std::string &amp;registry_root)</argsstring>
+        <name>serve_http</name>
+        <qualifiedname>sattyre::RegistryServer::serve_http</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>host</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>registry_root</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/chubakpdp11/sattyre/include/sattyre/Registry.hpp" line="20" column="18" bodyfile="/home/chubakpdp11/sattyre/src/registry/RegistryServer.cpp" bodystart="45" bodyend="127"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/chubakpdp11/sattyre/include/sattyre/Registry.hpp" line="16" column="1" bodyfile="/home/chubakpdp11/sattyre/include/sattyre/Registry.hpp" bodystart="16" bodyend="21"/>
+    <listofallmembers>
+      <member refid="classsattyre_1_1RegistryServer_1a339a0566606bf6277aea731449b78e5c" prot="public" virt="non-virtual"><scope>sattyre::RegistryServer</scope><name>list_packages</name></member>
+      <member refid="classsattyre_1_1RegistryServer_1a64a73f76c0a4b095846d84009c0fbfbc" prot="public" virt="non-virtual"><scope>sattyre::RegistryServer</scope><name>serve</name></member>
+      <member refid="classsattyre_1_1RegistryServer_1a176a0f5ab38bb73ae5c8333347a9bb46" prot="public" virt="non-virtual"><scope>sattyre::RegistryServer</scope><name>serve_http</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

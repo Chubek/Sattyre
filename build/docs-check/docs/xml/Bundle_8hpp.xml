@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="Bundle_8hpp" kind="file" language="C++">
+    <compoundname>Bundle.hpp</compoundname>
+    <includes local="no">string</includes>
+    <includedby refid="sattyre-packman_8cpp" local="yes">/home/chubakpdp11/sattyre/src/cli/sattyre-packman.cpp</includedby>
+    <includedby refid="Bundle_8cpp" local="yes">/home/chubakpdp11/sattyre/src/package/Bundle.cpp</includedby>
+    <includedby refid="Installer_8cpp" local="yes">/home/chubakpdp11/sattyre/src/package/Installer.cpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>/home/chubakpdp11/sattyre/include/sattyre/Bundle.hpp</label>
+        <link refid="Bundle_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>string</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>/home/chubakpdp11/sattyre/include/sattyre/Bundle.hpp</label>
+        <link refid="Bundle_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>/home/chubakpdp11/sattyre/src/cli/sattyre-packman.cpp</label>
+        <link refid="sattyre-packman_8cpp"/>
+      </node>
+      <node id="3">
+        <label>/home/chubakpdp11/sattyre/src/package/Bundle.cpp</label>
+        <link refid="Bundle_8cpp"/>
+      </node>
+      <node id="4">
+        <label>/home/chubakpdp11/sattyre/src/package/Installer.cpp</label>
+        <link refid="Installer_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespacesattyre">sattyre</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5" refid="namespacesattyre" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacesattyre" kindref="compound">sattyre</ref><sp/>{</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="namespacesattyre_1a1d11f10a2476d83113c92cb3833ee8a9" kindref="member">create_bundle</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>source_dir,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>out_file);</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="namespacesattyre_1aeeef3e8d5755df95b38afeefbdf31c6b" kindref="member">extract_bundle</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>bundle_file,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>out_dir);</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>sattyre</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/chubakpdp11/sattyre/include/sattyre/Bundle.hpp"/>
+  </compounddef>
+</doxygen>

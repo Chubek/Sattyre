@@ -1,0 +1,146 @@
+\doxysection{SMT Front-\/\+End and SMT-\/\+LIB Loading }
+\label{chapter3}\index{SMT Front-\/End and SMT-\/LIB Loading@{SMT Front-\/End and SMT-\/LIB Loading}}
+Stage 2 SMT ingestion and minimal model/\+result pipeline.\hypertarget{chapter3_autotoc_md91}{}\doxysubsubsection{\texorpdfstring{Scope}{Scope}}\label{chapter3_autotoc_md91}
+This chapter focuses on {\ttfamily \doxylink{structsattyre_1_1SMTProblem}{sattyre::\+\+SMTProblem}}, {\ttfamily parse\+\_\+smtlib\+\_\+file}, and basic {\ttfamily SMTSolver} contracts. Early SMT support is text-\/oriented and intentionally conservative. The target is robust ingestion and explicit errors, not full theory reasoning.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#include\ <sattyre/SattyreSMT.hpp>}
+\DoxyCodeLine{}
+\DoxyCodeLine{sattyre::SMTProblem\ smt\ =\ sattyre::parse\_smtlib\_file("{}examples/example.smt2"{});}
+\DoxyCodeLine{if\ (smt.smtlib.empty())\ \{}
+\DoxyCodeLine{\ \ throw\ std::runtime\_error("{}SMT\ input\ unexpectedly\ empty"{});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{chapter3_autotoc_md92}{}\doxysubsubsubsection{\texorpdfstring{Quick recap}{Quick recap}}\label{chapter3_autotoc_md92}
+
+\begin{DoxyItemize}
+\item Keep this section aligned with Stage 2 SMT ingestion and minimal model/\+result pipeline.
+\item Prefer explicit statuses and deterministic behavior.
+\item Promote examples into tests when behavior stabilizes.
+\end{DoxyItemize}\hypertarget{chapter3_autotoc_md93}{}\doxysubsubsection{\texorpdfstring{Input validation}{Input validation}}\label{chapter3_autotoc_md93}
+Missing files, empty content, or malformed command framing should report actionable errors. The loader should preserve original text for later processing. Do not collapse SMT and SAT semantics in this stage.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(set-\/logic\ QF\_UF)}
+\DoxyCodeLine{(declare-\/fun\ a\ ()\ Bool)}
+\DoxyCodeLine{(assert\ a)}
+\DoxyCodeLine{(check-\/sat)}
+\DoxyCodeLine{(get-\/model)}
+
+\end{DoxyCode}
+\hypertarget{chapter3_autotoc_md94}{}\doxysubsubsubsection{\texorpdfstring{Quick recap}{Quick recap}}\label{chapter3_autotoc_md94}
+
+\begin{DoxyItemize}
+\item Keep this section aligned with Stage 2 SMT ingestion and minimal model/\+result pipeline.
+\item Prefer explicit statuses and deterministic behavior.
+\item Promote examples into tests when behavior stabilizes.
+\end{DoxyItemize}\hypertarget{chapter3_autotoc_md95}{}\doxysubsubsection{\texorpdfstring{SMT result semantics}{SMT result semantics}}\label{chapter3_autotoc_md95}
+{\ttfamily SMTSolve\+Result} supports {\ttfamily Sat}, {\ttfamily Unsat}, and {\ttfamily Unknown}. {\ttfamily SMTModel} currently stores bindings as textual items. The model representation can evolve without invalidating this basic contract.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{class\ MySMTSolver\ :\ public\ sattyre::SMTSolver\ \{}
+\DoxyCodeLine{public:}
+\DoxyCodeLine{\ \ void\ load(const\ sattyre::SMTProblem\&\ problem)\ override\ \{\ text\_\ =\ problem.smtlib;\ \}}
+\DoxyCodeLine{\ \ sattyre::SMTSolveResult\ solve()\ override\ \{\ return\ sattyre::SMTSolveResult::Unknown;\ \}}
+\DoxyCodeLine{\ \ sattyre::SMTModel\ model()\ const\ override\ \{\ return\ \{\};\ \}}
+\DoxyCodeLine{private:}
+\DoxyCodeLine{\ \ std::string\ text\_;}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{chapter3_autotoc_md96}{}\doxysubsubsubsection{\texorpdfstring{Quick recap}{Quick recap}}\label{chapter3_autotoc_md96}
+
+\begin{DoxyItemize}
+\item Keep this section aligned with Stage 2 SMT ingestion and minimal model/\+result pipeline.
+\item Prefer explicit statuses and deterministic behavior.
+\item Promote examples into tests when behavior stabilizes.
+\end{DoxyItemize}\hypertarget{chapter3_autotoc_md97}{}\doxysubsubsection{\texorpdfstring{CLI interplay}{CLI interplay}}\label{chapter3_autotoc_md97}
+{\ttfamily sattyre-\/cli} should detect {\ttfamily .smt2} inputs and route to the SMT parse path. If solver support is not implemented, surface {\ttfamily Unknown} or an explicit message. Never silently treat SMT as SAT DIMACS input.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{sattyre-\/cli\ examples/example.smt2}
+\DoxyCodeLine{\#\ Expect\ parse\ success\ and\ a\ clear\ SMT\ status\ path}
+
+\end{DoxyCode}
+\hypertarget{chapter3_autotoc_md98}{}\doxysubsubsubsection{\texorpdfstring{Quick recap}{Quick recap}}\label{chapter3_autotoc_md98}
+
+\begin{DoxyItemize}
+\item Keep this section aligned with Stage 2 SMT ingestion and minimal model/\+result pipeline.
+\item Prefer explicit statuses and deterministic behavior.
+\item Promote examples into tests when behavior stabilizes.
+\end{DoxyItemize}\hypertarget{chapter3_autotoc_md99}{}\doxysubsubsection{\texorpdfstring{Test strategy}{Test strategy}}\label{chapter3_autotoc_md99}
+Create good and malformed SMT-\/\+LIB examples under tests fixtures. Validate that load failures are deterministic. Keep early tests parser-\/centric and lightweight.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cmake\ -\/S\ .\ -\/B\ build/smt-\/tests\ -\/DSATTYRE\_ENABLE\_TESTS=ON}
+\DoxyCodeLine{cmake\ -\/-\/build\ build/smt-\/tests\ -\/j}
+\DoxyCodeLine{ctest\ -\/-\/test-\/dir\ build/smt-\/tests\ -\/R\ sattyre-\/cli-\/smoke-\/test\ -\/-\/output-\/on-\/failure}
+
+\end{DoxyCode}
+\hypertarget{chapter3_autotoc_md100}{}\doxysubsubsubsection{\texorpdfstring{Quick recap}{Quick recap}}\label{chapter3_autotoc_md100}
+
+\begin{DoxyItemize}
+\item Keep this section aligned with Stage 2 SMT ingestion and minimal model/\+result pipeline.
+\item Prefer explicit statuses and deterministic behavior.
+\item Promote examples into tests when behavior stabilizes.
+\end{DoxyItemize}\hypertarget{chapter3_autotoc_md101}{}\doxysubsubsection{\texorpdfstring{Chapter summary}{Chapter summary}}\label{chapter3_autotoc_md101}
+SMT stage success means dependable ingestion and clear status reporting. Deep theory support comes later; robust loading is the immediate win. Keep SAT and SMT pathways isolated and explicit.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Preserve\ the\ text\ for\ future\ theory-\/aware\ parsing\ layers.}
+
+\end{DoxyCode}
+\hypertarget{chapter3_autotoc_md102}{}\doxysubsubsubsection{\texorpdfstring{Quick recap}{Quick recap}}\label{chapter3_autotoc_md102}
+
+\begin{DoxyItemize}
+\item Keep this section aligned with Stage 2 SMT ingestion and minimal model/\+result pipeline.
+\item Prefer explicit statuses and deterministic behavior.
+\item Promote examples into tests when behavior stabilizes.
+\end{DoxyItemize}\hypertarget{chapter3_autotoc_md103}{}\doxysubsubsubsection{\texorpdfstring{Supplemental example}{Supplemental example}}\label{chapter3_autotoc_md103}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Minimal\ reference\ snippet\ for\ this\ chapter}
+\DoxyCodeLine{//\ Replace\ with\ project-\/specific\ values\ in\ your\ local\ environment.}
+\DoxyCodeLine{std::cout\ <<\ "{}sattyre\ manual\ example"{}\ <<\ std::endl;}
+
+\end{DoxyCode}
+\hypertarget{chapter3_autotoc_md104}{}\doxysubsubsubsection{\texorpdfstring{Supplemental example}{Supplemental example}}\label{chapter3_autotoc_md104}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Minimal\ reference\ snippet\ for\ this\ chapter}
+\DoxyCodeLine{//\ Replace\ with\ project-\/specific\ values\ in\ your\ local\ environment.}
+\DoxyCodeLine{std::cout\ <<\ "{}sattyre\ manual\ example"{}\ <<\ std::endl;}
+
+\end{DoxyCode}
+\hypertarget{chapter3_autotoc_md105}{}\doxysubsubsubsection{\texorpdfstring{Supplemental example}{Supplemental example}}\label{chapter3_autotoc_md105}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Minimal\ reference\ snippet\ for\ this\ chapter}
+\DoxyCodeLine{//\ Replace\ with\ project-\/specific\ values\ in\ your\ local\ environment.}
+\DoxyCodeLine{std::cout\ <<\ "{}sattyre\ manual\ example"{}\ <<\ std::endl;}
+
+\end{DoxyCode}
+\hypertarget{chapter3_autotoc_md106}{}\doxysubsubsubsection{\texorpdfstring{Supplemental example}{Supplemental example}}\label{chapter3_autotoc_md106}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Minimal\ reference\ snippet\ for\ this\ chapter}
+\DoxyCodeLine{//\ Replace\ with\ project-\/specific\ values\ in\ your\ local\ environment.}
+\DoxyCodeLine{std::cout\ <<\ "{}sattyre\ manual\ example"{}\ <<\ std::endl;}
+
+\end{DoxyCode}
+\hypertarget{chapter3_autotoc_md107}{}\doxysubsubsubsection{\texorpdfstring{Supplemental example}{Supplemental example}}\label{chapter3_autotoc_md107}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Minimal\ reference\ snippet\ for\ this\ chapter}
+\DoxyCodeLine{//\ Replace\ with\ project-\/specific\ values\ in\ your\ local\ environment.}
+\DoxyCodeLine{std::cout\ <<\ "{}sattyre\ manual\ example"{}\ <<\ std::endl;}
+
+\end{DoxyCode}
+ 

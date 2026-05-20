@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classsattyre_1_1RegistryServer" xml:lang="en-US">
+<title>sattyre::RegistryServer Class Reference</title>
+<indexterm><primary>sattyre::RegistryServer</primary></indexterm>
+<para>
+<computeroutput>#include &lt;Registry.hpp&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_namespacesattyre_1aadc00e3812f882c93d55389540d6bd0e">RegistryStatus</link> <link linkend="_classsattyre_1_1RegistryServer_1a64a73f76c0a4b095846d84009c0fbfbc">serve</link> (const std::string &amp;host, int port)</para>
+</listitem>
+            <listitem><para><link linkend="_namespacesattyre_1aadc00e3812f882c93d55389540d6bd0e">RegistryStatus</link> <link linkend="_classsattyre_1_1RegistryServer_1a339a0566606bf6277aea731449b78e5c">list_packages</link> (const std::string &amp;registry_root, std::vector&lt; std::string &gt; &amp;packages) const</para>
+</listitem>
+            <listitem><para><link linkend="_namespacesattyre_1aadc00e3812f882c93d55389540d6bd0e">RegistryStatus</link> <link linkend="_classsattyre_1_1RegistryServer_1a176a0f5ab38bb73ae5c8333347a9bb46">serve_http</link> (const std::string &amp;host, int port, const std::string &amp;registry_root)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classsattyre_1_1RegistryServer_1a339a0566606bf6277aea731449b78e5c"/><section>
+    <title>list_packages()</title>
+<indexterm><primary>list_packages</primary><secondary>sattyre::RegistryServer</secondary></indexterm>
+<indexterm><primary>sattyre::RegistryServer</primary><secondary>list_packages</secondary></indexterm>
+<para><computeroutput><link linkend="_namespacesattyre_1aadc00e3812f882c93d55389540d6bd0e">RegistryStatus</link> sattyre::RegistryServer::list_packages (const std::string &amp; registry_root, std::vector&lt; std::string &gt; &amp; packages) const</computeroutput></para></section>
+<anchor xml:id="_classsattyre_1_1RegistryServer_1a64a73f76c0a4b095846d84009c0fbfbc"/><section>
+    <title>serve()</title>
+<indexterm><primary>serve</primary><secondary>sattyre::RegistryServer</secondary></indexterm>
+<indexterm><primary>sattyre::RegistryServer</primary><secondary>serve</secondary></indexterm>
+<para><computeroutput><link linkend="_namespacesattyre_1aadc00e3812f882c93d55389540d6bd0e">RegistryStatus</link> sattyre::RegistryServer::serve (const std::string &amp; host, int port)</computeroutput></para></section>
+<anchor xml:id="_classsattyre_1_1RegistryServer_1a176a0f5ab38bb73ae5c8333347a9bb46"/><section>
+    <title>serve_http()</title>
+<indexterm><primary>serve_http</primary><secondary>sattyre::RegistryServer</secondary></indexterm>
+<indexterm><primary>sattyre::RegistryServer</primary><secondary>serve_http</secondary></indexterm>
+<para><computeroutput><link linkend="_namespacesattyre_1aadc00e3812f882c93d55389540d6bd0e">RegistryStatus</link> sattyre::RegistryServer::serve_http (const std::string &amp; host, int port, const std::string &amp; registry_root)</computeroutput></para></section>
+<para>
+The documentation for this class was generated from the following files:</para>
+/home/chubakpdp11/sattyre/include/sattyre/<link linkend="_Registry_8hpp">Registry.hpp</link>/home/chubakpdp11/sattyre/src/registry/<link linkend="_RegistryServer_8cpp">RegistryServer.cpp</link></section>
+</section>

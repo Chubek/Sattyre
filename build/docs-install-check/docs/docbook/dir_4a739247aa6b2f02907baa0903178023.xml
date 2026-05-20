@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_4a739247aa6b2f02907baa0903178023" xml:lang="en-US">
+<title>/home/chubakpdp11/sattyre/src/util Directory Reference</title>
+<indexterm><primary>/home/chubakpdp11/sattyre/src/util Directory Reference</primary></indexterm>
+<simplesect>
+    <title>Files    </title>
+        <itemizedlist>
+            <listitem><para>file <link linkend="_Dylib_8cpp">Dylib.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_Log_8cpp">Log.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_Paths_8cpp">Paths.cpp</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

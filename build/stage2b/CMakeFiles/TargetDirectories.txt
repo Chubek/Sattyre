@@ -1,0 +1,13 @@
+/home/chubakpdp11/sattyre/build/stage2b/CMakeFiles/sattyre.dir
+/home/chubakpdp11/sattyre/build/stage2b/CMakeFiles/sattyre-cli.dir
+/home/chubakpdp11/sattyre/build/stage2b/CMakeFiles/sattyre-packman.dir
+/home/chubakpdp11/sattyre/build/stage2b/CMakeFiles/sattyre-registry.dir
+/home/chubakpdp11/sattyre/build/stage2b/CMakeFiles/sattyre-cabi.dir
+/home/chubakpdp11/sattyre/build/stage2b/CMakeFiles/sattyre-sat-parser-test.dir
+/home/chubakpdp11/sattyre/build/stage2b/CMakeFiles/test.dir
+/home/chubakpdp11/sattyre/build/stage2b/CMakeFiles/edit_cache.dir
+/home/chubakpdp11/sattyre/build/stage2b/CMakeFiles/rebuild_cache.dir
+/home/chubakpdp11/sattyre/build/stage2b/CMakeFiles/list_install_components.dir
+/home/chubakpdp11/sattyre/build/stage2b/CMakeFiles/install.dir
+/home/chubakpdp11/sattyre/build/stage2b/CMakeFiles/install/local.dir
+/home/chubakpdp11/sattyre/build/stage2b/CMakeFiles/install/strip.dir

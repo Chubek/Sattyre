@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="dir_6dc557b4a61623326278428d6269f3e1" kind="dir">
+    <compoundname>/home/chubakpdp11/sattyre/src/cli</compoundname>
+    <innerfile refid="sattyre-cli_8cpp">sattyre-cli.cpp</innerfile>
+    <innerfile refid="sattyre-packman_8cpp">sattyre-packman.cpp</innerfile>
+    <innerfile refid="sattyre-registry_8cpp">sattyre-registry.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/chubakpdp11/sattyre/src/cli/"/>
+  </compounddef>
+</doxygen>

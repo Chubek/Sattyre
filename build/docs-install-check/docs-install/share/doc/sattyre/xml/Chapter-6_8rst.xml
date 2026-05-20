@@ -1,0 +1,167 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="Chapter-6_8rst" kind="file" language="Markdown">
+    <compoundname>Chapter-6.rst</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">\page<sp/>chapter6<sp/>Plugin<sp/>ABI,<sp/>Library<sp/>ABI,<sp/>and<sp/>Dynamic<sp/>Loading</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">\brief<sp/>Stage<sp/>4<sp/>modular<sp/>extension<sp/>contracts</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Scope</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>chapter<sp/>covers<sp/>plugin/library<sp/>metadata,<sp/>compatibility<sp/>helpers,<sp/>and<sp/>`DynamicLibrary`<sp/>usage.</highlight></codeline>
+<codeline><highlight class="normal">Solvers,<sp/>plugins,<sp/>and<sp/>libraries<sp/>are<sp/>distinct<sp/>extension<sp/>classes<sp/>and<sp/>must<sp/>remain<sp/>separate.</highlight></codeline>
+<codeline><highlight class="normal">Loader<sp/>behavior<sp/>should<sp/>fail<sp/>early<sp/>on<sp/>missing<sp/>symbols<sp/>or<sp/>ABI<sp/>mismatches.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>SATTYRE_PLUGIN_ABI_VERSION<sp/>1u</highlight></codeline>
+<codeline><highlight class="normal">int<sp/>sattyre_plugin_init(void);</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>sattyre_plugin_shutdown(void);</highlight></codeline>
+<codeline><highlight class="normal">SattyrePluginInfo<sp/>sattyre_plugin_info(void);</highlight></codeline>
+<codeline><highlight class="normal">int<sp/>sattyre_plugin_abi_compatible(unsigned<sp/>int<sp/>abi_version);</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Quick<sp/>recap</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Keep<sp/>this<sp/>section<sp/>aligned<sp/>with<sp/>Stage<sp/>4<sp/>modular<sp/>extension<sp/>contracts.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Prefer<sp/>explicit<sp/>statuses<sp/>and<sp/>deterministic<sp/>behavior.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Promote<sp/>examples<sp/>into<sp/>tests<sp/>when<sp/>behavior<sp/>stabilizes.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Library<sp/>ABI</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">`SATTYRE_LIBRARY_ABI_VERSION`<sp/>provides<sp/>the<sp/>matching<sp/>version<sp/>contract<sp/>for<sp/>reusable<sp/>libraries.</highlight></codeline>
+<codeline><highlight class="normal">Compatibility<sp/>checks<sp/>should<sp/>be<sp/>performed<sp/>before<sp/>initialization<sp/>or<sp/>symbol<sp/>use.</highlight></codeline>
+<codeline><highlight class="normal">Library<sp/>metadata<sp/>should<sp/>include<sp/>name<sp/>and<sp/>version<sp/>like<sp/>plugin<sp/>metadata.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">SattyreLibraryInfo<sp/>info<sp/>=<sp/>sattyre_library_info();</highlight></codeline>
+<codeline><highlight class="normal">if<sp/>(!sattyre_library_abi_compatible(info.abi_version))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw<sp/>std::runtime_error(&quot;library<sp/>ABI<sp/>mismatch&quot;);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Quick<sp/>recap</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Keep<sp/>this<sp/>section<sp/>aligned<sp/>with<sp/>Stage<sp/>4<sp/>modular<sp/>extension<sp/>contracts.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Prefer<sp/>explicit<sp/>statuses<sp/>and<sp/>deterministic<sp/>behavior.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Promote<sp/>examples<sp/>into<sp/>tests<sp/>when<sp/>behavior<sp/>stabilizes.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Dynamic<sp/>loader<sp/>usage</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Use<sp/>`sattyre::DynamicLibrary`<sp/>to<sp/>load<sp/>modules<sp/>by<sp/>path.</highlight></codeline>
+<codeline><highlight class="normal">Fetch<sp/>symbols<sp/>lazily<sp/>and<sp/>check<sp/>each<sp/>required<sp/>export<sp/>before<sp/>calling<sp/>it.</highlight></codeline>
+<codeline><highlight class="normal">Keep<sp/>platform-specific<sp/>logic<sp/>behind<sp/>the<sp/>loader<sp/>abstraction.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">sattyre::DynamicLibrary<sp/>lib;</highlight></codeline>
+<codeline><highlight class="normal">if<sp/>(!lib.open(path))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw<sp/>std::runtime_error(&quot;failed<sp/>to<sp/>open<sp/>module&quot;);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">auto<sp/>info<sp/>=<sp/>reinterpret_cast&lt;SattyrePluginInfo(*)()&gt;(lib.symbol(&quot;sattyre_plugin_info&quot;));</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Quick<sp/>recap</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Keep<sp/>this<sp/>section<sp/>aligned<sp/>with<sp/>Stage<sp/>4<sp/>modular<sp/>extension<sp/>contracts.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Prefer<sp/>explicit<sp/>statuses<sp/>and<sp/>deterministic<sp/>behavior.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Promote<sp/>examples<sp/>into<sp/>tests<sp/>when<sp/>behavior<sp/>stabilizes.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Search<sp/>path<sp/>conventions</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Use<sp/>`sattyre::paths::plugin_dir`<sp/>and<sp/>`sattyre::paths::lib_dir`<sp/>for<sp/>stable<sp/>layouts.</highlight></codeline>
+<codeline><highlight class="normal">Document<sp/>where<sp/>modules<sp/>are<sp/>loaded<sp/>from<sp/>during<sp/>CLI/runtime<sp/>flows.</highlight></codeline>
+<codeline><highlight class="normal">Avoid<sp/>hard-coded<sp/>absolute<sp/>paths<sp/>in<sp/>source<sp/>code.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Search<sp/>paths<sp/>should<sp/>come<sp/>from<sp/>paths<sp/>helpers,<sp/>not<sp/>literals.</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>This<sp/>keeps<sp/>loaders<sp/>portable<sp/>across<sp/>install<sp/>layouts.</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Quick<sp/>recap</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Keep<sp/>this<sp/>section<sp/>aligned<sp/>with<sp/>Stage<sp/>4<sp/>modular<sp/>extension<sp/>contracts.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Prefer<sp/>explicit<sp/>statuses<sp/>and<sp/>deterministic<sp/>behavior.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Promote<sp/>examples<sp/>into<sp/>tests<sp/>when<sp/>behavior<sp/>stabilizes.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Compatibility<sp/>gate</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Compatibility<sp/>helpers<sp/>reduce<sp/>repeated<sp/>checks<sp/>and<sp/>make<sp/>loaders<sp/>easier<sp/>to<sp/>audit.</highlight></codeline>
+<codeline><highlight class="normal">Fail<sp/>immediately<sp/>on<sp/>version<sp/>mismatch<sp/>instead<sp/>of<sp/>continuing<sp/>with<sp/>undefined<sp/>behavior.</highlight></codeline>
+<codeline><highlight class="normal">The<sp/>ABI<sp/>boundary<sp/>is<sp/>the<sp/>right<sp/>place<sp/>for<sp/>this<sp/>validation.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">SattyrePluginInfo<sp/>info<sp/>=<sp/>sattyre_plugin_info();</highlight></codeline>
+<codeline><highlight class="normal">if<sp/>(!sattyre::plugin_abi_compatible(info))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw<sp/>std::runtime_error(&quot;plugin<sp/>ABI<sp/>mismatch&quot;);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Quick<sp/>recap</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Keep<sp/>this<sp/>section<sp/>aligned<sp/>with<sp/>Stage<sp/>4<sp/>modular<sp/>extension<sp/>contracts.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Prefer<sp/>explicit<sp/>statuses<sp/>and<sp/>deterministic<sp/>behavior.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Promote<sp/>examples<sp/>into<sp/>tests<sp/>when<sp/>behavior<sp/>stabilizes.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Chapter<sp/>summary</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Stage<sp/>4<sp/>is<sp/>successful<sp/>when<sp/>loader<sp/>behavior<sp/>is<sp/>predictable<sp/>and<sp/>compatibility-driven.</highlight></codeline>
+<codeline><highlight class="normal">A<sp/>minimal<sp/>but<sp/>strict<sp/>ABI<sp/>yields<sp/>safer<sp/>extension<sp/>loading.</highlight></codeline>
+<codeline><highlight class="normal">Do<sp/>not<sp/>collapse<sp/>plugin<sp/>and<sp/>library<sp/>APIs<sp/>into<sp/>a<sp/>single<sp/>vague<sp/>module<sp/>type.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Keep<sp/>the<sp/>loader<sp/>small,<sp/>explicit,<sp/>and<sp/>easy<sp/>to<sp/>test.</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Quick<sp/>recap</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Keep<sp/>this<sp/>section<sp/>aligned<sp/>with<sp/>Stage<sp/>4<sp/>modular<sp/>extension<sp/>contracts.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Prefer<sp/>explicit<sp/>statuses<sp/>and<sp/>deterministic<sp/>behavior.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Promote<sp/>examples<sp/>into<sp/>tests<sp/>when<sp/>behavior<sp/>stabilizes.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Supplemental<sp/>example</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Supplemental<sp/>example</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Supplemental<sp/>example</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Supplemental<sp/>example</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Supplemental<sp/>example</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+    </programlisting>
+    <location file="/home/chubakpdp11/sattyre/docs/manual/Chapter-6.rst"/>
+  </compounddef>
+</doxygen>

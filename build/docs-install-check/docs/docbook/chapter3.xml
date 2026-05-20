@@ -1,0 +1,177 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_chapter3" xml:lang="en-US">
+<title>
+<para>SMT Front-End and SMT-LIB Loading </para>
+</title>
+<indexterm><primary>SMT Front-End and SMT-LIB Loading</primary></indexterm>
+
+<para>Stage 2 SMT ingestion and minimal model/result pipeline.</para>
+<section xml:id="_chapter3_1autotoc_md91">
+<title>Scope</title>
+<para>This chapter focuses on <computeroutput><link linkend="_structsattyre_1_1SMTProblem">sattyre::SMTProblem</link></computeroutput>, <computeroutput>parse_smtlib_file</computeroutput>, and basic <computeroutput>SMTSolver</computeroutput> contracts. Early SMT support is text-oriented and intentionally conservative. The target is robust ingestion and explicit errors, not full theory reasoning.</para>
+
+<para><literallayout><computeroutput>#include&#32;&lt;sattyre/SattyreSMT.hpp&gt;
+
+sattyre::SMTProblem&#32;smt&#32;=&#32;sattyre::parse_smtlib_file(&quot;examples/example.smt2&quot;);
+if&#32;(smt.smtlib.empty())&#32;{
+&#32;&#32;throw&#32;std::runtime_error(&quot;SMT&#32;input&#32;unexpectedly&#32;empty&quot;);
+}
+</computeroutput></literallayout></para>
+<section xml:id="_chapter3_1autotoc_md92">
+<title>Quick recap</title>
+<para><itemizedlist>
+<listitem>
+<para>Keep this section aligned with Stage 2 SMT ingestion and minimal model/result pipeline.</para>
+</listitem><listitem>
+<para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem>
+<para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+</section>
+<section xml:id="_chapter3_1autotoc_md93">
+<title>Input validation</title>
+<para>Missing files, empty content, or malformed command framing should report actionable errors. The loader should preserve original text for later processing. Do not collapse SMT and SAT semantics in this stage.</para>
+
+<para><literallayout><computeroutput>(set-logic&#32;QF_UF)
+(declare-fun&#32;a&#32;()&#32;Bool)
+(assert&#32;a)
+(check-sat)
+(get-model)
+</computeroutput></literallayout></para>
+<section xml:id="_chapter3_1autotoc_md94">
+<title>Quick recap</title>
+<para><itemizedlist>
+<listitem>
+<para>Keep this section aligned with Stage 2 SMT ingestion and minimal model/result pipeline.</para>
+</listitem><listitem>
+<para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem>
+<para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+</section>
+<section xml:id="_chapter3_1autotoc_md95">
+<title>SMT result semantics</title>
+<para><computeroutput>SMTSolveResult</computeroutput> supports <computeroutput>Sat</computeroutput>, <computeroutput>Unsat</computeroutput>, and <computeroutput>Unknown</computeroutput>. <computeroutput>SMTModel</computeroutput> currently stores bindings as textual items. The model representation can evolve without invalidating this basic contract.</para>
+
+<para><literallayout><computeroutput>class&#32;MySMTSolver&#32;:&#32;public&#32;sattyre::SMTSolver&#32;{
+public:
+&#32;&#32;void&#32;load(const&#32;sattyre::SMTProblem&amp;&#32;problem)&#32;override&#32;{&#32;text_&#32;=&#32;problem.smtlib;&#32;}
+&#32;&#32;sattyre::SMTSolveResult&#32;solve()&#32;override&#32;{&#32;return&#32;sattyre::SMTSolveResult::Unknown;&#32;}
+&#32;&#32;sattyre::SMTModel&#32;model()&#32;const&#32;override&#32;{&#32;return&#32;{};&#32;}
+private:
+&#32;&#32;std::string&#32;text_;
+};
+</computeroutput></literallayout></para>
+<section xml:id="_chapter3_1autotoc_md96">
+<title>Quick recap</title>
+<para><itemizedlist>
+<listitem>
+<para>Keep this section aligned with Stage 2 SMT ingestion and minimal model/result pipeline.</para>
+</listitem><listitem>
+<para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem>
+<para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+</section>
+<section xml:id="_chapter3_1autotoc_md97">
+<title>CLI interplay</title>
+<para><computeroutput>sattyre-cli</computeroutput> should detect <computeroutput>.smt2</computeroutput> inputs and route to the SMT parse path. If solver support is not implemented, surface <computeroutput>Unknown</computeroutput> or an explicit message. Never silently treat SMT as SAT DIMACS input.</para>
+
+<para><literallayout><computeroutput>sattyre-cli&#32;examples/example.smt2
+#&#32;Expect&#32;parse&#32;success&#32;and&#32;a&#32;clear&#32;SMT&#32;status&#32;path
+</computeroutput></literallayout></para>
+<section xml:id="_chapter3_1autotoc_md98">
+<title>Quick recap</title>
+<para><itemizedlist>
+<listitem>
+<para>Keep this section aligned with Stage 2 SMT ingestion and minimal model/result pipeline.</para>
+</listitem><listitem>
+<para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem>
+<para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+</section>
+<section xml:id="_chapter3_1autotoc_md99">
+<title>Test strategy</title>
+<para>Create good and malformed SMT-LIB examples under tests fixtures. Validate that load failures are deterministic. Keep early tests parser-centric and lightweight.</para>
+
+<para><literallayout><computeroutput>cmake&#32;-S&#32;.&#32;-B&#32;build/smt-tests&#32;-DSATTYRE_ENABLE_TESTS=ON
+cmake&#32;--build&#32;build/smt-tests&#32;-j
+ctest&#32;--test-dir&#32;build/smt-tests&#32;-R&#32;sattyre-cli-smoke-test&#32;--output-on-failure
+</computeroutput></literallayout></para>
+<section xml:id="_chapter3_1autotoc_md100">
+<title>Quick recap</title>
+<para><itemizedlist>
+<listitem>
+<para>Keep this section aligned with Stage 2 SMT ingestion and minimal model/result pipeline.</para>
+</listitem><listitem>
+<para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem>
+<para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+</section>
+<section xml:id="_chapter3_1autotoc_md101">
+<title>Chapter summary</title>
+<para>SMT stage success means dependable ingestion and clear status reporting. Deep theory support comes later; robust loading is the immediate win. Keep SAT and SMT pathways isolated and explicit.</para>
+
+<para><literallayout><computeroutput>//&#32;Preserve&#32;the&#32;text&#32;for&#32;future&#32;theory-aware&#32;parsing&#32;layers.
+</computeroutput></literallayout></para>
+<section xml:id="_chapter3_1autotoc_md102">
+<title>Quick recap</title>
+<para><itemizedlist>
+<listitem>
+<para>Keep this section aligned with Stage 2 SMT ingestion and minimal model/result pipeline.</para>
+</listitem><listitem>
+<para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem>
+<para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+<section xml:id="_chapter3_1autotoc_md103">
+<title>Supplemental example</title>
+<para><literallayout><computeroutput>//&#32;Minimal&#32;reference&#32;snippet&#32;for&#32;this&#32;chapter
+//&#32;Replace&#32;with&#32;project-specific&#32;values&#32;in&#32;your&#32;local&#32;environment.
+std::cout&#32;&lt;&lt;&#32;&quot;sattyre&#32;manual&#32;example&quot;&#32;&lt;&lt;&#32;std::endl;
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_chapter3_1autotoc_md104">
+<title>Supplemental example</title>
+<para><literallayout><computeroutput>//&#32;Minimal&#32;reference&#32;snippet&#32;for&#32;this&#32;chapter
+//&#32;Replace&#32;with&#32;project-specific&#32;values&#32;in&#32;your&#32;local&#32;environment.
+std::cout&#32;&lt;&lt;&#32;&quot;sattyre&#32;manual&#32;example&quot;&#32;&lt;&lt;&#32;std::endl;
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_chapter3_1autotoc_md105">
+<title>Supplemental example</title>
+<para><literallayout><computeroutput>//&#32;Minimal&#32;reference&#32;snippet&#32;for&#32;this&#32;chapter
+//&#32;Replace&#32;with&#32;project-specific&#32;values&#32;in&#32;your&#32;local&#32;environment.
+std::cout&#32;&lt;&lt;&#32;&quot;sattyre&#32;manual&#32;example&quot;&#32;&lt;&lt;&#32;std::endl;
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_chapter3_1autotoc_md106">
+<title>Supplemental example</title>
+<para><literallayout><computeroutput>//&#32;Minimal&#32;reference&#32;snippet&#32;for&#32;this&#32;chapter
+//&#32;Replace&#32;with&#32;project-specific&#32;values&#32;in&#32;your&#32;local&#32;environment.
+std::cout&#32;&lt;&lt;&#32;&quot;sattyre&#32;manual&#32;example&quot;&#32;&lt;&lt;&#32;std::endl;
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_chapter3_1autotoc_md107">
+<title>Supplemental example</title>
+<para><literallayout><computeroutput>//&#32;Minimal&#32;reference&#32;snippet&#32;for&#32;this&#32;chapter
+//&#32;Replace&#32;with&#32;project-specific&#32;values&#32;in&#32;your&#32;local&#32;environment.
+std::cout&#32;&lt;&lt;&#32;&quot;sattyre&#32;manual&#32;example&quot;&#32;&lt;&lt;&#32;std::endl;
+</computeroutput></literallayout> </para>
+</section>
+</section>
+</section>

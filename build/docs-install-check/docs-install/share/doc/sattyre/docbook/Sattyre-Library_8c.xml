@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_Sattyre-Library_8c" xml:lang="en-US">
+<title>/home/chubakpdp11/sattyre/src/library/Sattyre-Library.c File Reference</title>
+<indexterm><primary>/home/chubakpdp11/sattyre/src/library/Sattyre-Library.c</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;sattyre/Sattyre-Library.h&quot;<?linebreak?></programlisting><simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_structSattyreLibraryInfo">SattyreLibraryInfo</link> <link linkend="_Sattyre-Library_8c_1a8477266c93156c08c8faa5bb785938dc">sattyre_library_info</link> (void)</para>
+</listitem>
+            <listitem><para>int <link linkend="_Sattyre-Library_8c_1a6a3307a1a0b63d49d2784dd4e7db780d">sattyre_library_abi_compatible</link> (unsigned int abi_version)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_Sattyre-Library_8c_1a6a3307a1a0b63d49d2784dd4e7db780d"/><section>
+    <title>sattyre_library_abi_compatible()</title>
+<indexterm><primary>sattyre_library_abi_compatible</primary><secondary>Sattyre-Library.c</secondary></indexterm>
+<indexterm><primary>Sattyre-Library.c</primary><secondary>sattyre_library_abi_compatible</secondary></indexterm>
+<para><computeroutput>int sattyre_library_abi_compatible (unsigned int abi_version)</computeroutput></para></section>
+<anchor xml:id="_Sattyre-Library_8c_1a8477266c93156c08c8faa5bb785938dc"/><section>
+    <title>sattyre_library_info()</title>
+<indexterm><primary>sattyre_library_info</primary><secondary>Sattyre-Library.c</secondary></indexterm>
+<indexterm><primary>Sattyre-Library.c</primary><secondary>sattyre_library_info</secondary></indexterm>
+<para><computeroutput><link linkend="_structSattyreLibraryInfo">SattyreLibraryInfo</link> sattyre_library_info (void )</computeroutput></para></section>
+</section>
+</section>

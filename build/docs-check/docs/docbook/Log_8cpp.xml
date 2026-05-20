@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_Log_8cpp" xml:lang="en-US">
+<title>/home/chubakpdp11/sattyre/src/util/Log.cpp File Reference</title>
+<indexterm><primary>/home/chubakpdp11/sattyre/src/util/Log.cpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;sattyre/Log.hpp&quot;<?linebreak?>#include &lt;iostream&gt;<?linebreak?></programlisting><simplesect>
+    <title>Namespaces    </title>
+        <itemizedlist>
+            <listitem><para>namespace <link linkend="_namespacesattyre">sattyre</link></para>
+</listitem>
+            <listitem><para>namespace <link linkend="_namespacesattyre_1_1log">sattyre::log</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="_namespacesattyre_1_1log_1a9c29d17381e2feb1501e8f47c21d2d61">sattyre::log::init</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_namespacesattyre_1_1log_1a40742a025a6bcfa79293f2f796103107">sattyre::log::info</link> (const std::string &amp;msg)</para>
+</listitem>
+            <listitem><para>void <link linkend="_namespacesattyre_1_1log_1ab5934d0db5009d96139be75f787b32c0">sattyre::log::warn</link> (const std::string &amp;msg)</para>
+</listitem>
+            <listitem><para>void <link linkend="_namespacesattyre_1_1log_1a7778fbdbf5f5ae25a488fd22492a8b56">sattyre::log::error</link> (const std::string &amp;msg)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

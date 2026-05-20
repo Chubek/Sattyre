@@ -1,0 +1,92 @@
+Start testing: May 20 09:27 +0330
+----------------------------------------------------------
+1/5 Testing: sattyre-sat-parser-test
+1/5 Test: sattyre-sat-parser-test
+Command: "/home/chubakpdp11/sattyre/build/de-stub/sattyre-sat-parser-test"
+Directory: /home/chubakpdp11/sattyre/build/de-stub
+"sattyre-sat-parser-test" start time: May 20 09:27 +0330
+Output:
+----------------------------------------------------------
+[info] Parsing DIMACS file: /tmp/sattyre-ok.cnf
+[info] Parsing DIMACS file: /tmp/sattyre-comments-blank.cnf
+[info] Parsing DIMACS file: /tmp/sattyre-missing-zero.cnf
+[info] Parsing DIMACS file: /tmp/sattyre-out-of-range.cnf
+[info] Parsing DIMACS file: /tmp/sattyre-bad-count.cnf
+[info] Parsing DIMACS file: /tmp/sattyre-clause-before-header.cnf
+SAT parser tests passed
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"sattyre-sat-parser-test" end time: May 20 09:27 +0330
+"sattyre-sat-parser-test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/5 Testing: sattyre-solver-abi-test
+2/5 Test: sattyre-solver-abi-test
+Command: "/home/chubakpdp11/sattyre/build/de-stub/sattyre-solver-abi-test"
+Directory: /home/chubakpdp11/sattyre/build/de-stub
+"sattyre-solver-abi-test" start time: May 20 09:27 +0330
+Output:
+----------------------------------------------------------
+Solver ABI compatibility tests passed
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"sattyre-solver-abi-test" end time: May 20 09:27 +0330
+"sattyre-solver-abi-test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/5 Testing: sattyre-module-abi-test
+3/5 Test: sattyre-module-abi-test
+Command: "/home/chubakpdp11/sattyre/build/de-stub/sattyre-module-abi-test"
+Directory: /home/chubakpdp11/sattyre/build/de-stub
+"sattyre-module-abi-test" start time: May 20 09:27 +0330
+Output:
+----------------------------------------------------------
+Module ABI compatibility tests passed
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"sattyre-module-abi-test" end time: May 20 09:27 +0330
+"sattyre-module-abi-test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/5 Testing: sattyre-module-cpp-abi-test
+4/5 Test: sattyre-module-cpp-abi-test
+Command: "/home/chubakpdp11/sattyre/build/de-stub/sattyre-module-cpp-abi-test"
+Directory: /home/chubakpdp11/sattyre/build/de-stub
+"sattyre-module-cpp-abi-test" start time: May 20 09:27 +0330
+Output:
+----------------------------------------------------------
+C++ module ABI compatibility tests passed
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"sattyre-module-cpp-abi-test" end time: May 20 09:27 +0330
+"sattyre-module-cpp-abi-test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+5/5 Testing: sattyre-manifest-test
+5/5 Test: sattyre-manifest-test
+Command: "/home/chubakpdp11/sattyre/build/de-stub/sattyre-manifest-test"
+Directory: /home/chubakpdp11/sattyre/build/de-stub
+"sattyre-manifest-test" start time: May 20 09:27 +0330
+Output:
+----------------------------------------------------------
+[info] Loading package manifest: /tmp/sattyre-manifest-yaml.yaml
+[info] Loading package manifest: /tmp/sattyre-manifest-missing-name.yaml
+[info] Loading package manifest: /tmp/sattyre-manifest-bad-type.yaml
+Manifest tests passed
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"sattyre-manifest-test" end time: May 20 09:27 +0330
+"sattyre-manifest-test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: May 20 09:27 +0330

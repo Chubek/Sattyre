@@ -1,0 +1,149 @@
+\doxysection{Lua Runtime and Binding Surface }
+\label{chapter11}\index{Lua Runtime and Binding Surface@{Lua Runtime and Binding Surface}}
+Stage 7 embedded scripting with controlled API.\hypertarget{chapter11_autotoc_md39}{}\doxysubsubsection{\texorpdfstring{Scope}{Scope}}\label{chapter11_autotoc_md39}
+This chapter documents {\ttfamily Lua\+Runtime} lifecycle and binding registration functions. The scripting API should be intentionally small and useful. Expose stable operations before internal details.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{sattyre::LuaRuntime\ rt;}
+\DoxyCodeLine{if\ (!rt.init())\ \{}
+\DoxyCodeLine{\ \ throw\ std::runtime\_error("{}Lua\ init\ failed"{});}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{sattyre::bind\_lsat(rt);}
+\DoxyCodeLine{sattyre::bind\_lsmt(rt);}
+\DoxyCodeLine{sattyre::bind\_lsattyre(rt);}
+
+\end{DoxyCode}
+\hypertarget{chapter11_autotoc_md40}{}\doxysubsubsubsection{\texorpdfstring{Quick recap}{Quick recap}}\label{chapter11_autotoc_md40}
+
+\begin{DoxyItemize}
+\item Keep this section aligned with Stage 7 embedded scripting with controlled API.
+\item Prefer explicit statuses and deterministic behavior.
+\item Promote examples into tests when behavior stabilizes.
+\end{DoxyItemize}\hypertarget{chapter11_autotoc_md41}{}\doxysubsubsection{\texorpdfstring{Binding namespaces}{Binding namespaces}}\label{chapter11_autotoc_md41}
+{\ttfamily lsat} for SAT loading and solving. {\ttfamily lsmt} for SMT loading and solve status pathways. {\ttfamily lsattyre} for runtime paths and package environment helpers.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{-\/-\/\ solve\_sat.lua}
+\DoxyCodeLine{local\ p\ =\ lsat.parse\_dimacs("{}examples/example.cnf"{})}
+\DoxyCodeLine{local\ solver\ =\ lsat.native\_solver()}
+\DoxyCodeLine{solver:load(p)}
+\DoxyCodeLine{local\ result\ =\ solver:solve()}
+\DoxyCodeLine{print("{}result:"{},\ result)}
+
+\end{DoxyCode}
+\hypertarget{chapter11_autotoc_md42}{}\doxysubsubsubsection{\texorpdfstring{Quick recap}{Quick recap}}\label{chapter11_autotoc_md42}
+
+\begin{DoxyItemize}
+\item Keep this section aligned with Stage 7 embedded scripting with controlled API.
+\item Prefer explicit statuses and deterministic behavior.
+\item Promote examples into tests when behavior stabilizes.
+\end{DoxyItemize}\hypertarget{chapter11_autotoc_md43}{}\doxysubsubsection{\texorpdfstring{Error reporting}{Error reporting}}\label{chapter11_autotoc_md43}
+Surface Lua errors to callers and logs explicitly. Do not swallow script failures inside binding wrappers. Keep ownership clear:\+ runtime owns {\ttfamily lua\+\_\+\+State} lifecycle.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Lua\ errors\ should\ propagate\ to\ the\ caller\ in\ a\ clear\ way.}
+\DoxyCodeLine{//\ The\ binding\ layer\ should\ not\ hide\ the\ failure\ origin.}
+
+\end{DoxyCode}
+\hypertarget{chapter11_autotoc_md44}{}\doxysubsubsubsection{\texorpdfstring{Quick recap}{Quick recap}}\label{chapter11_autotoc_md44}
+
+\begin{DoxyItemize}
+\item Keep this section aligned with Stage 7 embedded scripting with controlled API.
+\item Prefer explicit statuses and deterministic behavior.
+\item Promote examples into tests when behavior stabilizes.
+\end{DoxyItemize}\hypertarget{chapter11_autotoc_md45}{}\doxysubsubsection{\texorpdfstring{Scripting patterns}{Scripting patterns}}\label{chapter11_autotoc_md45}
+Expose create/\+load/\+solve/\+inspect primitives first. Keep module tables small and discoverable. Reuse the same data flow as the C++ APIs.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{print(lsat.version())}
+\DoxyCodeLine{print(lsatyre\ and\ "{}runtime\ ready"{}\ or\ "{}runtime\ missing"{})}
+
+\end{DoxyCode}
+\hypertarget{chapter11_autotoc_md46}{}\doxysubsubsubsection{\texorpdfstring{Quick recap}{Quick recap}}\label{chapter11_autotoc_md46}
+
+\begin{DoxyItemize}
+\item Keep this section aligned with Stage 7 embedded scripting with controlled API.
+\item Prefer explicit statuses and deterministic behavior.
+\item Promote examples into tests when behavior stabilizes.
+\end{DoxyItemize}\hypertarget{chapter11_autotoc_md47}{}\doxysubsubsection{\texorpdfstring{Testing suggestions}{Testing suggestions}}\label{chapter11_autotoc_md47}
+Use a Lua smoke test that initializes runtime and executes a tiny script. Validate both success path and deliberate failure path. Keep scripts in examples or tests for reproducibility.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cmake\ -\/S\ .\ -\/B\ build/lua\ -\/DSATTYRE\_ENABLE\_LUA=ON\ -\/DSATTYRE\_ENABLE\_TESTS=ON}
+\DoxyCodeLine{cmake\ -\/-\/build\ build/lua\ -\/j}
+
+\end{DoxyCode}
+\hypertarget{chapter11_autotoc_md48}{}\doxysubsubsubsection{\texorpdfstring{Quick recap}{Quick recap}}\label{chapter11_autotoc_md48}
+
+\begin{DoxyItemize}
+\item Keep this section aligned with Stage 7 embedded scripting with controlled API.
+\item Prefer explicit statuses and deterministic behavior.
+\item Promote examples into tests when behavior stabilizes.
+\end{DoxyItemize}\hypertarget{chapter11_autotoc_md49}{}\doxysubsubsection{\texorpdfstring{Chapter summary}{Chapter summary}}\label{chapter11_autotoc_md49}
+Stage 7 success means reliable runtime init and practical first bindings. Small, focused bindings are easier to keep stable. This forms the scripting bridge for advanced user workflows.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Bindings\ should\ reflect\ stable\ public\ APIs,\ not\ internal\ prototypes.}
+
+\end{DoxyCode}
+\hypertarget{chapter11_autotoc_md50}{}\doxysubsubsubsection{\texorpdfstring{Quick recap}{Quick recap}}\label{chapter11_autotoc_md50}
+
+\begin{DoxyItemize}
+\item Keep this section aligned with Stage 7 embedded scripting with controlled API.
+\item Prefer explicit statuses and deterministic behavior.
+\item Promote examples into tests when behavior stabilizes.
+\end{DoxyItemize}\hypertarget{chapter11_autotoc_md51}{}\doxysubsubsubsection{\texorpdfstring{Supplemental example}{Supplemental example}}\label{chapter11_autotoc_md51}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Minimal\ reference\ snippet\ for\ this\ chapter}
+\DoxyCodeLine{//\ Replace\ with\ project-\/specific\ values\ in\ your\ local\ environment.}
+\DoxyCodeLine{std::cout\ <<\ "{}sattyre\ manual\ example"{}\ <<\ std::endl;}
+
+\end{DoxyCode}
+\hypertarget{chapter11_autotoc_md52}{}\doxysubsubsubsection{\texorpdfstring{Supplemental example}{Supplemental example}}\label{chapter11_autotoc_md52}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Minimal\ reference\ snippet\ for\ this\ chapter}
+\DoxyCodeLine{//\ Replace\ with\ project-\/specific\ values\ in\ your\ local\ environment.}
+\DoxyCodeLine{std::cout\ <<\ "{}sattyre\ manual\ example"{}\ <<\ std::endl;}
+
+\end{DoxyCode}
+\hypertarget{chapter11_autotoc_md53}{}\doxysubsubsubsection{\texorpdfstring{Supplemental example}{Supplemental example}}\label{chapter11_autotoc_md53}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Minimal\ reference\ snippet\ for\ this\ chapter}
+\DoxyCodeLine{//\ Replace\ with\ project-\/specific\ values\ in\ your\ local\ environment.}
+\DoxyCodeLine{std::cout\ <<\ "{}sattyre\ manual\ example"{}\ <<\ std::endl;}
+
+\end{DoxyCode}
+\hypertarget{chapter11_autotoc_md54}{}\doxysubsubsubsection{\texorpdfstring{Supplemental example}{Supplemental example}}\label{chapter11_autotoc_md54}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Minimal\ reference\ snippet\ for\ this\ chapter}
+\DoxyCodeLine{//\ Replace\ with\ project-\/specific\ values\ in\ your\ local\ environment.}
+\DoxyCodeLine{std::cout\ <<\ "{}sattyre\ manual\ example"{}\ <<\ std::endl;}
+
+\end{DoxyCode}
+\hypertarget{chapter11_autotoc_md55}{}\doxysubsubsubsection{\texorpdfstring{Supplemental example}{Supplemental example}}\label{chapter11_autotoc_md55}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Minimal\ reference\ snippet\ for\ this\ chapter}
+\DoxyCodeLine{//\ Replace\ with\ project-\/specific\ values\ in\ your\ local\ environment.}
+\DoxyCodeLine{std::cout\ <<\ "{}sattyre\ manual\ example"{}\ <<\ std::endl;}
+
+\end{DoxyCode}
+\hypertarget{chapter11_autotoc_md56}{}\doxysubsubsubsection{\texorpdfstring{Supplemental example}{Supplemental example}}\label{chapter11_autotoc_md56}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Minimal\ reference\ snippet\ for\ this\ chapter}
+\DoxyCodeLine{//\ Replace\ with\ project-\/specific\ values\ in\ your\ local\ environment.}
+\DoxyCodeLine{std::cout\ <<\ "{}sattyre\ manual\ example"{}\ <<\ std::endl;}
+
+\end{DoxyCode}
+ 

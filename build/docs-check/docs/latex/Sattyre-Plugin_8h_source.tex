@@ -1,0 +1,31 @@
+\doxysection{Sattyre-\/\+Plugin.h}
+\label{Sattyre-Plugin_8h_source}\index{/home/chubakpdp11/sattyre/include/sattyre/Sattyre-\/Plugin.h@{/home/chubakpdp11/sattyre/include/sattyre/Sattyre-\/Plugin.h}}
+\doxymbox{\hyperlink{Sattyre-Plugin_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ SATTYRE\_PLUGIN\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ SATTYRE\_PLUGIN\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00005\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ SATTYRE\_PLUGIN\_ABI\_VERSION\ 1u}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00011\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ abi\_version;}
+\DoxyCodeLine{00012\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ name;}
+\DoxyCodeLine{00013\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ version;}
+\DoxyCodeLine{00014\ \}\ SattyrePluginInfo;}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keywordtype}{int}\ sattyre\_plugin\_init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00017\ \textcolor{keywordtype}{void}\ sattyre\_plugin\_shutdown(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00018\ SattyrePluginInfo\ sattyre\_plugin\_info(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00019\ \textcolor{keywordtype}{int}\ sattyre\_plugin\_abi\_compatible(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ abi\_version);}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00022\ \}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

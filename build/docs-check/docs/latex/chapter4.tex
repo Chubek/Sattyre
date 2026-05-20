@@ -1,0 +1,142 @@
+\doxysection{Solver C ABI Contract }
+\label{chapter4}\index{Solver C ABI Contract@{Solver C ABI Contract}}
+Stage 3 ABI versioning, metadata, and compatibility checks.\hypertarget{chapter4_autotoc_md108}{}\doxysubsubsection{\texorpdfstring{Scope}{Scope}}\label{chapter4_autotoc_md108}
+This chapter documents {\ttfamily \doxylink{Sattyre-Solver_8h}{include/\+sattyre/\+\+Sattyre-\/\+Solver.\+h}} and C ABI expectations. The ABI should be small, stable, and explicit about compatibility. C++ wrappers should consume this ABI rather than bypass it.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#define\ SATTYRE\_SOLVER\_ABI\_VERSION\ 1u}
+\DoxyCodeLine{}
+\DoxyCodeLine{typedef\ struct\ \{}
+\DoxyCodeLine{\ \ unsigned\ int\ abi\_version;}
+\DoxyCodeLine{\ \ const\ char*\ name;}
+\DoxyCodeLine{\ \ const\ char*\ version;}
+\DoxyCodeLine{\}\ SattyreSolverInfo;}
+
+\end{DoxyCode}
+\hypertarget{chapter4_autotoc_md109}{}\doxysubsubsubsection{\texorpdfstring{Quick recap}{Quick recap}}\label{chapter4_autotoc_md109}
+
+\begin{DoxyItemize}
+\item Keep this section aligned with Stage 3 ABI versioning, metadata, and compatibility checks.
+\item Prefer explicit statuses and deterministic behavior.
+\item Promote examples into tests when behavior stabilizes.
+\end{DoxyItemize}\hypertarget{chapter4_autotoc_md110}{}\doxysubsubsection{\texorpdfstring{Mandatory symbols}{Mandatory symbols}}\label{chapter4_autotoc_md110}
+{\ttfamily \doxylink{Sattyre-Solver_8h_abc4042d10667ad4dd8e3769e34b78298}{sattyre\+\_\+solver\+\_\+create}} {\ttfamily \doxylink{Sattyre-Solver_8h_ab15d635389f52e4416a2b94f1ed4269f}{sattyre\+\_\+solver\+\_\+destroy}} {\ttfamily \doxylink{Sattyre-Solver_8h_a398abd3db7781da9301e6e452b953fea}{sattyre\+\_\+solver\+\_\+solve}} {\ttfamily \doxylink{Sattyre-Solver_8h_aeff6222bf8eea217cfb5aaed90c9a199}{sattyre\+\_\+solver\+\_\+info}} {\ttfamily \doxylink{Sattyre-Solver_8h_a382ce5e5224a693bdd32002efbf1f8b5}{sattyre\+\_\+solver\+\_\+abi\+\_\+compatible}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{SattyreSolver*\ solver\ =\ sattyre\_solver\_create();}
+\DoxyCodeLine{SattyreSolverResult\ result\ =\ sattyre\_solver\_solve(solver);}
+\DoxyCodeLine{sattyre\_solver\_destroy(solver);}
+
+\end{DoxyCode}
+\hypertarget{chapter4_autotoc_md111}{}\doxysubsubsubsection{\texorpdfstring{Quick recap}{Quick recap}}\label{chapter4_autotoc_md111}
+
+\begin{DoxyItemize}
+\item Keep this section aligned with Stage 3 ABI versioning, metadata, and compatibility checks.
+\item Prefer explicit statuses and deterministic behavior.
+\item Promote examples into tests when behavior stabilizes.
+\end{DoxyItemize}\hypertarget{chapter4_autotoc_md112}{}\doxysubsubsection{\texorpdfstring{Compatibility helper}{Compatibility helper}}\label{chapter4_autotoc_md112}
+The helper accepts an ABI version and returns nonzero for compatibility. Call it before solver use in adapters and module loaders. Avoid duplicating version checks in multiple places.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{SattyreSolverInfo\ info\ =\ sattyre\_solver\_info();}
+\DoxyCodeLine{if\ (!sattyre\_solver\_abi\_compatible(info.abi\_version))\ \{}
+\DoxyCodeLine{\ \ fprintf(stderr,\ "{}Incompatible\ solver\ ABI:\ \%u\(\backslash\)n"{},\ info.abi\_version);}
+\DoxyCodeLine{\ \ return\ 1;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{chapter4_autotoc_md113}{}\doxysubsubsubsection{\texorpdfstring{Quick recap}{Quick recap}}\label{chapter4_autotoc_md113}
+
+\begin{DoxyItemize}
+\item Keep this section aligned with Stage 3 ABI versioning, metadata, and compatibility checks.
+\item Prefer explicit statuses and deterministic behavior.
+\item Promote examples into tests when behavior stabilizes.
+\end{DoxyItemize}\hypertarget{chapter4_autotoc_md114}{}\doxysubsubsection{\texorpdfstring{Result codes}{Result codes}}\label{chapter4_autotoc_md114}
+{\ttfamily \doxylink{Sattyre-Solver_8h_a69d5cd50d36d2c32d1e00c4790f9f1f7}{Sattyre\+Solver\+Result}} maps to SAT, UNSAT, UNKNOWN. Adapters should map these exactly to {\ttfamily \doxylink{namespacesattyre_ade8a7fe1106cbadebc9b9695bf57c096}{sattyre::\+\+Solve\+Result}}. Unknown must remain distinguishable from failure paths.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Keep\ Unknown\ for\ indeterminate\ or\ unsupported\ cases.}
+\DoxyCodeLine{//\ Do\ not\ repurpose\ it\ as\ a\ generic\ error\ bucket.}
+
+\end{DoxyCode}
+\hypertarget{chapter4_autotoc_md115}{}\doxysubsubsubsection{\texorpdfstring{Quick recap}{Quick recap}}\label{chapter4_autotoc_md115}
+
+\begin{DoxyItemize}
+\item Keep this section aligned with Stage 3 ABI versioning, metadata, and compatibility checks.
+\item Prefer explicit statuses and deterministic behavior.
+\item Promote examples into tests when behavior stabilizes.
+\end{DoxyItemize}\hypertarget{chapter4_autotoc_md116}{}\doxysubsubsection{\texorpdfstring{ABI tests}{ABI tests}}\label{chapter4_autotoc_md116}
+A dedicated solver ABI test should verify version and metadata fields. Compatibility helper should be checked with current and mismatched versions. C and C++ surfaces should agree on results.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cmake\ -\/S\ .\ -\/B\ build/abi\ -\/DSATTYRE\_ENABLE\_TESTS=ON}
+\DoxyCodeLine{cmake\ -\/-\/build\ build/abi\ -\/j}
+\DoxyCodeLine{ctest\ -\/-\/test-\/dir\ build/abi\ -\/R\ sattyre-\/solver-\/abi-\/test\ -\/-\/output-\/on-\/failure}
+
+\end{DoxyCode}
+\hypertarget{chapter4_autotoc_md117}{}\doxysubsubsubsection{\texorpdfstring{Quick recap}{Quick recap}}\label{chapter4_autotoc_md117}
+
+\begin{DoxyItemize}
+\item Keep this section aligned with Stage 3 ABI versioning, metadata, and compatibility checks.
+\item Prefer explicit statuses and deterministic behavior.
+\item Promote examples into tests when behavior stabilizes.
+\end{DoxyItemize}\hypertarget{chapter4_autotoc_md118}{}\doxysubsubsection{\texorpdfstring{Chapter summary}{Chapter summary}}\label{chapter4_autotoc_md118}
+A tiny C ABI is the backbone of extensible solver integration. Compatibility checks prevent confusing runtime misuse. Stage 3 is complete when adapters rely on this contract consistently.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Version\ checks\ belong\ at\ the\ ABI\ boundary,\ not\ scattered\ in\ solver\ code.}
+
+\end{DoxyCode}
+\hypertarget{chapter4_autotoc_md119}{}\doxysubsubsubsection{\texorpdfstring{Quick recap}{Quick recap}}\label{chapter4_autotoc_md119}
+
+\begin{DoxyItemize}
+\item Keep this section aligned with Stage 3 ABI versioning, metadata, and compatibility checks.
+\item Prefer explicit statuses and deterministic behavior.
+\item Promote examples into tests when behavior stabilizes.
+\end{DoxyItemize}\hypertarget{chapter4_autotoc_md120}{}\doxysubsubsubsection{\texorpdfstring{Supplemental example}{Supplemental example}}\label{chapter4_autotoc_md120}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Minimal\ reference\ snippet\ for\ this\ chapter}
+\DoxyCodeLine{//\ Replace\ with\ project-\/specific\ values\ in\ your\ local\ environment.}
+\DoxyCodeLine{std::cout\ <<\ "{}sattyre\ manual\ example"{}\ <<\ std::endl;}
+
+\end{DoxyCode}
+\hypertarget{chapter4_autotoc_md121}{}\doxysubsubsubsection{\texorpdfstring{Supplemental example}{Supplemental example}}\label{chapter4_autotoc_md121}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Minimal\ reference\ snippet\ for\ this\ chapter}
+\DoxyCodeLine{//\ Replace\ with\ project-\/specific\ values\ in\ your\ local\ environment.}
+\DoxyCodeLine{std::cout\ <<\ "{}sattyre\ manual\ example"{}\ <<\ std::endl;}
+
+\end{DoxyCode}
+\hypertarget{chapter4_autotoc_md122}{}\doxysubsubsubsection{\texorpdfstring{Supplemental example}{Supplemental example}}\label{chapter4_autotoc_md122}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Minimal\ reference\ snippet\ for\ this\ chapter}
+\DoxyCodeLine{//\ Replace\ with\ project-\/specific\ values\ in\ your\ local\ environment.}
+\DoxyCodeLine{std::cout\ <<\ "{}sattyre\ manual\ example"{}\ <<\ std::endl;}
+
+\end{DoxyCode}
+\hypertarget{chapter4_autotoc_md123}{}\doxysubsubsubsection{\texorpdfstring{Supplemental example}{Supplemental example}}\label{chapter4_autotoc_md123}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Minimal\ reference\ snippet\ for\ this\ chapter}
+\DoxyCodeLine{//\ Replace\ with\ project-\/specific\ values\ in\ your\ local\ environment.}
+\DoxyCodeLine{std::cout\ <<\ "{}sattyre\ manual\ example"{}\ <<\ std::endl;}
+
+\end{DoxyCode}
+\hypertarget{chapter4_autotoc_md124}{}\doxysubsubsubsection{\texorpdfstring{Supplemental example}{Supplemental example}}\label{chapter4_autotoc_md124}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Minimal\ reference\ snippet\ for\ this\ chapter}
+\DoxyCodeLine{//\ Replace\ with\ project-\/specific\ values\ in\ your\ local\ environment.}
+\DoxyCodeLine{std::cout\ <<\ "{}sattyre\ manual\ example"{}\ <<\ std::endl;}
+
+\end{DoxyCode}
+ 

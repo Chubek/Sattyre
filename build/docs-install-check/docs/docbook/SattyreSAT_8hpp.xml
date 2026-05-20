@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_SattyreSAT_8hpp" xml:lang="en-US">
+<title>/home/chubakpdp11/sattyre/include/sattyre/SattyreSAT.hpp File Reference</title>
+<indexterm><primary>/home/chubakpdp11/sattyre/include/sattyre/SattyreSAT.hpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &lt;cstdint&gt;<?linebreak?>#include &lt;string&gt;<?linebreak?>#include &lt;vector&gt;<?linebreak?></programlisting><simplesect>
+    <title>Data Structures    </title>
+        <itemizedlist>
+            <listitem><para>struct <link linkend="_structsattyre_1_1SATProblem">sattyre::SATProblem</link></para>
+</listitem>
+            <listitem><para>struct <link linkend="_structsattyre_1_1SATModel">sattyre::SATModel</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classsattyre_1_1SATSolver">sattyre::SATSolver</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Namespaces    </title>
+        <itemizedlist>
+            <listitem><para>namespace <link linkend="_namespacesattyre">sattyre</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Typedefs    </title>
+        <itemizedlist>
+            <listitem><para>using <link linkend="_namespacesattyre_1ab221caacec0c6b5304cb4f1d04734eaf">sattyre::Literal</link> = std::int32_t</para>
+</listitem>
+            <listitem><para>using <link linkend="_namespacesattyre_1a0f2aff6a78e7161b3311f85fee23c52d">sattyre::Clause</link> = std::vector&lt;<link linkend="_namespacesattyre_1ab221caacec0c6b5304cb4f1d04734eaf">Literal</link>&gt;</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Enumerations    </title>
+        <itemizedlist>
+            <listitem><para>enum class <link linkend="_namespacesattyre_1ade8a7fe1106cbadebc9b9695bf57c096">sattyre::SolveResult</link> { <link linkend="_namespacesattyre_1ade8a7fe1106cbadebc9b9695bf57c096a13c7d2d737f81f7bf89aed9fbcd0ad55">sattyre::Sat</link>
+, <link linkend="_namespacesattyre_1ade8a7fe1106cbadebc9b9695bf57c096a922e937d9ddf77b0f7a6ccc3d168bbd6">sattyre::Unsat</link>
+, <link linkend="_namespacesattyre_1ade8a7fe1106cbadebc9b9695bf57c096a88183b946cc5f0e8c96b2e66e1c74a7e">sattyre::Unknown</link>
+ }</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_structsattyre_1_1SATProblem">SATProblem</link> <link linkend="_namespacesattyre_1a85d93367dc458937936cf50977090ee0">sattyre::parse_dimacs_file</link> (const std::string &amp;path)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

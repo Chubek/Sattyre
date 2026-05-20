@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_b3a29be71f9f9d6743b0cca18536b929" xml:lang="en-US">
+<title>/home/chubakpdp11/sattyre/src/core Directory Reference</title>
+<indexterm><primary>/home/chubakpdp11/sattyre/src/core Directory Reference</primary></indexterm>
+<simplesect>
+    <title>Files    </title>
+        <itemizedlist>
+            <listitem><para>file <link linkend="_SattyreSAT_8cpp">SattyreSAT.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_SattyreSMT_8cpp">SattyreSMT.cpp</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

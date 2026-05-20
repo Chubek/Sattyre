@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_Sattyre-Plugin_8h_source" xml:lang="en-US">
+<title>Sattyre-Plugin.h</title>
+<indexterm><primary>/home/chubakpdp11/sattyre/include/sattyre/Sattyre-Plugin.h</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;SATTYRE_PLUGIN_H</emphasis>
+2 <emphasis role="preprocessor">#define&#32;SATTYRE_PLUGIN_H</emphasis>
+3 
+4 <emphasis role="preprocessor">#ifdef&#32;__cplusplus</emphasis>
+5 <emphasis role="keyword">extern</emphasis>&#32;<emphasis role="stringliteral">&quot;C&quot;</emphasis>&#32;{
+6 <emphasis role="preprocessor">#endif</emphasis>
+7 
+8 <emphasis role="preprocessor">#define&#32;SATTYRE_PLUGIN_ABI_VERSION&#32;1u</emphasis>
+9 
+10 <emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keyword">struct&#32;</emphasis>{
+11 &#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_structSattyrePluginInfo_1ac8fb8eedc55badb54b5edd5912ecd847">abi_version</link>;
+12 &#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>*&#32;<link linkend="_structSattyrePluginInfo_1a2b3fc12dff92fab838d412b135ff0af8">name</link>;
+13 &#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>*&#32;<link linkend="_structSattyrePluginInfo_1aac61b06370df5f413bb2f81317ca9572">version</link>;
+14 }&#32;<link linkend="_structSattyrePluginInfo">SattyrePluginInfo</link>;
+15 
+16 <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_Sattyre-Plugin_8h_1a075e41808a5829e6aac16f6124cb1516">sattyre_plugin_init</link>(<emphasis role="keywordtype">void</emphasis>);
+17 <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_Sattyre-Plugin_8h_1a7a9c388961479bf7de5140b8ee5e229f">sattyre_plugin_shutdown</link>(<emphasis role="keywordtype">void</emphasis>);
+18 <link linkend="_structSattyrePluginInfo">SattyrePluginInfo</link>&#32;<link linkend="_Sattyre-Plugin_8h_1a728c97988f8e520ac68871bba0016b39">sattyre_plugin_info</link>(<emphasis role="keywordtype">void</emphasis>);
+19 <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_Sattyre-Plugin_8h_1a698e7e049dcd92d477f721b52a19439f">sattyre_plugin_abi_compatible</link>(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;abi_version);
+20 
+21 <emphasis role="preprocessor">#ifdef&#32;__cplusplus</emphasis>
+22 }
+23 <emphasis role="preprocessor">#endif</emphasis>
+24 
+25 <emphasis role="preprocessor">#endif</emphasis>
+</programlisting></section>

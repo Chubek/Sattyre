@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_Version_8hpp_source" xml:lang="en-US">
+<title>Version.hpp</title>
+<indexterm><primary>/home/chubakpdp11/sattyre/include/sattyre/Version.hpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#pragma&#32;once</emphasis>
+2 
+3 <emphasis role="preprocessor">#define&#32;SATTYRE_VERSION_MAJOR&#32;0</emphasis>
+4 <emphasis role="preprocessor">#define&#32;SATTYRE_VERSION_MINOR&#32;1</emphasis>
+5 <emphasis role="preprocessor">#define&#32;SATTYRE_VERSION_PATCH&#32;0</emphasis>
+6 <emphasis role="preprocessor">#define&#32;SATTYRE_VERSION_STRING&#32;&quot;0.1.0&quot;</emphasis>
+</programlisting></section>

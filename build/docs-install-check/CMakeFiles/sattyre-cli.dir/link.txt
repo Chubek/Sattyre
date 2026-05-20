@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/sattyre-cli.dir/link.d "CMakeFiles/sattyre-cli.dir/src/cli/sattyre-cli.cpp.o" -o sattyre-cli  libsattyre.a /usr/lib/libarchive.so -ldl libsattyre-cabi.a

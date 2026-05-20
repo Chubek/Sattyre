@@ -1,0 +1,167 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="Chapter-7_8rst" kind="file" language="Markdown">
+    <compoundname>Chapter-7.rst</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">\page<sp/>chapter7<sp/>Package<sp/>Manifests<sp/>and<sp/>Normalization</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">\brief<sp/>Stage<sp/>5<sp/>manifest<sp/>structure<sp/>and<sp/>validation</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Scope</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>chapter<sp/>focuses<sp/>on<sp/>`PackageManifest`,<sp/>parsing,<sp/>and<sp/>canonical<sp/>JSON<sp/>output.</highlight></codeline>
+<codeline><highlight class="normal">The<sp/>parser<sp/>should<sp/>normalize<sp/>supported<sp/>input<sp/>formats<sp/>into<sp/>one<sp/>internal<sp/>shape.</highlight></codeline>
+<codeline><highlight class="normal">Required<sp/>fields<sp/>are<sp/>`name`,<sp/>`version`,<sp/>and<sp/>`type`.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">sattyre::PackageManifest<sp/>parse_manifest_text(const<sp/>std::string&amp;,<sp/>const<sp/>std::string&amp;<sp/>source<sp/>=<sp/>{});</highlight></codeline>
+<codeline><highlight class="normal">sattyre::PackageManifest<sp/>load_manifest(const<sp/>std::string&amp;<sp/>path);</highlight></codeline>
+<codeline><highlight class="normal">std::string<sp/>manifest_to_json(const<sp/>sattyre::PackageManifest&amp;<sp/>manifest);</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Quick<sp/>recap</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Keep<sp/>this<sp/>section<sp/>aligned<sp/>with<sp/>Stage<sp/>5<sp/>manifest<sp/>structure<sp/>and<sp/>validation.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Prefer<sp/>explicit<sp/>statuses<sp/>and<sp/>deterministic<sp/>behavior.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Promote<sp/>examples<sp/>into<sp/>tests<sp/>when<sp/>behavior<sp/>stabilizes.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Canonical<sp/>manifest<sp/>fields</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">`name`:<sp/>package<sp/>identifier</highlight></codeline>
+<codeline><highlight class="normal">`version`:<sp/>package<sp/>version<sp/>string</highlight></codeline>
+<codeline><highlight class="normal">`type`:<sp/>solver<sp/>|<sp/>plugin<sp/>|<sp/>library<sp/>|<sp/>lua-addon</highlight></codeline>
+<codeline><highlight class="normal">`dependencies`:<sp/>optional<sp/>list</highlight></codeline>
+<codeline><highlight class="normal">`description`:<sp/>optional<sp/>text</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>&quot;name&quot;:<sp/>&quot;demo-solver&quot;,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>&quot;version&quot;:<sp/>&quot;1.0.0&quot;,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>&quot;type&quot;:<sp/>&quot;solver&quot;,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>&quot;dependencies&quot;:<sp/>[&quot;core-lib&quot;],</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>&quot;description&quot;:<sp/>&quot;tiny<sp/>example<sp/>package&quot;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Quick<sp/>recap</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Keep<sp/>this<sp/>section<sp/>aligned<sp/>with<sp/>Stage<sp/>5<sp/>manifest<sp/>structure<sp/>and<sp/>validation.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Prefer<sp/>explicit<sp/>statuses<sp/>and<sp/>deterministic<sp/>behavior.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Promote<sp/>examples<sp/>into<sp/>tests<sp/>when<sp/>behavior<sp/>stabilizes.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Validation<sp/>strategy</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Reject<sp/>missing<sp/>required<sp/>fields<sp/>with<sp/>source-aware<sp/>errors.</highlight></codeline>
+<codeline><highlight class="normal">Reject<sp/>unknown<sp/>type<sp/>values<sp/>unless<sp/>explicitly<sp/>supported.</highlight></codeline>
+<codeline><highlight class="normal">Normalize<sp/>dependencies<sp/>to<sp/>deterministic<sp/>order<sp/>where<sp/>needed<sp/>for<sp/>reproducible<sp/>outputs.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Canonicalization<sp/>makes<sp/>comparison<sp/>and<sp/>registry<sp/>indexing<sp/>predictable.</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Do<sp/>not<sp/>preserve<sp/>parser-specific<sp/>quirks<sp/>in<sp/>the<sp/>normalized<sp/>struct.</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Quick<sp/>recap</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Keep<sp/>this<sp/>section<sp/>aligned<sp/>with<sp/>Stage<sp/>5<sp/>manifest<sp/>structure<sp/>and<sp/>validation.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Prefer<sp/>explicit<sp/>statuses<sp/>and<sp/>deterministic<sp/>behavior.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Promote<sp/>examples<sp/>into<sp/>tests<sp/>when<sp/>behavior<sp/>stabilizes.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Normalization<sp/>flow</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Load<sp/>a<sp/>manifest<sp/>from<sp/>JSON,<sp/>YAML,<sp/>S-expression,<sp/>or<sp/>XML.</highlight></codeline>
+<codeline><highlight class="normal">Convert<sp/>it<sp/>into<sp/>`PackageManifest`<sp/>with<sp/>consistent<sp/>field<sp/>names<sp/>and<sp/>semantics.</highlight></codeline>
+<codeline><highlight class="normal">Re-emit<sp/>canonical<sp/>JSON<sp/>for<sp/>inspection<sp/>or<sp/>registry<sp/>use.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">auto<sp/>mf<sp/>=<sp/>sattyre::load_manifest(&quot;share/packages/demo/manifest.json&quot;);</highlight></codeline>
+<codeline><highlight class="normal">std::string<sp/>canonical<sp/>=<sp/>sattyre::manifest_to_json(mf);</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>canonical<sp/>&lt;&lt;<sp/>&quot;\n&quot;;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Quick<sp/>recap</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Keep<sp/>this<sp/>section<sp/>aligned<sp/>with<sp/>Stage<sp/>5<sp/>manifest<sp/>structure<sp/>and<sp/>validation.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Prefer<sp/>explicit<sp/>statuses<sp/>and<sp/>deterministic<sp/>behavior.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Promote<sp/>examples<sp/>into<sp/>tests<sp/>when<sp/>behavior<sp/>stabilizes.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Manifest<sp/>tests</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Positive<sp/>tests<sp/>for<sp/>valid<sp/>manifests.</highlight></codeline>
+<codeline><highlight class="normal">Negative<sp/>tests<sp/>for<sp/>missing<sp/>name/version/type.</highlight></codeline>
+<codeline><highlight class="normal">Malformed<sp/>document<sp/>tests<sp/>for<sp/>each<sp/>supported<sp/>parser<sp/>path.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>-S<sp/>.<sp/>-B<sp/>build/manifest<sp/>-DSATTYRE_ENABLE_TESTS=ON</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>--build<sp/>build/manifest<sp/>-j</highlight></codeline>
+<codeline><highlight class="normal">ctest<sp/>--test-dir<sp/>build/manifest<sp/>-R<sp/>sattyre-manifest-test<sp/>--output-on-failure</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Quick<sp/>recap</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Keep<sp/>this<sp/>section<sp/>aligned<sp/>with<sp/>Stage<sp/>5<sp/>manifest<sp/>structure<sp/>and<sp/>validation.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Prefer<sp/>explicit<sp/>statuses<sp/>and<sp/>deterministic<sp/>behavior.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Promote<sp/>examples<sp/>into<sp/>tests<sp/>when<sp/>behavior<sp/>stabilizes.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Chapter<sp/>summary</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Manifest<sp/>normalization<sp/>is<sp/>the<sp/>backbone<sp/>of<sp/>package,<sp/>install,<sp/>and<sp/>registry<sp/>flows.</highlight></codeline>
+<codeline><highlight class="normal">Keep<sp/>the<sp/>parser<sp/>strict<sp/>and<sp/>outputs<sp/>canonical.</highlight></codeline>
+<codeline><highlight class="normal">Prefer<sp/>explicit<sp/>parse<sp/>failures<sp/>over<sp/>fallback<sp/>guesses.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Normalized<sp/>manifests<sp/>should<sp/>be<sp/>easy<sp/>to<sp/>serialize,<sp/>compare,<sp/>and<sp/>store.</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Quick<sp/>recap</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Keep<sp/>this<sp/>section<sp/>aligned<sp/>with<sp/>Stage<sp/>5<sp/>manifest<sp/>structure<sp/>and<sp/>validation.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Prefer<sp/>explicit<sp/>statuses<sp/>and<sp/>deterministic<sp/>behavior.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Promote<sp/>examples<sp/>into<sp/>tests<sp/>when<sp/>behavior<sp/>stabilizes.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Supplemental<sp/>example</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Supplemental<sp/>example</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Supplemental<sp/>example</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Supplemental<sp/>example</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Supplemental<sp/>example</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+    </programlisting>
+    <location file="/home/chubakpdp11/sattyre/docs/manual/Chapter-7.rst"/>
+  </compounddef>
+</doxygen>

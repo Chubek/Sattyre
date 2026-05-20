@@ -1,0 +1,56 @@
+\doxysection{/\+home/\+chubakpdp11/\+sattyre/\+src/\+solver/\+\+Sattyre-\/\+Solver.c File Reference}
+\label{Sattyre-Solver_8c}\index{/home/chubakpdp11/sattyre/src/solver/Sattyre-\/Solver.c@{/home/chubakpdp11/sattyre/src/solver/Sattyre-\/Solver.c}}
+{\ttfamily \+\#include "{}sattyre/\+\+Sattyre-\/\+Solver.\+h"{}}\newline
+{\ttfamily \+\#include $<$stdlib.\+h$>$}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{structSattyreSolver}{Sattyre\+Solver}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{structSattyreSolver}{Sattyre\+Solver}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{Sattyre-Solver_8c_abc4042d10667ad4dd8e3769e34b78298}{sattyre\+\_\+solver\+\_\+create}} (void)
+\item 
+void \doxymbox{\hyperlink{Sattyre-Solver_8c_ab15d635389f52e4416a2b94f1ed4269f}{sattyre\+\_\+solver\+\_\+destroy}} (\doxymbox{\hyperlink{structSattyreSolver}{Sattyre\+Solver}} \texorpdfstring{$\ast$}{*}solver)
+\item 
+\doxymbox{\hyperlink{Sattyre-Solver_8h_a69d5cd50d36d2c32d1e00c4790f9f1f7}{Sattyre\+Solver\+Result}} \doxymbox{\hyperlink{Sattyre-Solver_8c_a398abd3db7781da9301e6e452b953fea}{sattyre\+\_\+solver\+\_\+solve}} (\doxymbox{\hyperlink{structSattyreSolver}{Sattyre\+Solver}} \texorpdfstring{$\ast$}{*}solver)
+\item 
+\doxymbox{\hyperlink{structSattyreSolverInfo}{Sattyre\+Solver\+Info}} \doxymbox{\hyperlink{Sattyre-Solver_8c_aeff6222bf8eea217cfb5aaed90c9a199}{sattyre\+\_\+solver\+\_\+info}} (void)
+\item 
+int \doxymbox{\hyperlink{Sattyre-Solver_8c_a382ce5e5224a693bdd32002efbf1f8b5}{sattyre\+\_\+solver\+\_\+abi\+\_\+compatible}} (unsigned int abi\+\_\+version)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\doxysubsection{Function Documentation}
+\index{Sattyre-\/Solver.c@{Sattyre-\/Solver.c}!sattyre\_solver\_abi\_compatible@{sattyre\_solver\_abi\_compatible}}
+\index{sattyre\_solver\_abi\_compatible@{sattyre\_solver\_abi\_compatible}!Sattyre-\/Solver.c@{Sattyre-\/Solver.c}}
+\doxysubsubsection{\texorpdfstring{sattyre\_solver\_abi\_compatible()}{sattyre\_solver\_abi\_compatible()}}
+{\footnotesize\ttfamily \label{Sattyre-Solver_8c_a382ce5e5224a693bdd32002efbf1f8b5} 
+int sattyre\+\_\+solver\+\_\+abi\+\_\+compatible (\begin{DoxyParamCaption}\item[{unsigned int}]{abi\+\_\+version}{}\end{DoxyParamCaption})}
+
+\index{Sattyre-\/Solver.c@{Sattyre-\/Solver.c}!sattyre\_solver\_create@{sattyre\_solver\_create}}
+\index{sattyre\_solver\_create@{sattyre\_solver\_create}!Sattyre-\/Solver.c@{Sattyre-\/Solver.c}}
+\doxysubsubsection{\texorpdfstring{sattyre\_solver\_create()}{sattyre\_solver\_create()}}
+{\footnotesize\ttfamily \label{Sattyre-Solver_8c_abc4042d10667ad4dd8e3769e34b78298} 
+\doxymbox{\hyperlink{structSattyreSolver}{Sattyre\+Solver}} \texorpdfstring{$\ast$}{*} sattyre\+\_\+solver\+\_\+create (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+\index{Sattyre-\/Solver.c@{Sattyre-\/Solver.c}!sattyre\_solver\_destroy@{sattyre\_solver\_destroy}}
+\index{sattyre\_solver\_destroy@{sattyre\_solver\_destroy}!Sattyre-\/Solver.c@{Sattyre-\/Solver.c}}
+\doxysubsubsection{\texorpdfstring{sattyre\_solver\_destroy()}{sattyre\_solver\_destroy()}}
+{\footnotesize\ttfamily \label{Sattyre-Solver_8c_ab15d635389f52e4416a2b94f1ed4269f} 
+void sattyre\+\_\+solver\+\_\+destroy (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structSattyreSolver}{Sattyre\+Solver}} \texorpdfstring{$\ast$}{*}}]{solver}{}\end{DoxyParamCaption})}
+
+\index{Sattyre-\/Solver.c@{Sattyre-\/Solver.c}!sattyre\_solver\_info@{sattyre\_solver\_info}}
+\index{sattyre\_solver\_info@{sattyre\_solver\_info}!Sattyre-\/Solver.c@{Sattyre-\/Solver.c}}
+\doxysubsubsection{\texorpdfstring{sattyre\_solver\_info()}{sattyre\_solver\_info()}}
+{\footnotesize\ttfamily \label{Sattyre-Solver_8c_aeff6222bf8eea217cfb5aaed90c9a199} 
+\doxymbox{\hyperlink{structSattyreSolverInfo}{Sattyre\+Solver\+Info}} sattyre\+\_\+solver\+\_\+info (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+\index{Sattyre-\/Solver.c@{Sattyre-\/Solver.c}!sattyre\_solver\_solve@{sattyre\_solver\_solve}}
+\index{sattyre\_solver\_solve@{sattyre\_solver\_solve}!Sattyre-\/Solver.c@{Sattyre-\/Solver.c}}
+\doxysubsubsection{\texorpdfstring{sattyre\_solver\_solve()}{sattyre\_solver\_solve()}}
+{\footnotesize\ttfamily \label{Sattyre-Solver_8c_a398abd3db7781da9301e6e452b953fea} 
+\doxymbox{\hyperlink{Sattyre-Solver_8h_a69d5cd50d36d2c32d1e00c4790f9f1f7}{Sattyre\+Solver\+Result}} sattyre\+\_\+solver\+\_\+solve (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structSattyreSolver}{Sattyre\+Solver}} \texorpdfstring{$\ast$}{*}}]{solver}{}\end{DoxyParamCaption})}
+

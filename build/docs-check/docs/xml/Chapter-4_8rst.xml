@@ -1,0 +1,169 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="Chapter-4_8rst" kind="file" language="Markdown">
+    <compoundname>Chapter-4.rst</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">\page<sp/>chapter4<sp/>Solver<sp/>C<sp/>ABI<sp/>Contract</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">\brief<sp/>Stage<sp/>3<sp/>ABI<sp/>versioning,<sp/>metadata,<sp/>and<sp/>compatibility<sp/>checks</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Scope</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>chapter<sp/>documents<sp/>`include/sattyre/Sattyre-Solver.h`<sp/>and<sp/>C<sp/>ABI<sp/>expectations.</highlight></codeline>
+<codeline><highlight class="normal">The<sp/>ABI<sp/>should<sp/>be<sp/>small,<sp/>stable,<sp/>and<sp/>explicit<sp/>about<sp/>compatibility.</highlight></codeline>
+<codeline><highlight class="normal">C++<sp/>wrappers<sp/>should<sp/>consume<sp/>this<sp/>ABI<sp/>rather<sp/>than<sp/>bypass<sp/>it.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>SATTYRE_SOLVER_ABI_VERSION<sp/>1u</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">typedef<sp/>struct<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>unsigned<sp/>int<sp/>abi_version;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>const<sp/>char*<sp/>name;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>const<sp/>char*<sp/>version;</highlight></codeline>
+<codeline><highlight class="normal">}<sp/>SattyreSolverInfo;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Quick<sp/>recap</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Keep<sp/>this<sp/>section<sp/>aligned<sp/>with<sp/>Stage<sp/>3<sp/>ABI<sp/>versioning,<sp/>metadata,<sp/>and<sp/>compatibility<sp/>checks.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Prefer<sp/>explicit<sp/>statuses<sp/>and<sp/>deterministic<sp/>behavior.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Promote<sp/>examples<sp/>into<sp/>tests<sp/>when<sp/>behavior<sp/>stabilizes.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Mandatory<sp/>symbols</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">`sattyre_solver_create`</highlight></codeline>
+<codeline><highlight class="normal">`sattyre_solver_destroy`</highlight></codeline>
+<codeline><highlight class="normal">`sattyre_solver_solve`</highlight></codeline>
+<codeline><highlight class="normal">`sattyre_solver_info`</highlight></codeline>
+<codeline><highlight class="normal">`sattyre_solver_abi_compatible`</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">SattyreSolver*<sp/>solver<sp/>=<sp/>sattyre_solver_create();</highlight></codeline>
+<codeline><highlight class="normal">SattyreSolverResult<sp/>result<sp/>=<sp/>sattyre_solver_solve(solver);</highlight></codeline>
+<codeline><highlight class="normal">sattyre_solver_destroy(solver);</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Quick<sp/>recap</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Keep<sp/>this<sp/>section<sp/>aligned<sp/>with<sp/>Stage<sp/>3<sp/>ABI<sp/>versioning,<sp/>metadata,<sp/>and<sp/>compatibility<sp/>checks.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Prefer<sp/>explicit<sp/>statuses<sp/>and<sp/>deterministic<sp/>behavior.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Promote<sp/>examples<sp/>into<sp/>tests<sp/>when<sp/>behavior<sp/>stabilizes.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Compatibility<sp/>helper</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>helper<sp/>accepts<sp/>an<sp/>ABI<sp/>version<sp/>and<sp/>returns<sp/>nonzero<sp/>for<sp/>compatibility.</highlight></codeline>
+<codeline><highlight class="normal">Call<sp/>it<sp/>before<sp/>solver<sp/>use<sp/>in<sp/>adapters<sp/>and<sp/>module<sp/>loaders.</highlight></codeline>
+<codeline><highlight class="normal">Avoid<sp/>duplicating<sp/>version<sp/>checks<sp/>in<sp/>multiple<sp/>places.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">SattyreSolverInfo<sp/>info<sp/>=<sp/>sattyre_solver_info();</highlight></codeline>
+<codeline><highlight class="normal">if<sp/>(!sattyre_solver_abi_compatible(info.abi_version))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>fprintf(stderr,<sp/>&quot;Incompatible<sp/>solver<sp/>ABI:<sp/>%u\n&quot;,<sp/>info.abi_version);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Quick<sp/>recap</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Keep<sp/>this<sp/>section<sp/>aligned<sp/>with<sp/>Stage<sp/>3<sp/>ABI<sp/>versioning,<sp/>metadata,<sp/>and<sp/>compatibility<sp/>checks.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Prefer<sp/>explicit<sp/>statuses<sp/>and<sp/>deterministic<sp/>behavior.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Promote<sp/>examples<sp/>into<sp/>tests<sp/>when<sp/>behavior<sp/>stabilizes.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Result<sp/>codes</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">`SattyreSolverResult`<sp/>maps<sp/>to<sp/>SAT,<sp/>UNSAT,<sp/>UNKNOWN.</highlight></codeline>
+<codeline><highlight class="normal">Adapters<sp/>should<sp/>map<sp/>these<sp/>exactly<sp/>to<sp/>`sattyre::SolveResult`.</highlight></codeline>
+<codeline><highlight class="normal">Unknown<sp/>must<sp/>remain<sp/>distinguishable<sp/>from<sp/>failure<sp/>paths.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Keep<sp/>Unknown<sp/>for<sp/>indeterminate<sp/>or<sp/>unsupported<sp/>cases.</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Do<sp/>not<sp/>repurpose<sp/>it<sp/>as<sp/>a<sp/>generic<sp/>error<sp/>bucket.</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Quick<sp/>recap</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Keep<sp/>this<sp/>section<sp/>aligned<sp/>with<sp/>Stage<sp/>3<sp/>ABI<sp/>versioning,<sp/>metadata,<sp/>and<sp/>compatibility<sp/>checks.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Prefer<sp/>explicit<sp/>statuses<sp/>and<sp/>deterministic<sp/>behavior.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Promote<sp/>examples<sp/>into<sp/>tests<sp/>when<sp/>behavior<sp/>stabilizes.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>ABI<sp/>tests</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">A<sp/>dedicated<sp/>solver<sp/>ABI<sp/>test<sp/>should<sp/>verify<sp/>version<sp/>and<sp/>metadata<sp/>fields.</highlight></codeline>
+<codeline><highlight class="normal">Compatibility<sp/>helper<sp/>should<sp/>be<sp/>checked<sp/>with<sp/>current<sp/>and<sp/>mismatched<sp/>versions.</highlight></codeline>
+<codeline><highlight class="normal">C<sp/>and<sp/>C++<sp/>surfaces<sp/>should<sp/>agree<sp/>on<sp/>results.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>-S<sp/>.<sp/>-B<sp/>build/abi<sp/>-DSATTYRE_ENABLE_TESTS=ON</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>--build<sp/>build/abi<sp/>-j</highlight></codeline>
+<codeline><highlight class="normal">ctest<sp/>--test-dir<sp/>build/abi<sp/>-R<sp/>sattyre-solver-abi-test<sp/>--output-on-failure</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Quick<sp/>recap</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Keep<sp/>this<sp/>section<sp/>aligned<sp/>with<sp/>Stage<sp/>3<sp/>ABI<sp/>versioning,<sp/>metadata,<sp/>and<sp/>compatibility<sp/>checks.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Prefer<sp/>explicit<sp/>statuses<sp/>and<sp/>deterministic<sp/>behavior.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Promote<sp/>examples<sp/>into<sp/>tests<sp/>when<sp/>behavior<sp/>stabilizes.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Chapter<sp/>summary</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">A<sp/>tiny<sp/>C<sp/>ABI<sp/>is<sp/>the<sp/>backbone<sp/>of<sp/>extensible<sp/>solver<sp/>integration.</highlight></codeline>
+<codeline><highlight class="normal">Compatibility<sp/>checks<sp/>prevent<sp/>confusing<sp/>runtime<sp/>misuse.</highlight></codeline>
+<codeline><highlight class="normal">Stage<sp/>3<sp/>is<sp/>complete<sp/>when<sp/>adapters<sp/>rely<sp/>on<sp/>this<sp/>contract<sp/>consistently.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Version<sp/>checks<sp/>belong<sp/>at<sp/>the<sp/>ABI<sp/>boundary,<sp/>not<sp/>scattered<sp/>in<sp/>solver<sp/>code.</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Quick<sp/>recap</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Keep<sp/>this<sp/>section<sp/>aligned<sp/>with<sp/>Stage<sp/>3<sp/>ABI<sp/>versioning,<sp/>metadata,<sp/>and<sp/>compatibility<sp/>checks.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Prefer<sp/>explicit<sp/>statuses<sp/>and<sp/>deterministic<sp/>behavior.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Promote<sp/>examples<sp/>into<sp/>tests<sp/>when<sp/>behavior<sp/>stabilizes.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Supplemental<sp/>example</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Supplemental<sp/>example</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Supplemental<sp/>example</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Supplemental<sp/>example</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Supplemental<sp/>example</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+    </programlisting>
+    <location file="/home/chubakpdp11/sattyre/docs/manual/Chapter-4.rst"/>
+  </compounddef>
+</doxygen>

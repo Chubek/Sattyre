@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="md__2home_2chubakpdp11_2sattyre_2docs_2architecture" kind="page">
+    <compoundname>md__2home_2chubakpdp11_2sattyre_2docs_2architecture</compoundname>
+    <title>Architecture</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><anchor id="md__2home_2chubakpdp11_2sattyre_2docs_2architecture_1autotoc_md0"/></para>
+<para>Planned subsystems:</para>
+<para><itemizedlist>
+<listitem><para>SAT interface</para>
+</listitem><listitem><para>SMT interface</para>
+</listitem><listitem><para>solver ABI</para>
+</listitem><listitem><para>plugin ABI</para>
+</listitem><listitem><para>library ABI</para>
+</listitem><listitem><para>package manager</para>
+</listitem><listitem><para>package registry</para>
+</listitem><listitem><para>Lua addon system</para>
+</listitem></itemizedlist>
+</para>
+<para>Third-party integrations:</para>
+<para><itemizedlist>
+<listitem><para><computeroutput>cpp-httplib</computeroutput> for registry HTTP serving/client work</para>
+</listitem><listitem><para><computeroutput>fmt</computeroutput> for formatting</para>
+</listitem><listitem><para><computeroutput>klyspec</computeroutput> for CLI definitions</para>
+</listitem><listitem><para><computeroutput>libarchive</computeroutput> for bundle creation and extraction</para>
+</listitem><listitem><para><computeroutput>libssh2</computeroutput> for deployment/authentication</para>
+</listitem><listitem><para><computeroutput>log4cplus</computeroutput> for logging</para>
+</listitem><listitem><para><computeroutput>lua</computeroutput> and <computeroutput>sol2</computeroutput> for addon embedding</para>
+</listitem><listitem><para><computeroutput>serdetk</computeroutput> for JSON/XML/YAML/S-Expr manifests </para>
+</listitem></itemizedlist>
+</para>
+    </detaileddescription>
+    <location file="/home/chubakpdp11/sattyre/docs/architecture.md"/>
+  </compounddef>
+</doxygen>

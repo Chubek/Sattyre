@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_Installer_8cpp" xml:lang="en-US">
+<title>/home/chubakpdp11/sattyre/src/package/Installer.cpp File Reference</title>
+<indexterm><primary>/home/chubakpdp11/sattyre/src/package/Installer.cpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;sattyre/Installer.hpp&quot;<?linebreak?>#include &quot;sattyre/Bundle.hpp&quot;<?linebreak?>#include &quot;sattyre/Log.hpp&quot;<?linebreak?>#include &quot;sattyre/Manifest.hpp&quot;<?linebreak?>#include &quot;sattyre/Paths.hpp&quot;<?linebreak?>#include &lt;filesystem&gt;<?linebreak?></programlisting><simplesect>
+    <title>Namespaces    </title>
+        <itemizedlist>
+            <listitem><para>namespace <link linkend="_namespacesattyre">sattyre</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_namespacesattyre_1aa6c82de970cc3d48f5cc62694d95ac09">InstallerStatus</link> <link linkend="_namespacesattyre_1ac2d0d1d43ee4bab9defeffd7a193ed38">sattyre::install_package</link> (const std::string &amp;bundle_file, const std::string &amp;root)</para>
+</listitem>
+            <listitem><para><link linkend="_namespacesattyre_1aa6c82de970cc3d48f5cc62694d95ac09">InstallerStatus</link> <link linkend="_namespacesattyre_1a06c9391db7a95a3c3248953feb2f8d17">sattyre::install_package</link> (const std::string &amp;bundle_file, const std::string &amp;root, bool overwrite)</para>
+</listitem>
+            <listitem><para><link linkend="_namespacesattyre_1aa6c82de970cc3d48f5cc62694d95ac09">InstallerStatus</link> <link linkend="_namespacesattyre_1ae4c3d1e552bf85a0924a8a402f760c39">sattyre::remove_package</link> (const std::string &amp;package_name, const std::string &amp;root)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

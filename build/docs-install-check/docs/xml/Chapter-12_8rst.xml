@@ -1,0 +1,170 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="Chapter-12_8rst" kind="file" language="Markdown">
+    <compoundname>Chapter-12.rst</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">\page<sp/>chapter12<sp/>CLI<sp/>Workflows,<sp/>Testing<sp/>Matrix,<sp/>and<sp/>Release<sp/>Readiness</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">\brief<sp/>Stage<sp/>8<sp/>user<sp/>tooling<sp/>and<sp/>project<sp/>polish</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Scope</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>chapter<sp/>covers<sp/>`sattyre-cli`,<sp/>`sattyre-packman`,<sp/>`sattyre-registry`,<sp/>and<sp/>release<sp/>checks.</highlight></codeline>
+<codeline><highlight class="normal">The<sp/>CLI<sp/>should<sp/>reflect<sp/>real<sp/>library<sp/>behavior,<sp/>not<sp/>stubs.</highlight></codeline>
+<codeline><highlight class="normal">Testing<sp/>and<sp/>docs<sp/>must<sp/>align<sp/>with<sp/>implementation<sp/>state.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">sattyre-cli<sp/>examples/example.cnf</highlight></codeline>
+<codeline><highlight class="normal">sattyre-cli<sp/>--solver<sp/>native<sp/>examples/example.cnf</highlight></codeline>
+<codeline><highlight class="normal">sattyre-cli<sp/>examples/example.smt2</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Quick<sp/>recap</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Keep<sp/>this<sp/>section<sp/>aligned<sp/>with<sp/>Stage<sp/>8<sp/>user<sp/>tooling<sp/>and<sp/>project<sp/>polish.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Prefer<sp/>explicit<sp/>statuses<sp/>and<sp/>deterministic<sp/>behavior.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Promote<sp/>examples<sp/>into<sp/>tests<sp/>when<sp/>behavior<sp/>stabilizes.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>sattyre-packman<sp/>subcommands</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">validate<sp/>checks<sp/>manifest<sp/>structure.</highlight></codeline>
+<codeline><highlight class="normal">pack<sp/>creates<sp/>an<sp/>archive.</highlight></codeline>
+<codeline><highlight class="normal">unpack<sp/>extracts<sp/>a<sp/>bundle.</highlight></codeline>
+<codeline><highlight class="normal">install<sp/>stages<sp/>and<sp/>places<sp/>package<sp/>files.</highlight></codeline>
+<codeline><highlight class="normal">remove<sp/>deletes<sp/>a<sp/>package<sp/>by<sp/>name.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">sattyre-packman<sp/>validate<sp/>./manifest.json</highlight></codeline>
+<codeline><highlight class="normal">sattyre-packman<sp/>pack<sp/>./pkg-root<sp/>./pkg.satpkg</highlight></codeline>
+<codeline><highlight class="normal">sattyre-packman<sp/>unpack<sp/>./pkg.satpkg<sp/>./out</highlight></codeline>
+<codeline><highlight class="normal">sattyre-packman<sp/>install<sp/>./pkg.satpkg<sp/>./local-root</highlight></codeline>
+<codeline><highlight class="normal">sattyre-packman<sp/>remove<sp/>demo-solver<sp/>./local-root</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Quick<sp/>recap</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Keep<sp/>this<sp/>section<sp/>aligned<sp/>with<sp/>Stage<sp/>8<sp/>user<sp/>tooling<sp/>and<sp/>project<sp/>polish.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Prefer<sp/>explicit<sp/>statuses<sp/>and<sp/>deterministic<sp/>behavior.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Promote<sp/>examples<sp/>into<sp/>tests<sp/>when<sp/>behavior<sp/>stabilizes.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>sattyre-registry<sp/>examples</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Serve<sp/>packages<sp/>locally.</highlight></codeline>
+<codeline><highlight class="normal">Publish<sp/>archives<sp/>to<sp/>the<sp/>registry.</highlight></codeline>
+<codeline><highlight class="normal">Fetch<sp/>packages<sp/>by<sp/>name.</highlight></codeline>
+<codeline><highlight class="normal">List<sp/>available<sp/>packages.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">sattyre-registry<sp/>serve<sp/>--host<sp/>127.0.0.1<sp/>--port<sp/>8080<sp/>--root<sp/>./registry-root</highlight></codeline>
+<codeline><highlight class="normal">sattyre-registry<sp/>publish<sp/>./pkg.satpkg<sp/>--url<sp/>http://127.0.0.1:8080</highlight></codeline>
+<codeline><highlight class="normal">sattyre-registry<sp/>fetch<sp/>demo-solver<sp/>--url<sp/>http://127.0.0.1:8080</highlight></codeline>
+<codeline><highlight class="normal">sattyre-registry<sp/>list<sp/>--url<sp/>http://127.0.0.1:8080</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Quick<sp/>recap</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Keep<sp/>this<sp/>section<sp/>aligned<sp/>with<sp/>Stage<sp/>8<sp/>user<sp/>tooling<sp/>and<sp/>project<sp/>polish.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Prefer<sp/>explicit<sp/>statuses<sp/>and<sp/>deterministic<sp/>behavior.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Promote<sp/>examples<sp/>into<sp/>tests<sp/>when<sp/>behavior<sp/>stabilizes.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Testing<sp/>matrix</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Parser<sp/>tests:<sp/>DIMACS<sp/>and<sp/>manifest<sp/>parsing<sp/>behavior.</highlight></codeline>
+<codeline><highlight class="normal">ABI<sp/>tests:<sp/>solver/plugin/library<sp/>compatibility<sp/>and<sp/>metadata.</highlight></codeline>
+<codeline><highlight class="normal">Package<sp/>flow<sp/>tests:<sp/>bundle,<sp/>install,<sp/>remove.</highlight></codeline>
+<codeline><highlight class="normal">Registry<sp/>smoke<sp/>tests:<sp/>local<sp/>and<sp/>optional<sp/>HTTP<sp/>checks.</highlight></codeline>
+<codeline><highlight class="normal">CLI<sp/>smoke<sp/>tests<sp/>for<sp/>each<sp/>tool.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">ctest<sp/>--test-dir<sp/>build/release<sp/>--output-on-failure</highlight></codeline>
+<codeline><highlight class="normal">ctest<sp/>--test-dir<sp/>build/release<sp/>-R<sp/>sattyre-packman-cli-test<sp/>--output-on-failure</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Quick<sp/>recap</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Keep<sp/>this<sp/>section<sp/>aligned<sp/>with<sp/>Stage<sp/>8<sp/>user<sp/>tooling<sp/>and<sp/>project<sp/>polish.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Prefer<sp/>explicit<sp/>statuses<sp/>and<sp/>deterministic<sp/>behavior.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Promote<sp/>examples<sp/>into<sp/>tests<sp/>when<sp/>behavior<sp/>stabilizes.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Release<sp/>checklist</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Public<sp/>headers<sp/>install<sp/>cleanly<sp/>under<sp/>`include/sattyre`.</highlight></codeline>
+<codeline><highlight class="normal">`sattyre.pc`<sp/>is<sp/>generated<sp/>and<sp/>installable.</highlight></codeline>
+<codeline><highlight class="normal">Docs<sp/>build<sp/>produces<sp/>HTML,<sp/>LaTeX,<sp/>DocBook,<sp/>and<sp/>XML<sp/>outputs.</highlight></codeline>
+<codeline><highlight class="normal">Version<sp/>and<sp/>compatibility<sp/>policy<sp/>are<sp/>documented.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>-S<sp/>.<sp/>-B<sp/>build/release<sp/>-DSATTYRE_ENABLE_TESTS=ON<sp/>-DSATTYRE_ENABLE_DOCS=ON</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>--build<sp/>build/release<sp/>-j</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>--build<sp/>build/release<sp/>--target<sp/>sattyre-docs</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Quick<sp/>recap</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Keep<sp/>this<sp/>section<sp/>aligned<sp/>with<sp/>Stage<sp/>8<sp/>user<sp/>tooling<sp/>and<sp/>project<sp/>polish.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Prefer<sp/>explicit<sp/>statuses<sp/>and<sp/>deterministic<sp/>behavior.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Promote<sp/>examples<sp/>into<sp/>tests<sp/>when<sp/>behavior<sp/>stabilizes.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Chapter<sp/>summary</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Stage<sp/>8<sp/>completes<sp/>when<sp/>tooling,<sp/>tests,<sp/>and<sp/>docs<sp/>are<sp/>coherent.</highlight></codeline>
+<codeline><highlight class="normal">Use<sp/>this<sp/>chapter<sp/>as<sp/>the<sp/>pre-release<sp/>gate.</highlight></codeline>
+<codeline><highlight class="normal">Keep<sp/>examples<sp/>executable<sp/>and<sp/>synchronized<sp/>with<sp/>real<sp/>behavior.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Release<sp/>readiness<sp/>means<sp/>the<sp/>docs<sp/>say<sp/>the<sp/>same<sp/>thing<sp/>the<sp/>code<sp/>does.</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Quick<sp/>recap</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Keep<sp/>this<sp/>section<sp/>aligned<sp/>with<sp/>Stage<sp/>8<sp/>user<sp/>tooling<sp/>and<sp/>project<sp/>polish.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Prefer<sp/>explicit<sp/>statuses<sp/>and<sp/>deterministic<sp/>behavior.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Promote<sp/>examples<sp/>into<sp/>tests<sp/>when<sp/>behavior<sp/>stabilizes.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Supplemental<sp/>example</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Supplemental<sp/>example</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Supplemental<sp/>example</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Supplemental<sp/>example</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Supplemental<sp/>example</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+    </programlisting>
+    <location file="/home/chubakpdp11/sattyre/docs/manual/Chapter-12.rst"/>
+  </compounddef>
+</doxygen>

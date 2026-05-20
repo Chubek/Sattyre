@@ -1,0 +1,179 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_chapter11" xml:lang="en-US">
+<title>
+<para>Lua Runtime and Binding Surface </para>
+</title>
+<indexterm><primary>Lua Runtime and Binding Surface</primary></indexterm>
+
+<para>Stage 7 embedded scripting with controlled API.</para>
+<section xml:id="_chapter11_1autotoc_md39">
+<title>Scope</title>
+<para>This chapter documents <computeroutput>LuaRuntime</computeroutput> lifecycle and binding registration functions. The scripting API should be intentionally small and useful. Expose stable operations before internal details.</para>
+
+<para><literallayout><computeroutput>sattyre::LuaRuntime&#32;rt;
+if&#32;(!rt.init())&#32;{
+&#32;&#32;throw&#32;std::runtime_error(&quot;Lua&#32;init&#32;failed&quot;);
+}
+sattyre::bind_lsat(rt);
+sattyre::bind_lsmt(rt);
+sattyre::bind_lsattyre(rt);
+</computeroutput></literallayout></para>
+<section xml:id="_chapter11_1autotoc_md40">
+<title>Quick recap</title>
+<para><itemizedlist>
+<listitem>
+<para>Keep this section aligned with Stage 7 embedded scripting with controlled API.</para>
+</listitem><listitem>
+<para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem>
+<para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+</section>
+<section xml:id="_chapter11_1autotoc_md41">
+<title>Binding namespaces</title>
+<para><computeroutput>lsat</computeroutput> for SAT loading and solving. <computeroutput>lsmt</computeroutput> for SMT loading and solve status pathways. <computeroutput>lsattyre</computeroutput> for runtime paths and package environment helpers.</para>
+
+<para><literallayout><computeroutput>--&#32;solve_sat.lua
+local&#32;p&#32;=&#32;lsat.parse_dimacs(&quot;examples/example.cnf&quot;)
+local&#32;solver&#32;=&#32;lsat.native_solver()
+solver:load(p)
+local&#32;result&#32;=&#32;solver:solve()
+print(&quot;result:&quot;,&#32;result)
+</computeroutput></literallayout></para>
+<section xml:id="_chapter11_1autotoc_md42">
+<title>Quick recap</title>
+<para><itemizedlist>
+<listitem>
+<para>Keep this section aligned with Stage 7 embedded scripting with controlled API.</para>
+</listitem><listitem>
+<para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem>
+<para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+</section>
+<section xml:id="_chapter11_1autotoc_md43">
+<title>Error reporting</title>
+<para>Surface Lua errors to callers and logs explicitly. Do not swallow script failures inside binding wrappers. Keep ownership clear: runtime owns <computeroutput>lua_State</computeroutput> lifecycle.</para>
+
+<para><literallayout><computeroutput>//&#32;Lua&#32;errors&#32;should&#32;propagate&#32;to&#32;the&#32;caller&#32;in&#32;a&#32;clear&#32;way.
+//&#32;The&#32;binding&#32;layer&#32;should&#32;not&#32;hide&#32;the&#32;failure&#32;origin.
+</computeroutput></literallayout></para>
+<section xml:id="_chapter11_1autotoc_md44">
+<title>Quick recap</title>
+<para><itemizedlist>
+<listitem>
+<para>Keep this section aligned with Stage 7 embedded scripting with controlled API.</para>
+</listitem><listitem>
+<para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem>
+<para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+</section>
+<section xml:id="_chapter11_1autotoc_md45">
+<title>Scripting patterns</title>
+<para>Expose create/load/solve/inspect primitives first. Keep module tables small and discoverable. Reuse the same data flow as the C++ APIs.</para>
+
+<para><literallayout><computeroutput>print(lsat.version())
+print(lsatyre&#32;and&#32;&quot;runtime&#32;ready&quot;&#32;or&#32;&quot;runtime&#32;missing&quot;)
+</computeroutput></literallayout></para>
+<section xml:id="_chapter11_1autotoc_md46">
+<title>Quick recap</title>
+<para><itemizedlist>
+<listitem>
+<para>Keep this section aligned with Stage 7 embedded scripting with controlled API.</para>
+</listitem><listitem>
+<para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem>
+<para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+</section>
+<section xml:id="_chapter11_1autotoc_md47">
+<title>Testing suggestions</title>
+<para>Use a Lua smoke test that initializes runtime and executes a tiny script. Validate both success path and deliberate failure path. Keep scripts in examples or tests for reproducibility.</para>
+
+<para><literallayout><computeroutput>cmake&#32;-S&#32;.&#32;-B&#32;build/lua&#32;-DSATTYRE_ENABLE_LUA=ON&#32;-DSATTYRE_ENABLE_TESTS=ON
+cmake&#32;--build&#32;build/lua&#32;-j
+</computeroutput></literallayout></para>
+<section xml:id="_chapter11_1autotoc_md48">
+<title>Quick recap</title>
+<para><itemizedlist>
+<listitem>
+<para>Keep this section aligned with Stage 7 embedded scripting with controlled API.</para>
+</listitem><listitem>
+<para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem>
+<para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+</section>
+<section xml:id="_chapter11_1autotoc_md49">
+<title>Chapter summary</title>
+<para>Stage 7 success means reliable runtime init and practical first bindings. Small, focused bindings are easier to keep stable. This forms the scripting bridge for advanced user workflows.</para>
+
+<para><literallayout><computeroutput>//&#32;Bindings&#32;should&#32;reflect&#32;stable&#32;public&#32;APIs,&#32;not&#32;internal&#32;prototypes.
+</computeroutput></literallayout></para>
+<section xml:id="_chapter11_1autotoc_md50">
+<title>Quick recap</title>
+<para><itemizedlist>
+<listitem>
+<para>Keep this section aligned with Stage 7 embedded scripting with controlled API.</para>
+</listitem><listitem>
+<para>Prefer explicit statuses and deterministic behavior.</para>
+</listitem><listitem>
+<para>Promote examples into tests when behavior stabilizes.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+<section xml:id="_chapter11_1autotoc_md51">
+<title>Supplemental example</title>
+<para><literallayout><computeroutput>//&#32;Minimal&#32;reference&#32;snippet&#32;for&#32;this&#32;chapter
+//&#32;Replace&#32;with&#32;project-specific&#32;values&#32;in&#32;your&#32;local&#32;environment.
+std::cout&#32;&lt;&lt;&#32;&quot;sattyre&#32;manual&#32;example&quot;&#32;&lt;&lt;&#32;std::endl;
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_chapter11_1autotoc_md52">
+<title>Supplemental example</title>
+<para><literallayout><computeroutput>//&#32;Minimal&#32;reference&#32;snippet&#32;for&#32;this&#32;chapter
+//&#32;Replace&#32;with&#32;project-specific&#32;values&#32;in&#32;your&#32;local&#32;environment.
+std::cout&#32;&lt;&lt;&#32;&quot;sattyre&#32;manual&#32;example&quot;&#32;&lt;&lt;&#32;std::endl;
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_chapter11_1autotoc_md53">
+<title>Supplemental example</title>
+<para><literallayout><computeroutput>//&#32;Minimal&#32;reference&#32;snippet&#32;for&#32;this&#32;chapter
+//&#32;Replace&#32;with&#32;project-specific&#32;values&#32;in&#32;your&#32;local&#32;environment.
+std::cout&#32;&lt;&lt;&#32;&quot;sattyre&#32;manual&#32;example&quot;&#32;&lt;&lt;&#32;std::endl;
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_chapter11_1autotoc_md54">
+<title>Supplemental example</title>
+<para><literallayout><computeroutput>//&#32;Minimal&#32;reference&#32;snippet&#32;for&#32;this&#32;chapter
+//&#32;Replace&#32;with&#32;project-specific&#32;values&#32;in&#32;your&#32;local&#32;environment.
+std::cout&#32;&lt;&lt;&#32;&quot;sattyre&#32;manual&#32;example&quot;&#32;&lt;&lt;&#32;std::endl;
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_chapter11_1autotoc_md55">
+<title>Supplemental example</title>
+<para><literallayout><computeroutput>//&#32;Minimal&#32;reference&#32;snippet&#32;for&#32;this&#32;chapter
+//&#32;Replace&#32;with&#32;project-specific&#32;values&#32;in&#32;your&#32;local&#32;environment.
+std::cout&#32;&lt;&lt;&#32;&quot;sattyre&#32;manual&#32;example&quot;&#32;&lt;&lt;&#32;std::endl;
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_chapter11_1autotoc_md56">
+<title>Supplemental example</title>
+<para><literallayout><computeroutput>//&#32;Minimal&#32;reference&#32;snippet&#32;for&#32;this&#32;chapter
+//&#32;Replace&#32;with&#32;project-specific&#32;values&#32;in&#32;your&#32;local&#32;environment.
+std::cout&#32;&lt;&lt;&#32;&quot;sattyre&#32;manual&#32;example&quot;&#32;&lt;&lt;&#32;std::endl;
+</computeroutput></literallayout> </para>
+</section>
+</section>
+</section>

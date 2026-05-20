@@ -1,0 +1,145 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="Sattyre-Plugin_8h" kind="file" language="C++">
+    <compoundname>Sattyre-Plugin.h</compoundname>
+    <includedby refid="Sattyre-Plugin_8hpp" local="yes">/home/chubakpdp11/sattyre/include/sattyre/Sattyre-Plugin.hpp</includedby>
+    <includedby refid="Sattyre-Plugin_8c" local="yes">/home/chubakpdp11/sattyre/src/plugin/Sattyre-Plugin.c</includedby>
+    <invincdepgraph>
+      <node id="1">
+        <label>/home/chubakpdp11/sattyre/include/sattyre/Sattyre-Plugin.h</label>
+        <link refid="Sattyre-Plugin_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>/home/chubakpdp11/sattyre/include/sattyre/Sattyre-Plugin.hpp</label>
+        <link refid="Sattyre-Plugin_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>/home/chubakpdp11/sattyre/src/plugin/Sattyre-Plugin.c</label>
+        <link refid="Sattyre-Plugin_8c"/>
+      </node>
+      <node id="3">
+        <label>/home/chubakpdp11/sattyre/src/plugin/Sattyre-Plugin.cpp</label>
+        <link refid="Sattyre-Plugin_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structSattyrePluginInfo" prot="public">SattyrePluginInfo</innerclass>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="Sattyre-Plugin_8h_1a46ccf0e54077bec94787dc361f41019b" prot="public" static="no">
+        <name>SATTYRE_PLUGIN_ABI_VERSION</name>
+        <initializer>1u</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/chubakpdp11/sattyre/include/sattyre/Sattyre-Plugin.h" line="8" column="9" bodyfile="/home/chubakpdp11/sattyre/include/sattyre/Sattyre-Plugin.h" bodystart="8" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="Sattyre-Plugin_8h_1a075e41808a5829e6aac16f6124cb1516" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int sattyre_plugin_init</definition>
+        <argsstring>(void)</argsstring>
+        <name>sattyre_plugin_init</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/chubakpdp11/sattyre/include/sattyre/Sattyre-Plugin.h" line="16" column="5" bodyfile="/home/chubakpdp11/sattyre/src/plugin/Sattyre-Plugin.c" bodystart="3" bodyend="5" declfile="/home/chubakpdp11/sattyre/include/sattyre/Sattyre-Plugin.h" declline="16" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="Sattyre-Plugin_8h_1a7a9c388961479bf7de5140b8ee5e229f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void sattyre_plugin_shutdown</definition>
+        <argsstring>(void)</argsstring>
+        <name>sattyre_plugin_shutdown</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/chubakpdp11/sattyre/include/sattyre/Sattyre-Plugin.h" line="17" column="6" bodyfile="/home/chubakpdp11/sattyre/src/plugin/Sattyre-Plugin.c" bodystart="7" bodyend="8" declfile="/home/chubakpdp11/sattyre/include/sattyre/Sattyre-Plugin.h" declline="17" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="Sattyre-Plugin_8h_1a728c97988f8e520ac68871bba0016b39" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structSattyrePluginInfo" kindref="compound">SattyrePluginInfo</ref></type>
+        <definition>SattyrePluginInfo sattyre_plugin_info</definition>
+        <argsstring>(void)</argsstring>
+        <name>sattyre_plugin_info</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/chubakpdp11/sattyre/include/sattyre/Sattyre-Plugin.h" line="18" column="19" bodyfile="/home/chubakpdp11/sattyre/src/plugin/Sattyre-Plugin.c" bodystart="10" bodyend="16" declfile="/home/chubakpdp11/sattyre/include/sattyre/Sattyre-Plugin.h" declline="18" declcolumn="19"/>
+      </memberdef>
+      <memberdef kind="function" id="Sattyre-Plugin_8h_1a698e7e049dcd92d477f721b52a19439f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int sattyre_plugin_abi_compatible</definition>
+        <argsstring>(unsigned int abi_version)</argsstring>
+        <name>sattyre_plugin_abi_compatible</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>abi_version</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/chubakpdp11/sattyre/include/sattyre/Sattyre-Plugin.h" line="19" column="5" bodyfile="/home/chubakpdp11/sattyre/src/plugin/Sattyre-Plugin.c" bodystart="18" bodyend="20" declfile="/home/chubakpdp11/sattyre/include/sattyre/Sattyre-Plugin.h" declline="19" declcolumn="5"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>SATTYRE_PLUGIN_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SATTYRE_PLUGIN_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8" refid="Sattyre-Plugin_8h_1a46ccf0e54077bec94787dc361f41019b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SATTYRE_PLUGIN_ABI_VERSION<sp/>1u</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10" refid="structSattyrePluginInfo" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="11" refid="structSattyrePluginInfo_1ac8fb8eedc55badb54b5edd5912ecd847" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structSattyrePluginInfo_1ac8fb8eedc55badb54b5edd5912ecd847" kindref="member">abi_version</ref>;</highlight></codeline>
+<codeline lineno="12" refid="structSattyrePluginInfo_1a2b3fc12dff92fab838d412b135ff0af8" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="structSattyrePluginInfo_1a2b3fc12dff92fab838d412b135ff0af8" kindref="member">name</ref>;</highlight></codeline>
+<codeline lineno="13" refid="structSattyrePluginInfo_1aac61b06370df5f413bb2f81317ca9572" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="structSattyrePluginInfo_1aac61b06370df5f413bb2f81317ca9572" kindref="member">version</ref>;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal">}<sp/><ref refid="structSattyrePluginInfo" kindref="compound">SattyrePluginInfo</ref>;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="Sattyre-Plugin_8h_1a075e41808a5829e6aac16f6124cb1516" kindref="member">sattyre_plugin_init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="Sattyre-Plugin_8h_1a7a9c388961479bf7de5140b8ee5e229f" kindref="member">sattyre_plugin_shutdown</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><ref refid="structSattyrePluginInfo" kindref="compound">SattyrePluginInfo</ref><sp/><ref refid="Sattyre-Plugin_8h_1a728c97988f8e520ac68871bba0016b39" kindref="member">sattyre_plugin_info</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="Sattyre-Plugin_8h_1a698e7e049dcd92d477f721b52a19439f" kindref="member">sattyre_plugin_abi_compatible</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>abi_version);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/home/chubakpdp11/sattyre/include/sattyre/Sattyre-Plugin.h"/>
+  </compounddef>
+</doxygen>

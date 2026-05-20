@@ -1,0 +1,153 @@
+\doxysection{Build, Layout, and Feature Flags }
+\label{chapter1}\index{Build, Layout, and Feature Flags@{Build, Layout, and Feature Flags}}
+Stage 1 baseline:\+ CMake authority, options, and project structure.\hypertarget{chapter1_autotoc_md2}{}\doxysubsubsection{\texorpdfstring{Why this chapter}{Why this chapter}}\label{chapter1_autotoc_md2}
+Sattyre starts with a build system that fails clearly and enables optional subsystems deliberately. This chapter focuses on CMake options and directory ownership so contributors do not blur boundaries. The goal is a stable developer baseline before touching parser, solver, plugin, or packaging internals.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cmake\ -\/S\ .\ -\/B\ build/default\ -\/DSATTYRE\_ENABLE\_TESTS=ON}
+\DoxyCodeLine{cmake\ -\/-\/build\ build/default\ -\/j}
+\DoxyCodeLine{ctest\ -\/-\/test-\/dir\ build/default\ -\/-\/output-\/on-\/failure}
+
+\end{DoxyCode}
+\hypertarget{chapter1_autotoc_md3}{}\doxysubsubsubsection{\texorpdfstring{Quick recap}{Quick recap}}\label{chapter1_autotoc_md3}
+
+\begin{DoxyItemize}
+\item Keep this section aligned with Stage 1 baseline:\+ CMake authority, options, and project structure.
+\item Prefer explicit statuses and deterministic behavior.
+\item Promote examples into tests when behavior stabilizes.
+\end{DoxyItemize}\hypertarget{chapter1_autotoc_md4}{}\doxysubsubsection{\texorpdfstring{Project map in practice}{Project map in practice}}\label{chapter1_autotoc_md4}
+Treat {\ttfamily include/\+sattyre} as the contract and {\ttfamily src/\+\texorpdfstring{$\ast$}{*}} as implementation details. Examples and tests are used as smoke and regression checks for staged progress. The docs folder defines documentation sources and Doxygen integration.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cat\ docs/FrontPage.rst}
+\DoxyCodeLine{find\ docs/manual\ -\/maxdepth\ 1\ -\/name\ "{}Chapter-\/*.rst"{}\ |\ sort}
+
+\end{DoxyCode}
+\hypertarget{chapter1_autotoc_md5}{}\doxysubsubsubsection{\texorpdfstring{Quick recap}{Quick recap}}\label{chapter1_autotoc_md5}
+
+\begin{DoxyItemize}
+\item Keep this section aligned with Stage 1 baseline:\+ CMake authority, options, and project structure.
+\item Prefer explicit statuses and deterministic behavior.
+\item Promote examples into tests when behavior stabilizes.
+\end{DoxyItemize}\hypertarget{chapter1_autotoc_md6}{}\doxysubsubsection{\texorpdfstring{Feature toggles}{Feature toggles}}\label{chapter1_autotoc_md6}
+Enable only the subsystem being implemented to keep feedback loops short. Lua and registry can stay optional while SAT/\+\+SMT core and package flow are hardened. Documentation generation stays conditional but on by default in project options.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cmake\ -\/S\ .\ -\/B\ build/lean\ \(\backslash\)}
+\DoxyCodeLine{\ \ -\/DSATTYRE\_ENABLE\_TESTS=ON\ \(\backslash\)}
+\DoxyCodeLine{\ \ -\/DSATTYRE\_ENABLE\_DOCS=ON\ \(\backslash\)}
+\DoxyCodeLine{\ \ -\/DSATTYRE\_ENABLE\_LUA=OFF\ \(\backslash\)}
+\DoxyCodeLine{\ \ -\/DSATTYRE\_ENABLE\_REGISTRY=ON}
+
+\end{DoxyCode}
+\hypertarget{chapter1_autotoc_md7}{}\doxysubsubsubsection{\texorpdfstring{Quick recap}{Quick recap}}\label{chapter1_autotoc_md7}
+
+\begin{DoxyItemize}
+\item Keep this section aligned with Stage 1 baseline:\+ CMake authority, options, and project structure.
+\item Prefer explicit statuses and deterministic behavior.
+\item Promote examples into tests when behavior stabilizes.
+\end{DoxyItemize}\hypertarget{chapter1_autotoc_md8}{}\doxysubsubsection{\texorpdfstring{CMake intent}{CMake intent}}\label{chapter1_autotoc_md8}
+The top-\/level {\ttfamily CMake\+Lists.\+txt} defines core targets:\+ {\ttfamily \doxylink{namespacesattyre}{sattyre}}, {\ttfamily sattyre-\/cabi}, and CLI binaries. Optional docs logic should include {\ttfamily docs/\+\+CMake\+Files.\+txt} only when Doxygen exists. The package metadata file {\ttfamily sattyre.\+pc} is configured from {\ttfamily cmake/\+sattyre.\+pc.\+in}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cat\ build/default/sattyre.pc}
+\DoxyCodeLine{pkg-\/config\ -\/-\/cflags\ -\/-\/libs\ build/default/sattyre.pc}
+
+\end{DoxyCode}
+\hypertarget{chapter1_autotoc_md9}{}\doxysubsubsubsection{\texorpdfstring{Quick recap}{Quick recap}}\label{chapter1_autotoc_md9}
+
+\begin{DoxyItemize}
+\item Keep this section aligned with Stage 1 baseline:\+ CMake authority, options, and project structure.
+\item Prefer explicit statuses and deterministic behavior.
+\item Promote examples into tests when behavior stabilizes.
+\end{DoxyItemize}\hypertarget{chapter1_autotoc_md10}{}\doxysubsubsection{\texorpdfstring{Operational invariants}{Operational invariants}}\label{chapter1_autotoc_md10}
+The build must configure deterministically on a clean checkout. No public header should require private source-\/only includes. A missing optional dependency should disable only that subsystem, not the entire project.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cmake\ -\/-\/install\ build/default\ -\/-\/prefix\ /tmp/sattyre-\/install}
+\DoxyCodeLine{find\ /tmp/sattyre-\/install\ -\/maxdepth\ 3\ -\/type\ f\ |\ sort}
+
+\end{DoxyCode}
+\hypertarget{chapter1_autotoc_md11}{}\doxysubsubsubsection{\texorpdfstring{Quick recap}{Quick recap}}\label{chapter1_autotoc_md11}
+
+\begin{DoxyItemize}
+\item Keep this section aligned with Stage 1 baseline:\+ CMake authority, options, and project structure.
+\item Prefer explicit statuses and deterministic behavior.
+\item Promote examples into tests when behavior stabilizes.
+\end{DoxyItemize}\hypertarget{chapter1_autotoc_md12}{}\doxysubsubsection{\texorpdfstring{Troubleshooting}{Troubleshooting}}\label{chapter1_autotoc_md12}
+Confirm the selected compiler supports C++20 for public C++ APIs and internal implementation. Confirm include paths for third-\/party dependencies are only added when corresponding features are enabled. Confirm optional targets are not compiled when feature flags are disabled.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cmake\ -\/S\ .\ -\/B\ build/check\ -\/DSATTYRE\_ENABLE\_DOCS=ON}
+\DoxyCodeLine{cmake\ -\/-\/build\ build/check\ -\/-\/target\ sattyre-\/docs}
+
+\end{DoxyCode}
+\hypertarget{chapter1_autotoc_md13}{}\doxysubsubsubsection{\texorpdfstring{Quick recap}{Quick recap}}\label{chapter1_autotoc_md13}
+
+\begin{DoxyItemize}
+\item Keep this section aligned with Stage 1 baseline:\+ CMake authority, options, and project structure.
+\item Prefer explicit statuses and deterministic behavior.
+\item Promote examples into tests when behavior stabilizes.
+\end{DoxyItemize}\hypertarget{chapter1_autotoc_md14}{}\doxysubsubsubsection{\texorpdfstring{Supplemental example}{Supplemental example}}\label{chapter1_autotoc_md14}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Minimal\ reference\ snippet\ for\ this\ chapter}
+\DoxyCodeLine{//\ Replace\ with\ project-\/specific\ values\ in\ your\ local\ environment.}
+\DoxyCodeLine{std::cout\ <<\ "{}sattyre\ manual\ example"{}\ <<\ std::endl;}
+
+\end{DoxyCode}
+\hypertarget{chapter1_autotoc_md15}{}\doxysubsubsubsection{\texorpdfstring{Supplemental example}{Supplemental example}}\label{chapter1_autotoc_md15}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Minimal\ reference\ snippet\ for\ this\ chapter}
+\DoxyCodeLine{//\ Replace\ with\ project-\/specific\ values\ in\ your\ local\ environment.}
+\DoxyCodeLine{std::cout\ <<\ "{}sattyre\ manual\ example"{}\ <<\ std::endl;}
+
+\end{DoxyCode}
+\hypertarget{chapter1_autotoc_md16}{}\doxysubsubsubsection{\texorpdfstring{Supplemental example}{Supplemental example}}\label{chapter1_autotoc_md16}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Minimal\ reference\ snippet\ for\ this\ chapter}
+\DoxyCodeLine{//\ Replace\ with\ project-\/specific\ values\ in\ your\ local\ environment.}
+\DoxyCodeLine{std::cout\ <<\ "{}sattyre\ manual\ example"{}\ <<\ std::endl;}
+
+\end{DoxyCode}
+\hypertarget{chapter1_autotoc_md17}{}\doxysubsubsubsection{\texorpdfstring{Supplemental example}{Supplemental example}}\label{chapter1_autotoc_md17}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Minimal\ reference\ snippet\ for\ this\ chapter}
+\DoxyCodeLine{//\ Replace\ with\ project-\/specific\ values\ in\ your\ local\ environment.}
+\DoxyCodeLine{std::cout\ <<\ "{}sattyre\ manual\ example"{}\ <<\ std::endl;}
+
+\end{DoxyCode}
+\hypertarget{chapter1_autotoc_md18}{}\doxysubsubsubsection{\texorpdfstring{Supplemental example}{Supplemental example}}\label{chapter1_autotoc_md18}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Minimal\ reference\ snippet\ for\ this\ chapter}
+\DoxyCodeLine{//\ Replace\ with\ project-\/specific\ values\ in\ your\ local\ environment.}
+\DoxyCodeLine{std::cout\ <<\ "{}sattyre\ manual\ example"{}\ <<\ std::endl;}
+
+\end{DoxyCode}
+\hypertarget{chapter1_autotoc_md19}{}\doxysubsubsubsection{\texorpdfstring{Supplemental example}{Supplemental example}}\label{chapter1_autotoc_md19}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Minimal\ reference\ snippet\ for\ this\ chapter}
+\DoxyCodeLine{//\ Replace\ with\ project-\/specific\ values\ in\ your\ local\ environment.}
+\DoxyCodeLine{std::cout\ <<\ "{}sattyre\ manual\ example"{}\ <<\ std::endl;}
+
+\end{DoxyCode}
+\hypertarget{chapter1_autotoc_md20}{}\doxysubsubsubsection{\texorpdfstring{Supplemental example}{Supplemental example}}\label{chapter1_autotoc_md20}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Minimal\ reference\ snippet\ for\ this\ chapter}
+\DoxyCodeLine{//\ Replace\ with\ project-\/specific\ values\ in\ your\ local\ environment.}
+\DoxyCodeLine{std::cout\ <<\ "{}sattyre\ manual\ example"{}\ <<\ std::endl;}
+
+\end{DoxyCode}
+ 

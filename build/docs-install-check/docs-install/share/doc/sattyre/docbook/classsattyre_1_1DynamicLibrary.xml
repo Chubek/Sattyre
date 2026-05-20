@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classsattyre_1_1DynamicLibrary" xml:lang="en-US">
+<title>sattyre::DynamicLibrary Class Reference</title>
+<indexterm><primary>sattyre::DynamicLibrary</primary></indexterm>
+<para>
+<computeroutput>#include &lt;Dylib.hpp&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Data Structures    </title>
+        <itemizedlist>
+            <listitem><para>struct <link linkend="_structsattyre_1_1DynamicLibrary_1_1Impl">Impl</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classsattyre_1_1DynamicLibrary_1a1f4cd8f2a8a35fcc50fba1ffd2d42830">DynamicLibrary</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_classsattyre_1_1DynamicLibrary_1a2a54690fa72fddab56397ebc29e05678">~DynamicLibrary</link> ()</para>
+</listitem>
+            <listitem><para>bool <link linkend="_classsattyre_1_1DynamicLibrary_1a2108cae5b8ee015e1e74f1e495577adc">open</link> (const std::string &amp;path)</para>
+</listitem>
+            <listitem><para>void <link linkend="_classsattyre_1_1DynamicLibrary_1a7fe6bc2f7d40e1c1d5783b973ce8b462">close</link> ()</para>
+</listitem>
+            <listitem><para>void * <link linkend="_classsattyre_1_1DynamicLibrary_1a2c6e7c639bc28d358e579e3580983fd2">symbol</link> (const std::string &amp;name) const</para>
+</listitem>
+            <listitem><para>bool <link linkend="_classsattyre_1_1DynamicLibrary_1a0c19ca8c5d845812f37aec200ba77c39">loaded</link> () const</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classsattyre_1_1DynamicLibrary_1a1f4cd8f2a8a35fcc50fba1ffd2d42830"/><section>
+    <title>DynamicLibrary()</title>
+<indexterm><primary>DynamicLibrary</primary><secondary>sattyre::DynamicLibrary</secondary></indexterm>
+<indexterm><primary>sattyre::DynamicLibrary</primary><secondary>DynamicLibrary</secondary></indexterm>
+<para><computeroutput>sattyre::DynamicLibrary::DynamicLibrary ( )</computeroutput></para></section>
+<anchor xml:id="_classsattyre_1_1DynamicLibrary_1a2a54690fa72fddab56397ebc29e05678"/><section>
+    <title>~DynamicLibrary()</title>
+<indexterm><primary>~DynamicLibrary</primary><secondary>sattyre::DynamicLibrary</secondary></indexterm>
+<indexterm><primary>sattyre::DynamicLibrary</primary><secondary>~DynamicLibrary</secondary></indexterm>
+<para><computeroutput>sattyre::DynamicLibrary::~DynamicLibrary ( )</computeroutput></para></section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classsattyre_1_1DynamicLibrary_1a7fe6bc2f7d40e1c1d5783b973ce8b462"/><section>
+    <title>close()</title>
+<indexterm><primary>close</primary><secondary>sattyre::DynamicLibrary</secondary></indexterm>
+<indexterm><primary>sattyre::DynamicLibrary</primary><secondary>close</secondary></indexterm>
+<para><computeroutput>void sattyre::DynamicLibrary::close ( )</computeroutput></para></section>
+<anchor xml:id="_classsattyre_1_1DynamicLibrary_1a0c19ca8c5d845812f37aec200ba77c39"/><section>
+    <title>loaded()</title>
+<indexterm><primary>loaded</primary><secondary>sattyre::DynamicLibrary</secondary></indexterm>
+<indexterm><primary>sattyre::DynamicLibrary</primary><secondary>loaded</secondary></indexterm>
+<para><computeroutput>bool sattyre::DynamicLibrary::loaded ( ) const</computeroutput></para></section>
+<anchor xml:id="_classsattyre_1_1DynamicLibrary_1a2108cae5b8ee015e1e74f1e495577adc"/><section>
+    <title>open()</title>
+<indexterm><primary>open</primary><secondary>sattyre::DynamicLibrary</secondary></indexterm>
+<indexterm><primary>sattyre::DynamicLibrary</primary><secondary>open</secondary></indexterm>
+<para><computeroutput>bool sattyre::DynamicLibrary::open (const std::string &amp; path)</computeroutput></para></section>
+<anchor xml:id="_classsattyre_1_1DynamicLibrary_1a2c6e7c639bc28d358e579e3580983fd2"/><section>
+    <title>symbol()</title>
+<indexterm><primary>symbol</primary><secondary>sattyre::DynamicLibrary</secondary></indexterm>
+<indexterm><primary>sattyre::DynamicLibrary</primary><secondary>symbol</secondary></indexterm>
+<para><computeroutput>void * sattyre::DynamicLibrary::symbol (const std::string &amp; name) const</computeroutput></para></section>
+<para>
+The documentation for this class was generated from the following files:</para>
+/home/chubakpdp11/sattyre/include/sattyre/<link linkend="_Dylib_8hpp">Dylib.hpp</link>/home/chubakpdp11/sattyre/src/util/<link linkend="_Dylib_8cpp">Dylib.cpp</link></section>
+</section>

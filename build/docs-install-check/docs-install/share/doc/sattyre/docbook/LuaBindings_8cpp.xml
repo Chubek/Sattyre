@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_LuaBindings_8cpp" xml:lang="en-US">
+<title>/home/chubakpdp11/sattyre/src/lua/LuaBindings.cpp File Reference</title>
+<indexterm><primary>/home/chubakpdp11/sattyre/src/lua/LuaBindings.cpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;sattyre/LuaBindings.hpp&quot;<?linebreak?>#include &quot;sattyre/LuaRuntime.hpp&quot;<?linebreak?>#include &quot;sattyre/Log.hpp&quot;<?linebreak?>#include &quot;sattyre/Version.hpp&quot;<?linebreak?>#include &lt;lua.h&gt;<?linebreak?></programlisting><simplesect>
+    <title>Namespaces    </title>
+        <itemizedlist>
+            <listitem><para>namespace <link linkend="_namespacesattyre">sattyre</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="_namespacesattyre_1a2b3501c8f326a73698bf88fd8acd8f19">sattyre::bind_lsat</link> (<link linkend="_classsattyre_1_1LuaRuntime">LuaRuntime</link> &amp;runtime)</para>
+</listitem>
+            <listitem><para>void <link linkend="_namespacesattyre_1aa846fe4d8b7ca3a75bf1fa427e6f3e66">sattyre::bind_lsmt</link> (<link linkend="_classsattyre_1_1LuaRuntime">LuaRuntime</link> &amp;runtime)</para>
+</listitem>
+            <listitem><para>void <link linkend="_namespacesattyre_1ad47b024d683f174d34b691ce384f7a60">sattyre::bind_lsattyre</link> (<link linkend="_classsattyre_1_1LuaRuntime">LuaRuntime</link> &amp;runtime)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

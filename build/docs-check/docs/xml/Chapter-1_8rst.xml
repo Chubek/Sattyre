@@ -1,0 +1,178 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="Chapter-1_8rst" kind="file" language="Markdown">
+    <compoundname>Chapter-1.rst</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">\page<sp/>chapter1<sp/>Build,<sp/>Layout,<sp/>and<sp/>Feature<sp/>Flags</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">\brief<sp/>Stage<sp/>1<sp/>baseline:<sp/>CMake<sp/>authority,<sp/>options,<sp/>and<sp/>project<sp/>structure</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Why<sp/>this<sp/>chapter</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Sattyre<sp/>starts<sp/>with<sp/>a<sp/>build<sp/>system<sp/>that<sp/>fails<sp/>clearly<sp/>and<sp/>enables<sp/>optional<sp/>subsystems<sp/>deliberately.</highlight></codeline>
+<codeline><highlight class="normal">This<sp/>chapter<sp/>focuses<sp/>on<sp/>CMake<sp/>options<sp/>and<sp/>directory<sp/>ownership<sp/>so<sp/>contributors<sp/>do<sp/>not<sp/>blur<sp/>boundaries.</highlight></codeline>
+<codeline><highlight class="normal">The<sp/>goal<sp/>is<sp/>a<sp/>stable<sp/>developer<sp/>baseline<sp/>before<sp/>touching<sp/>parser,<sp/>solver,<sp/>plugin,<sp/>or<sp/>packaging<sp/>internals.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>-S<sp/>.<sp/>-B<sp/>build/default<sp/>-DSATTYRE_ENABLE_TESTS=ON</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>--build<sp/>build/default<sp/>-j</highlight></codeline>
+<codeline><highlight class="normal">ctest<sp/>--test-dir<sp/>build/default<sp/>--output-on-failure</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Quick<sp/>recap</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Keep<sp/>this<sp/>section<sp/>aligned<sp/>with<sp/>Stage<sp/>1<sp/>baseline:<sp/>CMake<sp/>authority,<sp/>options,<sp/>and<sp/>project<sp/>structure.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Prefer<sp/>explicit<sp/>statuses<sp/>and<sp/>deterministic<sp/>behavior.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Promote<sp/>examples<sp/>into<sp/>tests<sp/>when<sp/>behavior<sp/>stabilizes.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Project<sp/>map<sp/>in<sp/>practice</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Treat<sp/>`include/sattyre`<sp/>as<sp/>the<sp/>contract<sp/>and<sp/>`src/*`<sp/>as<sp/>implementation<sp/>details.</highlight></codeline>
+<codeline><highlight class="normal">Examples<sp/>and<sp/>tests<sp/>are<sp/>used<sp/>as<sp/>smoke<sp/>and<sp/>regression<sp/>checks<sp/>for<sp/>staged<sp/>progress.</highlight></codeline>
+<codeline><highlight class="normal">The<sp/>docs<sp/>folder<sp/>defines<sp/>documentation<sp/>sources<sp/>and<sp/>Doxygen<sp/>integration.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">cat<sp/>docs/FrontPage.rst</highlight></codeline>
+<codeline><highlight class="normal">find<sp/>docs/manual<sp/>-maxdepth<sp/>1<sp/>-name<sp/>&quot;Chapter-*.rst&quot;<sp/>|<sp/>sort</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Quick<sp/>recap</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Keep<sp/>this<sp/>section<sp/>aligned<sp/>with<sp/>Stage<sp/>1<sp/>baseline:<sp/>CMake<sp/>authority,<sp/>options,<sp/>and<sp/>project<sp/>structure.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Prefer<sp/>explicit<sp/>statuses<sp/>and<sp/>deterministic<sp/>behavior.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Promote<sp/>examples<sp/>into<sp/>tests<sp/>when<sp/>behavior<sp/>stabilizes.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Feature<sp/>toggles</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Enable<sp/>only<sp/>the<sp/>subsystem<sp/>being<sp/>implemented<sp/>to<sp/>keep<sp/>feedback<sp/>loops<sp/>short.</highlight></codeline>
+<codeline><highlight class="normal">Lua<sp/>and<sp/>registry<sp/>can<sp/>stay<sp/>optional<sp/>while<sp/>SAT/SMT<sp/>core<sp/>and<sp/>package<sp/>flow<sp/>are<sp/>hardened.</highlight></codeline>
+<codeline><highlight class="normal">Documentation<sp/>generation<sp/>stays<sp/>conditional<sp/>but<sp/>on<sp/>by<sp/>default<sp/>in<sp/>project<sp/>options.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>-S<sp/>.<sp/>-B<sp/>build/lean<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-DSATTYRE_ENABLE_TESTS=ON<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-DSATTYRE_ENABLE_DOCS=ON<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-DSATTYRE_ENABLE_LUA=OFF<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-DSATTYRE_ENABLE_REGISTRY=ON</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Quick<sp/>recap</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Keep<sp/>this<sp/>section<sp/>aligned<sp/>with<sp/>Stage<sp/>1<sp/>baseline:<sp/>CMake<sp/>authority,<sp/>options,<sp/>and<sp/>project<sp/>structure.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Prefer<sp/>explicit<sp/>statuses<sp/>and<sp/>deterministic<sp/>behavior.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Promote<sp/>examples<sp/>into<sp/>tests<sp/>when<sp/>behavior<sp/>stabilizes.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>CMake<sp/>intent</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>top-level<sp/>`CMakeLists.txt`<sp/>defines<sp/>core<sp/>targets:<sp/>`sattyre`,<sp/>`sattyre-cabi`,<sp/>and<sp/>CLI<sp/>binaries.</highlight></codeline>
+<codeline><highlight class="normal">Optional<sp/>docs<sp/>logic<sp/>should<sp/>include<sp/>`docs/CMakeFiles.txt`<sp/>only<sp/>when<sp/>Doxygen<sp/>exists.</highlight></codeline>
+<codeline><highlight class="normal">The<sp/>package<sp/>metadata<sp/>file<sp/>`sattyre.pc`<sp/>is<sp/>configured<sp/>from<sp/>`cmake/sattyre.pc.in`.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">cat<sp/>build/default/sattyre.pc</highlight></codeline>
+<codeline><highlight class="normal">pkg-config<sp/>--cflags<sp/>--libs<sp/>build/default/sattyre.pc</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Quick<sp/>recap</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Keep<sp/>this<sp/>section<sp/>aligned<sp/>with<sp/>Stage<sp/>1<sp/>baseline:<sp/>CMake<sp/>authority,<sp/>options,<sp/>and<sp/>project<sp/>structure.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Prefer<sp/>explicit<sp/>statuses<sp/>and<sp/>deterministic<sp/>behavior.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Promote<sp/>examples<sp/>into<sp/>tests<sp/>when<sp/>behavior<sp/>stabilizes.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Operational<sp/>invariants</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>build<sp/>must<sp/>configure<sp/>deterministically<sp/>on<sp/>a<sp/>clean<sp/>checkout.</highlight></codeline>
+<codeline><highlight class="normal">No<sp/>public<sp/>header<sp/>should<sp/>require<sp/>private<sp/>source-only<sp/>includes.</highlight></codeline>
+<codeline><highlight class="normal">A<sp/>missing<sp/>optional<sp/>dependency<sp/>should<sp/>disable<sp/>only<sp/>that<sp/>subsystem,<sp/>not<sp/>the<sp/>entire<sp/>project.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>--install<sp/>build/default<sp/>--prefix<sp/>/tmp/sattyre-install</highlight></codeline>
+<codeline><highlight class="normal">find<sp/>/tmp/sattyre-install<sp/>-maxdepth<sp/>3<sp/>-type<sp/>f<sp/>|<sp/>sort</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Quick<sp/>recap</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Keep<sp/>this<sp/>section<sp/>aligned<sp/>with<sp/>Stage<sp/>1<sp/>baseline:<sp/>CMake<sp/>authority,<sp/>options,<sp/>and<sp/>project<sp/>structure.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Prefer<sp/>explicit<sp/>statuses<sp/>and<sp/>deterministic<sp/>behavior.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Promote<sp/>examples<sp/>into<sp/>tests<sp/>when<sp/>behavior<sp/>stabilizes.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Troubleshooting</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Confirm<sp/>the<sp/>selected<sp/>compiler<sp/>supports<sp/>C++20<sp/>for<sp/>public<sp/>C++<sp/>APIs<sp/>and<sp/>internal<sp/>implementation.</highlight></codeline>
+<codeline><highlight class="normal">Confirm<sp/>include<sp/>paths<sp/>for<sp/>third-party<sp/>dependencies<sp/>are<sp/>only<sp/>added<sp/>when<sp/>corresponding<sp/>features<sp/>are<sp/>enabled.</highlight></codeline>
+<codeline><highlight class="normal">Confirm<sp/>optional<sp/>targets<sp/>are<sp/>not<sp/>compiled<sp/>when<sp/>feature<sp/>flags<sp/>are<sp/>disabled.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>-S<sp/>.<sp/>-B<sp/>build/check<sp/>-DSATTYRE_ENABLE_DOCS=ON</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>--build<sp/>build/check<sp/>--target<sp/>sattyre-docs</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Quick<sp/>recap</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Keep<sp/>this<sp/>section<sp/>aligned<sp/>with<sp/>Stage<sp/>1<sp/>baseline:<sp/>CMake<sp/>authority,<sp/>options,<sp/>and<sp/>project<sp/>structure.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Prefer<sp/>explicit<sp/>statuses<sp/>and<sp/>deterministic<sp/>behavior.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Promote<sp/>examples<sp/>into<sp/>tests<sp/>when<sp/>behavior<sp/>stabilizes.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Supplemental<sp/>example</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Supplemental<sp/>example</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Supplemental<sp/>example</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Supplemental<sp/>example</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Supplemental<sp/>example</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Supplemental<sp/>example</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Supplemental<sp/>example</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Minimal<sp/>reference<sp/>snippet<sp/>for<sp/>this<sp/>chapter</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Replace<sp/>with<sp/>project-specific<sp/>values<sp/>in<sp/>your<sp/>local<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>&quot;sattyre<sp/>manual<sp/>example&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+    </programlisting>
+    <location file="/home/chubakpdp11/sattyre/docs/manual/Chapter-1.rst"/>
+  </compounddef>
+</doxygen>

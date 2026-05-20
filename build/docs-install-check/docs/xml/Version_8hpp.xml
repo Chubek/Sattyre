@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="Version_8hpp" kind="file" language="C++">
+    <compoundname>Version.hpp</compoundname>
+    <includedby refid="sattyre-cli_8cpp" local="yes">/home/chubakpdp11/sattyre/src/cli/sattyre-cli.cpp</includedby>
+    <includedby refid="sattyre-packman_8cpp" local="yes">/home/chubakpdp11/sattyre/src/cli/sattyre-packman.cpp</includedby>
+    <includedby refid="sattyre-registry_8cpp" local="yes">/home/chubakpdp11/sattyre/src/cli/sattyre-registry.cpp</includedby>
+    <includedby refid="LuaBindings_8cpp" local="yes">/home/chubakpdp11/sattyre/src/lua/LuaBindings.cpp</includedby>
+    <invincdepgraph>
+      <node id="1">
+        <label>/home/chubakpdp11/sattyre/include/sattyre/Version.hpp</label>
+        <link refid="Version_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>/home/chubakpdp11/sattyre/src/cli/sattyre-cli.cpp</label>
+        <link refid="sattyre-cli_8cpp"/>
+      </node>
+      <node id="3">
+        <label>/home/chubakpdp11/sattyre/src/cli/sattyre-packman.cpp</label>
+        <link refid="sattyre-packman_8cpp"/>
+      </node>
+      <node id="4">
+        <label>/home/chubakpdp11/sattyre/src/cli/sattyre-registry.cpp</label>
+        <link refid="sattyre-registry_8cpp"/>
+      </node>
+      <node id="5">
+        <label>/home/chubakpdp11/sattyre/src/lua/LuaBindings.cpp</label>
+        <link refid="LuaBindings_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="Version_8hpp_1a1403b7f9c39080afb73fdbd59af0ed0b" prot="public" static="no">
+        <name>SATTYRE_VERSION_MAJOR</name>
+        <initializer>0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/chubakpdp11/sattyre/include/sattyre/Version.hpp" line="3" column="9" bodyfile="/home/chubakpdp11/sattyre/include/sattyre/Version.hpp" bodystart="3" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="Version_8hpp_1a836624a9d5070d97531207083210995d" prot="public" static="no">
+        <name>SATTYRE_VERSION_MINOR</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/chubakpdp11/sattyre/include/sattyre/Version.hpp" line="4" column="9" bodyfile="/home/chubakpdp11/sattyre/include/sattyre/Version.hpp" bodystart="4" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="Version_8hpp_1aec2d3dfe9935ede9dc0e67a613d02760" prot="public" static="no">
+        <name>SATTYRE_VERSION_PATCH</name>
+        <initializer>0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/chubakpdp11/sattyre/include/sattyre/Version.hpp" line="5" column="9" bodyfile="/home/chubakpdp11/sattyre/include/sattyre/Version.hpp" bodystart="5" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="Version_8hpp_1a2a90795d829c3e22e6223d3e1f60e2ed" prot="public" static="no">
+        <name>SATTYRE_VERSION_STRING</name>
+        <initializer>&quot;0.1.0&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/chubakpdp11/sattyre/include/sattyre/Version.hpp" line="6" column="9" bodyfile="/home/chubakpdp11/sattyre/include/sattyre/Version.hpp" bodystart="6" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3" refid="Version_8hpp_1a1403b7f9c39080afb73fdbd59af0ed0b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SATTYRE_VERSION_MAJOR<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4" refid="Version_8hpp_1a836624a9d5070d97531207083210995d" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SATTYRE_VERSION_MINOR<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5" refid="Version_8hpp_1aec2d3dfe9935ede9dc0e67a613d02760" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SATTYRE_VERSION_PATCH<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6" refid="Version_8hpp_1a2a90795d829c3e22e6223d3e1f60e2ed" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SATTYRE_VERSION_STRING<sp/>&quot;0.1.0&quot;</highlight></codeline>
+    </programlisting>
+    <location file="/home/chubakpdp11/sattyre/include/sattyre/Version.hpp"/>
+  </compounddef>
+</doxygen>

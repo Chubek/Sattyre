@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_Sattyre-Plugin_8hpp" xml:lang="en-US">
+<title>/home/chubakpdp11/sattyre/include/sattyre/Sattyre-Plugin.hpp File Reference</title>
+<indexterm><primary>/home/chubakpdp11/sattyre/include/sattyre/Sattyre-Plugin.hpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &lt;string&gt;<?linebreak?>#include &quot;sattyre/Sattyre-Plugin.h&quot;<?linebreak?></programlisting><simplesect>
+    <title>Data Structures    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_classsattyre_1_1Plugin">sattyre::Plugin</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Namespaces    </title>
+        <itemizedlist>
+            <listitem><para>namespace <link linkend="_namespacesattyre">sattyre</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>bool <link linkend="_namespacesattyre_1a9cfe031e9d5f05be77649cebe377a650">sattyre::plugin_abi_compatible</link> (unsigned int abi_version)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_namespacesattyre_1aefc46d8d65f23df22fa593c7116d5ecb">sattyre::plugin_abi_compatible</link> (const <link linkend="_structSattyrePluginInfo">SattyrePluginInfo</link> &amp;info)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

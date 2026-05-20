@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="dir_413f1d0659dc639fca9b20bc429ef636" kind="dir">
+    <compoundname>/home/chubakpdp11/sattyre/src/plugin</compoundname>
+    <innerfile refid="Sattyre-Plugin_8c">Sattyre-Plugin.c</innerfile>
+    <innerfile refid="Sattyre-Plugin_8cpp">Sattyre-Plugin.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/chubakpdp11/sattyre/src/plugin/"/>
+  </compounddef>
+</doxygen>

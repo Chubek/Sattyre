@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structSattyrePluginInfo" xml:lang="en-US">
+<title>SattyrePluginInfo Struct Reference</title>
+<indexterm><primary>SattyrePluginInfo</primary></indexterm>
+<para>
+<computeroutput>#include &lt;Sattyre-Plugin.h&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Data Fields    </title>
+        <itemizedlist>
+            <listitem><para>unsigned int <link linkend="_structSattyrePluginInfo_1ac8fb8eedc55badb54b5edd5912ecd847">abi_version</link></para>
+</listitem>
+            <listitem><para>const char * <link linkend="_structSattyrePluginInfo_1a2b3fc12dff92fab838d412b135ff0af8">name</link></para>
+</listitem>
+            <listitem><para>const char * <link linkend="_structSattyrePluginInfo_1aac61b06370df5f413bb2f81317ca9572">version</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Field Documentation</title>
+<anchor xml:id="_structSattyrePluginInfo_1ac8fb8eedc55badb54b5edd5912ecd847"/><section>
+    <title>abi_version</title>
+<indexterm><primary>abi_version</primary><secondary>SattyrePluginInfo</secondary></indexterm>
+<indexterm><primary>SattyrePluginInfo</primary><secondary>abi_version</secondary></indexterm>
+<para><computeroutput>unsigned int SattyrePluginInfo::abi_version</computeroutput></para></section>
+<anchor xml:id="_structSattyrePluginInfo_1a2b3fc12dff92fab838d412b135ff0af8"/><section>
+    <title>name</title>
+<indexterm><primary>name</primary><secondary>SattyrePluginInfo</secondary></indexterm>
+<indexterm><primary>SattyrePluginInfo</primary><secondary>name</secondary></indexterm>
+<para><computeroutput>const char* SattyrePluginInfo::name</computeroutput></para></section>
+<anchor xml:id="_structSattyrePluginInfo_1aac61b06370df5f413bb2f81317ca9572"/><section>
+    <title>version</title>
+<indexterm><primary>version</primary><secondary>SattyrePluginInfo</secondary></indexterm>
+<indexterm><primary>SattyrePluginInfo</primary><secondary>version</secondary></indexterm>
+<para><computeroutput>const char* SattyrePluginInfo::version</computeroutput></para></section>
+<para>
+The documentation for this struct was generated from the following file:</para>
+/home/chubakpdp11/sattyre/include/sattyre/<link linkend="_Sattyre-Plugin_8h">Sattyre-Plugin.h</link></section>
+</section>

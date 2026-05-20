@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="classsattyre_1_1LuaRuntime" kind="class" language="C++" prot="public">
+    <compoundname>sattyre::LuaRuntime</compoundname>
+    <includes refid="LuaRuntime_8hpp" local="no">LuaRuntime.hpp</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classsattyre_1_1LuaRuntime_1a004837682a11b52d2f065c90c281e4b9" prot="private" static="no" mutable="no">
+        <type>lua_State *</type>
+        <definition>lua_State* sattyre::LuaRuntime::L_</definition>
+        <argsstring></argsstring>
+        <name>L_</name>
+        <qualifiedname>sattyre::LuaRuntime::L_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/chubakpdp11/sattyre/include/sattyre/LuaRuntime.hpp" line="17" column="13" bodyfile="/home/chubakpdp11/sattyre/include/sattyre/LuaRuntime.hpp" bodystart="17" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classsattyre_1_1LuaRuntime_1aa06b1f6d0e736bd4b89601edbd35738c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>sattyre::LuaRuntime::LuaRuntime</definition>
+        <argsstring>()</argsstring>
+        <name>LuaRuntime</name>
+        <qualifiedname>sattyre::LuaRuntime::LuaRuntime</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/chubakpdp11/sattyre/include/sattyre/LuaRuntime.hpp" line="9" column="3" bodyfile="/home/chubakpdp11/sattyre/src/lua/LuaRuntime.cpp" bodystart="12" bodyend="12"/>
+      </memberdef>
+      <memberdef kind="function" id="classsattyre_1_1LuaRuntime_1a7b9efb8aaef89661b69b7f4346981f80" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>sattyre::LuaRuntime::~LuaRuntime</definition>
+        <argsstring>()</argsstring>
+        <name>~LuaRuntime</name>
+        <qualifiedname>sattyre::LuaRuntime::~LuaRuntime</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/chubakpdp11/sattyre/include/sattyre/LuaRuntime.hpp" line="10" column="3" bodyfile="/home/chubakpdp11/sattyre/src/lua/LuaRuntime.cpp" bodystart="13" bodyend="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classsattyre_1_1LuaRuntime_1ae7e17f2dd655b7843914cb2b4c0ef531" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool sattyre::LuaRuntime::init</definition>
+        <argsstring>()</argsstring>
+        <name>init</name>
+        <qualifiedname>sattyre::LuaRuntime::init</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/chubakpdp11/sattyre/include/sattyre/LuaRuntime.hpp" line="12" column="8" bodyfile="/home/chubakpdp11/sattyre/src/lua/LuaRuntime.cpp" bodystart="15" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classsattyre_1_1LuaRuntime_1a79bb6e4fc145c35eca7846e4c1fe0cc1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void sattyre::LuaRuntime::shutdown</definition>
+        <argsstring>()</argsstring>
+        <name>shutdown</name>
+        <qualifiedname>sattyre::LuaRuntime::shutdown</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/chubakpdp11/sattyre/include/sattyre/LuaRuntime.hpp" line="13" column="8" bodyfile="/home/chubakpdp11/sattyre/src/lua/LuaRuntime.cpp" bodystart="27" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classsattyre_1_1LuaRuntime_1a0017a73744d7da31a94d6fdbdcedae95" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>lua_State *</type>
+        <definition>lua_State * sattyre::LuaRuntime::state</definition>
+        <argsstring>() const</argsstring>
+        <name>state</name>
+        <qualifiedname>sattyre::LuaRuntime::state</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/chubakpdp11/sattyre/include/sattyre/LuaRuntime.hpp" line="14" column="13" bodyfile="/home/chubakpdp11/sattyre/src/lua/LuaRuntime.cpp" bodystart="35" bodyend="37"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/chubakpdp11/sattyre/include/sattyre/LuaRuntime.hpp" line="7" column="1" bodyfile="/home/chubakpdp11/sattyre/include/sattyre/LuaRuntime.hpp" bodystart="7" bodyend="18"/>
+    <listofallmembers>
+      <member refid="classsattyre_1_1LuaRuntime_1ae7e17f2dd655b7843914cb2b4c0ef531" prot="public" virt="non-virtual"><scope>sattyre::LuaRuntime</scope><name>init</name></member>
+      <member refid="classsattyre_1_1LuaRuntime_1a004837682a11b52d2f065c90c281e4b9" prot="private" virt="non-virtual"><scope>sattyre::LuaRuntime</scope><name>L_</name></member>
+      <member refid="classsattyre_1_1LuaRuntime_1aa06b1f6d0e736bd4b89601edbd35738c" prot="public" virt="non-virtual"><scope>sattyre::LuaRuntime</scope><name>LuaRuntime</name></member>
+      <member refid="classsattyre_1_1LuaRuntime_1a79bb6e4fc145c35eca7846e4c1fe0cc1" prot="public" virt="non-virtual"><scope>sattyre::LuaRuntime</scope><name>shutdown</name></member>
+      <member refid="classsattyre_1_1LuaRuntime_1a0017a73744d7da31a94d6fdbdcedae95" prot="public" virt="non-virtual"><scope>sattyre::LuaRuntime</scope><name>state</name></member>
+      <member refid="classsattyre_1_1LuaRuntime_1a7b9efb8aaef89661b69b7f4346981f80" prot="public" virt="non-virtual"><scope>sattyre::LuaRuntime</scope><name>~LuaRuntime</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
