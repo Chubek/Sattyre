@@ -1,7 +1,0 @@
-/home/chubakpdp11/sattyre/build/test/CMakeFiles/sattyre.dir
-/home/chubakpdp11/sattyre/build/test/CMakeFiles/sattyre-cli.dir
-/home/chubakpdp11/sattyre/build/test/CMakeFiles/sattyre-packman.dir
-/home/chubakpdp11/sattyre/build/test/CMakeFiles/sattyre-registry.dir
-/home/chubakpdp11/sattyre/build/test/CMakeFiles/sattyre-cabi.dir
-/home/chubakpdp11/sattyre/build/test/CMakeFiles/edit_cache.dir
-/home/chubakpdp11/sattyre/build/test/CMakeFiles/rebuild_cache.dir

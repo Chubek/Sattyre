@@ -1,1 +1,0 @@
-/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/sattyre-solver-abi-test.dir/link.d "CMakeFiles/sattyre-solver-abi-test.dir/tests/SattyreSolverAbiTest.cpp.o" -o sattyre-solver-abi-test  libsattyre.a libsattyre-cabi.a /usr/lib/libarchive.so -ldl

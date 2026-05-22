@@ -1,2 +1,0 @@
-# Hashes of file build rules.
-977a8e01b0cedc83746c6e2e68048b19 CMakeFiles/sattyre-docs

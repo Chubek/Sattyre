@@ -1,6 +1,0 @@
-sattyre-sat-parser-test 1 0.00102285
-sattyre-solver-abi-test 1 0.00093625
-sattyre-module-abi-test 1 0.000892219
-sattyre-module-cpp-abi-test 1 0.000838107
-sattyre-manifest-test 1 0.00310529
----
