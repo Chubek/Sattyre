@@ -212,11 +212,40 @@ PackageManifest load_manifest(const std::string& path) {
 }
 
 std::string manifest_to_json(const PackageManifest& manifest) {
-  return "{"
-"\"name\":\"" + manifest.name + "\","
-"\"version\":\"" + manifest.version + "\","
-"\"type\":\"" + manifest.type + "\""
-"}";
+  auto json_escape = [](const std::string& value) -> std::string {
+    std::string out;
+    out.reserve(value.size());
+    for (const char ch : value) {
+      switch (ch) {
+        case '\\': out += "\\\\"; break;
+        case '"': out += "\\\""; break;
+        case '\b': out += "\\b"; break;
+        case '\f': out += "\\f"; break;
+        case '\n': out += "\\n"; break;
+        case '\r': out += "\\r"; break;
+        case '\t': out += "\\t"; break;
+        default: out.push_back(ch); break;
+      }
+    }
+    return out;
+  };
+
+  std::ostringstream out;
+  out << "{";
+  out << "\"name\":\"" << json_escape(manifest.name) << "\",";
+  out << "\"version\":\"" << json_escape(manifest.version) << "\",";
+  out << "\"type\":\"" << json_escape(manifest.type) << "\",";
+  out << "\"description\":\"" << json_escape(manifest.description) << "\",";
+  out << "\"dependencies\":[";
+  for (std::size_t index = 0; index < manifest.dependencies.size(); ++index) {
+    if (index > 0) {
+      out << ",";
+    }
+    out << "\"" << json_escape(manifest.dependencies[index]) << "\"";
+  }
+  out << "]";
+  out << "}";
+  return out.str();
 }
 
 } // namespace sattyre

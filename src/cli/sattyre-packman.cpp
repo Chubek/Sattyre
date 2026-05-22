@@ -35,7 +35,9 @@ std::filesystem::path resolve_manifest_path(const std::filesystem::path& path) {
          path / "manifest.yaml",
          path / "manifest.yml",
          path / "manifest.xml",
-         path / "manifest.sexp"}) {
+         path / "manifest.sexp",
+         path / "manifest.scm",
+         path / "manifest.lisp"}) {
     if (fs::exists(candidate) && fs::is_regular_file(candidate)) {
       return candidate;
     }

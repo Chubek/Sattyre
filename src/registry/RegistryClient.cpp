@@ -15,7 +15,17 @@ bool parse_http_base(const std::string& base_url, std::string& host, int& port) 
   if (base_url.rfind(prefix, 0) != 0) {
     return false;
   }
-  const std::string host_port = base_url.substr(prefix.size());
+  std::string host_port = base_url.substr(prefix.size());
+  const auto slash = host_port.find('/');
+  if (slash != std::string::npos) {
+    if (slash != host_port.size() - 1) {
+      return false;
+    }
+    host_port = host_port.substr(0, slash);
+  }
+  if (host_port.empty()) {
+    return false;
+  }
   const auto colon = host_port.find(':');
   if (colon == std::string::npos) {
     host = host_port;

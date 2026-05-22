@@ -40,7 +40,9 @@ InstallerStatus install_package(const std::string& bundle_file, const std::strin
          staging_dir / "manifest.yaml",
          staging_dir / "manifest.yml",
          staging_dir / "manifest.xml",
-         staging_dir / "manifest.sexp"}) {
+         staging_dir / "manifest.sexp",
+         staging_dir / "manifest.scm",
+         staging_dir / "manifest.lisp"}) {
     if (fs::exists(candidate) && fs::is_regular_file(candidate)) {
       manifest_path = candidate;
       break;
