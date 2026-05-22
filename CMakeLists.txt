@@ -15,6 +15,14 @@ option(SATTYRE_ENABLE_DOCS "Enable docs generation hooks" ON)
 option(SATTYRE_ENABLE_LIBARCHIVE "Enable libarchive-backed package bundles" ON)
 option(SATTYRE_ENABLE_SERDETK "Enable serdetk-backed manifest parsing" ON)
 option(SATTYRE_ENABLE_REGISTRY_HTTP_TESTS "Enable live HTTP registry tests" OFF)
+option(SATTYRE_INSTALL_TO_HOME "Install runtime artifacts to ~/.sattyre layout" ON)
+
+if(SATTYRE_INSTALL_TO_HOME)
+  set(SATTYRE_HOME_LAYOUT ".sattyre")
+  set(CMAKE_INSTALL_BINDIR "${SATTYRE_HOME_LAYOUT}/bin")
+  set(CMAKE_INSTALL_LIBDIR "${SATTYRE_HOME_LAYOUT}/lib")
+  set(CMAKE_INSTALL_INCLUDEDIR "${SATTYRE_HOME_LAYOUT}/include")
+endif()
 
 add_library(sattyre STATIC
   src/core/SattyreSAT.cpp
@@ -138,6 +146,14 @@ endif()
 
 install(DIRECTORY include/sattyre DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/sattyre.pc DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
+install(PROGRAMS
+  scripts/pkg-bootstrap.pl
+  scripts/pkg-archive.pl
+  scripts/pkg-install.pl
+  DESTINATION ${CMAKE_INSTALL_BINDIR}
+)
+install(DIRECTORY examples/ DESTINATION .sattyre/examples OPTIONAL)
+install(DIRECTORY exmpls/packages/ DESTINATION .sattyre/share/packages OPTIONAL)
 
 if(SATTYRE_ENABLE_DOCS)
   find_package(Doxygen QUIET)

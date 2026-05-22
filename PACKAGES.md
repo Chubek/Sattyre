@@ -2,7 +2,33 @@
 
 This document explains how Sattyre packages are structured, how to stage a package, how to bundle it, and how to install or remove it again.
 
-The main example in this repository is `examples/package-exampe/picoSAT`, which is a small and practical SAT solver distribution. Use it as a template for packaging other solvers, shared libraries, and plugins.
+## Home layout and scripts
+
+Sattyre now uses `~/.sattyre` as the default runtime home (or `SATTYRE_HOME` if set).
+
+Primary directories:
+
+- `~/.sattyre/bin` for Sattyre binaries and helper scripts
+- `~/.sattyre/lib` for installed solver/plugin/library packages
+- `~/.sattyre/share/packages` for package trees and staged package data
+- `~/.sattyre/examples` for installed examples
+- `~/.sattyre/cache/downloads` for downloaded bundles
+- `~/.sattyre/logs` for local logs
+- `~/.sattyre/tmp` for temporary package extraction/staging
+
+Perl scripts under `scripts/`:
+
+- `pkg-bootstrap.pl` creates the `~/.sattyre` directory layout
+- `pkg-archive.pl <source-dir> <out-file>` bundles a staged package using `sattyre-packman pack`
+- `pkg-install.pl <bundle-url> <bundle-name> [install-root]` downloads with `wget` and installs with `sattyre-packman install`
+
+These scripts are installed into `~/.sattyre/bin` by CMake when `SATTYRE_INSTALL_TO_HOME=ON`.
+
+The main examples in this repository include:
+
+- `examples/cnf` (CNF inputs)
+- `examples/sexp` (S-expression manifests/inputs)
+- `exmpls/packages/sattyre-picosat` (example package copied from `third_party/picoSAT`)
 
 That example now includes:
 

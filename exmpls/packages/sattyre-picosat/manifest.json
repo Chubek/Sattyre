@@ -1,0 +1,7 @@
+{
+  "name": "sattyre-picosat",
+  "version": "965",
+  "type": "solver",
+  "dependencies": [],
+  "description": "picoSAT example solver package for Sattyre"
+}

@@ -9,7 +9,17 @@ static std::filesystem::path env_or_default(const char* key, const char* fallbac
   return val ? std::filesystem::path(val) : std::filesystem::path(fallback);
 }
 
-std::filesystem::path home()       { return env_or_default("SATTYRE_HOME", "/usr/local/sattyre"); }
+std::filesystem::path home() {
+  const char* sattyre_home = std::getenv("SATTYRE_HOME");
+  if (sattyre_home && sattyre_home[0] != '\0') {
+    return std::filesystem::path(sattyre_home);
+  }
+  const char* user_home = std::getenv("HOME");
+  if (user_home && user_home[0] != '\0') {
+    return std::filesystem::path(user_home) / ".sattyre";
+  }
+  return std::filesystem::path("/tmp/.sattyre");
+}
 std::filesystem::path include_dir(){ return home() / "include"; }
 std::filesystem::path lib_dir()    { return home() / "lib"; }
 std::filesystem::path solver_dir() { return lib_dir() / "solvers"; }
